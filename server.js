@@ -231,7 +231,7 @@ server.route({
       if (error) {
         return reply(error);
       }
-      return reply(response);
+      return reply({ tweets: response });
     });
   },
 });
