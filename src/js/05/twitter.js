@@ -2,6 +2,8 @@ $.ajax({
   url: '/twitter',
   data: {},
   success: (response) => {
-    debugger;
+    $.each(response.tweets, (index, tweet) => {
+      $('body').append(tweet.text);
+    });
   },
 });
