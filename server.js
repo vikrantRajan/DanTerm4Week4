@@ -217,7 +217,7 @@ server.route({
   method: 'GET',
   path: '/twitter',
   handler: (request, reply) => {
-    const t = new Twit({
+    const twit = new Twit({
       consumer_key: credentials.twitter.consumer_key,
       consumer_secret: credentials.twitter.consumer_secret,
       access_token: credentials.twitter.access_token,
@@ -225,7 +225,14 @@ server.route({
       timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
     });
 
-    reply({ todo: 'v1' });
+    const sendArgs = { screen_name: 'VanArts' };
+
+    twit.get('statuses/user_timeline', sendArgs, (error, response) => {
+      if (error) {
+        return reply(error);
+      }
+      return reply(response);
+    });
   },
 });
 
