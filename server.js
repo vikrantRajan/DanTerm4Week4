@@ -213,6 +213,7 @@ server.route({
 });
 
 const Twit = require('twit');
+const twitterUtil = require('./src/js/twitter_date');
 server.route({
   method: 'GET',
   path: '/twitter',
@@ -225,7 +226,11 @@ server.route({
       timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
     });
     function thinResponse(tweets) {
-      return tweets.map((tweet) => ({ status: tweet.text, date: tweet.created_at }));
+      return tweets.map((tweet) => ({
+        status: tweet.text,
+        // date: twitterUtil.formatTwitterDate(tweet.created_at),
+        date: tweet.created_at,
+      }));
     }
 
     const sendArgs = { screen_name: 'VanArts' };
