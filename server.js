@@ -212,11 +212,20 @@ server.route({
   },
 });
 
+const Twit = require('twit');
 server.route({
   method: 'GET',
   path: '/twitter',
   handler: (request, reply) => {
-    reply({ todo: true });
+    const t = new Twit({
+      consumer_key: credentials.twitter.consumer_key,
+      consumer_secret: credentials.twitter.consumer_secret,
+      access_token: credentials.twitter.access_token,
+      access_token_secret: credentials.twitter.access_token_secret,
+      timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
+    });
+
+    reply({ todo: 'v1' });
   },
 });
 
