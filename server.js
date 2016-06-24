@@ -224,6 +224,9 @@ server.route({
       access_token_secret: credentials.twitter.access_token_secret,
       timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
     });
+    function thinResponse(tweets) {
+      return tweets.map((tweet) => ({ status: tweet.text, date: tweet.created_at }));
+    }
 
     const sendArgs = { screen_name: 'VanArts' };
 
@@ -231,7 +234,7 @@ server.route({
       if (error) {
         return reply(error);
       }
-      return reply({ tweets: response });
+      return reply({ tweets: thinResponse(response) });
     });
   },
 });
