@@ -212,6 +212,14 @@ server.route({
   },
 });
 
+server.route({
+  method: 'GET',
+  path: '/twitter',
+  handler: (request, reply) => {
+    reply({ todo: true });
+  },
+});
+
 server.start(() => {
   console.log('Server running at:', server.info.uri); // eslint-disable-line no-console
 });
