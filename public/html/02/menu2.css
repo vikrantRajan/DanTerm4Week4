@@ -1,0 +1,47 @@
+#menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #1bc2a2;
+}
+
+#menu ul li {
+  display: block;
+  position: relative;
+  float: left;
+  background: #1bc2a2;
+}
+#menu li ul { display: none; }
+
+#menu ul li a {
+  display: block;
+  padding: 1em;
+  text-decoration: none;
+  white-space: nowrap;
+  color: #fff;
+}
+
+#menu ul li a:hover { background: #2c3e50; }
+#menu li:hover > ul {
+  display: block;
+  position: absolute;
+}
+
+#menu li:hover li { float: none; }
+
+#menu li:hover a { background: #1bc2a2; }
+
+#menu li:hover li a:hover { background: #2c3e50; }
+
+#menu  li ul li { border-top: 0; }
+#menu ul ul ul {
+  left: 100%;
+  top: 0;
+}
+#menu ul:before,
+#menu ul:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+#menu ul:after { clear: both; }
