@@ -3,7 +3,7 @@ $.ajax({
   data: {},
   success: (response) => {
     $.each(response.tweets, (index, tweet) => {
-      $('body').append(tweet.text);
+      $('#news').append(`<li>${tweet.text}</li>`);
     });
   },
 });
