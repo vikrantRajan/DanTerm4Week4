@@ -11,7 +11,8 @@ const facebook = () => {
     FB.login((loginResponse) => {
       if (loginResponse.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', (response) => {
+        FB.api('/me?fields=id,name,website,picture', (response) => {
+          console.log(response);
           console.log(`Good to see you, ${response.name}.`);
         });
       } else {
