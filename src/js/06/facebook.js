@@ -12,7 +12,10 @@ const facebook = () => {
       if (loginResponse.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
         FB.api('/me?fields=id,name,website,picture', (response) => {
-          console.log(response);
+          if (response.picture) {
+            document.getElementById('picture').innerHTML =
+              `<img src="${response.picture.data.url}">`;
+          }
           console.log(`Good to see you, ${response.name}.`);
         });
       } else {
