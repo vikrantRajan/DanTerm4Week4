@@ -3,7 +3,7 @@ function insertMenuV1() {
     $.ajax({
       url: 'city.json',
       success: (response) => {
-        console.log(Object.keys(response.response));
+        console.log(Object.keys(response.response));  // eslint-disable-line no-console
       },
     });
   }
