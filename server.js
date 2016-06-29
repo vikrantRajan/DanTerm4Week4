@@ -4,6 +4,9 @@ const inert = require('inert');
 const dust = require('hapi-dust');
 const https = require('https');
 const http = require('http');
+const httpRequest = require('request'); // module - AJAX for server
+
+const credentials = require('./credentials.json');
 
 const server = new Hapi.Server();
 server.connection({ port: 3000 });
@@ -178,8 +181,6 @@ server.route({
   },
 });
 
-const credentials = require('./credentials.json');
-const httpRequest = require('request'); // module - AJAX for server
 server.route({
   method: 'GET',
   path: '/flickr',
