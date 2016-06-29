@@ -93,8 +93,8 @@ server.route({
     const url = request.query.url || 'http://www.cbc.ca/cmlink/rss-canada';
     const isSSL = (url.substring(0, 5) === 'https');
 
-    const httpRequest = (isSSL) ? https : http;
-    httpRequest.get(url, (res) => {
+    const httpRequestBuiltin = (isSSL) ? https : http;
+    httpRequestBuiltin.get(url, (res) => {
       let body = '';
 
       if (res.statusCode === 200) {
