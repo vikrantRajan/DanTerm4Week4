@@ -37,9 +37,19 @@ const facebook = () => {
   }
 };
 
+const getFacebookPage = () => {
+  $.ajax({
+    url: '/facebook',
+    success: (response) => {
+      $('#cover').attr('src', response.cover);
+    },
+  });
+};
+
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
     facebook,
+    getFacebookPage,
   };
 }
