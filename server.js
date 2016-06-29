@@ -244,6 +244,25 @@ server.route({
   },
 });
 
+server.route({
+  method: 'GET',
+  path: '/facebook',
+  handler: (request, reply) => {
+    httpRequest({
+      url: 'https://graph.facebook.com/v2.6/vancouver.institute.of.media.arts',
+      qs: {
+        access_token: `${credentials.facebook.app_id}|${credentials.facebook.app_secret}`,
+        fields: 'cover',
+      },
+    }, (error, response, body) => {
+      if (!error && response.statusCode === 200) {
+        const json = JSON.parse(body);
+        reply({ cover: json.cover.source }); // Browser JSON
+      }
+    });
+  },
+});
+
 server.start(() => {
   console.log('Server running at:', server.info.uri); // eslint-disable-line no-console
 });
