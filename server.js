@@ -264,6 +264,16 @@ server.route({
   },
 });
 
+server.route({
+  method: 'GET',
+  path: '/add',
+  handler: (request, reply) => {
+    const getNumber = name => request.query[name];
+
+    reply('Adding two numbers together ${getNumber('numberA') + getNumber('namberB')}');
+  },
+});
+
 server.start(() => {
   console.log('Server running at:', server.info.uri); // eslint-disable-line no-console
 });
