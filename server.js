@@ -268,9 +268,10 @@ server.route({
   method: 'GET',
   path: '/add',
   handler: (request, reply) => {
-    const getNumber = name => request.query[name];
+    // http://localhost:3000/add?numberA=1&numberB=2
+    const getNumber = name => parseInt(request.query[name], 10);
 
-    reply('Adding two numbers together ${getNumber('numberA') + getNumber('namberB')}');
+    reply(`Adding two numbers together ${getNumber('numberA') + getNumber('numberB')}`);
   },
 });
 
