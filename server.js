@@ -288,9 +288,15 @@ server.route({
   method: 'GET',
   path: '/instagram',
   handler: (request, reply) => {
-    const redirectAddress = `https://instagram.com/oauth/authorize/?client_id=${credentials.instagram.client_id}&redirect_uri=http://localhost:3000/instagram-auth&response_type=token`;
+    const ig = instagram.instagram();
 
-    reply('Redirecting to Instagram for authentication').redirect(redirectAddress);
+    ig.use({ client_id: credentials.instagram.client_id,
+      client_secret: credentials.instagram.client_secret });
+
+    const redirectLandingAddress = 'http://localhost:3000/instagram-auth';
+
+    reply('Redirecting to Instagram for authentication')
+      .redirect(ig.get_authorization_url(redirectLandingAddress));
   },
 });
 
