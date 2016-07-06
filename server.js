@@ -280,7 +280,17 @@ server.route({
   method: 'GET',
   path: '/instagram-auth',
   handler: (request, reply) => {
-    reply('I am hoping for an Instagram access token???');
+    const ig = instagram.instagram();
+
+    ig.use({ access_token: request.query.code });
+
+    // error, medias, pagination, remaining, limit
+    ig.tag_media_recent('vanarts', (error, medias) => {
+      if (error) {
+        console.log(error);
+      }
+      reply(medias);
+    });
   },
 });
 
@@ -296,7 +306,9 @@ server.route({
     const redirectLandingAddress = 'http://localhost:3000/instagram-auth';
 
     reply('Redirecting to Instagram for authentication')
-      .redirect(ig.get_authorization_url(redirectLandingAddress));
+      .redirect(ig.get_authorization_url(redirectLandingAddress,
+        { scope: 'public_content' }
+      ));
   },
 });
 
