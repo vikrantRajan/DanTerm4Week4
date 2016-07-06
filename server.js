@@ -278,14 +278,19 @@ server.route({
 
 server.route({
   method: 'GET',
+  path: '/instagram-auth',
+  handler: (request, reply) => {
+    reply('I am hoping for an Instagram access token???');
+  },
+});
+
+server.route({
+  method: 'GET',
   path: '/instagram',
   handler: (request, reply) => {
-    const ig = instagram.instagram();
+    const redirectAddress = `https://instagram.com/oauth/authorize/?client_id=${credentials.instagram.client_id}&redirect_uri=http://localhost:3000/instagram-auth&response_type=token`;
 
-    ig.use({ client_id: credentials.instagram.client_id,
-      client_secret: credentials.instagram.client_secret });
-
-    reply({ todo: 2 });
+    reply('Redirecting to Instagram for authentication').redirect(redirectAddress);
   },
 });
 
