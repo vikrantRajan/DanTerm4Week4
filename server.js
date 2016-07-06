@@ -229,8 +229,8 @@ server.route({
     function thinResponse(tweets) {
       return tweets.map((tweet) => ({
         status: tweet.text,
-        // date: twitterUtil.formatTwitterDate(tweet.created_at),
-        date: tweet.created_at,
+        date: twitterUtil.formatTwitterDate(tweet.created_at),
+        // date: tweet.created_at,
       }));
     }
 
@@ -272,6 +272,14 @@ server.route({
     const getNumber = name => parseInt(request.query[name], 10);
 
     reply(`Adding two numbers together ${getNumber('numberA') + getNumber('numberB')}`);
+  },
+});
+
+server.route({
+  method: 'GET',
+  path: '/instagram',
+  handler: (request, reply) => {
+    reply({ todo: true });
   },
 });
 
