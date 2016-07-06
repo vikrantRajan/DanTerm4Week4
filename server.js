@@ -5,6 +5,7 @@ const dust = require('hapi-dust');
 const https = require('https');
 const http = require('http');
 const httpRequest = require('request'); // module - AJAX for server
+const instagram = require('instagram-node');
 
 const credentials = require('./credentials.json');
 
@@ -279,7 +280,12 @@ server.route({
   method: 'GET',
   path: '/instagram',
   handler: (request, reply) => {
-    reply({ todo: true });
+    const ig = instagram.instagram();
+
+    ig.use({ client_id: credentials.instagram.client_id,
+      client_secret: credentials.instagram.client_secret });
+
+    reply({ todo: 2 });
   },
 });
 
