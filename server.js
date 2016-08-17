@@ -287,7 +287,7 @@ server.route({
     // error, medias, pagination, remaining, limit
     ig.tag_media_recent('vanarts', (error, medias) => {
       if (error) {
-        console.log(error);
+        console.log(error); // eslint-disable-line no-console
       }
       reply(medias);
     });

@@ -6,26 +6,34 @@
 </head>
 
 <body>
-	<h1>Slippy Map</h1>
-	<h2>Basic Map</h2>
-    
-    <h3>Goal</h3>
-    <p>Display a slippy map with a starting location.</p>
-    
-    <h3>Technologies</h3>
-    <ul>
-        <li>Google Maps JS API v3</li>
-        <li>Mapstraction JS abstraction layer API</li>
-        <li>JavaScript</li>
-        <li>CSS</li>
-        <li>HTML</li>
-    </ul>
+  <h1>Slippy Map</h1>
+  <h2>Basic Map</h2>
 
-    <h3>Resources</h3>
-    <ul>
-        <li><a href="https://github.com/mapstraction/mxn">Mapstraction library repo</a></li>
-    </ul>
-    
-    <h3>Live demo</h3>
+  <h3>Goal</h3>
+  <p>Display a slippy map with a starting location.</p>
+
+  <h3>Technologies</h3>
+  <ul>
+    <li>Google Maps JS API v3</li>
+    <li>Mapstraction JS abstraction layer API</li>
+    <li>JavaScript</li>
+    <li>CSS</li>
+    <li>HTML</li>
+  </ul>
+
+  <h3>Resources</h3>
+  <ul>
+    <li><a href="https://github.com/mapstraction/mxn">Mapstraction library repo</a></li>
+  </ul>
+
+  <h3>Live demo</h3>
+  <div id="map" style="height: 400px;"></div>
+  <!-- Map provider -->
+  <script src="http://openlayers.org/api/OpenLayers.js"></script>
+  <!-- Map abstraction library -->
+  <script src="/js/mapstraction/mxn.js?(openlayers)"></script>
+  <!-- Page specic code -->
+  <script src="/js/critical.js"></script>
+  <script>basicMap();</script>
 </body>
 </html>
