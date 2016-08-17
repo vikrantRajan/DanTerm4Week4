@@ -27,4 +27,5 @@ build/Release
 node_modules
 
 .DS_Store
-public/js
+public/js/critical.js
+public/js/critical.min.js
