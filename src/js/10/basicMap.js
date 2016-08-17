@@ -1,9 +1,16 @@
 /* global mxn */
 const basicMap = () => {
+  const vanarts = {
+    latitude: 49.282703,
+    longitude: -123.115371,
+  };
   const map = new mxn.Mapstraction('map', 'googlev3');
-  const latlon = new mxn.LatLonPoint(51.50733, -0.12769);
+  const latlon = new mxn.LatLonPoint(vanarts.latitude, vanarts.longitude);
 
-  map.setCenterAndZoom(latlon, 10);
+  // zoom level large is street level/closer 21
+  // zoom level small is outer space/father 0
+  map.setCenterAndZoom(latlon, 18);
+
 };
 
 // If Node.js then export as public
