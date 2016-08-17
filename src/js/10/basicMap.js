@@ -7,7 +7,9 @@ const basicMap = () => {
   };
   const map = new mxn.Mapstraction('map', 'googlev3');
   const latlon = new mxn.LatLonPoint(vanarts.latitude, vanarts.longitude);
+
   vanarts.pin = new mxn.Marker(latlon);
+  vanarts.pin.setInfoBubble('My School');
 
   // zoom level large is street level/closer 21
   // zoom level small is outer space/father 0
