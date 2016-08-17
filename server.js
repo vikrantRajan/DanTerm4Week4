@@ -214,6 +214,39 @@ server.route({
   },
 });
 
+server.route({
+  method: 'GET',
+  path: '/flickr-map',
+  handler: (request, reply) => {
+    const outputSchema = (json) => {
+      const photos = json.map(photo => ({
+        path: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
+        latitude: photo.latitude,
+        longitude: photo.longitude,
+      }));
+      return { photos };
+    };
+
+    httpRequest({
+      url: 'https://api.flickr.com/services/rest/',
+      qs: {
+        format: 'json',
+        nojsoncallback: 1,
+        api_key: credentials.flickr.api_key,
+        method: 'flickr.photos.search',
+        tags: request.query.keyword || 'vancouver',
+        has_geo: 1,
+        extras: 'geo',
+      },
+    }, (error, response, body) => {
+      if (!error && response.statusCode === 200) {
+        const json = JSON.parse(body); // convert string into JSON
+        reply(outputSchema(json.photos.photo));
+      }
+    });
+  },
+});
+
 const Twit = require('twit');
 const twitterUtil = require('./src/js/twitter_date');
 server.route({
