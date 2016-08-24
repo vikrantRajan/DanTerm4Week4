@@ -1,16 +1,13 @@
-// todo convert to ES6 syntax
-var MongoClient = require('mongodb').MongoClient,
- test = require('assert');
+const MongoClient = require('mongodb').MongoClient;
 // Connection url
-var url = 'mongodb://localhost:27017/test';
+const url = 'mongodb://localhost:27017/test';
 // Connect using MongoClient
-MongoClient.connect(url, function(err, db) {
- // Create a collection we want to drop later
- var col = db.collection('createIndexExample1');
- // Show that duplicate records got dropped
- col.find({}).toArray(function(err, items) {
-   test.equal(null, err);
-   test.equal(4, items.length);
-   db.close();
- });
+MongoClient.connect(url, (connectError, db) => {
+  // Create a collection we want to drop later
+  const col = db.collection('classroom');
+  // Show that duplicate records got dropped
+  col.find({}).toArray((error, items) => {
+    console.log(items);
+    db.close();
+  });
 });

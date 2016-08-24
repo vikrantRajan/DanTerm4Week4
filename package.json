@@ -48,6 +48,7 @@
     "hapi-dust": "^2.0.0",
     "inert": "^4.0.0",
     "instagram-node": "^0.5.8",
+    "mongodb": "^2.2.8",
     "request": "^2.72.0",
     "twit": "^2.2.4",
     "vision": "^4.0.0"
