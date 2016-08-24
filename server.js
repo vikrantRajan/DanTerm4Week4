@@ -6,6 +6,7 @@ const https = require('https');
 const http = require('http');
 const httpRequest = require('request'); // module - AJAX for server
 const instagram = require('instagram-node');
+const mongodb = require('mongodb');
 
 const credentials = require('./credentials.json');
 
@@ -342,6 +343,24 @@ server.route({
       .redirect(ig.get_authorization_url(redirectLandingAddress,
         { scope: 'public_content' }
       ));
+  },
+});
+
+server.route({
+  method: 'GET',
+  path: '/beer',
+  handler: (request, reply) => {
+    const MongoClient = mongodb.MongoClient;
+    // Connection url
+    const url = 'mongodb://localhost:27017/test';
+    // Connect using MongoClient
+    MongoClient.connect(url, (connectError, db) => {
+      const col = db.collection('beer');
+      col.find({ 'properties.Zip': 59801 }).toArray((error, items) => {
+        reply({ breweries: items });
+        db.close();
+      });
+    });
   },
 });
 
