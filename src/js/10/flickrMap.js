@@ -3,7 +3,7 @@ const getFlickrData = (callback) => {
   $.ajax({
     url: '/flickr-map',
     data: {
-      keyword: 'seabus',
+      keyword: 'vancouver seabus',
     },
     success: (response) => {
       callback(response);
@@ -18,7 +18,7 @@ const flickrMap = () => {
       const latlon = new mxn.LatLonPoint(photo.latitude, photo.longitude);
 
       const pin = new mxn.Marker(latlon);
-      pin.setInfoBubble(photo.path); // todo display an image not the path
+      pin.setInfoBubble(`<img src="${photo.path}" width="100" height="70">`);
       map.addMarker(pin);
     });
 
