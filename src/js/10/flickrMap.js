@@ -1,19 +1,21 @@
 /* global mxn */
-const getFlickrData = () => {
+const getFlickrData = (callback) => {
   $.ajax({
     url: '/flickr-map',
     data: {
       keyword: 'seabus',
     },
     success: (response) => {
-      return response;
+      callback(response);
     },
   });
 };
 const flickrMap = () => {
   const map = new mxn.Mapstraction('map', 'googlev3');
 
-  const data = getFlickrData();
+  getFlickrData((response) => {
+    console.log(response);
+  });
   const vanarts = {
     latitude: 49.282703,
     longitude: -123.115371,
