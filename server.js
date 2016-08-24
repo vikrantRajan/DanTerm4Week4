@@ -356,7 +356,10 @@ server.route({
     // Connect using MongoClient
     MongoClient.connect(url, (connectError, db) => {
       const col = db.collection('beer');
-      col.find({ 'properties.Zip': 59801 }).toArray((error, items) => {
+      const qsZip = parseInt(request.query.zip, 10);
+      const query = (isNaN(qsZip)) ? {} : { 'properties.Zip': qsZip };
+
+      col.find(query).toArray((error, items) => {
         reply({ breweries: items });
         db.close();
       });
