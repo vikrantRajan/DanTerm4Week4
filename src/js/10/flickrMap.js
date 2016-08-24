@@ -18,19 +18,14 @@ const flickrMap = () => {
       const latlon = new mxn.LatLonPoint(photo.latitude, photo.longitude);
 
       const pin = new mxn.Marker(latlon);
-      pin.setInfoBubble(photo.path);
+      pin.setInfoBubble(photo.path); // todo display an image not the path
       map.addMarker(pin);
     });
+
+    map.autoCenterAndZoom();
   });
 
-  const vanarts = {
-    latitude: 49.282703,
-    longitude: -123.115371,
-    pin: null,
-  };
-  const latlon = new mxn.LatLonPoint(vanarts.latitude, vanarts.longitude);
-
-  map.setCenterAndZoom(latlon, 18);
+  map.enableScrollWheelZoom();
   map.addLargeControls();
 };
 
