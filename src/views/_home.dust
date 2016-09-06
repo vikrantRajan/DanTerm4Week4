@@ -1,6 +1,0 @@
-{>"layout"/}
-
-{<body}
-	Hello dust
-	<script src="js/critical.js"></script>
-{/body}

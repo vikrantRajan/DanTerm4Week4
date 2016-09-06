@@ -1,0 +1,10 @@
+{>"layout"/}
+
+{<body}
+	<h1>Node.js web server</h1>
+  <ul>
+    <li><a href="/html">Web pages</a></li>
+  </ul>
+
+	<script src="js/critical.js"></script>
+{/body}

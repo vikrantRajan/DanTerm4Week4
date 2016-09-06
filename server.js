@@ -1,4 +1,4 @@
-const Hapi = require('hapi');
+const hapi = require('hapi');
 const vision = require('vision');
 const inert = require('inert');
 const dust = require('hapi-dust');
@@ -7,10 +7,12 @@ const http = require('http');
 const httpRequest = require('request'); // module - AJAX for server
 const instagram = require('instagram-node');
 const mongodb = require('mongodb');
+const Twit = require('twit');
+const twitterUtil = require('./src/js/twitter_date');
 
 const credentials = require('./credentials.json');
 
-const server = new Hapi.Server();
+const server = new hapi.Server();
 server.connection({ port: 3000 });
 
 server.register([vision, inert], () => {
@@ -44,7 +46,7 @@ server.route({
   method: 'GET',
   path: '/',
   handler: (request, reply) => {
-    reply.view('_home');
+    reply.view('home');
   },
   config: {
     tags: ['starter'],
@@ -248,8 +250,6 @@ server.route({
   },
 });
 
-const Twit = require('twit');
-const twitterUtil = require('./src/js/twitter_date');
 server.route({
   method: 'GET',
   path: '/twitter',

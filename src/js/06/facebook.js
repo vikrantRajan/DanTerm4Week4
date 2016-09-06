@@ -1,4 +1,4 @@
-/* global FB */
+/* global document, FB, window */
 /* eslint-disable no-console */
 const facebook = () => {
   window.fbAsyncInit = () => {

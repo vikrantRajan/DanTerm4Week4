@@ -1,5 +1,7 @@
 const eslint = require('gulp-eslint');
 const gulp = require('gulp');
+const loadPlugins = require('gulp-load-plugins');
+
 const pkg = require('./package.json');
 
 const expectRules = { errorOnFailure: true };
@@ -8,7 +10,7 @@ const paths = {
   jsPublic: ['src/js/**/*.js'],
   jsTests: ['src/test/**/*.js'],
 };
-const plugins = require('gulp-load-plugins')({ camelize: true });
+const plugins = loadPlugins({ camelize: true });
 const DESTINATION_FOLDER = 'public/';
 
 gulp.task('build', () => {
