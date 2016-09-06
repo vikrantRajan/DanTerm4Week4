@@ -3,7 +3,8 @@
 {<body}
 	<h1>Node.js web server</h1>
   <ul>
-    <li><a href="/html">Web pages</a></li>
+    <li><a href="/jquery">jQuery &amp; AJAX course files</a></li>
+    <li><a href="/api">API course files</a></li>
   </ul>
 
 	<script src="js/critical.js"></script>

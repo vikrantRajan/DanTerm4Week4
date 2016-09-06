@@ -21,22 +21,4 @@ describe('Math.js', () => {
       expect(math.sum('1', '-2')).to.be(-1);
     });
   });
-  describe('multiply', () => {
-    it('passes with positive values', () => {
-      expect(math.multiply(1, 2)).to.be(2);
-      expect(math.multiply(10, 2)).to.be(20);
-    });
-    it('passes with negative values', () => {
-      expect(math.multiply(-1, 2)).to.be(-2);
-      expect(math.multiply(1, -2)).to.be(-2);
-    });
-    it('strings passes with positive values', () => {
-      expect(math.multiply('1', '2')).to.be(2);
-      expect(math.multiply('10', '2')).to.be(20);
-    });
-    it('strings passes with negative values', () => {
-      expect(math.multiply('-1', '2')).to.be(-2);
-      expect(math.multiply('1', '-2')).to.be(-2);
-    });
-  });
 });
