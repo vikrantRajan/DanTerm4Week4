@@ -26,6 +26,9 @@
 	</select>
 	<script>
 		// todo inclass: alert total bill of pizzas that cost $12 each
+		var count = parseInt(document.getElementById('count').value, 10);
+		var size = parseFloat(document.getElementById('size').value);
+		window.alert('$' + (count * size));
 	</script>
 </body>
 </html>
