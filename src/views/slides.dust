@@ -1,0 +1,10 @@
+{>"layout"/}
+
+{<body}
+	<h1>Slideshows</h1>
+  <ol>
+    <li><a href="/slides/client-side">Client Side</a></li>
+  </ol>
+
+	<script src="js/critical.js"></script>
+{/body}
