@@ -4,6 +4,7 @@
 	<h1>Slideshows</h1>
   <ol>
     <li><a href="/slides/client-side">Client Side</a></li>
+    <li><a href="/slides/js-var-types">JavaScript Variable Types</a></li>
   </ol>
 
 	<script src="js/critical.js"></script>

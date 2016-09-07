@@ -60,6 +60,15 @@ server.route({
   },
 });
 
+server.route({
+  method: 'GET',
+  path: '/slides/js-var-types',
+  handler: (request, reply) => reply.view('slide-js-var-types'),
+  config: {
+    tags: ['starter'],
+  },
+});
+
 server.start(() => {
   console.log('Server running at:', server.info.uri); // eslint-disable-line no-console
 });
