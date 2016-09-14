@@ -24,15 +24,19 @@
 
   <h3>Live demo</h3>
   <script>
+    function print(msg) {
+      console.log(msg);
+    }
+
     var weekend = [];
     weekend.push('Sat', 'Sun');
-    console.log(weekend);
+    print(weekend);
 
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    console.log(months.reverse());
+    print(months.reverse());
 
     // convert from array to string
-    console.log(months.join(' and '));
+    print(months.join(' and '));
 
     // build a sentance without concatenating
     var sentence = ['sit','a'];
@@ -40,10 +44,11 @@
     sentence.unshift('I'); // add to beginning
     // [I, sit, a, classroom]
     sentence.splice(2,0, 'in'); // add to middle, second index without removing
-    console.log(sentence.join(' '));
+    print(sentence.join(' '));
 
     // todo inclass: Output to the console as a string, a list of month's name each with an italic tag by using the array methods (i.e. <i>Jan</i> <i>Feb</i> <i>Mar</i>...)
     // Note: Do not modify the code above, and reuse the months variable
+    print('<i>' + months.reverse().join('</i> <i>') + '</i>');
   </script>
 </body>
 </html>
