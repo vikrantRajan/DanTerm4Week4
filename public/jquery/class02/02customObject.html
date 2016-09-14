@@ -30,15 +30,22 @@
 					//this.toppings = this.toppings + ', ' + newTopping;
 					this.toppings += ', ' + newTopping; // shortcut
 				}
+			},
+			crust: '',
+			addCrust: function (newCrust) {
+				this.crust = newCrust;
+			},
+			getCrust: function () {
+				return this.crust;
 			}
 		};
 		
 		pizza.addTopping('tomato sauce');
 		pizza.addTopping('cheese');
-		// pizza.addCrust('multigrain');
+		pizza.addCrust('multigrain');
 		
 		console.log('I will eat a pizza with ' + pizza.toppings );
-		// console.log('I will eat a pizza with ' + pizza.toppings + ' toppings and has this crust ' + pizza.crust );
+		console.log('I will eat a pizza with ' + pizza.toppings + ' toppings and has this crust ' + pizza.getCrust() );
 
 		//todo inclass: Add the addCrust method and add the crust property to the pizza object
 		/* pseudo code

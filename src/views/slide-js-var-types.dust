@@ -55,7 +55,7 @@ showMsg(); // execute</code></pre>
           <section>
             <h2>Object</h2>
             <h3>a structure of properties and methods</h3>
-            <pre><code contenteditable>var json = { "property": true, "method": function (param) { return param + this.property; } };
+            <pre><code contenteditable>var json = { property: true, method: function (param) { return param + this.property; } };
   json.property = 'overwritten'; // properties are variables that can either set or get
   json.method("Property "); // parentheses indicate a method</code></pre>
             <p><small>Resource <a href="json.html">JSON</a></small></p>
