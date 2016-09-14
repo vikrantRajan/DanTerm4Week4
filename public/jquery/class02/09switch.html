@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 <head>
@@ -10,16 +9,19 @@
 
     <h1>JavaScript Intro</h1>
     <h2>Goal</h2>
-    <p>Convert this switch statement into if and else statements. Produce the same result in the console. For two points.</p>
+    <p>Convert this switch statement into if and else statements. Produce the same result in the console.</p>
 
     <h3>Reference</h3>
     <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch">Mozilla switch</a></p>
 
-
+    <h3>Live demo</h3>
     <script>
       var fruit = "Cherry";
       switch (fruit) {
         case "Apple":
+        case "apple":
+        case "Green Apple":
+        case "Red Apple":
           console.log("a");
           break;
         case "Banana":
@@ -31,6 +33,19 @@
         default:
           console.log("none");
           break;
+      }
+
+      if (fruit === "Apple" ||
+        fruit === 'apple' ||
+        fruit === 'Green Apple' ||
+        fruit === 'Red Apple') {
+        console.log("a");
+      } else if (fruit === "Banana") {
+        console.log("b");
+      } else if (fruit === "Cherry") {
+        console.log("c");
+      } else {
+        console.log("none");
       }
     </script>
 </body>
