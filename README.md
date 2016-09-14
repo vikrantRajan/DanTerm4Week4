@@ -7,21 +7,28 @@ This web app is a node.js folder structure with unit testing.
 
 ### Setup your developer environment
 * CLI
-    * CLI is Command Line Interface otherwise known as Command Prompt, Powershell, Terminal, Bash, Shell
+	* CLI is Command Line Interface otherwise known as Command Prompt, Powershell, Terminal, Bash, Shell
 * [Node.js](http://nodejs.org/)
-    * Install
-        * Visit official website and install
-    * Verify
-        * Open CLI
-        * Run `node -v`
-        * Expect a version number
+	* Install
+		* Visit official website and install
+	* Verify
+		* Open CLI
+		* Run `node -v`
+		* Expect a version number
 * Local dependencies
-    * Install
-        * Change directory to the web site root
-        * Run `npm install`
-    * Verify
-        * Open CLI
-        * Run `npm start`
+	* Install
+		* Change directory to the web site root
+		* Run `npm install`
+	* Verify
+		* Open CLI
+		* Run `npm start`
+
+* Follow team standard with text editor
+	* Sublime Text
+		* [Install Package Control](https://packagecontrol.io/installation)
+		* Copy and Paste command to Sublime console
+		* Install Package with Windows keyboard shortcut Ctrl + Shift + P
+			* EditorConfig
 
 ### Commands
 * `npm start` Start the web server
