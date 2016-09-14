@@ -19,9 +19,20 @@
 		/* Goal pseudo code; a good developer would think this through and then code in JavaScript
 			reusable function multiply has two arguments numA and numB
 			Multiply operator * (asterisk)
-			window.alert to display a dialog box
+			console.log to display a dialog box
 			Test it in a browser
 		*/
+		function output(msg) {
+			console.log(msg); // Look in the Console tab of the browser dev tool
+		}
+
+		function multiply(numA, numB) {
+			output(numA * numB);
+		}
+
+		multiply(2, 3);
+		multiply(6, 9);
 	</script>
+
 </body>
 </html>
