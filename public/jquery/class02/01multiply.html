@@ -15,6 +15,8 @@
 	<h3>Advanced Goal</h3>
 	<p>Take three numbers 27, 9, 1 and subtract 3 from each. Display the answer in the HTML</p>
 
+	<div id="output"></div>
+
 	<script>
 		/* Goal pseudo code; a good developer would think this through and then code in JavaScript
 			reusable function multiply has two arguments numA and numB
@@ -23,7 +25,9 @@
 			Test it in a browser
 		*/
 		function output(msg) {
-			console.log(msg); // Look in the Console tab of the browser dev tool
+			document.getElementById('output').innerHTML += '<br>' + msg;
+			// (=) div = msg
+			// (+=) div = div + msg
 		}
 
 		function multiply(numA, numB) {
