@@ -49,6 +49,39 @@
   <p>Notice there is no <span class="blue">bold</span> HTML element in this example.</p>
 
   <!-- Attach jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <!-- Page specific code -->
+  <script>
+    // CSS li:first-child { font-weight: bold; }
+    $('li:first-child').css('font-weight', 'bold');
+
+    // .red { color: red; }
+    $('.red').css('color', 'red');
+
+    // .twenty { font-size: 20pt; }
+    $('.twenty').css('font-size', '20pt');
+
+    // .blue { color: blue; }
+    $('.blue').css('color', 'blue');
+
+    //.red.twenty { border-bottom-width: 1px; border-bottom-style: dotted; }
+    // not ideal due to duplicated selector that causes the browser to scan through our HTML elements twice
+    // $('.red.twenty').css('border-bottom-width', '1px');
+    // $('.red.twenty').css('border-bottom-style', 'dotted');
+
+    // jQuery css method accepts an object of CSS rules
+    // $('.red.twenty').css({
+    //     'border-bottom-width': '1px',
+    //     'border-bottom-style': 'dotted'
+    // });
+
+    // jQuery chaining may occur after a selector
+    // $('.red.twenty')
+    //     .css('border-bottom-width', '1px')
+    //     .css('border-bottom-style', 'dotted');
+
+    // CSS shorthand
+    $('.red.twenty').css('border-bottom', '1px dotted red');
+  </script>
 </body>
 </html>
