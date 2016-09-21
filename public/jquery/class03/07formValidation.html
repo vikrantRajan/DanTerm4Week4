@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>07formValidation.html</title>
+<style>
+  .required { background: red; }
+  .hide { display: none; }
+</style>
+</head>
+
+<body>
+<h1>jQuery</h1>
+<h2>Form Validation</h2>
+
+<h3>Goal</h3>
+<p>Prevent a user from submitting using client-side code.</p>
+
+<h3>Technologies</h3>
+<ol>
+  <li>jQuery</li>
+  <li>JavaScript</li>
+  <li>CSS</li>
+  <li>HTML</li>
+</ol>
+
+<h3>Live demo</h3>
+<form action="http://www.vanarts.com/" id="contact-form">
+  <div class="required">
+    <label>
+      Email <input type="text" id="email">
+      <i class="hide">sample@domain.ca</i>
+    </label>
+  </div>
+  <div>
+    <label>
+      Location <input type="text" id="location">
+      <i class="hide">Postal code/Zip code</i>
+    </label>
+  </div>
+  <div>
+    <label>
+      Phone <input type="text" id="phone">
+      <i class="hide">Mobile telephone number</i>
+    </label>
+  </div>
+
+  <input type="submit" value="Are my fields valid?">
+</form>
+
+<!-- Attach jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!-- Page specific code -->
+<script>
+  // todo: on submit prevent redirecting to VanArts web site when telephone field is blank
+</script>
+</body>
+</html>
