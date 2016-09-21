@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>06jqueryTree.html</title>
+  <style>
+    .rule1 { font-style: italic; }
+    .rule2 { background-color: yellow; }
+    .rule3 { color: red; }
+    .rule4 { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<h1>DOM</h1>
+<h2>Document Object Model</h2>
+
+<h3>Technology</h3>
+<ul>
+  <li>jQuery</li>
+  <li>JavaScript</li>
+  <li>CSS</li>
+  <li>HTML</li>
+</ul>
+
+<h3>Resources</h3>
+<ul>
+  <li><a href="http://api.jquery.com/category/traversing/tree-traversal/">jQuery Documentation﻿ - DOM Tree Traversal</a></li>
+</ul>
+
+<h3>Goal</h3>
+<p>Remove the class names from the HTML structure, then using jQuery to traverse the DOM and apply the class names to acheive the same styling.</p>
+<ol>
+  <li>Apply italic to parent</li>
+  <li>Apply yellow to the grandparent's background</li>
+  <li>Apply red to the child's text</li>
+  <li>Apply underline to the sibling</li>
+</ol>
+
+<!-- Ancestors (upwards) -->
+<ul>
+  <li>Great grandparent
+    <ul>
+      <li>Grandparent
+        <ul>
+          <li>Parent
+            <ul>
+              <li id="here">Tree structure relative to here
+                <ul><li>Child</li><li>Children</li></ul> <!-- Descendant (downwards) -->
+              </li>
+              <li>Sibling</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+</body></html>
