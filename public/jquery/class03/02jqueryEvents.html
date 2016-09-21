@@ -49,7 +49,10 @@
   $('#click').click(clickLog); // passing by reference
 
   // window.onload = function () { console.log('Load event - all the HTML in the document has rendered'); }; // an anonymous function
-  $(window).load(function () { console.log('Load event - all the HTML in the document has rendered'); });
+  // jQuery v3 removed the load() alias
+  $(window).on('load', function() {
+    console.log('Load event - all the HTML in the document has rendered');
+  });
 
   // $( selector ).hover( handlerIn, handlerOut )
   // hover (mouseOver & mouseOut)
