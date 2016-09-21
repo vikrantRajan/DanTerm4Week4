@@ -32,15 +32,12 @@
 <script>
   function handlerIn() {
     // backup original path
-    var originalSrc = $(this).attr('src');
-    $(this).attr('data-original', originalSrc);
-
-    var revealSrc = $(this).attr('data-reveal');
-    $(this).attr('src', revealSrc);
+    $(this)
+      .attr('data-original', $(this).attr('src'))
+      .attr('src', $(this).attr('data-reveal'));
   };
   function handlerOut() {
-    var originalSrc = $(this).attr('data-original');
-    $(this).attr('src', originalSrc);
+    $(this).attr('src', $(this).attr('data-original'));
   };
 
   $('.js-rollover').hover(handlerIn, handlerOut);
