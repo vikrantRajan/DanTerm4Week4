@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>03jqueryAttr.html</title>
+</head>
+
+<body>
+  <h1>jQuery</h1>
+  <h2>Attribute</h2>
+
+  <h3>Goal</h3>
+  <p>Transform this dumb link into a hyperlink to VanArts</p>
+
+  <h3>Technologies</h3>
+  <ul>
+    <li>jQuery</li>
+    <li>JavaScript</li>
+  </ul>
+
+  <h3>Resources</h3>
+  <ul>
+    <li>jQuery doc <a href="http://api.jquery.com/attr/">Attribute</a></li>
+  </ul>
+
+  <h3>Live demo</h3>
+  <a href="#" id="demo">Dumb link</a>
+
+<!-- Attach jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!-- Page specific code -->
+<script>
+  $('#demo')
+    .attr('href', 'http://www.vanarts.com/')
+    .html('<b>VanArts</b>.com')
+    .attr('title', 'VanArts');
+
+  // todo inclass: Apply an inline CSS rule to hide the underline of the hyperlink. Use the attribute method!
+</script>
+</body>
+</html>

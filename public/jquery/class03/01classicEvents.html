@@ -23,7 +23,7 @@
   <h3>Live demo</h3>
 
   <a href="javascript:;">Dumb link</a><br>
-  <a href="javascript:;" onclick="clickLog()">Click event using HTML attribute JavaScript</a> (deprecated syntax)<br>
+  <a href="javascript:;" onclick="clickLog()">Click event using HTML attribute JavaScript (Poor seperation of technologies, deprecated syntax)</a><br>
   <a href="javascript:;" id="click">Click event using traditional JS binding</a><br>
   <a href="javascript:;" id="hover">Hover event</a><br>
 
@@ -74,5 +74,7 @@
     console.log('Submit');
     return false; // cancels form action; prevents form submission
   };
+
+  //todo convert classic JavaScript events to jQuery events
 </script>
 </body></html>

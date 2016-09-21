@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>02jqueryEvents.html</title>
+  <style>
+    #hover { color: red; } /* normal */
+    #hover:hover { color: pink; } /* CSS hover */
+    .hover { text-decoration: none; } /* remove underline via JS hover */
+  </style>
+</head>
+<body>
+<h1>Events</h1>
+
+<h3>Goal</h3>
+<p>Learn the common mouse and keyboard events so jQuery may respond to a user's interactions.</p>
+
+<h3>Technologies</h3>
+<ol>
+  <li>jQuery</li>
+  <li>JavaScript</li>
+</ol>
+
+<h3>Live demo</h3>
+
+<a href="javascript:;">Dumb link</a><br>
+<a href="javascript:;" onclick="clickLog()">Click event using HTML attribute JavaScript (Poor seperation of technologies, deprecated syntax)</a><br>
+<a href="javascript:;" id="click">Click event using traditional JS binding</a><br>
+<a href="javascript:;" id="hover">Hover event</a><br>
+
+<form action="http://vanarts.com/" id="submit">
+  <input type="text" value="Blur/focus events" id="blur"><br>
+  <input type="text" value="Keyboard events" id="keyboard"><br>
+
+  <input type="submit" value="Submit event">
+  <input type="button" value="Button not submit button">
+</form>
+
+<!-- Attach jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!-- Page specific code -->
+<script>
+  function clickLog() {
+    console.log('hello click');
+  }
+
+  // tradition JS binding
+  // document.getElementById('click').onclick = clickLog; // named function
+  $('#click').click(clickLog); // passing by reference
+
+  // window.onload = function () { console.log('Load event - all the HTML in the document has rendered'); }; // an anonymous function
+  $(window).load(function () { console.log('Load event - all the HTML in the document has rendered'); });
+
+  // $( selector ).hover( handlerIn, handlerOut )
+  // hover (mouseOver & mouseOut)
+  $('#hover')
+    .hover(
+      function () { // firstNameHoverIn, firstNameHandlerIn
+        console.log('Mouse over event');
+        this.className = 'hover'; // add class
+      },
+      function () {
+        console.log('Mouse out event');
+        this.className = ''; // remove class
+      }
+    );
+
+  $('#blur')
+    .blur(function () { $(this).val('Blur'); })
+    .focus(function () { this.value = 'Focus'; });
+
+  $('#keyboard')
+    .keydown(function () { console.log('Key Down'); })
+    .keyup(function () { console.log('Key Up'); })
+    .keypress(function () { console.log('Key Press'); });
+
+  $('#submit').submit(function () {
+    console.log('Submit');
+    return false; // cancels form action; prevents form submission
+  });
+</script>
+</body></html>
