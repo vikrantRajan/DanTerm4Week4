@@ -63,8 +63,8 @@
   function attachFormEvents($form) {
     $form.find('input[type=text]').blur(hideInstruction).focus(showInstruction);
   }
-  function isBlank($field) {
-    return ($field[0].value.trim() === '');
+  function isBlank(fieldId) {
+    return (document.getElementById(fieldId).value.trim() === '');
   }
   function processForm($form, event) {
     var validationRules = {
@@ -83,13 +83,12 @@
 
       for (var j = 0, jLen = rules.length; j < jLen; j += 1) {
         var rule = rules[j];
-        console.log(rule + ' ' + fieldId);
-        // todo inclass: if rule is blank then call the isBlank function
-        // if isBlank returns true then prevent form action
+
+        if (rule === 'blank' && isBlank(fieldId)) {
+          event.preventDefault();
+        }
       }
     }
-
-    event.preventDefault();
   }
   $('#contact-form').submit(function (event) {
     processForm($(this), event);
