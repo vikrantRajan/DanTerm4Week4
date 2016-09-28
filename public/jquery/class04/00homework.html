@@ -55,8 +55,7 @@
   function isBlank($field) {
     return ($field[0].value.trim() === '');
   }
-  $('#contact-form').submit(function (event) {
-    var $form = $(this);
+  function processForm($form, event) {
     var requiredFields = $form.find('input[type=text][data-required=true]');
 
     for (var i = 0, len = requiredFields.length; i < len; i += 1) {
@@ -64,8 +63,12 @@
         event.preventDefault();
       }
     }
-
+  }
+  $('#contact-form').submit(function (event) {
+    processForm($(this), event);
   });
+
+  // todo inclass: As a user, I want instructions to be displayed when editing input field and then hide when stopped editing.
 </script>
 </body>
 </html>
