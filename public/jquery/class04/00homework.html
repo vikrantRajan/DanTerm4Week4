@@ -66,7 +66,7 @@
   function isBlank(fieldId) {
     return (document.getElementById(fieldId).value.trim() === '');
   }
-  function processForm($form, event) {
+  function processForm(event) {
     var validationRules = {
       email: {
         rules: ['blank', 'email'],
@@ -87,9 +87,7 @@
       });
     });
   }
-  $('#contact-form').submit(function (event) {
-    processForm($(this), event);
-  });
+  $('#contact-form').submit(processForm);
   attachFormEvents($('#contact-form'));
 </script>
 </body>
