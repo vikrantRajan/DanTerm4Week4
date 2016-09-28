@@ -53,10 +53,12 @@
 <!-- Page specific code -->
 <script>
   function hideInstruction() {
-    console.log('hide');
+    var $field = $(this);
+    $field.next().addClass('hide');
   }
   function showInstruction() {
-    console.log('show');
+    var $field = $(this);
+    $field.next().removeClass('hide');
   }
   function attachFormEvents($form) {
     $form.find('input[type=text]').blur(hideInstruction).focus(showInstruction);
