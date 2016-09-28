@@ -40,7 +40,7 @@
   </div>
   <div>
     <label>
-      Phone <input type="text" id="phone">
+      Phone <input type="text" id="phone" data-required="true">
       <i class="hide">Mobile telephone number</i>
     </label>
   </div>
@@ -55,12 +55,19 @@
   function isBlank($field) {
     return ($field.val() === '');
   }
+  function isRequired($field) {
+    return ($field.attr('data-required') === 'true');
+  }
   // $('input[type=submit]').click(function () {
   $('#contact-form').submit(function (event) {
 
-    if (isBlank($('#phone'))) {
+    var $phone = $('#phone');
+
+    if (isRequired($phone) && isBlank($phone)) {
       event.preventDefault(); // return false
     }
+
+    // todo inclass: loop through all fields and find required fields and then check for blank. If blank then prevent for action
 
   });
 </script>
