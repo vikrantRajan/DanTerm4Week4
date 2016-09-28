@@ -66,6 +66,9 @@
   function isBlank(fieldId) {
     return (document.getElementById(fieldId).value.trim() === '');
   }
+  function isValidEmail(fieldId) {
+    return (document.getElementById(fieldId).value.trim().indexOf('@') > 0);
+  }
   function processForm(event) {
     var validationRules = {
       email: {
@@ -82,6 +85,8 @@
 
       rules.forEach(function (rule) {
         if (rule === 'blank' && isBlank(fieldId)) {
+          event.preventDefault();
+        } else if (rule === 'email' && !isValidEmail(fieldId)) {
           event.preventDefault();
         }
       });
