@@ -84,9 +84,10 @@
       var rules = validationRules[fieldId].rules;
 
       rules.forEach(function (rule) {
-        if (rule === 'blank' && isBlank(fieldId)) {
-          event.preventDefault();
-        } else if (rule === 'email' && !isValidEmail(fieldId)) {
+        var invalidBlank = (rule === 'blank' && isBlank(fieldId));
+        var invalidEmail = (rule === 'email' && !isValidEmail(fieldId));
+
+        if (invalidBlank || invalidEmail) {
           event.preventDefault();
         }
       });
