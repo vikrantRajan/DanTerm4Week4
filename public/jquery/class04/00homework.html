@@ -53,7 +53,7 @@
 <!-- Page specific code -->
 <script>
   function isBlank($field) {
-    return ($field.val() === '');
+    return ($field[0].value.trim() === '');
   }
   $('#contact-form').submit(function (event) {
     var $form = $(this);
