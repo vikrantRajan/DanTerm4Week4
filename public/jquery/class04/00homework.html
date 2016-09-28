@@ -52,6 +52,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <!-- Page specific code -->
 <script>
+  function hideInstruction() {
+    console.log('hide');
+  }
+  function showInstruction() {
+    console.log('show');
+  }
+  function attachFormEvents($form) {
+    $form.find('input[type=text]').blur(hideInstruction).focus(showInstruction);
+  }
   function isBlank($field) {
     return ($field[0].value.trim() === '');
   }
@@ -67,6 +76,7 @@
   $('#contact-form').submit(function (event) {
     processForm($(this), event);
   });
+  attachFormEvents($('#contact-form'));
 
   // todo inclass: As a user, I want instructions to be displayed when editing input field and then hide when stopped editing.
 </script>
