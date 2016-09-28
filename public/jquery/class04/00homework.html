@@ -77,18 +77,15 @@
     };
 
     var fieldIds = Object.keys(validationRules);
-    for (var i = 0, len = fieldIds.length; i < len; i += 1) {
-      var fieldId = fieldIds[i];
+    fieldIds.forEach(function (fieldId) {
       var rules = validationRules[fieldId].rules;
 
-      for (var j = 0, jLen = rules.length; j < jLen; j += 1) {
-        var rule = rules[j];
-
+      rules.forEach(function (rule) {
         if (rule === 'blank' && isBlank(fieldId)) {
           event.preventDefault();
         }
-      }
-    }
+      });
+    });
   }
   $('#contact-form').submit(function (event) {
     processForm($(this), event);
