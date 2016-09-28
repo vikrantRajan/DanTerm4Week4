@@ -40,7 +40,7 @@
   </div>
   <div>
     <label>
-      Phone <input type="text" id="phone" data-required="true">
+      Phone <input type="text" id="phone" required> <!-- required is HTML5 attribute -->
       <i class="hide">Mobile telephone number</i>
     </label>
   </div>
@@ -56,7 +56,7 @@
     return ($field.val() === '');
   }
   function isRequired($field) {
-    return ($field.attr('data-required') === 'true');
+    return ($field.attr('required') === 'required');
   }
   // $('input[type=submit]').click(function () {
   $('#contact-form').submit(function (event) {
