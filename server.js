@@ -37,10 +37,10 @@ server.route({
   method: 'GET',
   path: '/',
   handler: (request, reply) => reply.view('home'),
-  config: { tags: ['starter'], },
+  config: { tags: ['starter'] },
 });
 
-/***
+/*
 *      #####
 *     #     # #      # #####  ######  ####
 *     #       #      # #    # #      #
@@ -55,21 +55,21 @@ server.route({
   method: 'GET',
   path: '/slides',
   handler: (request, reply) => reply.view('slides'),
-  config: { tags: ['starter'], },
+  config: { tags: ['starter'] },
 });
 
 server.route({
   method: 'GET',
   path: '/slides/client-side',
   handler: (request, reply) => reply.view('slide-client-side'),
-  config: { tags: ['starter'], },
+  config: { tags: ['starter'] },
 });
 
 server.route({
   method: 'GET',
   path: '/slides/js-var-types',
   handler: (request, reply) => reply.view('slide-js-var-types'),
-  config: { tags: ['starter'], },
+  config: { tags: ['starter'] },
 });
 
 server.start(() => {
