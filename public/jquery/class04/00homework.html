@@ -52,10 +52,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <!-- Page specific code -->
 <script>
-  // todo: on submit prevent redirecting to VanArts web site when telephone field is blank
+  function isBlank($field) {
+    return ($field.val() === '');
+  }
   // $('input[type=submit]').click(function () {
   $('#contact-form').submit(function (event) {
-    event.preventDefault(); // return false
+
+    if (isBlank($('#phone'))) {
+      event.preventDefault(); // return false
+    }
+
   });
 </script>
 </body>
