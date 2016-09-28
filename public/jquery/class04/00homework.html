@@ -78,7 +78,15 @@
 
     var fieldIds = Object.keys(validationRules);
     for (var i = 0, len = fieldIds.length; i < len; i += 1) {
-      console.log(validationRules[fieldIds[i]].rules);
+      var fieldId = fieldIds[i];
+      var rules = validationRules[fieldId].rules;
+
+      for (var j = 0, jLen = rules.length; j < jLen; j += 1) {
+        var rule = rules[j];
+        console.log(rule + ' ' + fieldId);
+        // todo inclass: if rule is blank then call the isBlank function
+        // if isBlank returns true then prevent form action
+      }
     }
 
     event.preventDefault();
