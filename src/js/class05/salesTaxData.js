@@ -1,4 +1,4 @@
-const tax = {
+const salesTaxData = {
   meta: {
     copyright: 'https://github.com/wiredmax/canadian-sales-tax/blob/master/dist/json/canadian-sales-tax.json',
   },
