@@ -1,10 +1,10 @@
 function formValidation() {
   function hideInstruction() {
-    var $field = $(this);
+    const $field = $(this);
     $field.next().addClass('hide');
   }
   function showInstruction() {
-    var $field = $(this);
+    const $field = $(this);
     $field.next().removeClass('hide');
   }
   function attachFormEvents($form) {
@@ -17,7 +17,7 @@ function formValidation() {
     return (document.getElementById(fieldId).value.trim().indexOf('@') > 0);
   }
   function processForm(event) {
-    var validationRules = {
+    const validationRules = {
       email: {
         rules: ['blank', 'email'],
       },
@@ -26,13 +26,13 @@ function formValidation() {
       },
     };
 
-    var fieldIds = Object.keys(validationRules);
-    fieldIds.forEach(function (fieldId) {
-      var rules = validationRules[fieldId].rules;
+    const fieldIds = Object.keys(validationRules);
+    fieldIds.forEach((fieldId) => {
+      const rules = validationRules[fieldId].rules;
 
-      rules.forEach(function (rule) {
-        var invalidBlank = (rule === 'blank' && isBlank(fieldId));
-        var invalidEmail = (rule === 'email' && !isValidEmail(fieldId));
+      rules.forEach((rule) => {
+        const invalidBlank = (rule === 'blank' && isBlank(fieldId));
+        const invalidEmail = (rule === 'email' && !isValidEmail(fieldId));
 
         if (invalidBlank || invalidEmail) {
           event.preventDefault();
