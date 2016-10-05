@@ -1,3 +1,4 @@
+/* global document */
 function formValidation() {
   function hideInstruction() {
     const $field = $(this);
@@ -42,4 +43,11 @@ function formValidation() {
   }
   $('#contact-form').submit(processForm);
   attachFormEvents($('#contact-form'));
+}
+
+// If Node.js then export as public
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = {
+    formValidation,
+  };
 }
