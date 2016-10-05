@@ -1,6 +1,10 @@
 /* global salesTaxData */
 function salesTax() {
-  console.log(salesTaxData);
+  const provincesInitials = Object.keys(salesTaxData.provinces);
+
+  provincesInitials.forEach((initial) => {
+    console.log(salesTaxData.provinces[initial].name);
+  });
 }
 
 // If Node.js then export as public
