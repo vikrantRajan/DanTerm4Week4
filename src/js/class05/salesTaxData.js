@@ -176,6 +176,6 @@ const salesTaxData = {
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    tax,
+    salesTaxData,
   };
 }
