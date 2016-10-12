@@ -2,10 +2,12 @@
 function salesTax() {
   function provinceDropdown() {
     const provincesInitials = Object.keys(salesTaxData.provinces);
+    const $province = $('#provinces');
 
     provincesInitials.forEach((initial) => {
       const provinceName = salesTaxData.provinces[initial].name;
-      // output province name to DOM with select and option HTML elements
+      // $province.append('<option value="' + initial + '">' + provinceName + '</option>'); // ES5
+      $province.append(`<option value="${initial}">${provinceName}</option>`); // ES6
     });
   }
 
