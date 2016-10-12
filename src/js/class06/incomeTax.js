@@ -1,5 +1,5 @@
-function currencyFormat(number) { // todo
-  console.log(number);
+function currencyFormat(number) {
+  return `$${number}`;
 }
 
 function calculateTax(incomeInput) { // number input
