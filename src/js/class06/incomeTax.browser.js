@@ -17,18 +17,19 @@
 */
 
 function displayError(message) {
-  utils.print(message);
+  utils.print(message); // todo
 }
 
-function clearError() {}
+function clearError() {} // todo
 
 function displayTaxAmount(message) {
+  // todo
   utils.print(message); // eslint-disable-line no-console
 }
 
 // Step 1 & 2
 $('#income').change(() => {
-  const amount = null;
+  const amount = null; // todo
   if (isNaN(amount)) { // letter is found (not digit)
     displayError('Not a number');
     return; // break out when invalid

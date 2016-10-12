@@ -1,7 +1,5 @@
-/* global utils */
-
-function currencyFormat(number) {
-  utils.print(number); // eslint-disable-line no-console
+function currencyFormat(number) { // todo
+  console.log(number);
 }
 
 function calculateTax(incomeInput) { // number input

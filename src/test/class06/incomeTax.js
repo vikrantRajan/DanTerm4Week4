@@ -24,4 +24,10 @@ describe('incomeTax.js', () => {
       expect(tax.calculateTax(87907)).to.be(16262.83);
     });
   });
+  describe('currencyFormat', () => {
+    it('negative single number is money', () => {
+      expect(tax.currencyFormat(-1)).to.be('-$1.00');
+    });
+    // todo inclass: write more unit test to verify future scenarios
+  });
 });
