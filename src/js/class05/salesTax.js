@@ -1,4 +1,4 @@
-/* global salesTaxData */
+/* global salesTaxData, utils */
 function salesTax() {
   function provinceDropdown($container) {
     const provincesInitials = Object.keys(salesTaxData.provinces);
@@ -11,7 +11,14 @@ function salesTax() {
   }
 
   function calculatePrice() {
-    debugger;
+    const provinceInitial = $(this).val();
+    const province = salesTaxData.provinces[provinceInitial];
+
+    let tax = province.taxes[0].tax;
+    if (province.taxes[1]) {
+      tax += province.taxes[1].tax;
+    }
+    utils.print(tax);
   }
 
   const $province = $('#provinces').on('change', calculatePrice);

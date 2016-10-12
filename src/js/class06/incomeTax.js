@@ -1,3 +1,4 @@
+/* global utils */
 /* steps
     1) gather input
         input field with design and UI
@@ -16,17 +17,17 @@
 */
 
 function displayError(message) {
-  console.log(message);
+  utils.print(message);
 }
 
 function clearError() {}
 
 function displayTaxAmount(message) {
-  console.log(message);
+  utils.print(message); // eslint-disable-line no-console
 }
 
 function currencyFormat(number) {
-  console.log(number);
+  utils.print(number); // eslint-disable-line no-console
 }
 
 function calculateTax(incomeInput) { // number input
