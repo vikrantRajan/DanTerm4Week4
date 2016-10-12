@@ -32,7 +32,7 @@ This web app is a node.js folder structure with unit testing.
 
 ### Commands
 * `npm start` Start the web server
-* `npm run dev` Start the web server in developement mode
+* `npm run dev` Start the web server in developement mode watching files to lint, concat, and unit testing
 * `npm test` Execute JS unit test suite
 * `npm run bundle` Manually prepare your JS for public
 * `npm run lint` Manually lint your JS
