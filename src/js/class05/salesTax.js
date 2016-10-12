@@ -12,16 +12,21 @@ function salesTax() {
 
   function calculatePrice() {
     const provinceInitial = $(this).val();
+    if (provinceInitial === '') {
+      $('#pizzaCost').text('');
+      return;
+    }
     const province = salesTaxData.provinces[provinceInitial];
 
     let taxRate = province.taxes[0].tax;
     if (province.taxes[1]) {
       taxRate += province.taxes[1].tax;
     }
-    utils.print(taxRate);
-    // get the pizza price
-    // multiple sales tax rate to retail price
-    // update DOM
+
+    const pizzaPrice = parseFloat($('#price').val()); // get the pizza price
+    const cost = (taxRate * pizzaPrice) + pizzaPrice; // multiple sales tax rate to retail price
+    const currency = `$${Math.round(cost * 100) / 100}`; // apply currency format (weak)
+    $('#pizzaCost').text(currency); // update DOM
   }
 
   const $province = $('#provinces').on('change', calculatePrice);

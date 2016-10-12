@@ -7,8 +7,6 @@ function currencyFormat(number) {
 function calculateTax(incomeInput) { // number input
   // Step 3
   let income = incomeInput;
-  let i;
-  let taxRange;
   const taxRanges = [
     { from: 0, percent: 0.15 },
     { from: 43953, percent: 0.22 },
@@ -17,15 +15,15 @@ function calculateTax(incomeInput) { // number input
   ];
   let tax = 0;
 
-  i = taxRanges.length - 1;
+  let i = taxRanges.length - 1;
   for (i; i >= 0; i -= 1) {
-    taxRange = taxRanges[i];
+    const taxRange = taxRanges[i];
     if (income > taxRange.from) {
       tax += (income - taxRange.from) * taxRange.percent;
       income = taxRange.from; // chop off amount calculated in this tax bracket
     }
   }
-  return tax;
+  return Math.round(tax * 100) / 100;
 }
 
 // If Node.js then export as public
