@@ -1,17 +1,21 @@
 /* global salesTaxData */
 function salesTax() {
-  function provinceDropdown() {
+  function provinceDropdown($container) {
     const provincesInitials = Object.keys(salesTaxData.provinces);
-    const $province = $('#provinces');
 
     provincesInitials.forEach((initial) => {
       const provinceName = salesTaxData.provinces[initial].name;
-      // $province.append('<option value="' + initial + '">' + provinceName + '</option>'); // ES5
-      $province.append(`<option value="${initial}">${provinceName}</option>`); // ES6
+      // $container.append('<option value="' + initial + '">' + provinceName + '</option>'); // ES5
+      $container.append(`<option value="${initial}">${provinceName}</option>`); // ES6
     });
   }
 
-  provinceDropdown();
+  function calculatePrice() {
+    debugger;
+  }
+
+  const $province = $('#provinces').on('change', calculatePrice);
+  provinceDropdown($province);
 }
 
 // If Node.js then export as public
