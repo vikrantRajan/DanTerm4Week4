@@ -1,10 +1,15 @@
 /* global salesTaxData */
 function salesTax() {
-  const provincesInitials = Object.keys(salesTaxData.provinces);
+  function provinceDropdown() {
+    const provincesInitials = Object.keys(salesTaxData.provinces);
 
-  provincesInitials.forEach((initial) => {
-    console.log(salesTaxData.provinces[initial].name);
-  });
+    provincesInitials.forEach((initial) => {
+      const provinceName = salesTaxData.provinces[initial].name;
+      // output province name to DOM with select and option HTML elements
+    });
+  }
+
+  provinceDropdown();
 }
 
 // If Node.js then export as public
