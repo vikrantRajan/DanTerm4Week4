@@ -14,11 +14,14 @@ function salesTax() {
     const provinceInitial = $(this).val();
     const province = salesTaxData.provinces[provinceInitial];
 
-    let tax = province.taxes[0].tax;
+    let taxRate = province.taxes[0].tax;
     if (province.taxes[1]) {
-      tax += province.taxes[1].tax;
+      taxRate += province.taxes[1].tax;
     }
-    utils.print(tax);
+    utils.print(taxRate);
+    // get the pizza price
+    // multiple sales tax rate to retail price
+    // update DOM
   }
 
   const $province = $('#provinces').on('change', calculatePrice);
