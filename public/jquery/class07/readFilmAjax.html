@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>readFilmAjax.html</title>
+</head>
+
+<body>
+<h1>JSON</h1>
+<h2>Rotten Tomatoes</h2>
+
+<h3>Technologies</h3>
+<ul>
+  <li>jQuery AJAX</li>
+  <li>jQuery</li>
+  <li>JavaScript</li>
+  <li>DOM</li>
+</ul>
+<h3>Avoided Technologies</h3>
+<ul>
+  <li>HTML</li>
+</ul>
+
+<h3>New jQuery</h3>
+<ul>
+  <li>ajax <a href="http://api.jquery.com/jQuery.ajax/">Low-level AJAX</a></li>
+</ul>
+
+<h3>Goal</h3>
+<ol>
+  <li>As a dev, display the actors in a dropdown menu</li>
+</ol>
+
+<h3>Live demo</h3>
+<select id="actors">
+  <option>Select an Actor</option>
+</select>
+
+<!-- Attach jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!-- Attach Rotten Tomatoes film data -->
+<script src="film.js"></script>
+<!-- Page specific code -->
+<script src="/js/critical.js"></script>
+<script>readFilm();</script>
+</body>
+</html>
