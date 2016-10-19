@@ -6,6 +6,7 @@ function readFilm() {
 
   // jQuery pattern is selector -> method (what)
   $.each(film.movies[0].abridged_cast, (x, actor) => {
+    // ES5 '<option>' + actor.name + '</option>''
     $('#actors').append(`<option>${actor.name}</option>`);
   });
 }
