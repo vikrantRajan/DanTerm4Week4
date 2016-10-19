@@ -1,5 +1,6 @@
 function currencyFormat(number) {
-  return `$${number}`;
+  const money = number.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  return money;
 }
 
 function calculateTax(incomeInput) { // number input
