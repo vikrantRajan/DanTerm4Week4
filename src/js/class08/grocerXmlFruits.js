@@ -4,7 +4,9 @@ function grocerXmlFruits() {
     success: (response) => {
       const $fruits = $('#fruits');
       $(response).find('fruit').each((index, element) => {
-        $fruits.append(`<li style="background-color: ${$(element).text()}">${$(element).attr('name')}</li>`);
+        const colour = $(element).text();
+        const fruitName = $(element).attr('name');
+        $fruits.append(`<li style="background-color: ${colour}">${fruitName}</li>`);
       });
     },
   });
