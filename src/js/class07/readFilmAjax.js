@@ -8,7 +8,7 @@ function readFilmAjax() {
       });
     },
     error: (jqXHR, textStatus, errorThrown) => {
-      debugger;
+      console.log(errorThrown); // eslint-disable-line no-console
     },
   });
 }

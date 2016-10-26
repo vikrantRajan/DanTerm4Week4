@@ -3,6 +3,8 @@ const vision = require('vision');
 const inert = require('inert');
 const dust = require('hapi-dust');
 
+const utils = require('./src/js/utils');
+
 const server = new hapi.Server();
 server.connection({ port: 8080 });
 
@@ -87,7 +89,7 @@ server.route({
   path: '/api/fruit',
   handler: (request, reply) => {
     // Browser web address http://localhost:3000/api/fruit?format=json
-    console.log(request.query.format); // eslint-disable-line no-console
+    utils.print(request.query.format); // outputs blank, xml, json
     // PHP is echo($_GET['format']) // outputs blank, xml, json
     if (request.query.format === 'xml') {
       const response = reply('<fruits><fruit name="apple">green</fruit><fruit name="banana">yellow</fruit><fruit name="cherry">red</fruit></fruits>');
@@ -103,5 +105,5 @@ server.route({
 });
 
 server.start(() => {
-  console.log('Server running at:', server.info.uri); // eslint-disable-line no-console
+  utils.print('Server running at:', server.info.uri);
 });
