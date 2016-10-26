@@ -1,4 +1,4 @@
-function grocerFruits() {
+function grocerXmlFruits() {
   $.ajax({
     url: '/api/fruit',
     success: (response) => {
@@ -11,6 +11,6 @@ function grocerFruits() {
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    grocerFruits,
+    grocerXmlFruits,
   };
 }
