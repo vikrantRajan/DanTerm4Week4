@@ -1,9 +1,11 @@
 function grocerXmlFruits() {
   $.ajax({
-    url: '/api/fruit',
+    url: '/api/fruit?format=xml',
     success: (response) => {
-      console.log(response);
-      $('#fruits').html(`<li>${response.apple}</li>`);
+      const $fruits = $('#fruits');
+      $(response).find('fruit').each((index, element) => {
+        $fruits.append(`<li style="background-color: ${$(element).text()}">${$(element).attr('name')}</li>`);
+      });
     },
   });
 }
