@@ -104,6 +104,30 @@ server.route({
   },
 });
 
+server.route({
+  method: 'GET',
+  path: '/api/slow-fruit',
+  handler: (request, reply) => {
+    function output() {
+      // Browser web address http://localhost:3000/api/fruit?format=json
+      utils.print('Query string format value is ', request.query.format); // outputs blank, xml, json
+      // PHP is echo($_GET['format']) // outputs blank, xml, json
+      if (request.query.format === 'xml') {
+        const response = reply('<fruits><fruit name="apple">green</fruit><fruit name="banana">yellow</fruit><fruit name="cherry">red</fruit></fruits>');
+        response.type('application/xml');
+      } else { // default of JSON
+        reply({
+          apple: 'green',
+          banana: 'yellow',
+          cherry: 'red',
+          durian: 'khaki',
+        });
+      }
+    }
+    setTimeout(output, 1000);
+  },
+});
+
 server.start(() => {
   utils.print('Server running at:', server.info.uri);
 });

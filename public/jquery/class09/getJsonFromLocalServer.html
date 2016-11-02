@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>getJsonFromLocalServer.html</title>
+</head>
+
+<body>
+<h3>Goal</h3>
+<ol>
+  <li>
+    As a user, I want to buy fruit from my local grocer online.<br>
+    As a dev, output the fruit using AJAX to get JSON from the local app server (Node.js)
+  </li>
+  <li>
+    As a user, I want to see the fruit names with the background colour representing the fruit, so I may buy from my local grocer online.<br>
+    As a dev, output the fruit keys with the colour as the background fill.
+  </li>
+  <li>
+    As a user, I want find the best price for apples, even if the database query takes a long time.<br>
+    As a dev, I want to apply a design pattern to inform the user of a slow simulated database query.
+  </li>
+</ol>
+
+<h3>Technologies</h3>
+<ul>
+  <li>jQuery</li>
+  <li>jQuery AJAX</li>
+  <li>JSON</li>
+  <li>JavaScript</li>
+  <li>node.js</li>
+</ul>
+
+<h3>Live demo</h3>
+<ul id="fruits"></ul>
+
+<!-- Attach jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!-- Page specific code -->
+<script src="/js/critical.js"></script>
+<script>grocerJsonFruitsDelay();</script>
+</body>
+</html>
