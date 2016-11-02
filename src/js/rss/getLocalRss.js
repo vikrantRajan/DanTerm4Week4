@@ -2,8 +2,11 @@ function getLocalRss() {
   $.ajax({
     url: '/jquery/rss/cbc-technology.xml',
     success: (response) => {
-      const title = $(response).find('channel > title').text();
-      $('body').append(title);
+      const $news = $('#news');
+      $(response).find('item').each((index, item) => {
+        const title = $(item).children('title').text();
+        $news.append(`<li>${title}</li>`);
+      });
     },
   });
 }
