@@ -2,7 +2,7 @@ function grocerJsonFruitsDelay() {
   $.ajax({
     url: '/api/slow-fruit',
     success: (response) => {
-      const $fruits = $('#fruits');
+      const $fruits = $('#fruits').empty();
       $.each(response, (fruitName, colour) => {
         $fruits.append(`<li style="background-color: ${colour}">${fruitName}</li>`);
       });
