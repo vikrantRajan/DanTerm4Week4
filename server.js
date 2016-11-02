@@ -128,6 +128,34 @@ server.route({
   },
 });
 
+server.route({
+  method: 'GET',
+  path: '/api/rss',
+  handler: (request, reply) => {
+    const url = request.query.url || 'http://www.cbc.ca/cmlink/rss-canada';
+    const isSSL = (url.substring(0, 5) === 'https');
+    const httpRequest = (isSSL) ? require('https') : require('http'); // eslint-disable-line global-require
+
+    httpRequest.get(url, (response) => {
+      let body = '';
+
+      if (response.statusCode === 200) {
+        // Continuously update stream with data
+        response.on('data', (data) => {
+          body += data;
+        });
+        response.on('end', () => {
+          reply(body).type('application/xml');
+        });
+      } else {
+        throw new URIError(`Service call failed with HTTP status code: ${response.statusCode}`);
+      }
+    }).on('error', (e) => {
+      throw new URIError(`Service call failed due to error: ${e.message}`);
+    });
+  },
+});
+
 server.start(() => {
   utils.print('Server running at:', server.info.uri);
 });
