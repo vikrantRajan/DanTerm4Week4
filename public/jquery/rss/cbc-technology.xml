@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:cbc="http://www.cbc.ca/rss/cbc" version="2.0">
+  <channel>
+    <title><![CDATA[CBC | Technology News ]]></title>
+    <link>http://www.cbc.ca/technology/?cmp=rss</link>
+    <description>
+      <![CDATA[
+      FOR PERSONAL USE ONLY
+      ]]>
+    </description>
+    <language>en-ca</language>
+    <lastBuildDate>Wed, 2 Nov 2016 11:23:45 EDT</lastBuildDate>
+    <copyright><![CDATA[Copyright: (C) Canadian Broadcasting	Corporation,							http://www.cbc.ca/aboutcbc/discover/termsofuse.html#Rss]]></copyright>
+        <docs><![CDATA[http://www.cbc.ca/rss/]]></docs>
+    <image>
+      <title>CBC.ca</title>
+      <url>http://www.cbc.ca/rss/image/cbc_144.gif</url>
+      <link>http://www.cbc.ca/news/?cmp=rss</link>
+    </image>
+    <item cbc:type="story" cbc:deptid="2.634" cbc:syndicate="true">
+      <title><![CDATA[Cyberattacks and infowars: How the CIA is adapting to threats in the digital era ]]></title>
+            <link>http://www.cbc.ca/news/technology/cia-hacking-russia-election-spywork-1.3832578?cmp=rss</link>
+      <guid isPermaLink="false">1.3832578</guid>
+      <pubDate>Wed, 2 Nov 2016 11:23:45 EDT</pubDate>
+                        <author>David Rohde</author>
+      							      <category>News/Technology &amp; Science</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.3832703.1478098915!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_460/usa-cia-brennan.jpg' alt='USA-CIA/BRENNAN' width='460' title='Central Intelligence Agency (CIA) Director John Brennan participates in a session at the third annual Intelligence and National Security Summit in Washington, DC, U.S. on September 8, 2016. To match Special Report USA-CIA-BRENNAN/   REUTERS/Gary Cameron/File Photo - RTX2RIYS' height='259' />                <p>When America goes to the polls on Nov. 8, according to current and former U.S. intelligence officials, it will likely experience the culmination of a new form of information war.</p>
+        ]]>
+      </description>
+    </item>
+    <item cbc:type="story" cbc:deptid="2.641" cbc:syndicate="true">
+      <title><![CDATA[Mixed prospects for world's whales, meeting told]]></title>
+            <link>http://www.cbc.ca/news/canada/british-columbia/whales-spong-international-whaling-commission-1.3832296?cmp=rss</link>
+      <guid isPermaLink="false">1.3832296</guid>
+      <pubDate>Wed, 2 Nov 2016 09:30:00 EDT</pubDate>
+                        <author>Deborah Wilson</author>
+      										      <category>News/Canada/British Columbia</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.3832310.1478061093!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_460/humpback-encounter.jpg' alt='humpback encounter' width='460' title='OrcaLab founder Paul Spong said while humpback whale populations are improving, the picture is bleak for some smaller cetacean species. ' height='259' />                <p>As concerns grow for the West Coast's southern resident orca population, an international meeting hears a mix of optimism and lament for cetacean species around the world.</p>
+        ]]>
+      </description>
+    </item>
+    <item cbc:type="story" cbc:deptid="2.634" cbc:syndicate="true">
+      <title><![CDATA[Having more trouble reading websites? You're not alone]]></title>
+            <link>http://www.cbc.ca/news/technology/misener-web-readability-1.3831009?cmp=rss</link>
+      <guid isPermaLink="false">1.3831009</guid>
+      <pubDate>Wed, 2 Nov 2016 08:26:52 EDT</pubDate>
+                        <author>Dan Misener</author>
+      							      <category>News/Technology &amp; Science</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.1906328.1380866684!/httpImage/image.jpg_gen/derivatives/16x9_460/hi-fonts7161299-8col.jpg' alt='hi-fonts7161299-8col' width='460' title='Finding the right font to fit tiny screens like those of the iPhone is no trivial task and is becoming increasingly important as smartphones and e-readers attract more and more eyeballs. ' height='259' />                <p>Do you ever squint at your smartphone, or have trouble reading text on a website? It's not just you. As CBC Radio technology columnist Dan Misener explains, parts of the web really are getting harder to read.</p>
+        ]]>
+      </description>
+    </item>
+    <item cbc:type="story" cbc:deptid="2.653" cbc:syndicate="true">
+      <title><![CDATA[Dams like Muskrat Falls produce more greenhouse gas than expected: study]]></title>
+            <link>http://www.cbc.ca/news/canada/newfoundland-labrador/reservoirs-greenhouse-gas-emissions-1.3830939?cmp=rss</link>
+      <guid isPermaLink="false">1.3830939</guid>
+      <pubDate>Tue, 1 Nov 2016 18:40:00 EDT</pubDate>
+                        <author>Katie Breen</author>
+      										      <category>News/Canada/NL</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.3830962.1478014855!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_460/bridgette-deemer.jpg' alt='Bridgette Deemer' width='460' title='Bridgette Deemer, the first author on the study, is an aquatic biogeochemist, reservoir limnologist and PhD student at Washington State University.' height='259' />                <p>Some scientists are questioning whether energy produced by man-made dams is as green as previously believed.</p>
+        ]]>
+      </description>
+    </item>
+    <item cbc:type="story" cbc:deptid="2.634" cbc:syndicate="true">
+      <title><![CDATA[Sex, bombs and political gaffes: How censorship works on popular Chinese apps]]></title>
+            <link>http://www.cbc.ca/news/technology/citizenlab-china-livestreaming-censorship-report-1.3831415?cmp=rss</link>
+      <guid isPermaLink="false">1.3831415</guid>
+      <pubDate>Tue, 1 Nov 2016 18:49:38 EDT</pubDate>
+                        <author>Sheena Goodyear</author>
+      							      <category>News/Technology &amp; Science</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.3012617.1457477993!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_460/samsung-galaxy-s6-edge-smartphone.jpg' alt='Samsung Galaxy S6 Edge smartphone' width='460' title='A hostess displays the new Samsung Galaxy S6 Edge smartphone during the Mobile World Congress in Barcelona March 2, 2015. Ninety thousand executives, marketers and reporters gather in Barcelona this week for the telecom operators Mobile World Congress, the largest annual trade show for the global wireless industry. REUTERS/Gustau Nacarino (SPAIN - Tags: BUSINESS SCIENCE TECHNOLOGY) - RTR4RSM8' height='259' />                <p>A group of Canadian researchers have reverse-engineered three of China's biggest live streaming apps to learn more about how corporations there censor discussions about everything from sex to government corruption.</p>
+        ]]>
+      </description>
+    </item>
+    <item cbc:type="story" cbc:deptid="2.637" cbc:syndicate="false">
+      <title><![CDATA['Feels like blackmail': Canada needs to take a hard look at its piracy notice system]]></title>
+            <link>http://www.cbc.ca/news/business/copyright-infringement-notice-canada-piracy-1.3831492?cmp=rss</link>
+      <guid isPermaLink="false">1.3831492</guid>
+      <pubDate>Wed, 2 Nov 2016 05:00:00 EDT</pubDate>
+                        <author>Sophia Harris</author>
+      							      <category>News/Business</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.3831537.1478106940!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_460/darren-mycroft-piracy-copyright-notices.jpg' alt='Darren Mycroft piracy copyright notices' width='460' title='Darren Mycroft in Calgary says he received two piracy notices demanding settlement fees for illegally downloading porn--something he says he never did. ' height='259' />                <p>Piracy notices demanding settlement fees have left some Canadians fearful or confused. It may time for Ottawa to take a serious look at its 'notice-and-notice' system and what message it's trying to send.</p>
+        ]]>
+      </description>
+    </item>
+    <item cbc:type="story" cbc:deptid="2.655" cbc:syndicate="true">
+      <title><![CDATA[How to cast a ballot from the bush? This Yukoner used Skype]]></title>
+            <link>http://www.cbc.ca/news/canada/north/skype-voting-rural-yukon-special-ballots-1.3832038?cmp=rss</link>
+      <guid isPermaLink="false">1.3832038</guid>
+      <pubDate>Wed, 2 Nov 2016 09:00:00 EDT</pubDate>
+                        <author>CBC News</author>
+      										      <category>News/Canada/North</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.3832110.1478046006!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_460/norm-carlson.jpg' alt='Norm Carlson' width='460' title='Yukoner Norm Carlson at his remote cabin, about 135km down river from Dawson City.' height='259' />                <p>Yukoner Norm Carlson will likely never see an election candidate at his door as he lives in a remote cabin. But he still managed to cast his ballot in the territorial election.</p>
+        ]]>
+      </description>
+    </item>
+    <item cbc:type="story" cbc:deptid="2.657" cbc:syndicate="true">
+      <title><![CDATA[Cybersecurity talent shortage on the radar of government, business]]></title>
+            <link>http://www.cbc.ca/news/canada/ottawa/cybersecurity-talent-shortage-1.3831541?cmp=rss</link>
+      <guid isPermaLink="false">1.3831541</guid>
+      <pubDate>Wed, 2 Nov 2016 05:00:00 EDT</pubDate>
+                        <author>Julie Ireton</author>
+      										      <category>News/Canada/Ottawa</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.2728883.1407333208!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_460/hacker-stolen-passwords.jpg' alt='Hacker stolen passwords' width='460' title='A man types on a computer keyboard in Warsaw in this February 28, 2013 illustration file picture. One of the largest ever cyber attacks is slowing global internet services after an organisation blocking "spam" content became a target, with some experts saying the disruption could get worse.        To match INTERNET-ATTACK/      REUTERS/Kacper Pempel/Files (POLAND - Tags: BUSINESS SCIENCE TECHNOLOGY) - RTXXZVX' height='259' />                <p>An international shortage of cybersecurity talent is expected to grow over the next few years, according to the Information and Communications Technology Council.</p>
+        ]]>
+      </description>
+    </item>
+    <item cbc:type="story" cbc:deptid="2.634" cbc:syndicate="true">
+      <title><![CDATA[Where did the moon come from? Scientists posit new theory ]]></title>
+            <link>http://www.cbc.ca/news/technology/moon-theory-1.3830623?cmp=rss</link>
+      <guid isPermaLink="false">1.3830623</guid>
+      <pubDate>Tue, 1 Nov 2016 12:33:02 EDT</pubDate>
+                        <author>Sheena Goodyear</author>
+      							      <category>News/Technology &amp; Science</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.3830720.1478009941!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_460/160936129.jpg' alt='160936129' width='460' title='Earth, Moon and Sun, computer artwork.' height='259' />                <p>How did Earth get its moon? According to a new theory, it involved a huge, violent impact billions of years ago that vapourized a sizeable chunk of our planet.</p>
+        ]]>
+      </description>
+    </item>
+    <item cbc:type="story" cbc:deptid="2.634" cbc:syndicate="true">
+      <title><![CDATA[Mass Facebook check-in at Standing Rock protest is not likely to confuse police]]></title>
+            <link>http://www.cbc.ca/news/technology/standing-rock-check-in-1.3830156?cmp=rss</link>
+      <guid isPermaLink="false">1.3830156</guid>
+      <pubDate>Mon, 31 Oct 2016 20:41:57 EDT</pubDate>
+                        <author>Jimmy Thomson</author>
+      							      <category>News/Technology &amp; Science</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.3830339.1477960214!/cpImage/httpImage/image.jpg_gen/derivatives/16x9_460/oil-pipeline-protest.jpg' alt='Oil Pipeline Protest' width='460' title='Protesters march in Salt Lake City in support of the Standing Rock Sioux against the Dakota Access Pipeline Monday, Oct. 31, 2016. The diverse group of over 100 held a rally at the Gallivan Center, then marched half a block to the Wells Fargo Center building. Wells Fargo is one of several major banks financing the pipeline. ' height='259' />                <p>A viral Facebook post is convincing people to check-in at the Standing Rock pipeline protest in North Dakota. Its claim to foil law enforcement's ability to monitor protesters likely has little merit, but the approach is rallying support.</p>
+        ]]>
+      </description>
+    </item>
+    <item cbc:type="story" cbc:deptid="2.653" cbc:syndicate="true">
+      <title><![CDATA[Safe, but stormy ending: Texas man alone on N.L. island ends streaming adventure]]></title>
+            <link>http://www.cbc.ca/news/canada/newfoundland-labrador/castaway-live-star-packs-it-in-1.3830617?cmp=rss</link>
+      <guid isPermaLink="false">1.3830617</guid>
+      <pubDate>Tue, 1 Nov 2016 09:39:21 EDT</pubDate>
+                        <author>Lukas Wall</author>
+      										      <category>News/Canada/NL</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.3807664.1476646042!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_460/mack-mcgowen.jpg' alt='Mack McGowen' width='460' title='Mack McGowen, an outdoorsman from Texas, is alone on Brunette Island this month, shooting a live documentary called Castaway Live.' height='259' />                <p>The adventure of a Texas man surviving on a deserted island in Fortune Bay while streaming live on Facebook has ended safely, but ahead of schedule.</p>
+        ]]>
+      </description>
+    </item>
+    <item cbc:type="story" cbc:deptid="2.634" cbc:syndicate="true">
+      <title><![CDATA[People who use Facebook live longer, study finds]]></title>
+            <link>http://www.cbc.ca/news/technology/facebook-mortality-study-1.3829015?cmp=rss</link>
+      <guid isPermaLink="false">1.3829015</guid>
+      <pubDate>Mon, 31 Oct 2016 17:31:23 EDT</pubDate>
+                        <author>Sheena Goodyear</author>
+      							      <category>News/Technology &amp; Science</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.3829809.1477942436!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_460/facebook-data.jpg' alt='FACEBOOK-DATA/' width='460' title='A picture illustration shows a Facebook logo reflected in a person&#39;s eye, in Zenica, March 13, 2015. Facebook Inc recorded a slight increase in government requests for account data in the second half of 2014, according to its Global Government Requests Report, which includes information about content removal.Requests for account data increased to 35,051 in the second half of 2014 from 34,946 in the first half, with requests from countries such as India rising and those from others including United States and Germany falling, the report by the world&#39;s largest Internet social network showed. Facebook said it restricted 9,707 pieces of content for violating local laws, 11 percent more than in the first half, with access restricted to 5,832 pieces in India and 3,624 in Turkey. Picture taken on March 13. REUTERS/Dado Ruvic (BOSNIA AND HERZEGOVINA - Tags: SOCIETY PORTRAIT SCIENCE TECHNOLOGY BUSINESS TELECOMS TPX IMAGES OF THE DAY) - RTR4TKS2' height='259' />                <p>Study after study has shown that people who have strong social connections live longer — but is the same true for folks who are well-connected online? New research says yes.</p>
+        ]]>
+      </description>
+    </item>
+    <item cbc:type="story" cbc:deptid="2.634" cbc:syndicate="true">
+      <title><![CDATA[Thirty Meter Telescope team eyes Canary Islands if Hawaii legal issues insurmountable]]></title>
+            <link>http://www.cbc.ca/news/technology/thirty-meter-telescope-contingency-plan-1.3830436?cmp=rss</link>
+      <guid isPermaLink="false">1.3830436</guid>
+      <pubDate>Mon, 31 Oct 2016 23:15:54 EDT</pubDate>
+                        <author>Reuters</author>
+      							      <category>News/Technology &amp; Science</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.3830459.1477969667!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_460/giant-telescope-attorney.jpg' alt='Giant Telescope-Attorney' width='460' title='In this June 24, 2015 file photo, Thirty Meter Telescope protesters walk on a road during the first of many blockades that started at the Mauna Kea visitors center, stopping Thirty Meter Telescope construction vehicles from driving up to the summit of the mountain near Hilo, Hawaii.  ' height='259' />                <p>The team behind a project to build one of the world's largest telescopes said on Monday it has chosen Spain's Canary Islands in the Atlantic Ocean as a possible alternative to Hawaii.</p>
+        ]]>
+      </description>
+    </item>
+    <item cbc:type="segment" cbc:deptid="" cbc:syndicate="true">
+      <title><![CDATA[Oceans 'absolutely choked' by plastic bottles and microplastic fibres]]></title>
+            <link>http://www.cbc.ca/radio/thecurrent/the-current-for-october-31-2016-1.3826159/oceans-absolutely-choked-by-plastic-bottles-and-microplastic-fibres-1.3826476?cmp=rss</link>
+      <guid isPermaLink="false">1.3826476</guid>
+      <pubDate>Mon, 31 Oct 2016 14:30:53 EDT</pubDate>
+                        <author>CBC Radio</author>
+      							      <category>Radio/The Current</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.3075518.1431692751!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_460/ocean-plastic-for-clothing.jpg' alt='Ocean Plastic for Clothing' width='460' title='' height='259' />                <p>Our oceans are choking from plastic water bottles washing up on the beach to tiny microplastic fibres beneath the sea. It's not clear what the long-term effects will be. The Current explores the efforts to haul tons of plastic off Vancouver's west coast.</p>
+        ]]>
+      </description>
+    </item>
+    <item cbc:type="story" cbc:deptid="2.642" cbc:syndicate="true">
+      <title><![CDATA[Paralyzed climbers use rare $100,000 exoskeleton to walk again]]></title>
+            <link>http://www.cbc.ca/news/canada/calgary/exoskeleton-walking-climbers-1.3818232?cmp=rss</link>
+      <guid isPermaLink="false">1.3818232</guid>
+      <pubDate>Sun, 30 Oct 2016 10:00:00 EDT</pubDate>
+                        <author>Sarah Lawrynuik</author>
+      										      <category>News/Canada/Calgary</category>
+      <description>
+        <![CDATA[
+                        <img src='http://i.cbc.ca/1.3829565.1477937053!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_460/josh-pelland.jpg' alt=' Josh Pelland' width='460' title='' height='259' />                <p>Josh Pelland was what's lovingly known in the climbing community as a dirtbag. Then, a "small little hurdle" altered his life. Now, he's getting to walk again, with the help of a $100,000 exoskeleton.</p>
+        ]]>
+      </description>
+    </item>
+  </channel>
+</rss>
