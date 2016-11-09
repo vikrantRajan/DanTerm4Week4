@@ -7,7 +7,10 @@ function changeRssProvider() {
     }
 
     $.ajax({
-      url: `/api/rss?url=${address}`,
+      url: '/api/rss',
+      data: {
+        url: address,
+      },
       success: (response) => {
         $(response).find('item').each((index, item) => {
           const title = $(item).children('title').text();
