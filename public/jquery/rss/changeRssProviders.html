@@ -24,9 +24,16 @@
   </ul>
 
   <h3>Live demo</h3>
+  <select id="providers">
+    <option value="">News providers</option>
+    <option value="http://www.cbc.ca/cmlink/rss-technology">CBC (tech)</option>
+    <option value="http://vancouversun.com/feed/">Vancouver Sun</option>
+  </select>
+  <ul id="news"></ul>
 <!-- Attach jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <!-- Page specific code -->
 <script src="/js/critical.js"></script>
+<script>changeRssProvider();</script>
 </body>
 </html>
