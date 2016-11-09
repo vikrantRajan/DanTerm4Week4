@@ -1,5 +1,13 @@
 function displayCountries(output) {
-  $('#country_suggestions').text(output);
+  $('#country_suggestions').html(output);
+}
+function formatCountries(countries) {
+  const html = [];
+  $.each(countries, (index, country) => {
+    html.push(`<li>${country}</li>`);
+  });
+
+  displayCountries(html.join(''));
 }
 function callService(keyword) {
   $.ajax({
@@ -8,7 +16,7 @@ function callService(keyword) {
       keyword,
     },
     success: (response) => {
-      displayCountries(response.items);
+      formatCountries(response.items);
     },
   });
 }
