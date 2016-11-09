@@ -15,6 +15,7 @@
   }
   #country_suggestions ul { margin: 0; padding: 0; }
   #country_suggestions li { list-style-type: none; padding: 0 4px; }
+  .hide { display: none; }
 </style>
 </head>
 
@@ -32,6 +33,7 @@
     <li>As a developer, I want the autocomplete suggestions to displayed as a bulleted list</li>
     <li>As a developer, I want the autocomplete suggestions to be styled one per line with a surrounding outline with drop shadow.</li>
     <li>As a user, I want to be notified when the autocomplete service is slow and forces me to wait</li>
+    <li>As a user, I want to use my keyboard to highlight autocomplete suggestions.</li>
   </ol>
 
   <h3>Technologies</h3>
@@ -46,7 +48,7 @@
   </ul>
 
   <h3>Live demo</h3>
-  <input id="country_keywords" type="text">
+  <input id="country_keywords" type="text"> <img id="spinner" src="../spinner.gif" class="hide">
   <ul id="country_suggestions"></ul>
 
 <!-- Attach jQuery library -->

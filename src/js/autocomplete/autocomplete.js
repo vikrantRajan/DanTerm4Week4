@@ -1,4 +1,8 @@
+function toggleSpinner() {
+  $('#spinner').toggleClass('hide');
+}
 function displayCountries(output) {
+  toggleSpinner();
   $('#country_suggestions')
     .html(output)
     .addClass('expanded');
@@ -25,6 +29,7 @@ function callService(keyword) {
 
 function autocomplete() {
   $('#country_keywords').keyup((event) => {
+    toggleSpinner();
     callService($(event.target).val());
   });
 }
