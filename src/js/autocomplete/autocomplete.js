@@ -1,3 +1,6 @@
+function displayCountries() {}
+function callService() {}
+
 function autocomplete() {
   $('#country_keywords').keyup((event) => {
     $('#country_suggestions').text($(event.target).val());
