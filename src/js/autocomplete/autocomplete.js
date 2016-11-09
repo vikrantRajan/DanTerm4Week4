@@ -1,10 +1,20 @@
-function displayCountries() {}
-function callService() {}
+function displayCountries(output) {
+  $('#country_suggestions').text(output);
+}
+function callService(keyword) {
+  $.ajax({
+    url: '/api/autocomplete',
+    data: {
+      keyword,
+    },
+    success: (response) => {
+      displayCountries(response.items);
+    },
+  });
+}
 
 function autocomplete() {
-  $('#country_keywords').keyup((event) => {
-    $('#country_suggestions').text($(event.target).val());
-  });
+  $('#country_keywords').keyup(event => callService($(event.target).val()));
 }
 
 
