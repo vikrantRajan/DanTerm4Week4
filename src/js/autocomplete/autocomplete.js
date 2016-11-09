@@ -14,7 +14,9 @@ function callService(keyword) {
 }
 
 function autocomplete() {
-  $('#country_keywords').keyup(event => callService($(event.target).val()));
+  $('#country_keywords').keyup((event) => {
+    callService($(event.target).val());
+  });
 }
 
 
