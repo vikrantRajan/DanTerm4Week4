@@ -9,17 +9,25 @@ function chess() {
       down: 40,
     };
     $(document).keydown((event) => {
+      let isArrow = false;
+      const $chessPiece = $('.highlight');
       if (event.which === arrow.left) {
-        console.log('left');
+        $chessPiece.css('left', '-=100');
+        isArrow = true;
       } else if (event.which === arrow.up) {
-        console.log('up');
+        $chessPiece.css('top', '-=100');
+        isArrow = true;
       } else if (event.which === arrow.right) {
-        console.log('right');
+        $chessPiece.css('left', '+=100');
+        isArrow = true;
       } else if (event.which === arrow.down) {
-        console.log('down');
+        $chessPiece.css('top', '+=100');
+        isArrow = true;
       }
 
-      event.preventDefault(); // prevent the default action (scroll / move caret)
+      if (isArrow) {
+        event.preventDefault(); // prevent the default action (scroll / move caret)
+      }
     });
   }
 
