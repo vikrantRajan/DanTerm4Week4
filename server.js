@@ -213,12 +213,7 @@ server.route({
     }
     output.items = sugg;
 
-    setTimeout(
-      () => {
-        reply(output);
-      },
-      1500 // 1.5 sec
-    );
+    setTimeout(() => reply(output), 1500);  // 1.5 sec
   },
 });
 
