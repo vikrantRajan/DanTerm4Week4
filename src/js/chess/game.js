@@ -1,5 +1,6 @@
 function chess() {
   $('.piece').click((element) => {
+    $('.highlight').removeClass('highlight');
     $(element.target).addClass('highlight');
   });
 }
