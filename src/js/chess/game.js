@@ -8,19 +8,25 @@ function chess() {
       right: 39,
       down: 40,
     };
+    const corner = { // valid coordinates; next more is invalid
+      topLeft: 50,
+      bottomRight: 750,
+    };
     $(document).keydown((event) => {
       let isArrow = false;
       const $chessPiece = $('.highlight');
-      if (event.which === arrow.left) {
+      const currentPosition = $chessPiece.position();
+
+      if (event.which === arrow.left && currentPosition.left > corner.topLeft) {
         $chessPiece.css('left', '-=100');
         isArrow = true;
-      } else if (event.which === arrow.up) {
+      } else if (event.which === arrow.up && currentPosition.top > corner.topLeft) {
         $chessPiece.css('top', '-=100');
         isArrow = true;
-      } else if (event.which === arrow.right) {
+      } else if (event.which === arrow.right && currentPosition.left < corner.bottomRight) {
         $chessPiece.css('left', '+=100');
         isArrow = true;
-      } else if (event.which === arrow.down) {
+      } else if (event.which === arrow.down && currentPosition.top < corner.bottomRight) {
         $chessPiece.css('top', '+=100');
         isArrow = true;
       }
