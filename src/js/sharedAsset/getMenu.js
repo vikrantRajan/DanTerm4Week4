@@ -2,7 +2,13 @@ function shareAsset() {
   $.ajax({
     url: 'menu.html',
     success: (response) => {
-      console.log(response);
+      $('#menu').append(response);
+    },
+  });
+  $.ajax({
+    url: 'menu.css',
+    success: (response) => {
+      $('head').append(`<style>${response}</style>`);
     },
   });
 }
