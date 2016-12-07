@@ -1,0 +1,24 @@
+{
+	"result": {
+		"cities": ["Vancouver", "Victoria", "Surrey"],
+		"Vancouver": {
+			"condition": "Mostly cloudy",
+			"temp": 25
+		},
+		"Victoria": {
+			"condition": "Cloudy",
+			"temp": 20
+		},
+		"Surrey": {
+			"condition": "Overcast",
+			"temp": 22
+		}
+	},
+	"meta": {
+		"errors": {
+			"count": 0,
+			"message": ""
+		},
+		"version": 1.0
+	}
+}
