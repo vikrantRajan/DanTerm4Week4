@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "dustjs-linkedin": "^2.7.2",
-    "hapi": "^15.0.3",
+    "hapi": "^16.0.1",
     "hapi-dust": "^2.0.0",
     "inert": "^4.0.0",
     "instagram-node": "^0.5.8",
