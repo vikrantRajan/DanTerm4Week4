@@ -1,16 +1,18 @@
 function shareAsset() {
+  function getHtml(callback) {
+    $.ajax({ url: 'menu.html', success: callback });
+  }
+
   function getCss(callback) {
     $.ajax({ url: 'menu.css', success: callback });
   }
-  $.ajax({
-    url: 'menu.html',
-    success: (response) => {
-      getCss((cssResponse) => {
-        $('head').append(`<style>${cssResponse}</style>`);
-      });
 
-      $('#menu').append(response);
-    },
+  getHtml((htmlResponse) => {
+    getCss((cssResponse) => {
+      $('head').append(`<style>${cssResponse}</style>`);
+    });
+
+    $('#menu').append(htmlResponse);
   });
 }
 
