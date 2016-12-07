@@ -1,5 +1,10 @@
 function shareAsset() {
-  console.log('get the menu');
+  $.ajax({
+    url: 'menu.html',
+    success: (response) => {
+      console.log(response);
+    },
+  });
 }
 
 // If Node.js then export as public
