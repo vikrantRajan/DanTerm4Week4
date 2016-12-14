@@ -13,6 +13,9 @@ function shareAsset() {
     });
 
     $('#menu').append(htmlResponse);
+    $('#menuCities').parent().click(() => {
+      console.log('you clicked Cities');
+    });
   });
 }
 
