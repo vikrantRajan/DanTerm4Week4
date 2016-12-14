@@ -12,6 +12,7 @@ module.exports = {
 	"harnesses": [
 		{
 			"route": "hello",
+      "view": "fruits.dust",
 			"data": {
 				"message": "Hello Fruits",
 				"fruits": ["Apple", "Banana", "Cherry", "Durrian"]
