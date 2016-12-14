@@ -11,6 +11,12 @@ function shareAsset() {
     $.ajax({ url: 'weather.json', success: callback });
   }
 
+  // ideal for unit testing
+  function transformToCssClassName(raw) {
+    // Mostly Cloudy --> mostly_cloudy
+    return raw.toLowerCase().split(' ').join('_');
+  }
+
   getHtml((htmlResponse) => {
     getCss((cssResponse) => {
       $('head').append(`<style>${cssResponse}</style>`);
@@ -22,8 +28,7 @@ function shareAsset() {
         const html = [];
         $.each(jsonResponse.result.cities, (index, cityName) => {
           const condition = jsonResponse.result[cityName].condition;
-          console.log(condition);
-          html.push('<li>', cityName, '</li>');
+          html.push('<li class="', transformToCssClassName(condition), '">', cityName, '</li>');
         });
         $('#menuCities').html(html.join(''));
       });
