@@ -19,7 +19,11 @@ function shareAsset() {
     $('#menu').append(htmlResponse);
     $('#menuCities').parent().click(() => {
       getJson((jsonResponse) => {
-        console.log(jsonResponse);
+        const html = [];
+        $.each(jsonResponse.result.cities, (index, cityName) => {
+          html.push(`<li>${cityName}</li>`);
+        });
+        $('#menuCities').html(html.join(''));
       });
     });
   });
