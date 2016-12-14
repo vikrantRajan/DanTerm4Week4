@@ -6,3 +6,6 @@
 #menu li ul { position: relative; left: 250px; }
 #menu li ul li { display: block; background-color: red; height: 200px; }
 .hide { display: none; }
+#menu .overcast { background-color: lightblue; }
+#menu .cloudy { background-color: lightgray; }
+#menu .mostly_cloudy { background-color: darkgray; }
