@@ -4,6 +4,7 @@
   "description": "A tool to better understand API responses",
   "main": "index.js",
   "scripts": {
+    "harness": "node ./node_modules/tuxharness/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -11,5 +12,8 @@
     "tool"
   ],
   "author": "danactive",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "tuxharness": "^2.0.4"
+  }
 }
