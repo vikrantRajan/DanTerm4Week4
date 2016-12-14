@@ -21,6 +21,8 @@ function shareAsset() {
       getJson((jsonResponse) => {
         const html = [];
         $.each(jsonResponse.result.cities, (index, cityName) => {
+          const condition = jsonResponse.result[cityName].condition;
+          console.log(condition);
           html.push('<li>', cityName, '</li>');
         });
         $('#menuCities').html(html.join(''));
