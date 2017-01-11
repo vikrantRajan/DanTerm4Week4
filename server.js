@@ -209,6 +209,16 @@ server.route({
   },
 });
 
+function flickrPaths(payload) {
+  const output = { items: [] };
+
+  payload.photos.photo.forEach((photo) => {
+    output.items.push({ media: { m: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg` } });
+  });
+
+  return output;
+}
+
 server.route({
   method: 'GET',
   path: '/api/flickr',
@@ -216,14 +226,15 @@ server.route({
     const apiKey = credentials.flickr.api_key;
     const url = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=yvr&format=json&nojsoncallback=1`;
 
-    wreck.get(url, (error, response, payload) => {
+    wreck.get(url, { json: true }, (error, response, payload) => {
       if (error) {
         reply(error);
         return;
       }
 
+      const output = flickrPaths(payload);
       const contentType = response.headers['content-type'];
-      reply(payload).type(contentType);
+      reply(output).type(contentType);
     });
   },
 });
