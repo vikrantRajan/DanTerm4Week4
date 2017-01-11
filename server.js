@@ -4,6 +4,7 @@ const hapi = require('hapi');
 const vision = require('vision');
 const wreck = require('wreck');
 
+const credentials = require('./credentials.json');
 const utils = require('./src/js/utils');
 
 const server = new hapi.Server();
@@ -205,6 +206,25 @@ server.route({
     output.items = sugg;
 
     setTimeout(() => reply(output), 1500);  // 1.5 sec
+  },
+});
+
+server.route({
+  method: 'GET',
+  path: '/api/flickr',
+  handler: (request, reply) => {
+    const apiKey = credentials.flickr.api_key;
+    const url = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=yvr&format=json&nojsoncallback=1`;
+
+    wreck.get(url, (error, response, payload) => {
+      if (error) {
+        reply(error);
+        return;
+      }
+
+      const contentType = response.headers['content-type'];
+      reply(payload).type(contentType);
+    });
   },
 });
 
