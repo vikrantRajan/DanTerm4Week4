@@ -4,7 +4,11 @@ function cms() {
     jsonpCallback: 'jsonFlickrFeed',
     dataType: 'jsonp', // JSON with Padding. Whereas padding is the function name that Flickr is wrapping JSON in
     success: (response) => {
-      $('body').append(`<img src="${response.items[1].media.m}">`);
+      const html = [];
+      response.items.forEach((item) => {
+        html.push(`<img src="${item.media.m}">`);
+      });
+      $('body').append(html.join(''));
     },
   });
 }
