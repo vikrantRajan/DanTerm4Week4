@@ -1,7 +1,8 @@
-const hapi = require('hapi');
-const vision = require('vision');
 const inert = require('inert');
 const dust = require('hapi-dust');
+const hapi = require('hapi');
+const vision = require('vision');
+const wreck = require('wreck');
 
 const utils = require('./src/js/utils');
 
@@ -133,20 +134,10 @@ server.route({
   path: '/api/rss',
   handler: (request, reply) => {
     const url = request.query.url || 'http://www.cbc.ca/cmlink/rss-canada';
-    const isSSL = (url.substring(0, 5) === 'https');
-    const httpRequest = (isSSL) ? require('https') : require('http'); // eslint-disable-line global-require
 
-    httpRequest.get(url, (response) => {
-      let body = '';
-
+    wreck.get(url, (error, response, payload) => {
       if (response.statusCode === 200) {
-        // Continuously update stream with data
-        response.on('data', (data) => {
-          body += data;
-        });
-        response.on('end', () => {
-          reply(body).type('application/xml');
-        });
+        reply(payload).type('application/xml');
       } else {
         throw new URIError(`Service call failed with HTTP status code: ${response.statusCode}`);
       }
