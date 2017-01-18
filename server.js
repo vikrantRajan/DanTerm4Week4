@@ -239,6 +239,14 @@ server.route({
   },
 });
 
+server.route({
+  method: 'GET',
+  path: '/api/twitter',
+  handler: (request, reply) => {
+    reply({ hello: 'twitter' });
+  },
+});
+
 server.start(() => {
   utils.print('Server running at:', server.info.uri);
 });

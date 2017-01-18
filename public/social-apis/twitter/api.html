@@ -6,15 +6,24 @@
 </head>
 
 <body>
-	<h1>Twitter</h1>
+  <h1>Twitter</h1>
   <h2>API</h2>
 
   <h3>Goal</h3>
   <p>As a user, I want to read the latest news of client VanArts.</p>
 
-  <h3>Acceptance Criteria</h3>
-  <ol>
+  <h3>Acceptance criterion</h3>
+  <ul>
     <li>Display the tweet text with date in this date format: <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString">mm/dd/yyyy, HH:MM:SS</a></li>
+  </ul>
+
+  <h3>Developer steps</h3>
+  <ol>
+    <li>Find endpoint in documentation</li>
+    <li>Research Twitter API client module</li>
+    <li>Create a <a href="https://apps.twitter.com/">Twitter App</a></li>
+    <li>Generate and reference credentials in application config (i.e. credentials.json)</li>
+    <li>Create a hapi route and output JSON using twit module</li>
   </ol>
 
   <h3>Technologies</h3>
