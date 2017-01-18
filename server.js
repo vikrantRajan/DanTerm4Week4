@@ -240,6 +240,13 @@ server.route({
   },
 });
 
+function twitterFormat(rawData) {
+  return rawData.map(tweet => ({
+    created_at: tweet.created_at,
+    text: tweet.text,
+  }));
+}
+
 server.route({
   method: 'GET',
   path: '/api/twitter',
@@ -252,13 +259,13 @@ server.route({
       timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
     });
 
-    T.get('statuses/user_timeline', { screen_name: 'vanarts' }, (error, data) => {
+    T.get('statuses/user_timeline', { screen_name: 'vanarts' }, (error, rawData) => {
       if (error) {
         reply(error.message);
         return;
       }
 
-      reply(data);
+      reply(twitterFormat(rawData));
     });
   },
 });
