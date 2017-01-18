@@ -6,6 +6,7 @@ const vision = require('vision');
 const wreck = require('wreck');
 
 const credentials = require('./credentials.json');
+const twitterUtils = require('./src/js/twitter/formatDate');
 const utils = require('./src/js/utils');
 
 const server = new Hapi.Server();
@@ -242,7 +243,7 @@ server.route({
 
 function twitterFormat(rawData) {
   return rawData.map(tweet => ({
-    created_at: tweet.created_at,
+    created_at: twitterUtils.formatTwitterDate(tweet.created_at),
     text: tweet.text,
   }));
 }
