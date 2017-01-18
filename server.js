@@ -252,7 +252,12 @@ server.route({
       timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
     });
 
-    T.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, (error, data) => {
+    T.get('statuses/user_timeline', { screen_name: 'vanarts' }, (error, data) => {
+      if (error) {
+        reply(error.message);
+        return;
+      }
+
       reply(data);
     });
   },
