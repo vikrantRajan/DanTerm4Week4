@@ -1,13 +1,14 @@
 const inert = require('inert');
 const dust = require('hapi-dust');
-const hapi = require('hapi');
+const Hapi = require('hapi');
+const Twit = require('twit');
 const vision = require('vision');
 const wreck = require('wreck');
 
 const credentials = require('./credentials.json');
 const utils = require('./src/js/utils');
 
-const server = new hapi.Server();
+const server = new Hapi.Server();
 server.connection({ port: 8080 });
 
 server.register([vision, inert], () => {
@@ -243,7 +244,17 @@ server.route({
   method: 'GET',
   path: '/api/twitter',
   handler: (request, reply) => {
-    reply({ hello: 'twitter' });
+    const T = new Twit({
+      consumer_key: credentials.twitter.consumer_key,
+      consumer_secret: credentials.twitter.consumer_secret,
+      access_token: credentials.twitter.access_token,
+      access_token_secret: credentials.twitter.access_token_secret,
+      timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
+    });
+
+    T.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, (error, data) => {
+      reply(data);
+    });
   },
 });
 
