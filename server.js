@@ -1,6 +1,7 @@
-const inert = require('inert');
 const dust = require('hapi-dust');
 const Hapi = require('hapi');
+const inert = require('inert');
+const instagram = require('instagram-node').instagram();
 const Twit = require('twit');
 const vision = require('vision');
 const wreck = require('wreck');
@@ -267,6 +268,26 @@ server.route({
       }
 
       reply(twitterFormat(rawData));
+    });
+  },
+});
+
+server.route({
+  method: 'GET',
+  path: '/api/instagram',
+  handler: (request, reply) => {
+    instagram.use({
+      client_id: credentials.client_id,
+      client_secret: credentials.client_secret,
+    });
+
+    instagram.tag_media_recent('yvr', { count: 10 }, (error, media) => {
+      if (error) {
+        reply(error);
+        return;
+      }
+
+      reply(media);
     });
   },
 });
