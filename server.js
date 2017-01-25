@@ -1,7 +1,7 @@
 const dust = require('hapi-dust');
 const Hapi = require('hapi');
 const inert = require('inert');
-const instagram = require('instagram-node').instagram();
+const instagram = require('instagram-node');
 const Twit = require('twit');
 const vision = require('vision');
 const wreck = require('wreck');
@@ -274,21 +274,40 @@ server.route({
 
 server.route({
   method: 'GET',
-  path: '/api/instagram',
+  path: '/api/instagram-auth',
   handler: (request, reply) => {
-    instagram.use({
-      client_id: credentials.client_id,
-      client_secret: credentials.client_secret,
-    });
+    const ig = instagram.instagram();
 
-    instagram.tag_media_recent('yvr', { count: 10 }, (error, media) => {
+    ig.use({ access_token: request.query.code });
+
+    // error, medias, pagination, remaining, limit
+    ig.tag_media_recent('vanarts', { count: 10 }, (error, media) => {
       if (error) {
-        reply(error);
+        console.log(error);
+        reply('Error found');
         return;
       }
 
       reply(media);
     });
+  },
+});
+
+server.route({
+  method: 'GET',
+  path: '/api/instagram',
+  handler: (request, reply) => {
+    const ig = instagram.instagram();
+
+    ig.use({
+      client_id: credentials.instagram.client_id,
+      client_secret: credentials.instagram.client_secret,
+    });
+
+    const redirectLandingAddress = 'http://localhost:8080/api/instagram-auth';
+
+    reply('Redirecting to Instagram for authentication')
+      .redirect(ig.get_authorization_url(redirectLandingAddress, { scope: 'public_content' }));
   },
 });
 
