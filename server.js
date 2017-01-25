@@ -272,24 +272,40 @@ server.route({
   },
 });
 
+const redirectLandingAddress = 'http://localhost:8080/api/instagram-auth';
 server.route({
   method: 'GET',
   path: '/api/instagram-auth',
   handler: (request, reply) => {
     const ig = instagram.instagram();
 
-    ig.use({ access_token: request.query.code });
+    if (request.query.code) {
+      ig.use({
+        client_id: credentials.instagram.client_id,
+        client_secret: credentials.instagram.client_secret,
+      });
 
-    // error, medias, pagination, remaining, limit
-    ig.tag_media_recent('vanarts', { count: 10 }, (error, media) => {
-      if (error) {
-        console.log(error);
-        reply('Error found');
-        return;
-      }
+      ig.authorize_user(request.query.code, redirectLandingAddress, (authError, result) => {
+        if (authError) {
+          console.log(authError.body);
+          reply("Didn't work");
+          return;
+        }
 
-      reply(media);
-    });
+        ig.use({ access_token: result.access_token });
+
+        // error, medias, pagination, remaining, limit
+        ig.tag_media_recent('vanarts', { count: 10 }, (mediaError, media) => {
+          if (mediaError) {
+            console.log(mediaError);
+            reply('Error found');
+            return;
+          }
+
+          reply(media);
+        });
+      });
+    }
   },
 });
 
@@ -303,8 +319,6 @@ server.route({
       client_id: credentials.instagram.client_id,
       client_secret: credentials.instagram.client_secret,
     });
-
-    const redirectLandingAddress = 'http://localhost:8080/api/instagram-auth';
 
     reply('Redirecting to Instagram for authentication')
       .redirect(ig.get_authorization_url(redirectLandingAddress, { scope: 'public_content' }));
