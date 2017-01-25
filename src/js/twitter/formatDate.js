@@ -1,8 +1,8 @@
 // input 'created_at' Twitter stamp Tue Apr 07 22:52:51 +0000 2009
 // output date/time relative to now
-function formatTwitterDate(stamp) {
+function formatTwitterDate(stamp, compareDate = new Date()) {
   const date = new Date(stamp);
-  const secDiff = (((new Date()).getTime() - date.getTime()) / 1000);
+  const secDiff = ((compareDate.getTime() - date.getTime()) / 1000);
   const dayDiff = Math.floor(secDiff / 86400);
 
   if (isNaN(dayDiff) || dayDiff < 0) {
