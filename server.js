@@ -48,15 +48,15 @@ server.route({
 });
 
 /*
-*      #####
-*     #     # #      # #####  ######  ####
-*     #       #      # #    # #      #
-*      #####  #      # #    # #####   ####
-*           # #      # #    # #           #
-*     #     # #      # #    # #      #    #
-*      #####  ###### # #####  ######  ####
-*
-*/
+ *      #####
+ *     #     # #      # #####  ######  ####
+ *     #       #      # #    # #      #
+ *      #####  #      # #    # #####   ####
+ *           # #      # #    # #           #
+ *     #     # #      # #    # #      #    #
+ *      #####  ###### # #####  ######  ####
+ *
+ */
 
 server.route({
   method: 'GET',
@@ -272,59 +272,47 @@ server.route({
   },
 });
 
-const redirectLandingAddress = 'http://localhost:8080/api/instagram-auth';
+const ig = instagram.instagram();
+const redirectLandingAddress = 'http://localhost:8080/api/instagram';
 server.route({
   method: 'GET',
-  path: '/api/instagram-auth',
+  path: '/api/instagram',
   handler: (request, reply) => {
-    const ig = instagram.instagram();
-
     if (request.query.code) {
-      ig.use({
-        client_id: credentials.instagram.client_id,
-        client_secret: credentials.instagram.client_secret,
-      });
-
       ig.authorize_user(request.query.code, redirectLandingAddress, (authError, result) => {
         if (authError) {
-          console.log(authError.body);
-          reply("Didn't work");
+          reply(`Error found ${authError.message}`);
           return;
         }
 
-        ig.use({ access_token: result.access_token });
+        ig.use({
+          access_token: result.access_token,
+          client_secret: credentials.instagram.client_secret,
+        });
 
         // error, medias, pagination, remaining, limit
-        ig.tag_media_recent('vanarts', { count: 10 }, (mediaError, media) => {
+        ig.tag_media_recent('vancouver', { count: 10 }, (mediaError, media) => {
           if (mediaError) {
-            console.log(mediaError);
-            reply('Error found');
+            reply(`Error found ${mediaError.message}`);
             return;
           }
 
           reply(media);
         });
       });
+    } else {
+      ig.use({
+        client_id: credentials.instagram.client_id,
+        client_secret: credentials.instagram.client_secret,
+      });
+
+      reply()
+        .redirect(ig.get_authorization_url(redirectLandingAddress, { scope: ['public_content'] }));
     }
-  },
-});
-
-server.route({
-  method: 'GET',
-  path: '/api/instagram',
-  handler: (request, reply) => {
-    const ig = instagram.instagram();
-
-    ig.use({
-      client_id: credentials.instagram.client_id,
-      client_secret: credentials.instagram.client_secret,
-    });
-
-    reply('Redirecting to Instagram for authentication')
-      .redirect(ig.get_authorization_url(redirectLandingAddress, { scope: 'public_content' }));
   },
 });
 
 server.start(() => {
   utils.print('Server running at:', server.info.uri);
 });
+
