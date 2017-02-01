@@ -19,8 +19,7 @@
 * **+1** Push code via Git to GitHub.com
 * **+2** UX matches existing functionality
 * **+3** Lint success
-* **+3** Connect to Service through API add receive correct response
-
+* **+3** Connect to Service (e.g. Instagram or Flickr) through API add receive correct response to solve feature request
 
 ## Communication
 * GitHub.com Issue is preferred
