@@ -4,6 +4,10 @@
 <head>
   <meta charset="utf-8">
   <title>apiSchool.html</title>
+  <style>
+    #map { height: 100%; }
+    html, body { height: 100%; margin: 0; padding: 0; }
+  </style>
 </head>
 
 <body>
@@ -11,17 +15,24 @@
   <h2>Basic Map</h2>
 
   <h3>Goal</h3>
-  <p>Display a slippy map with a starting location. Mark the school's location with a pin.</p>
+  <ul>
+    <li>As a user, I want to see my business on the map.</li>
+    <li>As a dev, using a map API add a marker or pin on the slippy map.</li>
+  </ul>
 
   <h3>Technologies</h3>
   <ul>
     <li>Google Maps JS API v3</li>
-    <li>Mapstraction JS abstraction layer API</li>
     <li>JavaScript</li>
     <li>CSS</li>
     <li>HTML</li>
   </ul>
 
   <h3>Live demo</h3>
+  <div id="map"></div>
+  <!-- Page specific -->
+  <script src="/js/critical.js"></script>
+  <!-- Google Maps JavaScript API v3 -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIa6QT68-jpqJJyD-aD5nk1SI3-gjfAbg&callback=initMap"></script>
 </body>
 </html>
