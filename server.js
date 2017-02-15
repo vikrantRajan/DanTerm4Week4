@@ -2,6 +2,7 @@ const dust = require('hapi-dust');
 const Hapi = require('hapi');
 const inert = require('inert');
 const instagram = require('instagram-node');
+const querystring = require('querystring');
 const Twit = require('twit');
 const vision = require('vision');
 const wreck = require('wreck');
@@ -331,6 +332,35 @@ server.route({
       }
 
       reply(media);
+    });
+  },
+});
+
+server.route({
+  method: 'GET',
+  path: '/api/flickr/geo',
+  handler: (request, reply) => {
+    const apiKey = credentials.flickr.api_key;
+    const flickrRequest = {
+      api_key: apiKey,
+      extras: 'geo',
+      format: 'json',
+      has_geo: 1,
+      method: 'flickr.photos.search',
+      nojsoncallback: 1,
+      tags: 'yvr',
+    };
+    const url = `https://api.flickr.com/services/rest/?${querystring.stringify(flickrRequest)}`;
+
+    wreck.get(url, { json: true }, (error, response, payload) => {
+      if (error) {
+        reply(error);
+        return;
+      }
+
+      const output = flickrPaths(payload);
+      const contentType = response.headers['content-type'];
+      reply(output).type(contentType);
     });
   },
 });
