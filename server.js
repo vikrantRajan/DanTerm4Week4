@@ -336,6 +336,22 @@ server.route({
   },
 });
 
+function flickrPathsWithGeo(payload) {
+  const output = { items: [] };
+
+  payload.photos.photo.forEach((photo) => {
+    output.items.push({
+      media: {
+        m: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
+      },
+      latitude: photo.latitude,
+      longitude: photo.longitude,
+    });
+  });
+
+  return output;
+}
+
 server.route({
   method: 'GET',
   path: '/api/flickr/geo',
@@ -358,7 +374,7 @@ server.route({
         return;
       }
 
-      const output = flickrPaths(payload);
+      const output = flickrPathsWithGeo(payload);
       const contentType = response.headers['content-type'];
       reply(output).type(contentType);
     });
