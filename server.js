@@ -344,8 +344,8 @@ function flickrPathsWithGeo(payload) {
       media: {
         m: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
       },
-      latitude: photo.latitude,
-      longitude: photo.longitude,
+      latitude: parseFloat(photo.latitude),
+      longitude: parseFloat(photo.longitude),
     });
   });
 
