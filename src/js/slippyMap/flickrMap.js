@@ -1,7 +1,12 @@
 /* global document, google */
 
 function createMap(options) {
-  const center = (options && options.center) ? { lat: options.center.latitude, lng: options.center.longitude } : null;
+  let center;
+  if (options && options.center) {
+    center = { lat: options.center.latitude, lng: options.center.longitude };
+  } else {
+    center = null;
+  }
 
   return new google.maps.Map(document.getElementById('map'), {
     zoom: 19, // 1 is earth view from space, 20 is sidewalk zoom
@@ -13,7 +18,8 @@ function createPin(options) {
   const map = options.map;
 
   if (options.pinBounds) {
-    options.pinBounds.extend(new google.maps.LatLng(options.geocode.latitude, options.geocode.longitude));
+    const point = new google.maps.LatLng(options.geocode.latitude, options.geocode.longitude);
+    options.pinBounds.extend(point);
   }
 
   const marker = new google.maps.Marker({
