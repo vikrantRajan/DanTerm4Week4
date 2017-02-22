@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>eachLoop.html</title>
+  <meta charset="utf-8">
+  <title>eachLoop.html</title>
 </head>
 
 <body>
@@ -45,6 +45,16 @@
 // (HTML or XML) Elements
   $('li').each((index, value) => { // value is the HTML element as classic JavaScript
     $('body').append(`Technology number ${index} is ${$(value).text()}.<br>`);
+  });
+
+// JavaScript loops
+// Array
+  animals.forEach((animal) => {
+    $('body').append(`Animal is ${animal}.<br>`);
+  });
+// Object
+  Object.keys(produce).forEach((key) => {
+    $('body').append(`Produce ${key} is a ${produce[key]}.<br>`);
   });
 </script>
 </body>
