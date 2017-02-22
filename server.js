@@ -383,7 +383,25 @@ server.route({
   },
 });
 
+server.route({
+  method: 'GET',
+  path: '/api/facebook',
+  handler: (request, reply) => {
+    const accessToken = `${credentials.facebook.app_id}|${credentials.facebook.app_secret}`;
+    const address = `https://graph.facebook.com/v2.8/vancouver.institute.of.media.arts?fields=cover&access_token=${accessToken}`;
+
+    wreck.get(address, { json: true }, (error, response, payload) => {
+      if (error) {
+        reply(error);
+        return;
+      }
+
+      const contentType = response.headers['content-type'];
+      reply(payload).type(contentType);
+    });
+  },
+});
+
 server.start(() => {
   utils.print('Server running at:', server.info.uri);
 });
-
