@@ -342,7 +342,9 @@ function flickrPathsWithGeo(payload) {
   payload.photos.photo.forEach((photo) => {
     output.items.push({
       media: {
-        m: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
+        // size documentation https://www.flickr.com/services/api/misc.urls.html
+        // _t is thumbnail
+        m: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_t.jpg`,
       },
       latitude: parseFloat(photo.latitude),
       longitude: parseFloat(photo.longitude),
