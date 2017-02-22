@@ -47,7 +47,8 @@ function initFlickrMap() {
       const map = createMap();
 
       response.items.forEach((item) => {
-        createPin({ geocode: item, htmlBubble: '<b>Hello</b> World', map, pinBounds });
+        const htmlBubble = `<img src="${item.media.m}">`;
+        createPin({ geocode: item, htmlBubble, map, pinBounds });
       });
 
       map.fitBounds(pinBounds);
