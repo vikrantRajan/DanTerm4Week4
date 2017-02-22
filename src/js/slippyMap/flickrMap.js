@@ -36,7 +36,10 @@ function initFlickrMap() {
     success: (response) => {
       const firstPhoto = response.items[0];
       const map = createMap({ center: firstPhoto });
-      createPin({ geocode: firstPhoto, htmlBubble: '<b>Hello</b> World', map });
+
+      response.items.forEach((item) => {
+        createPin({ geocode: item, htmlBubble: '<b>Hello</b> World', map });
+      });
     },
   });
 }
