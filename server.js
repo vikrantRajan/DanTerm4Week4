@@ -2,6 +2,7 @@ const dust = require('hapi-dust');
 const Hapi = require('hapi');
 const inert = require('inert');
 const instagram = require('instagram-node');
+const mongoClient = require('mongodb').MongoClient;
 const querystring = require('querystring');
 const Twit = require('twit');
 const vision = require('vision');
@@ -401,7 +402,8 @@ server.route({
   method: 'GET',
   path: '/api/facebook',
   handler: (request, reply) => {
-    const address = getFacebookAddress({ pageCover: true });
+    const isPageCover = (request.query && request.query.pageCover);
+    const address = getFacebookAddress({ pageCover: isPageCover });
 
     wreck.get(address, { json: true }, (error, response, payload) => {
       if (error) {
@@ -410,6 +412,33 @@ server.route({
       }
 
       reply(payload).type('application/json');
+    });
+  },
+});
+
+server.route({
+  method: 'GET',
+  path: '/api/mongo',
+  handler: (request, reply) => {
+    // port is learned from mongod.exe
+    // mongo.exe db outputs test
+    const address = 'mongodb://localhost:27017/test';
+
+    mongoClient.connect(address, (connectError, db) => {
+      if (connectError) {
+        throw connectError;
+      }
+
+      const col = db.collection('classroom');
+
+      col.find({}).toArray((error, items) => {
+        if (error) {
+          throw error;
+        }
+
+        reply(items);
+        db.close();
+      });
     });
   },
 });
