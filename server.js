@@ -402,7 +402,7 @@ server.route({
   method: 'GET',
   path: '/api/facebook',
   handler: (request, reply) => {
-    const isPageCover = (request.query && request.query.pageCover);
+    const isPageCover = (request.query && request.query.pageCover && request.query.pageCover === 'true');
     const address = getFacebookAddress({ pageCover: isPageCover });
 
     wreck.get(address, { json: true }, (error, response, payload) => {
@@ -429,7 +429,7 @@ server.route({
         throw connectError;
       }
 
-      const col = db.collection('classroom');
+      const col = db.collection('beer');
 
       col.find({}).toArray((error, items) => {
         if (error) {
