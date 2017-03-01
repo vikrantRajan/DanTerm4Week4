@@ -396,8 +396,7 @@ server.route({
         return;
       }
 
-      const contentType = response.headers['content-type'];
-      reply(payload).type(contentType);
+      reply(payload).type('application/json');
     });
   },
 });
