@@ -383,12 +383,25 @@ server.route({
   },
 });
 
+function getFacebookAddress(options) {
+  const isCoverRequest = (options && options.pageCover === true);
+
+  const accessParam = `access_token=${credentials.facebook.app_id}|${credentials.facebook.app_secret}`;
+  const endpoint = 'https://graph.facebook.com/v2.8';
+
+  const profilePicPartial = '576450195?fields=picture';
+  const pageCoverPartial = 'vancouver.institute.of.media.arts?fields=cover';
+
+  const partial = isCoverRequest ? pageCoverPartial : profilePicPartial;
+
+  return `${endpoint}/${partial}&${accessParam}`;
+}
+
 server.route({
   method: 'GET',
   path: '/api/facebook',
   handler: (request, reply) => {
-    const accessToken = `${credentials.facebook.app_id}|${credentials.facebook.app_secret}`;
-    const address = `https://graph.facebook.com/v2.8/vancouver.institute.of.media.arts?fields=cover&access_token=${accessToken}`;
+    const address = getFacebookAddress({ pageCover: true });
 
     wreck.get(address, { json: true }, (error, response, payload) => {
       if (error) {
