@@ -1,6 +1,6 @@
 {
   "name": "js-starter",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Node.js site scaffolding with unit testing",
   "main": "server.js",
   "scripts": {
@@ -45,7 +45,6 @@
   "dependencies": {
     "dustjs-linkedin": "^2.7.2",
     "hapi": "^16.0.1",
-    "hapi-dust": "^2.0.0",
     "inert": "^4.0.0",
     "instagram-node": "^0.5.8",
     "mongodb": "^2.2.24",
