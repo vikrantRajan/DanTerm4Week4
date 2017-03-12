@@ -1,0 +1,371 @@
+const instagram = require('instagram-node');
+const mongoClient = require('mongodb').MongoClient;
+const querystring = require('querystring');
+const Twit = require('twit');
+const wreck = require('wreck');
+
+const credentials = require('../credentials.json');
+const twitterUtils = require('./js/twitter/formatDate');
+const utils = require('./js/utils');
+
+exports.register = (server, pluginOptions, next) => {
+  server.route({
+    method: 'GET',
+    path: '/fruit',
+    handler: (request, reply) => {
+      // Browser web address http://localhost:3000/fruit?format=json
+      utils.print('Query string format value is ', request.query.format); // outputs blank, xml, json
+      // PHP is echo($_GET['format']) // outputs blank, xml, json
+      if (request.query.format === 'xml') {
+        const response = reply('<fruits><fruit name="apple">green</fruit><fruit name="banana">yellow</fruit><fruit name="cherry">red</fruit></fruits>');
+        response.type('application/xml');
+      } else { // default of JSON
+        reply({
+          apple: 'green',
+          banana: 'yellow',
+          cherry: 'red',
+        });
+      }
+    },
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/slow-fruit',
+    handler: (request, reply) => {
+      function output() {
+        // Browser web address http://localhost:3000/fruit?format=json
+        utils.print('Query string format value is ', request.query.format); // outputs blank, xml, json
+        // PHP is echo($_GET['format']) // outputs blank, xml, json
+        if (request.query.format === 'xml') {
+          const response = reply('<fruits><fruit name="apple">green</fruit><fruit name="banana">yellow</fruit><fruit name="cherry">red</fruit></fruits>');
+          response.type('application/xml');
+        } else { // default of JSON
+          reply({
+            apple: 'green',
+            banana: 'yellow',
+            cherry: 'red',
+            durian: 'khaki',
+          });
+        }
+      }
+
+      setTimeout(output, 1000);
+    },
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/rss',
+    handler: (request, reply) => {
+      const url = request.query.url || 'http://www.cbc.ca/cmlink/rss-canada';
+
+      wreck.get(url, (error, response, payload) => {
+        if (response.statusCode === 200) {
+          reply(payload).type('application/xml');
+        } else {
+          throw new URIError(`Service call failed with HTTP status code: ${response.statusCode}`);
+        }
+      }).on('error', (e) => {
+        throw new URIError(`Service call failed due to error: ${e.message}`);
+      });
+    },
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/autocomplete',
+    handler: (request, reply) => {
+      const output = {};
+      const keyword = request.query.keyword;
+      const places = [];
+      const reg = new RegExp(keyword);
+      const sugg = [];
+      if (keyword !== '') {
+        places.push('Afghanistan');
+        places.push('Albania');
+        places.push('Algeria');
+        places.push('American Samoa');
+        places.push('Antarctica');
+        places.push('Argentina');
+        places.push('Armenia');
+        places.push('Aruba');
+        places.push('Australia');
+        places.push('Austria');
+        places.push('Bahamas');
+        places.push('Bangladesh');
+        places.push('Barbados');
+        places.push('Belarus');
+        places.push('Belgium');
+        places.push('Belize');
+        places.push('Bermuda');
+        places.push('Bolivia');
+        places.push('Brazil');
+        places.push('Bulgaria');
+        places.push('Cambodia');
+        places.push('Cameroon');
+        places.push('Canada');
+        places.push('Cayman Islands');
+        places.push('Chad');
+        places.push('Chile');
+        places.push('China');
+        places.push('Colombia');
+        places.push('Congo');
+        places.push('Cook Islands');
+        places.push('Costa Rica');
+        places.push('Côte d\'Ivoire');
+        places.push('Croatia');
+        places.push('Cuba');
+        places.push('Cyprus');
+        places.push('Czech Republic');
+      }
+      for (let i = 0; i < places.length; i += 1) {
+        if (reg.test(places[i].toLowerCase())) {
+          sugg.push(places[i]);
+        }
+      }
+      if (sugg.length === 0) {
+        sugg.push('No matches found');
+      }
+      output.items = sugg;
+
+      setTimeout(() => reply(output), 1500);  // 1.5 sec
+    },
+  });
+
+  function flickrPaths(payload) {
+    const output = { items: [] };
+
+    payload.photos.photo.forEach((photo) => {
+      output.items.push({ media: { m: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg` } });
+    });
+
+    return output;
+  }
+
+  server.route({
+    method: 'GET',
+    path: '/flickr',
+    handler: (request, reply) => {
+      const apiKey = credentials.flickr.api_key;
+      const url = `https:/.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=yvr&format=json&nojsoncallback=1`;
+
+      wreck.get(url, { json: true }, (error, response, payload) => {
+        if (error) {
+          reply(error);
+          return;
+        }
+
+        const output = flickrPaths(payload);
+        const contentType = response.headers['content-type'];
+        reply(output).type(contentType);
+      });
+    },
+  });
+
+  function twitterFormat(rawData) {
+    return rawData.map(tweet => ({
+      created_at: twitterUtils.formatTwitterDate(tweet.created_at),
+      text: tweet.text,
+    }));
+  }
+
+  server.route({
+    method: 'GET',
+    path: '/twitter',
+    handler: (request, reply) => {
+      const T = new Twit({
+        consumer_key: credentials.twitter.consumer_key,
+        consumer_secret: credentials.twitter.consumer_secret,
+        access_token: credentials.twitter.access_token,
+        access_token_secret: credentials.twitter.access_token_secret,
+        timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
+      });
+
+      T.get('statuses/user_timeline', { screen_name: 'vanarts' }, (error, rawData) => {
+        if (error) {
+          reply(error.message);
+          return;
+        }
+
+        reply(twitterFormat(rawData));
+      });
+    },
+  });
+
+  const ig = instagram.instagram();
+  const redirectLandingAddress = 'http://localhost:8080/instagram-login';
+  server.route({
+    method: 'GET',
+    path: '/instagram-login',
+    handler: (request, reply) => {
+      if (request.query.code) {
+        ig.authorize_user(request.query.code, redirectLandingAddress, (authError, result) => {
+          if (authError) {
+            reply(`Error found ${authError.message}`);
+            return;
+          }
+
+          credentials.instagram.access_token = result.access_token;
+
+          ig.use({
+            access_token: credentials.instagram.access_token,
+            client_secret: credentials.instagram.client_secret,
+          });
+
+          // error, medias, pagination, remaining, limit
+          ig.tag_media_recent('vancouver', { count: 10 }, (mediaError, media) => {
+            if (mediaError) {
+              reply(`Error found ${mediaError.message}`);
+              return;
+            }
+
+            reply(media);
+          });
+        });
+      } else {
+        ig.use({
+          client_id: credentials.instagram.client_id,
+          client_secret: credentials.instagram.client_secret,
+        });
+
+        reply()
+          .redirect(ig.get_authorization_url(redirectLandingAddress, { scope: ['public_content'] }));
+      }
+    },
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/instagram',
+    handler: (request, reply) => {
+      ig.use({
+        access_token: credentials.instagram.access_token,
+        client_secret: credentials.instagram.client_secret,
+      });
+
+      // error, medias, pagination, remaining, limit
+      ig.tag_media_recent('vancouver', { count: 10 }, (mediaError, media) => {
+        if (mediaError) {
+          reply(`Error found ${mediaError.message}`);
+          return;
+        }
+
+        reply(media);
+      });
+    },
+  });
+
+  function flickrPathsWithGeo(payload) {
+    const output = { items: [] };
+
+    payload.photos.photo.forEach((photo) => {
+      output.items.push({
+        media: {
+          // size documentation https://www.flickr.com/services/misc.urls.html
+          // _t is thumbnail
+          m: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_t.jpg`,
+        },
+        latitude: parseFloat(photo.latitude),
+        longitude: parseFloat(photo.longitude),
+      });
+    });
+
+    return output;
+  }
+
+  server.route({
+    method: 'GET',
+    path: '/flickr/geo',
+    handler: (request, reply) => {
+      const apiKey = credentials.flickr.api_key;
+      const flickrRequest = {
+        api_key: apiKey,
+        extras: 'geo',
+        format: 'json',
+        has_geo: 1,
+        method: 'flickr.photos.search',
+        nojsoncallback: 1,
+        tags: 'yvr',
+      };
+      const url = `https:/.flickr.com/services/rest/?${querystring.stringify(flickrRequest)}`;
+
+      wreck.get(url, { json: true }, (error, response, payload) => {
+        if (error) {
+          reply(error);
+          return;
+        }
+
+        const output = flickrPathsWithGeo(payload);
+        const contentType = response.headers['content-type'];
+        reply(output).type(contentType);
+      });
+    },
+  });
+
+  function getFacebookAddress(options) {
+    const isCoverRequest = (options && options.pageCover === true);
+
+    const accessParam = `access_token=${credentials.facebook.app_id}|${credentials.facebook.app_secret}`;
+    const endpoint = 'https://graph.facebook.com/v2.8';
+
+    const profilePicPartial = '576450195?fields=picture';
+    const pageCoverPartial = 'vancouver.institute.of.media.arts?fields=cover';
+
+    const partial = isCoverRequest ? pageCoverPartial : profilePicPartial;
+
+    return `${endpoint}/${partial}&${accessParam}`;
+  }
+
+  server.route({
+    method: 'GET',
+    path: '/facebook',
+    handler: (request, reply) => {
+      const isPageCover = (request.query && request.query.pageCover && request.query.pageCover === 'true');
+      const address = getFacebookAddress({ pageCover: isPageCover });
+
+      wreck.get(address, { json: true }, (error, response, payload) => {
+        if (error) {
+          reply(error);
+          return;
+        }
+
+        reply(payload).type('application/json');
+      });
+    },
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/mongo',
+    handler: (request, reply) => {
+      // port is learned from mongod.exe
+      // mongo.exe db outputs test
+      const address = 'mongodb://localhost:27017/test';
+
+      mongoClient.connect(address, (connectError, db) => {
+        if (connectError) {
+          throw connectError;
+        }
+
+        const col = db.collection('beer');
+
+        col.find({}).toArray((error, items) => {
+          if (error) {
+            throw error;
+          }
+
+          reply(items);
+          db.close();
+        });
+      });
+    },
+  });
+
+  next();
+};
+
+exports.register.attributes = {
+  name: 'api',
+  version: '1.0.0',
+};

@@ -6,7 +6,7 @@ const pkg = require('./package.json');
 
 const expectRules = { errorOnFailure: true };
 const paths = {
-  jsAll: ['*.js', 'src/js/**/*.js', 'src/test/**/*.js'],
+  jsAll: ['*.js', 'src/*.js', 'src/js/**/*.js', 'src/test/**/*.js'],
   jsPublic: ['src/js/**/*.js'],
   jsTests: ['src/test/**/*.js'],
 };
