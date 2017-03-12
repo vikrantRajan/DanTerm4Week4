@@ -4,18 +4,20 @@ const inert = require('inert');
 const vision = require('vision');
 
 const libApi = require('./src/api');
+const libSlides = require('./src/slides');
 const utils = require('./src/js/utils');
 
 const server = new Hapi.Server();
 server.connection({ port: 8080 });
-
 dust.config.whitespace = true;
-
-server.register([
-  { register: libApi, routes: { prefix: '/api' } },
+const plugins = [
   inert,
   vision,
-], () => {
+  { register: libApi, routes: { prefix: '/api' } },
+  { register: libSlides, routes: { prefix: '/slides' } },
+];
+
+function registerCallback() {
   server.views({
     engines: {
       dust: {
@@ -46,7 +48,9 @@ server.register([
     partialsPath: 'src/views',
     layoutPath: 'src/views',
   });
-});
+}
+
+server.register(plugins, registerCallback);
 
 // Register route for static assets
 server.route({
@@ -69,38 +73,6 @@ server.route({
   method: 'GET',
   path: '/',
   handler: (request, reply) => reply.view('home'),
-  config: { tags: ['starter'] },
-});
-
-/*
- *      #####
- *     #     # #      # #####  ######  ####
- *     #       #      # #    # #      #
- *      #####  #      # #    # #####   ####
- *           # #      # #    # #           #
- *     #     # #      # #    # #      #    #
- *      #####  ###### # #####  ######  ####
- *
- */
-
-server.route({
-  method: 'GET',
-  path: '/slides',
-  handler: (request, reply) => reply.view('slides'),
-  config: { tags: ['starter'] },
-});
-
-server.route({
-  method: 'GET',
-  path: '/slides/client-side',
-  handler: (request, reply) => reply.view('slide-client-side'),
-  config: { tags: ['starter'] },
-});
-
-server.route({
-  method: 'GET',
-  path: '/slides/js-var-types',
-  handler: (request, reply) => reply.view('slide-js-var-types'),
   config: { tags: ['starter'] },
 });
 
