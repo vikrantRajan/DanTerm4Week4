@@ -1,6 +1,6 @@
 const salesTaxData = {
   meta: {
-    copyright: 'https://github.com/wiredmax/canadian-sales-tax/blob/master/dist/json/canadian-sales-tax.json',
+    copyright: 'https://github.com/wiredmax/canadian-sales-tax/blob/master/dist/json/canadian-sales-tax.json'
   },
   provinces: {
     AB: {
@@ -10,9 +10,9 @@ const salesTaxData = {
           code: 'GST',
           name: 'Goods and Services Tax',
           type: 'federal',
-          tax: 0.05,
-        },
-      ],
+          tax: 0.05
+        }
+      ]
     },
     BC: {
       name: 'British Columbia',
@@ -21,15 +21,15 @@ const salesTaxData = {
           code: 'GST',
           name: 'Goods and Services Tax',
           type: 'federal',
-          tax: 0.05,
+          tax: 0.05
         },
         {
           code: 'PST',
           name: 'Provincial sales tax',
           type: 'provincial',
-          tax: 0.07,
-        },
-      ],
+          tax: 0.07
+        }
+      ]
     },
     MB: {
       name: 'Manitoba',
@@ -38,15 +38,15 @@ const salesTaxData = {
           code: 'GST',
           name: 'Goods and Services Tax',
           type: 'federal',
-          tax: 0.05,
+          tax: 0.05
         },
         {
           code: 'PST',
           name: 'Provincial sales tax',
           type: 'provincial',
-          tax: 0.08,
-        },
-      ],
+          tax: 0.08
+        }
+      ]
     },
     NB: {
       name: 'New Brunswick',
@@ -55,9 +55,9 @@ const salesTaxData = {
           code: 'HST',
           name: 'Harmonized Sales Tax',
           type: 'harmonized',
-          tax: 0.13,
-        },
-      ],
+          tax: 0.13
+        }
+      ]
     },
     NL: {
       name: 'Newfoundland and Labrador',
@@ -66,9 +66,9 @@ const salesTaxData = {
           code: 'HST',
           name: 'Harmonized Sales Tax',
           type: 'harmonized',
-          tax: 0.13,
-        },
-      ],
+          tax: 0.13
+        }
+      ]
     },
     NS: {
       name: 'Nova Scotia',
@@ -77,9 +77,9 @@ const salesTaxData = {
           code: 'HST',
           name: 'Harmonized Sales Tax',
           type: 'harmonized',
-          tax: 0.15,
-        },
-      ],
+          tax: 0.15
+        }
+      ]
     },
     NT: {
       name: 'Northwest Territories',
@@ -88,9 +88,9 @@ const salesTaxData = {
           code: 'GST',
           name: 'Goods and Services Tax',
           type: 'federal',
-          tax: 0.05,
-        },
-      ],
+          tax: 0.05
+        }
+      ]
     },
     NU: {
       name: 'Nunavut',
@@ -99,9 +99,9 @@ const salesTaxData = {
           code: 'GST',
           name: 'Goods and Services Tax',
           type: 'federal',
-          tax: 0.05,
-        },
-      ],
+          tax: 0.05
+        }
+      ]
     },
     ON: {
       name: 'Ontario',
@@ -110,9 +110,9 @@ const salesTaxData = {
           code: 'HST',
           name: 'Harmonized Sales Tax',
           type: 'harmonized',
-          tax: 0.13,
-        },
-      ],
+          tax: 0.13
+        }
+      ]
     },
     PE: {
       name: 'Prince Edward Island',
@@ -121,9 +121,9 @@ const salesTaxData = {
           code: 'HST',
           name: 'Harmonized Sales Tax',
           type: 'harmonized',
-          tax: 0.14,
-        },
-      ],
+          tax: 0.14
+        }
+      ]
     },
     QC: {
       name: 'Quebec',
@@ -132,15 +132,15 @@ const salesTaxData = {
           code: 'GST',
           name: 'Goods and Services Tax',
           type: 'federal',
-          tax: 0.05,
+          tax: 0.05
         },
         {
           code: 'QST',
           name: 'Quebec Sales Tax',
           type: 'provincial',
-          tax: 0.09975,
-        },
-      ],
+          tax: 0.09975
+        }
+      ]
     },
     SK: {
       name: 'Saskatchewan',
@@ -149,15 +149,15 @@ const salesTaxData = {
           code: 'GST',
           name: 'Goods and Services Tax',
           type: 'federal',
-          tax: 0.05,
+          tax: 0.05
         },
         {
           code: 'PST',
           name: 'Provincial sales tax',
           type: 'provincial',
-          tax: 0.05,
-        },
-      ],
+          tax: 0.05
+        }
+      ]
     },
     YT: {
       name: 'Yukon',
@@ -166,16 +166,16 @@ const salesTaxData = {
           code: 'GST',
           name: 'Goods and Services Tax',
           type: 'federal',
-          tax: 0.05,
-        },
-      ],
-    },
-  },
+          tax: 0.05
+        }
+      ]
+    }
+  }
 };
 
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    salesTaxData,
+    salesTaxData
   };
 }

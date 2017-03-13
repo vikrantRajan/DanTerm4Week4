@@ -9,13 +9,13 @@ function readFilmAjax() {
     },
     error: (jqXHR, textStatus, errorThrown) => {
       console.log(errorThrown); // eslint-disable-line no-console
-    },
+    }
   });
 }
 
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    readFilmAjax,
+    readFilmAjax
   };
 }

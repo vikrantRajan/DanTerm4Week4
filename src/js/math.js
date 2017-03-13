@@ -7,6 +7,6 @@ function sum(a, b) {
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    sum,
+    sum
   };
 }

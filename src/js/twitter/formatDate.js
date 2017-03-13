@@ -28,6 +28,6 @@ function formatTwitterDate(stamp, compareDate = new Date()) {
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    formatTwitterDate,
+    formatTwitterDate
   };
 }

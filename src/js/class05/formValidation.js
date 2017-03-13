@@ -20,11 +20,11 @@ function formValidation() {
   function processForm(event) {
     const validationRules = {
       email: {
-        rules: ['blank', 'email'],
+        rules: ['blank', 'email']
       },
       phone: {
-        rules: ['blank'],
-      },
+        rules: ['blank']
+      }
     };
 
     const fieldIds = Object.keys(validationRules);
@@ -48,6 +48,6 @@ function formValidation() {
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    formValidation,
+    formValidation
   };
 }

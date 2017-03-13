@@ -23,10 +23,10 @@ exports.register = (server, pluginOptions, next) => {
         reply({
           apple: 'green',
           banana: 'yellow',
-          cherry: 'red',
+          cherry: 'red'
         });
       }
-    },
+    }
   });
 
   server.route({
@@ -45,13 +45,13 @@ exports.register = (server, pluginOptions, next) => {
             apple: 'green',
             banana: 'yellow',
             cherry: 'red',
-            durian: 'khaki',
+            durian: 'khaki'
           });
         }
       }
 
       setTimeout(output, 1000);
-    },
+    }
   });
 
   server.route({
@@ -69,7 +69,7 @@ exports.register = (server, pluginOptions, next) => {
       }).on('error', (e) => {
         throw new URIError(`Service call failed due to error: ${e.message}`);
       });
-    },
+    }
   });
 
   server.route({
@@ -130,7 +130,7 @@ exports.register = (server, pluginOptions, next) => {
       output.items = sugg;
 
       setTimeout(() => reply(output), 1500);  // 1.5 sec
-    },
+    }
   });
 
   function flickrPaths(payload) {
@@ -160,13 +160,13 @@ exports.register = (server, pluginOptions, next) => {
         const contentType = response.headers['content-type'];
         reply(output).type(contentType);
       });
-    },
+    }
   });
 
   function twitterFormat(rawData) {
     return rawData.map(tweet => ({
       created_at: twitterUtils.formatTwitterDate(tweet.created_at),
-      text: tweet.text,
+      text: tweet.text
     }));
   }
 
@@ -179,7 +179,7 @@ exports.register = (server, pluginOptions, next) => {
         consumer_secret: credentials.twitter.consumer_secret,
         access_token: credentials.twitter.access_token,
         access_token_secret: credentials.twitter.access_token_secret,
-        timeout_ms: 60 * 1000,  // optional HTTP request timeout to apply to all requests.
+        timeout_ms: 60 * 1000  // optional HTTP request timeout to apply to all requests.
       });
 
       T.get('statuses/user_timeline', { screen_name: 'vanarts' }, (error, rawData) => {
@@ -190,7 +190,7 @@ exports.register = (server, pluginOptions, next) => {
 
         reply(twitterFormat(rawData));
       });
-    },
+    }
   });
 
   const ig = instagram.instagram();
@@ -210,7 +210,7 @@ exports.register = (server, pluginOptions, next) => {
 
           ig.use({
             access_token: credentials.instagram.access_token,
-            client_secret: credentials.instagram.client_secret,
+            client_secret: credentials.instagram.client_secret
           });
 
           // error, medias, pagination, remaining, limit
@@ -226,13 +226,13 @@ exports.register = (server, pluginOptions, next) => {
       } else {
         ig.use({
           client_id: credentials.instagram.client_id,
-          client_secret: credentials.instagram.client_secret,
+          client_secret: credentials.instagram.client_secret
         });
 
         reply()
           .redirect(ig.get_authorization_url(redirectLandingAddress, { scope: ['public_content'] }));
       }
-    },
+    }
   });
 
   server.route({
@@ -241,7 +241,7 @@ exports.register = (server, pluginOptions, next) => {
     handler: (request, reply) => {
       ig.use({
         access_token: credentials.instagram.access_token,
-        client_secret: credentials.instagram.client_secret,
+        client_secret: credentials.instagram.client_secret
       });
 
       // error, medias, pagination, remaining, limit
@@ -253,7 +253,7 @@ exports.register = (server, pluginOptions, next) => {
 
         reply(media);
       });
-    },
+    }
   });
 
   function flickrPathsWithGeo(payload) {
@@ -264,10 +264,10 @@ exports.register = (server, pluginOptions, next) => {
         media: {
           // size documentation https://www.flickr.com/services/misc.urls.html
           // _t is thumbnail
-          m: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_t.jpg`,
+          m: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_t.jpg`
         },
         latitude: parseFloat(photo.latitude),
-        longitude: parseFloat(photo.longitude),
+        longitude: parseFloat(photo.longitude)
       });
     });
 
@@ -286,7 +286,7 @@ exports.register = (server, pluginOptions, next) => {
         has_geo: 1,
         method: 'flickr.photos.search',
         nojsoncallback: 1,
-        tags: 'yvr',
+        tags: 'yvr'
       };
       const url = `https:/.flickr.com/services/rest/?${querystring.stringify(flickrRequest)}`;
 
@@ -300,7 +300,7 @@ exports.register = (server, pluginOptions, next) => {
         const contentType = response.headers['content-type'];
         reply(output).type(contentType);
       });
-    },
+    }
   });
 
   function getFacebookAddress(options) {
@@ -332,7 +332,7 @@ exports.register = (server, pluginOptions, next) => {
 
         reply(payload).type('application/json');
       });
-    },
+    }
   });
 
   server.route({
@@ -359,7 +359,7 @@ exports.register = (server, pluginOptions, next) => {
           db.close();
         });
       });
-    },
+    }
   });
 
   next();
@@ -367,5 +367,5 @@ exports.register = (server, pluginOptions, next) => {
 
 exports.register.attributes = {
   name: 'api',
-  version: '1.0.0',
+  version: '1.0.0'
 };

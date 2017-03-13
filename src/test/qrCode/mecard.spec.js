@@ -8,7 +8,7 @@ describe('QR Code generator', () => {
       fname: 'Forest',
       lname: 'Gump',
       title: 'Film character',
-      url: 'http://www.bubbagump.com/',
+      url: 'http://www.bubbagump.com/'
     };
     const fullMecard = 'MECARD:N:Gump,Forest;NOTE:Film character;URL:http://www.bubbagump.com/;;';
     it('has openening format', () => {

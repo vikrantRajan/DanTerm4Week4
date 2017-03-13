@@ -4,7 +4,7 @@ const utils = {
     if (params) {
       params.forEach(param => console.log(param)); // eslint-disable-line no-console
     }
-  },
+  }
 };
 
 // If Node.js then export as public

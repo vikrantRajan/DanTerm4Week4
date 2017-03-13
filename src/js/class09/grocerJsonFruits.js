@@ -6,13 +6,13 @@ function grocerJsonFruitsDelay() {
       $.each(response, (fruitName, colour) => {
         $fruits.append(`<li style="background-color: ${colour}">${fruitName}</li>`);
       });
-    },
+    }
   });
 }
 
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    grocerJsonFruitsDelay,
+    grocerJsonFruitsDelay
   };
 }

@@ -3,7 +3,7 @@ const keys = {
   left: 37,
   up: 38,
   right: 39,
-  down: 40,
+  down: 40
 };
 let autocompletePosition = 0;
 function hightlightSuggestion(direction) {
@@ -58,12 +58,12 @@ function callService(keyword) {
   $.ajax({
     url: '/api/autocomplete',
     data: {
-      keyword,
+      keyword
     },
     success: (response) => {
       listenForArrows();
       formatCountries(response.items);
-    },
+    }
   });
 }
 
@@ -82,6 +82,6 @@ function autocomplete() {
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    autocomplete,
+    autocomplete
   };
 }

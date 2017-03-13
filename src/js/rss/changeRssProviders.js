@@ -9,7 +9,7 @@ function changeRssProvider() {
     $.ajax({
       url: '/api/rss',
       data: {
-        url: address,
+        url: address
       },
       success: (response) => {
         $(response).find('item').each((index, item) => {
@@ -19,7 +19,7 @@ function changeRssProvider() {
 
           $news.append(`<li><a href="${link}">${title}</a><p>${description}</p></li>`);
         });
-      },
+      }
     });
   });
 }
@@ -27,6 +27,6 @@ function changeRssProvider() {
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    changeRssProvider,
+    changeRssProvider
   };
 }

@@ -10,7 +10,7 @@ function calculateTax(incomeInput) { // number input
     { from: 0, percent: 0.15 },
     { from: 43953, percent: 0.22 },
     { from: 87907, percent: 0.26 },
-    { from: 136270, percent: 0.29 },
+    { from: 136270, percent: 0.29 }
   ];
   let tax = 0;
 
@@ -29,6 +29,6 @@ function calculateTax(incomeInput) { // number input
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
     calculateTax,
-    currencyFormat,
+    currencyFormat
   };
 }

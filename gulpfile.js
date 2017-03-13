@@ -8,7 +8,7 @@ const expectRules = { errorOnFailure: true };
 const paths = {
   jsAll: ['*.js', 'src/*.js', 'src/js/**/*.js', 'src/test/**/*.js'],
   jsPublic: ['src/js/**/*.js'],
-  jsTests: ['src/test/**/*.js'],
+  jsTests: ['src/test/**/*.js']
 };
 const plugins = loadPlugins({ camelize: true });
 const DESTINATION_FOLDER = 'public/';

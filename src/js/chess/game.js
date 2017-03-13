@@ -6,11 +6,11 @@ function chess() {
       left: 37,
       up: 38,
       right: 39,
-      down: 40,
+      down: 40
     };
     const corner = { // valid coordinates; next more is invalid
       topLeft: 50,
-      bottomRight: 750,
+      bottomRight: 750
     };
     $(document).keydown((event) => {
       let isArrow = false;
@@ -48,6 +48,6 @@ function chess() {
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    chess,
+    chess
   };
 }

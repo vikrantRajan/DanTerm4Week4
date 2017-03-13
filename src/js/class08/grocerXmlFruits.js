@@ -8,13 +8,13 @@ function grocerXmlFruits() {
         const fruitName = $(element).attr('name');
         $fruits.append(`<li style="background-color: ${colour}">${fruitName}</li>`);
       });
-    },
+    }
   });
 }
 
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    grocerXmlFruits,
+    grocerXmlFruits
   };
 }

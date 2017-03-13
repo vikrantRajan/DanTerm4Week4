@@ -14,7 +14,7 @@ const plugins = [
   inert,
   vision,
   { register: libApi, routes: { prefix: '/api' } },
-  { register: libSlides, routes: { prefix: '/slides' } },
+  { register: libSlides, routes: { prefix: '/slides' } }
 ];
 
 function registerCallback() {
@@ -39,14 +39,14 @@ function registerCallback() {
             } else {
               dust.filters[name] = helper;
             }
-          },
-        },
-      },
+          }
+        }
+      }
     },
     relativeTo: __dirname,
     path: 'src/views',
     partialsPath: 'src/views',
-    layoutPath: 'src/views',
+    layoutPath: 'src/views'
   });
 }
 
@@ -58,22 +58,22 @@ server.route({
   path: '/{path*}',
   config: {
     description: 'Serve static content',
-    tags: ['starter'],
+    tags: ['starter']
   },
   handler: {
     directory: {
       path: 'public',
       listing: true,
-      index: false,
-    },
-  },
+      index: false
+    }
+  }
 });
 
 server.route({
   method: 'GET',
   path: '/',
   handler: (request, reply) => reply.view('home'),
-  config: { tags: ['starter'] },
+  config: { tags: ['starter'] }
 });
 
 server.start(() => {

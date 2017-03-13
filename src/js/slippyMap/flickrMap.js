@@ -10,7 +10,7 @@ function createMap(options) {
 
   return new google.maps.Map(document.getElementById('map'), {
     zoom: 19, // 1 is earth view from space, 20 is sidewalk zoom
-    center,
+    center
   });
 }
 
@@ -25,13 +25,13 @@ function createPin(options) {
   const marker = new google.maps.Marker({
     position: {
       lat: options.geocode.latitude,
-      lng: options.geocode.longitude,
+      lng: options.geocode.longitude
     },
-    map,
+    map
   });
 
   const infowindow = new google.maps.InfoWindow({
-    content: options.htmlBubble,
+    content: options.htmlBubble
   });
 
   marker.addListener('click', () => {
@@ -52,13 +52,13 @@ function initFlickrMap() {
       });
 
       map.fitBounds(pinBounds);
-    },
+    }
   });
 }
 
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    initFlickrMap,
+    initFlickrMap
   };
 }

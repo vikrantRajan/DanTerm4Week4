@@ -11,13 +11,13 @@ function getRemoteRss() {
 
         $news.append(`<li><a href="${link}">${title}</a><p>${description}</p></li>`);
       });
-    },
+    }
   });
 }
 
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    getRemoteRss,
+    getRemoteRss
   };
 }

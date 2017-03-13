@@ -12,13 +12,13 @@ function twitter() {
       // bookend HTML elements
       // <li>text line 1</li><li>text line 2</li>
       $('#news').append(`<li>${lines.join('</li><li>')}</li>`);
-    },
+    }
   });
 }
 
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    twitter,
+    twitter
   };
 }

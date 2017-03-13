@@ -26,7 +26,7 @@ function buildMecard() {
       fname,
       lname,
       title,
-      url,
+      url
     });
 
     $('#mecard').val(mecard);
@@ -41,6 +41,6 @@ function buildMecard() {
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
     buildMecard,
-    mecardFormat,
+    mecardFormat
   };
 }

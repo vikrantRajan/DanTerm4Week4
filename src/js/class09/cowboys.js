@@ -24,13 +24,13 @@ function cowboys() {
       $characters.change(function change() { // using *function* for the *this* reference
         $('#actor').text(this.value);
       });
-    },
+    }
   });
 }
 
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    cowboys,
+    cowboys
   };
 }

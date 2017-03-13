@@ -3,7 +3,7 @@
 function createMap(option) {
   return new google.maps.Map(document.getElementById('map'), {
     zoom: 19, // 1 is earth view from space, 20 is sidewalk zoom
-    center: option.center,
+    center: option.center
   });
 }
 
@@ -12,11 +12,11 @@ function createPin(options) {
 
   const marker = new google.maps.Marker({
     position: options.geocode,
-    map,
+    map
   });
 
   const infowindow = new google.maps.InfoWindow({
-    content: options.htmlBubble,
+    content: options.htmlBubble
   });
 
   marker.addListener('click', () => {
@@ -34,6 +34,6 @@ function initMap() {
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    initMap,
+    initMap
   };
 }
