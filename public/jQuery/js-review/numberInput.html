@@ -30,6 +30,8 @@
 		window.alert('$' + (count * size));
 		// todo inclass: apply GST 5% to total bill
 		var gst = 0.05;
+		window.alert('$' + (count * size) * (1 + gst)); // $25.20000000000000000003
+		window.alert('$' + Math.ceil((count * size) * (1 + gst))); // $26
 	</script>
 </body>
 </html>
