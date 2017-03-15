@@ -25,10 +25,11 @@
 		<option value="20">Large</option>
 	</select>
 	<script>
-		// todo inclass: alert total bill of pizzas that cost $12 each
 		var count = parseInt(document.getElementById('count').value, 10);
 		var size = parseFloat(document.getElementById('size').value);
 		window.alert('$' + (count * size));
+		// todo inclass: apply GST 5% to total bill
+		var gst = 0.05;
 	</script>
 </body>
 </html>
