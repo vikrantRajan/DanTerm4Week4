@@ -46,7 +46,7 @@
             <h2>Alert</h2>
               <p>Broadcast a message from JavaScript to the web user</p>
               <pre><code contenteditable>&lt;body&gt;&lt;script&gt;
-  window.alert("Hello World!");
+  window.alert('Hello World!');
 &lt;/script&gt;&lt;/body&gt;</code></pre>
           </section>
         </section>

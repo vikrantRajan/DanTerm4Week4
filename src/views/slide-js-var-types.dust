@@ -25,7 +25,7 @@
         <section>
           <h2>String</h2>
           <h3>a piece of text</h3>
-          <pre><code contenteditable>var city = "Vancouver";
+          <pre><code contenteditable>var city = 'Vancouver';
 var word = "n" + 'e' + 'w' + "s"; // string concatenation
 // notice either quotation (") and apostrophe (') is allowed</code></pre>
           <p><img src="../assets/string-pieces.jpg"></p>
@@ -57,7 +57,7 @@ showMsg(); // execute</code></pre>
             <h3>a structure of properties and methods</h3>
             <pre><code contenteditable>var json = { property: true, method: function (param) { return param + this.property; } };
   json.property = 'overwritten'; // properties are variables that can either set or get
-  json.method("Property "); // parentheses indicate a method</code></pre>
+  json.method('Property '); // parentheses indicate a method</code></pre>
             <p><small>Resource <a href="json.html">JSON</a></small></p>
           </section>
 
@@ -91,22 +91,22 @@ alert('Method: ' + now.getFullYear());</code></pre>
           <section>
             <h1>Array</h1>
             <h2>a list of variables</h2>
-            <pre><code contenteditable>var weekend = ["Sat", "Sun"];</code></pre>
+            <pre><code contenteditable>var weekend = ['Sat', 'Sun'];</code></pre>
             <p>Resource <a href="http://www.w3schools.com/jsref/jsref_obj_array.asp">w3schools</a></p>
           </section>
 
           <section>
             <h2>Define an array</h2>
-            <pre><code contenteditable>var string = "string";
+            <pre><code contenteditable>var string = 'string';
 var number = 2000;
 var boolean = true;
 var object = document;
-var array = ['A', 'B', "C"];
+var array = ['A', 'B', 'C'];
 var variableTypes = [string, number, boolean, object, array];
 console.log(variableTypes);
 
 // Using the push method, add text to the end of the array
-var weekend = ["Sat", "Sun"];
+var weekend = ['Sat', 'Sun'];
 weekend.push('Vacation'); // now the length property is three
 console.log(weekend);
 
