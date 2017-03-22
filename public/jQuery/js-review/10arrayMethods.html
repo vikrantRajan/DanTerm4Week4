@@ -26,25 +26,28 @@
 	<h3>Live demo</h3>
 	<script>
 		var weekend = [];
-		weekend.push('Sat', 'Sun');
+		weekend.push('Sat', 'Sun'); // memorize
 		console.log(weekend);
 		
 		var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 		console.log(months.reverse());
 		
 		// convert from array to string
-		console.log(months.join(' and '));
+		console.log(months.join(' and ')); // memorize
 		
 		// build a sentance without concatenating
-		var sentence = ['sit','a'];
+		var sentence = ['sit', 'a'];
 		sentence.push('classroom'); // add to end
 		sentence.unshift('I'); // add to beginning
 		// [I, sit, a, classroom]
-		sentence.splice(2,0, 'in'); // add to middle, second index without removing
+		sentence.splice(2, 0, 'in'); // add to middle, second index without removing
 		console.log(sentence.join(' '));
 		
-		// todo inclass: Output to the console as a string, a list of month's name each with an italic tag by using the array methods (i.e. <i>Jan</i> <i>Feb</i> <i>Mar</i>...)
+		// todo inclass: Output to the console as a string, a list of month's name each with an italic element by using the array methods (i.e. <i>Jan</i> <i>Feb</i> <i>Mar</i>...)
 		// Note: Do not modify the code above, and reuse the months variable
+
+		// SOLUTION
+		console.log('<i>' + months.reverse().join('</i> <i>') + '</i>');
 	</script>
 </body>
 </html>
