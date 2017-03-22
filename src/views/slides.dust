@@ -5,6 +5,8 @@
   <ol>
     <li><a href="/slides/client-side">Client Side</a></li>
     <li><a href="/slides/js-var-types">JavaScript Variable Types</a></li>
+		<li><a href="/slides/cdn">CDN</a></li>
+		<li><a href="/slides/js-events">Input Events</a></li>
   </ol>
 
 	<script src="js/critical.js"></script>

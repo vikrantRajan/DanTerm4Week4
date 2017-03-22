@@ -6,18 +6,15 @@ exports.register = (server, pluginOptions, next) => {
     config: { tags: ['starter'] }
   });
 
-  server.route({
-    method: 'GET',
-    path: '/client-side',
-    handler: (request, reply) => reply.view('slide-client-side'),
-    config: { tags: ['starter'] }
-  });
+  const slides = ['client-side', 'js-var-types', 'cdn', 'js-events'];
 
-  server.route({
-    method: 'GET',
-    path: '/js-var-types',
-    handler: (request, reply) => reply.view('slide-js-var-types'),
-    config: { tags: ['starter'] }
+  slides.forEach((slideName) => {
+    server.route({
+      method: 'GET',
+      path: `/${slideName}`,
+      handler: (request, reply) => reply.view(`slide-${slideName}`),
+      config: { tags: ['starter'] }
+    });
   });
 
   next();
