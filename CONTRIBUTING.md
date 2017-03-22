@@ -17,9 +17,21 @@
 		* Run `npm start`
 
 * Follow team standard with text editor
-    * [Visual Studio Code](https://code.visualstudio.com/)
+	* [Visual Studio Code](https://code.visualstudio.com/)
 		* Install Extension(s)
 			* EditorConfig for VS Code
+
+# Start web server
+## Visual Studio Code
+1. View Integrated Terminal (Menu Bar > View > Integrated Terminal)
+1. Type `npm start` into terminal
+1. Visit web server address in browser
+
+## Windows Explorer
+1. Navigate to web site root (i.e. c:/node.js/course-files)
+1. Hold Shift key and Right click
+1. Select `Open command window here`
+
 
 ## Commands
 * `npm start` Start the web server
