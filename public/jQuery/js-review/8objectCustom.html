@@ -7,7 +7,6 @@
 </head>
 
 <body>
-
 	<h1>Variable Types</h1>
 	<h2>Custom Object</h2>
 	
@@ -39,8 +38,8 @@
 		pizza.addTopping('cheese');
 		// pizza.addCrust('multigrain');
 		
-		window.alert('I will eat a pizza with ' + pizza.toppings );
-		// window.alert('I will eat a pizza with ' + pizza.toppings + ' toppings and has this crust ' + pizza.crust );
+		console.log('I will eat a pizza with ' + pizza.toppings );
+		// console.log('I will eat a pizza with ' + pizza.toppings + ' toppings and has this crust ' + pizza.crust );
 
 		//todo inclass: Add the addCrust method and add the crust property to the pizza object
 		/* pseudo code
@@ -48,6 +47,14 @@
 			property is a value (string, number, boolean, array, object)
 			if statement has not been taught so the solution does NOT need the use of ifs
 		*/
+
+		// SOLUTION
+		pizza.addCrust = function (newCrust) {
+			this.crust = newCrust;
+		};
+
+		pizza.addCrust('multigrain');
+		console.log('I will eat a pizza with ' + pizza.toppings + ' toppings and has this crust ' + pizza.crust );
 	</script>
 
 </body>
