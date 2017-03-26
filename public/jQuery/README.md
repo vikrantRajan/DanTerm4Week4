@@ -12,3 +12,13 @@
 1. RSS & AJAX XML
 1. Autocomplete
 1. Chess
+
+## Assessment
+* Attendance record represent 33% of the course mark
+* Homework assignment indicate student skills
+* Skills represent 66% of the course mark
+* Progress of assessed skills will be provided via Slack direct message
+* Sample message [[2, 3], [4, 5]]
+	* **Two** points earned out of a sub-total of **three** on one homework assignment
+	* **Three** points earned out of a sub-total of **five** on two homework assignment
+* Use [assessment.js](../../src/js/assessment.js) to previous course mark

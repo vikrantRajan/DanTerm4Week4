@@ -38,7 +38,7 @@
     "gulp-expect-file": "0.0.7",
     "gulp-htmlhint": "^0.3.0",
     "gulp-load-plugins": "^1.0.0-rc.1",
-    "gulp-mocha": "^4.1.0",
+    "gulp-mocha": "^3.0.1",
     "gulp-uglify": "^2.0.0",
     "htmlhint-stylish": "^1.0.3"
   },
