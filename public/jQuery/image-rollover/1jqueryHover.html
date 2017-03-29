@@ -37,32 +37,24 @@
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<!-- Page specific code -->
 	<script>
-		// #1 use jQuery to select image element
-			// possibile selectors: [src], .js-rollover, img
-		// #2 listen to mouse event
-			// possibile event: mouse over, mouse out, hover, click, dblclick
-		// #3 on mouse event change image attribute from reveal to source
-
-		// todo inclass: apply one-time rollover affect
-
-		// DRY
-		// Don't Repeat Yourself
-		function imageOver() {
-			var originalSrc = $(this).attr('src'); // backup original path (read)
-			var revealSrc = $(this).attr('data-reveal');
-			
-			$(this)
-				.attr('data-original', originalSrc) // backup original path (write)
-				.attr('src', revealSrc);
+		function setSrc(img, readAttribute) {
+			var src = $(img).attr(readAttribute);
+			$(img).attr('src', src);
 		}
 
-		function imageOff() {
-			var originalSrc = $(this).attr('data-original');
+		function handlerIn() {
+			// backup original path
+			var originalSrc = $(this).attr('src');
+			$(this).attr('data-original', originalSrc);
 			
-			$(this).attr('src', originalSrc);
+			setSrc(this, 'data-reveal');
+		}
+		
+		function handlerOut() {
+			setSrc(this, 'data-original');
 		}
 
-		$('.js-rollover').hover(imageOver, imageOff);
+		$('.js-rollover').hover(handlerIn, handlerOut);
 	</script>
 </body>
 </html>
