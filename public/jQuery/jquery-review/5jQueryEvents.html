@@ -10,7 +10,7 @@
 	</style>
 </head>
 <body>
- 
+
 	<h1>Events</h1>
 	
 	<h3>Goal</h3>
@@ -18,7 +18,7 @@
 
 	<h3>Technologies</h3>
 	<ol>
-			<li>JavaScript</li>
+		<li>JavaScript</li>
 	</ol>
 
 	<h3>Resources</h3>
@@ -27,7 +27,6 @@
 	</ul>
 	
 	<h3>Live demo</h3>
-	
 	<a href="javascript:;">Dumb link</a><br>
 	<a href="javascript:;" onclick="clickLog()">Click event using HTML attribute JavaScript</a><br>
 	<a href="javascript:;" id="click">Click event using traditional JS binding</a><br>
@@ -52,26 +51,50 @@
 	// $('#click').on('click', clickLog);
 	$('#click').click(clickLog);
 	
-	window.onload = function () { console.log('Load event - all the HTML in the document has rendered'); }; // an anonymous function
+	// window.onload = function () { console.log('Load event - all the HTML in the document has rendered'); }; // an anonymous function
+	$(window).load(function () { // an anonymous function
+		console.log('Load event - all the HTML in the document has rendered');
+	});
 	
 	// hover (mouseOver & mouseOut)
-	document.getElementById('hover').onmouseover = function () {
-		console.log('Mouse over event');
-		this.className = 'hover'; // add class
-	};
-	document.getElementById('hover').onmouseout = function () {
-		console.log('Mouse out event');
-		this.className = ''; // remove class
-	};
+	// document.getElementById('hover').onmouseover = function () {
+	// 	console.log('Mouse over event');
+	// 	this.className = 'hover'; // add class
+	// };
+	// document.getElementById('hover').onmouseout = function () {
+	// 	console.log('Mouse out event');
+	// 	this.className = ''; // remove class
+	// };
+	$('#hover').hover(
+		function () {
+			console.log('Mouse over event');
+			this.className = 'hover'; // add class
+		},
+		function () {
+			console.log('Mouse out event');
+			this.className = ''; // remove class
+		}
+	);
 	
 	// blur/focus
-	document.getElementById('blur').onblur = function () { this.value = 'Blur'; };
-	document.getElementById('blur').onfocus = function () { this.value = 'Focus'; };
+	// document.getElementById('blur').onblur = function () { this.value = 'Blur'; };
+	// document.getElementById('blur').onfocus = function () { this.value = 'Focus'; };
+	$('#blur')
+		.blur(function () {
+			this.value = 'Blur';
+		})
+		.focus(function () {
+			this.value = 'Focus';
+		});
 	
 	// keyboard events
-	document.getElementById('keyboard').onkeydown = function () { console.log('Key Down'); };
-	document.getElementById('keyboard').onkeyup = function () { console.log('Key Up'); };
-	document.getElementById('keyboard').onkeypress = function () { console.log('Key Press'); };
+	// document.getElementById('keyboard').onkeydown = function () { console.log('Key Down'); };
+	// document.getElementById('keyboard').onkeyup = function () { console.log('Key Up'); };
+	// document.getElementById('keyboard').onkeypress = function () { console.log('Key Press'); };
+	$('#keyboard')
+		.keydown(function () { console.log('Key Down'); })
+		.keyup(function () { console.log('Key Up'); })
+		.keypress(function () { console.log('Key Press'); });
 	
 	// Down & Press occur on repetition
 	// Press only occurs when a character is added to HTML
@@ -79,11 +102,13 @@
 	// Up occurs on release
 	
 	// submit only works on <form> with a input submit button (will not trigger on type="button")
-	document.getElementById('submit').onsubmit = function () {
+	// document.getElementById('submit').onsubmit = function () {
+	// 	console.log('Submit');
+	// 	return false; // cancels form action; prevents form submission
+	// };
+	$('#submit').submit(function () {
 		console.log('Submit');
 		return false; // cancels form action; prevents form submission
-	};
-
-	// todo inclass convert classic JavaScript to jQuery events
+	});
 </script>
 </body></html>
