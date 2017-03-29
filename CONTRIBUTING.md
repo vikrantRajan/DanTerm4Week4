@@ -20,6 +20,10 @@
 	* [Visual Studio Code](https://code.visualstudio.com/)
 		* Install Extension(s)
 			* EditorConfig for VS Code
+			
+* Avoid file conflicts
+	* Rename instructor's files with your initials (i.e. hello-dan.js where "-dan" is the suffix)
+	* Update the /.gitignore file with *-dan* to avoid committing your changes
 
 # Start web server
 ## Visual Studio Code
