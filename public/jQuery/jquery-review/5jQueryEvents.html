@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>traditional events</title>
+	<title>jQuery events</title>
 	<style>
 		#hover { color: red; } /* normal */
 		#hover:hover { color: pink; } /* CSS hover */
@@ -20,6 +20,11 @@
 	<ol>
 			<li>JavaScript</li>
 	</ol>
+
+	<h3>Resources</h3>
+	<ul>
+		<li><a href="http://api.jquery.com/category/events/">jQuery Events</a></li>
+	</ul>
 	
 	<h3>Live demo</h3>
 	
@@ -42,7 +47,10 @@
 	};
 	
 	// tradition JS binding
-	document.getElementById('click').onclick = clickLog; // named function
+	// document.getElementById('click').onclick = clickLog; // named function
+	// jQuery event binding
+	// $('#click').on('click', clickLog);
+	$('#click').click(clickLog);
 	
 	window.onload = function () { console.log('Load event - all the HTML in the document has rendered'); }; // an anonymous function
 	
