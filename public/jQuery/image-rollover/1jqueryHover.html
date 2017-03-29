@@ -4,6 +4,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>image rollover</title>
+	<style>
+		.rollover { width: 300px; height: 200px; }
+	</style>
 </head>
 
 <body>
@@ -11,7 +14,12 @@
 	<h2>Image Rollover Design Pattern</h2>
 
 	<h3>Goal</h3>
-	<p>Use jQuery to apply image rollover interaction: when mouse is hovering over the image then reveal the secondary image.</p>
+	<p>As a dev, use jQuery to apply image rollover interaction: when mouse is hovering over the image then reveal the secondary image.</p>
+	<p>As a user, I want to see another view of each image. For example when visiting a city what is the daytime and evening view?</p>
+	<ol>
+		<li>One image</li>
+		<li>Many images</li>
+	</ol>
 
 	<h3>Technologies</h3>
 	<ul>
@@ -23,6 +31,7 @@
 
 	<h3>Live demo</h3>
 	<img src="1926.jpg" data-reveal="2004.jpg" class="rollover js-rollover">
+	<img src="daytime.jpg" data-reveal="evening.jpg" class="rollover js-rollover">
 
 	<!-- Attach jQuery library -->
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -39,18 +48,18 @@
 		// DRY
 		// Don't Repeat Yourself
 		function imageOver() {
-			var originalSrc = $('.js-rollover').attr('src'); // backup original path (read)
-			var revealSrc = $('.js-rollover').attr('data-reveal');
+			var originalSrc = $(this).attr('src'); // backup original path (read)
+			var revealSrc = $(this).attr('data-reveal');
 			
-			$('.js-rollover')
+			$(this)
 				.attr('data-original', originalSrc) // backup original path (write)
 				.attr('src', revealSrc);
 		}
 
 		function imageOff() {
-			var originalSrc = $('.js-rollover').attr('data-original');
+			var originalSrc = $(this).attr('data-original');
 			
-			$('.js-rollover').attr('src', originalSrc);
+			$(this).attr('src', originalSrc);
 		}
 
 		$('.js-rollover').hover(imageOver, imageOff);
