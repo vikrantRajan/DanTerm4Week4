@@ -2,8 +2,8 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>attr.html</title>
+	<meta charset="utf-8">
+	<title>attr.html</title>
 </head>
 
 <body>
@@ -28,15 +28,22 @@
 <a href="#" id="demo">Dumb link</a>
 
 <!-- Attach jQuery library -->
-<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <!-- Page specific code -->
 <script>
-	$('#demo')
-		.attr('href', 'http://www.vanarts.com/')
-		.html('<b>VanArts</b>.com')
-		.attr('title', 'VanArts');
+	var attributes = {
+		href: 'http://www.vanarts.com/',
+		title: 'VanArts',
+		// style: 'text-decoration: none', // overwritten due to line below
+		style: 'text-decoration: none; color: purple'
+	};
 
-	// todo inclass: Apply an inline CSS rule to hide the underline of the hyperlink
+	$('#demo')
+		.attr(attributes)
+		.html('<b>VanArts</b>.com');
+		// .attr('style', 'text-decoration: none')
+		// .attr('style', 'color: red')  // overwrite any style attributes above
+		// .css('color', 'green'); // overwrite any style attributes above
 </script>
 </body>
 </html>
