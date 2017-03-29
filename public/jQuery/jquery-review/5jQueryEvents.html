@@ -39,7 +39,10 @@
 		<input type="submit" value="Submit event">
 		<input type="button" value="Button not submit button">
 	</form>
-	
+
+<!-- Attach jQuery library -->
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Page specific code -->
 <script>
 	function clickLog() {
 		console.log('hello click');
@@ -52,7 +55,7 @@
 	$('#click').click(clickLog);
 	
 	// window.onload = function () { console.log('Load event - all the HTML in the document has rendered'); }; // an anonymous function
-	$(window).load(function () { // an anonymous function
+	$(window).on('load', function () { // an anonymous function
 		console.log('Load event - all the HTML in the document has rendered');
 	});
 	
@@ -69,10 +72,14 @@
 		function () {
 			console.log('Mouse over event');
 			this.className = 'hover'; // add class
+			// $(this).attr('class', 'hover');
+			// $(this).addClass('hover');
 		},
 		function () {
 			console.log('Mouse out event');
 			this.className = ''; // remove class
+			// $(this).attr('class', '');
+			// $(this).removeClass('hover');
 		}
 	);
 	
