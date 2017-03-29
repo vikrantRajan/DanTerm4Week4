@@ -35,6 +35,25 @@
 		// #3 on mouse event change image attribute from reveal to source
 
 		// todo inclass: apply one-time rollover affect
+
+		// DRY
+		// Don't Repeat Yourself
+		function imageOver() {
+			var originalSrc = $('.js-rollover').attr('src'); // backup original path (read)
+			var revealSrc = $('.js-rollover').attr('data-reveal');
+			
+			$('.js-rollover')
+				.attr('data-original', originalSrc) // backup original path (write)
+				.attr('src', revealSrc);
+		}
+
+		function imageOff() {
+			var originalSrc = $('.js-rollover').attr('data-original');
+			
+			$('.js-rollover').attr('src', originalSrc);
+		}
+
+		$('.js-rollover').hover(imageOver, imageOff);
 	</script>
 </body>
 </html>
