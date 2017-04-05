@@ -17,6 +17,7 @@
 	<ol>
 		<li>Prevent a user from submitting using client-side code.</li>
 		<li>As a developer, prevent the form action when at least one field is blank</li>
+		<li>As a user, I want to see an instruction message when the input field is blank</li>
 	</ol>
 	
 	<h3>Technologies</h3>
@@ -62,6 +63,13 @@
 			2) Test is form valid? (i.e. regular expression)
 		*/
 		function validateForm($form) {
+			/*
+				Determine if form is valid?
+
+				a) find all input fields and check if value attribute is blank
+				1) find all instruction messages and check if missing hide class
+			*/
+// park/pause this function for now until instruction message is toggling
 			return false;
 		}
 
@@ -69,6 +77,20 @@
 			if (options.event) {
 				options.event.preventDefault(); // step #1
 			}
+		}
+
+		function applyInsturctionListener() {
+			/*
+				listen to keyboard event on the input element
+				then remove CSS class name hide from i element
+
+				jQuery pattern
+				$(selector).method();
+			*/
+			 $('input[type=text]').keyup(function() {
+				 var $input = $(this);
+				 console.log($input.val());
+			 });
 		}
 
 		$('form').submit(function(event) {
@@ -79,6 +101,8 @@
 				cancelForm({ event: event });
 			}
 		});
+
+		applyInsturctionListener();
 	</script>
 </body>
 </html>
