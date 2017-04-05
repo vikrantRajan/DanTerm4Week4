@@ -23,6 +23,11 @@
 	<li>HTML</li>
 </ul>
 
+<h3>Resources</h3>
+<ul>
+	<li>jQuery Documentation <a href="http://api.jquery.com/category/traversing/tree-traversal/">Tree traversal</a></li>
+</ul>
+
 <h3>Goal</h3>
 <p>Remove the class names from the HTML structure, then using jQuery to traverse the DOM and apply the class names to acheive the same styling.</p>
  
@@ -53,5 +58,33 @@
 	<li>Apply red to the child's text</li>
 	<li>Apply underline to the sibling</li>
 </ol>
+
+<!-- Attach jQuery library -->
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Page specific code -->
+<script>
+	// Chaining is more complex, harder to debug, but better performance
+	// $('#here')
+	// 	.parent()
+	// 	.parent()
+	// 	.attr('class', 'rule1')
+	// 	.parents('li:first')
+	// 	.addClass('rule2') // shorthand for .attr('class', 'rule2')
+	// 	.end() // doc http://api.jquery.com/end/
+	// 	.end()
+	// 	.end() // back to #here
+	// 	.find('li:first')
+	// 	.addClass('rule3')
+	// 	.end()
+	// 	.next()
+	// 	.addClass('rule4');
+
+	var $here = $('#here');
+
+	$here.parent().parent().attr('class', 'rule1');
+	$here.parents('li:first').parents('li:first').addClass('rule2');
+	$here.find('li:first').addClass('rule3');
+	$here.next().addClass('rule4');
+</script>
 
 </body></html>
