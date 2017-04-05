@@ -62,7 +62,13 @@
 			2) Test is form valid? (i.e. regular expression)
 		*/
 		function validateForm($form) {
-			return true;
+			return false;
+		}
+
+		function cancelForm(options) {
+			if (options.event) {
+				options.event.preventDefault(); // step #1
+			}
 		}
 
 		$('form').submit(function(event) {
@@ -70,7 +76,7 @@
 			console.log('Form submitted');
 
 			if (!isFormValid) {
-				event.preventDefault(); // step #1
+				cancelForm({ event: event });
 			}
 		});
 	</script>
