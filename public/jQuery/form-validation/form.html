@@ -69,7 +69,8 @@
 				a) find all input fields and check if value attribute is blank
 				1) find all instruction messages and check if missing hide class
 			*/
-// park/pause this function for now until instruction message is toggling
+// todo inclass: based on the above step 1. Dynamically determine if the form is valid
+// if any hide class is found on the italic elements then return false to indicate invalid form
 			return false;
 		}
 
@@ -87,9 +88,15 @@
 				jQuery pattern
 				$(selector).method();
 			*/
-			 $('input[type=text]').keyup(function() {
-				 var $input = $(this);
-				 $input.next().removeClass('hide');
+			$('input[type=text]').keyup(function() {
+				var $input = $(this);
+				var $i = $input.next();
+
+				if ($input.val() === '') {
+					$i.addClass('hide');
+				} else {
+					$i.removeClass('hide');
+				}
 			 });
 		}
 
