@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>for loop</title>
+</head>
+
+<body>
+	<h1>JavaScript Intro</h1>
+
+	<h3>Goal</h3>
+	<p>Display 1 through 10 and then the opposite direction (10 through 1)</p>
+
+	<h3>Technologies</h3>
+	<ul>
+		<li>JavaScript</li>
+	</ul>
+
+	<h3>Resources</h3>
+	<ul>
+		<li>W3Schools <a href="http://www.w3schools.com/js/js_loop_for.asp">Loop variations</a></li>
+	</ul>
+
+	<h3>Live demo</h3>
+	<script>
+		// initial value; condition (if true then inside loop is executed); increment
+		for (var i = 1; i <= 10; i = i + 1) { // 1 thru 10
+			console.log(i);
+		}
+		// i = 11
+		var begin = 1;
+		var end = 10;
+			
+		for (i = begin; i <= end; i++) { // 1 thru 10
+			console.log(i);
+		}
+		
+		var weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+		for (var i = 0, len = weekdays.length; i < len; i+=1) { // define len variable for faster loop
+			console.log(weekdays[i]); // i is 0 to 4
+		}
+		
+		// todo inclass 10 thru 1
+	</script>
+</body>
+</html>
