@@ -26,21 +26,29 @@
 		// initial value; condition (if true then inside loop is executed); increment
 		for (var i = 1; i <= 10; i = i + 1) { // 1 thru 10
 			console.log(i);
+			// 1 <= 10 true
+			// 2 <= 10 true
+			// 10 <= 10 true
+			// 11 <= 10 false
 		}
 		// i = 11
 		var begin = 1;
 		var end = 10;
 			
-		for (i = begin; i <= end; i++) { // 1 thru 10
+		for (i = begin; i <= end; i++) { // 1 thru 10; note i++ shorthand is not recommended
 			console.log(i);
 		}
 		
 		var weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-		for (var i = 0, len = weekdays.length; i < len; i+=1) { // define len variable for faster loop
+		for (var i = 0, len = weekdays.length; i < len; i += 1) { // define len variable for faster loop
 			console.log(weekdays[i]); // i is 0 to 4
 		}
 		
 		// todo inclass 10 thru 1
+		// SOLUTION
+		for (var j = 10, end = 1; j >= end; j -= 1) {
+			console.log(j);
+		}
 	</script>
 </body>
 </html>
