@@ -16,6 +16,7 @@
 	<h3>Goal</h3>
 	<ol>
 		<li>Prevent a user from submitting using client-side code.</li>
+		<li>As a developer, prevent the form action when at least one field is blank</li>
 	</ol>
 	
 	<h3>Technologies</h3>
@@ -49,5 +50,22 @@
 
 		<input type="submit" value="Are my fields valid?">
 	</form>
+
+	<!-- Attach jQuery library -->
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<!-- Page specific code -->
+	<script>
+		/*
+			a) Delete or change the form action to blank
+			1) preventDefault
+			
+			2) Test is form valid? (i.e. regular expression)
+		*/
+
+		$('form').submit(function(event) {
+			console.log('Form submitted');
+			event.preventDefault(); // step #1
+		});
+	</script>
 </body>
 </html>
