@@ -8,7 +8,7 @@
 * Press Start Debugging green arrow button
 
 ## ESLint
-[[https://github.com/VanArts/course-files/blob/web11/public/assets/visualStudioCode/extension-eslint.png|alt=ESLint Extension]]
+![ESLint Extension](https://github.com/VanArts/course-files/blob/web11/public/assets/visualStudioCode/extension-eslint.png)
 
 # Sublime Text
 ## Editorconfig
