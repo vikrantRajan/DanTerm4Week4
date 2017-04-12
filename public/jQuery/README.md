@@ -23,6 +23,6 @@
 	* **Four** points earned out of a sub-total of **five** on two homework assignment
 * Use [assessment.js](../../src/js/assessment.js) to previous course mark
 * Homework is evaluated at the beginning of class. If you arrive after the class homework has been verified you will receive a zero mark for that assignment. An alternative for tardy arrival is to Slack your homework before class using a code sharing tool:
-* Commit homework to [your private GitHub.com repository](https://help.github.com/articles/create-a-repo/)
-* [JSFiddle](https://jsfiddle.net/).
-* Send static files through Slack's private message
+	* Commit homework to [your private GitHub.com repository](https://help.github.com/articles/create-a-repo/)
+	* [JSFiddle](https://jsfiddle.net/).
+	* Send static files through Slack's private message
