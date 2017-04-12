@@ -2,4 +2,9 @@ function test(message) {
   console.log(message);
 }
 
-test('Critical.js says hello to Browser Dev tools > Console');
+// If Node.js then export as public
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = {
+    test
+  };
+}
