@@ -69,9 +69,7 @@
 				a) find all input fields and check if value attribute is blank
 				1) find all instruction messages and check if missing hide class
 			*/
-// todo inclass: based on the above step 1. Dynamically determine if the form is valid
-// if any hide class is found on the italic elements then return false to indicate invalid form
-			return false;
+			return ($form.find('i.hide').length === 0);
 		}
 
 		function cancelForm(options) {
