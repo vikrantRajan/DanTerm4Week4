@@ -7,6 +7,9 @@
     * Click mouse in left gutter of line number
 * Press Start Debugging green arrow button
 
+## ESLint
+[[https://github.com/vanarts/course-files/blob/web11/public/assests/visualStudioCode/extension-eslint.png|alt=ESLint Extension]]
+
 # Sublime Text
 ## Editorconfig
 * Install Sublime Text [package manager](https://packagecontrol.io/installation)
