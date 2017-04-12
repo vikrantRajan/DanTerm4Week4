@@ -6,6 +6,7 @@
 	<style>
 		.required { background: red; }
 		.hide { display: none; }
+		.highlight { border: 2px solid green; }
 	</style>
 </head>
 
@@ -20,6 +21,7 @@
 		<li>As a user, I want to see an instruction message when the input field is blank</li>
 		<li>As a user, I want the submit button to shake when form is invalid</li>
 		<li>As a user, when form is invalid, I want the first blank field to be in focus</li>
+		<li>As a user, I want to see a colour change of the in focus field outline</li>
 	</ol>
 	
 	<h3>Technologies</h3>
@@ -88,7 +90,11 @@
 			var isValid = ($form.find('i.hide').length === 0);
 			if (!isValid) {
 				// focus first blank field
-				$form.find('i.hide:first').prev().focus();
+				$form
+					.find('i.hide:first')
+					.prev()
+					.focus()
+					.addClass('highlight');
 
 				$('input[type=submit]').shake(2, 5, 400);
 			}
@@ -123,6 +129,9 @@
 		}
 
 		$('form').submit(function(event) {
+			// remove all highlight CSS classes
+			$(this).find('.highlight').removeClass('highlight');
+
 			var isFormValid = validateForm($(this));
 			console.log('Form submitted');
 
