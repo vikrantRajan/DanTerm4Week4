@@ -13,6 +13,7 @@ function getSkillPercent(homeworkMarks) {
     total += assignmentMark[1];
   });
 
+
   const skillMarkOf100 = Math.round((earned / total) * 100);
   return skillMarkOf100;
 }

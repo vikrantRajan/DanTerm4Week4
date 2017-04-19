@@ -1,16 +1,9 @@
-// todo inclass display all province name in console
+/* global salesTaxData */
 
 function income() {
-  const produce = {
-    Apple: 'fruit',
-    Beet: 'vegatable',
-    Celery: 'vegetable',
-    Daikon: 'vegetable'
-  };
-
   // Object
-  $.each(produce, (key, value) => { // propertyName, valueOfProperty
-    $('body').append(`Produce ${key} is a ${value}.<br>`);
+  $.each(salesTaxData.provinces, (provinceAbbr, provinceData) => { // propertyName, valueOfProperty
+    $('#provinces').append(`<option>${provinceData.name}</option>`);
   });
 }
 
