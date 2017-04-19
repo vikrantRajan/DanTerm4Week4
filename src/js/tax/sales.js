@@ -4,10 +4,19 @@ function changeProvinces() {
   console.log($dropdown.val());
 }
 
+function outputTotal(price) {
+  const priceGrouped = price.toFixed(2).replace(/./g, function(c, i, a) {
+    return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+  });
+  const currency = `$${priceGrouped}`;
+
+  $('#pizzaCost').text(currency);
+}
+
 function calculateTotalPrice(salesValue, pizzaValue) {
   const salesTax = 1 + Number(salesValue);
   const pizzaPrice = Number(pizzaValue);
-  console.log((salesTax * pizzaPrice).toFixed(2));
+  outputTotal(salesTax * pizzaPrice);
 }
 
 function changePrice() {
