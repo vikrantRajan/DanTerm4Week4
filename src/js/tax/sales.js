@@ -1,10 +1,15 @@
 /* global salesTaxData */
-function provincesChanged() {
+function changeProvinces() {
   const $dropdown = $(this);
   console.log($dropdown.val());
 }
 
-function sales() {
+function changePrice() {
+  const $input = $(this);
+  console.log($input.val());
+}
+
+function displayProvinces() {
   const $provinces = $('#provinces');
   // Object
   $.each(salesTaxData.provinces, (provinceAbbr, provinceData) => { // propertyName, valueOfProperty
@@ -17,8 +22,12 @@ function sales() {
 
     $provinces.append(`<option value="${taxTotal}">${provinceData.name}</option>`);
   });
+}
 
-  $provinces.change(provincesChanged);
+function sales() {
+  displayProvinces()
+  $('#provinces').change(changeProvinces);
+  $('#price').change(changePrice);
 }
 
 // If Node.js then export as public
