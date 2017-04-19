@@ -3,7 +3,7 @@
 function income() {
   // Object
   $.each(salesTaxData.provinces, (provinceAbbr, provinceData) => { // propertyName, valueOfProperty
-    $('#provinces').append(`<option>${provinceData.name}</option>`);
+    $('#provinces').append(`<option value="${provinceData.taxes[0].tax}">${provinceData.name}</option>`);
   });
 }
 
