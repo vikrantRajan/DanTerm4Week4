@@ -4,9 +4,16 @@ function changeProvinces() {
   console.log($dropdown.val());
 }
 
+function calculateTotalPrice(salesValue, pizzaValue) {
+  const salesTax = 1 + Number(salesValue);
+  const pizzaPrice = Number(pizzaValue);
+  console.log((salesTax * pizzaPrice).toFixed(2));
+}
+
 function changePrice() {
   const $input = $(this);
-  console.log($input.val());
+
+  calculateTotalPrice($('#provinces').val(), $input.val());
 }
 
 function displayProvinces() {
