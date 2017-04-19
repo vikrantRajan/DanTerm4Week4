@@ -8,7 +8,14 @@ function sales() {
   const $provinces = $('#provinces');
   // Object
   $.each(salesTaxData.provinces, (provinceAbbr, provinceData) => { // propertyName, valueOfProperty
-    $provinces.append(`<option value="${provinceData.taxes[0].tax}">${provinceData.name}</option>`);
+    let taxTotal = provinceData.taxes[0].tax;
+    if (provinceData.taxes.length === 2) {
+      taxTotal += provinceData.taxes[1].tax;
+    }
+
+    taxTotal = taxTotal.toFixed(2);
+
+    $provinces.append(`<option value="${taxTotal}">${provinceData.name}</option>`);
   });
 
   $provinces.change(provincesChanged);
