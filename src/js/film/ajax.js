@@ -1,12 +1,17 @@
+function createDropdown(film) {
+  $.each(film.movies[0].abridged_cast, (x, actor) => {
+    $('#actors').append(`<option>${actor.name}</option>`);
+  });
+}
+
 function ajaxCowboysDropdown() {
   $.ajax({
     url: 'film.json',
     success: (response) => {
-      debugger;
-      // display all the cast members as a dropdown menu
+      createDropdown(response);
     },
     error: (jqXHR, textStatus, errorThrown) => {
-      debugger;
+      console.log(errorThrown);
     }
   });
 }
