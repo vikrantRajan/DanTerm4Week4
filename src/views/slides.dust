@@ -8,6 +8,7 @@
 		<li><a href="/slides/cdn">CDN</a></li>
 		<li><a href="/slides/js-events">Input Events</a></li>
 		<li><a href="/slides/json">JSON</a></li>
+		<li><a href="/slides/ajax">AJAX</a></li>
 	</ol>
 
 	<script src="js/critical.js"></script>
