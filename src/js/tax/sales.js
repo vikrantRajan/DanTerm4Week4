@@ -5,9 +5,8 @@ function changeProvinces() {
 }
 
 function outputTotal(price) {
-  const priceGrouped = price.toFixed(2).replace(/./g, function(c, i, a) {
-    return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
-  });
+  const currencyFormat = (c, i, a) => i && (c !== '.') && (((a.length - i) % 3 === 0) ? `,${c}` : c);
+  const priceGrouped = price.toFixed(2).replace(/./g, currencyFormat);
   const currency = `$${priceGrouped}`;
 
   $('#pizzaCost').text(currency);
@@ -41,7 +40,7 @@ function displayProvinces() {
 }
 
 function sales() {
-  displayProvinces()
+  displayProvinces();
   $('#provinces').change(changeProvinces);
   $('#price').change(changePrice);
 }
