@@ -1,6 +1,7 @@
 const dust = require('dustjs-linkedin');
 const Hapi = require('hapi');
 const inert = require('inert');
+const lout = require('lout');
 const vision = require('vision');
 
 const libApi = require('./src/api');
@@ -14,7 +15,8 @@ const plugins = [
   inert,
   vision,
   { register: libApi, routes: { prefix: '/api' } },
-  { register: libSlides, routes: { prefix: '/slides' } }
+  { register: libSlides, routes: { prefix: '/slides' } },
+  lout
 ];
 
 function registerCallback() {
