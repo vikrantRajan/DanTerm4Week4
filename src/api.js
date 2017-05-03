@@ -1,6 +1,24 @@
 exports.register = (server, pluginOptions, next) => {
   server.route({
     method: 'GET',
+    path: '/api/slow-fruit',
+    handler: (request, reply) => {
+      const SLEEP = 2 * 1000; // 2 sec
+      // Node.js setTimeout
+      // https://nodejs.org/api/timers.html#timers_settimeout_callback_delay_arg
+      setTimeout(() => {
+        reply({
+          apple: 'green',
+          banana: 'yellow',
+          cherry: 'red',
+          durrian: 'blue'
+        });
+      }, SLEEP);
+    }
+  });
+
+  server.route({
+    method: 'GET',
     path: '/fruit',
     handler: (request, reply) => {
       // Browser web address http://localhost:3000/api/fruit?format=json
