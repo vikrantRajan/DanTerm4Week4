@@ -1,7 +1,7 @@
 exports.register = (server, pluginOptions, next) => {
   server.route({
     method: 'GET',
-    path: '/api/slow-fruit',
+    path: '/slow-fruit',
     handler: (request, reply) => {
       const SLEEP = 2 * 1000; // 2 sec
       // Node.js setTimeout
