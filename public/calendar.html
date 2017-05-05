@@ -1,0 +1,102 @@
+
+<html>
+<head>
+	<style>
+		body {
+			margin: 40px 10px;
+			padding: 0;
+			font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+			font-size: 14px;
+		}
+
+		#calendar {
+			max-width: 900px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div id='calendar'></div>
+</body>
+
+</head>
+<body>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+	<script src="http://momentjs.com/downloads/moment.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css"></script>
+	<script>
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay,listWeek'
+			},
+			defaultDate: '2017-05-12',
+			navLinks: true, // can click day/week names to navigate views
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			events: [
+				{
+					title: 'jQuery Class 09 (Remote and online)',
+					start: '2017-05-10'
+				},
+				{
+					title: 'jQuery Class 10 (School)',
+					start: '2017-05-17'
+				},
+				{
+					title: 'jQuery Class 11 (School)',
+					start: '2017-05-24'
+				},
+				{
+					title: 'API Class 01 (School)',
+					start: '2017-05-31'
+				},
+				{
+					title: 'API Class 02 (Remote and online)',
+					start: '2017-06-07'
+				},
+				{
+					title: 'API Class 03 (Remote and online)',
+					start: '2017-06-14'
+				},
+				{
+					title: 'API Class 04 (Remote and online)',
+					start: '2017-06-21'
+				},
+				{
+					title: 'API Class 05 (James in School)',
+					start: '2017-06-28'
+				},
+				{
+					title: 'API Class 06 (Dan in School)',
+					start: '2017-08-02'
+				},
+				{
+					title: 'API Class 07 (School)',
+					start: '2017-08-06'
+				},
+				{
+					title: 'API Class 08 (School)',
+					start: '2017-08-09'
+				},
+				{
+					title: 'API Class 09 (School)',
+					start: '2017-08-13'
+				},
+				{
+					title: 'API Class 10 (School)',
+					start: '2017-08-16'
+				},
+				{
+					title: 'API Class 11 (School)',
+					start: '2017-08-23'
+				}
+			]
+		});
+	</script>
+</body>
+</html>
