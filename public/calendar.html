@@ -1,6 +1,8 @@
 
 <html>
 <head>
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" type="text/css">
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.min.css" media="print" type="text/css">
 	<style>
 		body {
 			margin: 40px 10px;
@@ -16,17 +18,10 @@
 	</style>
 </head>
 <body>
-	<div id='calendar'></div>
-</body>
-
-</head>
-<body>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 	<script src="http://momentjs.com/downloads/moment.js"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css"></script>
+	<script src="/assets/fullcalendar/fullcalendar.min.js"></script>
 	<script>
 		$('#calendar').fullCalendar({
 			header: {
@@ -34,65 +29,69 @@
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay,listWeek'
 			},
+			firstDay: 1, // Monday start
 			defaultDate: '2017-05-12',
 			navLinks: true, // can click day/week names to navigate views
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
 			events: [
 				{
-					title: 'jQuery Class 09 (Remote and online)',
+					title: 'jQuery 08 (School)',
+					start: '2017-05-03'
+				},{
+					title: 'jQuery 09 (Remote)',
 					start: '2017-05-10'
 				},
 				{
-					title: 'jQuery Class 10 (School)',
+					title: 'jQuery 10 (School)',
 					start: '2017-05-17'
 				},
 				{
-					title: 'jQuery Class 11 (School)',
+					title: 'jQuery 11 (School)',
 					start: '2017-05-24'
 				},
 				{
-					title: 'API Class 01 (School)',
+					title: 'API 01 (School)',
 					start: '2017-05-31'
 				},
 				{
-					title: 'API Class 02 (Remote and online)',
+					title: 'API 02 (Remote)',
 					start: '2017-06-07'
 				},
 				{
-					title: 'API Class 03 (Remote and online)',
+					title: 'API 03 (Remote)',
 					start: '2017-06-14'
 				},
 				{
-					title: 'API Class 04 (Remote and online)',
+					title: 'API 04 (Remote)',
 					start: '2017-06-21'
 				},
 				{
-					title: 'API Class 05 (James in School)',
+					title: 'API 05 (James in School)',
 					start: '2017-06-28'
 				},
 				{
-					title: 'API Class 06 (Dan in School)',
+					title: 'API 06 (Dan in School)',
 					start: '2017-08-02'
 				},
 				{
-					title: 'API Class 07 (School)',
-					start: '2017-08-06'
+					title: 'API 07 (School)',
+					start: '2017-08-05'
 				},
 				{
-					title: 'API Class 08 (School)',
+					title: 'API 08 (School)',
 					start: '2017-08-09'
 				},
 				{
-					title: 'API Class 09 (School)',
-					start: '2017-08-13'
+					title: 'API 09 (School)',
+					start: '2017-08-12'
 				},
 				{
-					title: 'API Class 10 (School)',
+					title: 'API 10 (School)',
 					start: '2017-08-16'
 				},
 				{
-					title: 'API Class 11 (School)',
+					title: 'API 11 (School)',
 					start: '2017-08-23'
 				}
 			]
