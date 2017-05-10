@@ -1,12 +1,23 @@
+function displayNewsHeadline(index, item) {
+  const title = $(item).children('title').text();
+  const link = $(item).children('link').text();
+  const description = $(item).children('description').text();
+  $('#news').append(`<li><a href="${link}">${title}</a><p>${description}</p></li>`);
+}
+
 function displayNewsHeadlines(response) {
-  $(response).find('item').each((index, element) => {
-    console.log(element);
-  });
+  $('#news').empty(); // shortcut for .html('');
+  $(response).find('item').each(displayNewsHeadline);
 }
 
 function getRssNews() {
   // Who is the RSS provider?
   const providerUrl = $(this).val();
+
+  if (providerUrl === '') { // when missing provider address hide news content
+    $('#news').empty();
+    return;
+  }
 
   $.ajax({
     url: '/api/rss',
