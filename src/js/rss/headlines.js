@@ -2,9 +2,12 @@ function newsHeadlines() {
   $.ajax({
     url: '/api/rss',
     success: (response) => {
-      $(response).find('item').each((index, element) => {
-        // todo Display news headline content
-        console.log(element);
+      const $news = $('#news');
+      $(response).find('item').each((index, item) => {
+        const title = $(item).children('title').text();
+        const link = $(item).children('link').text();
+        const description = $(item).children('description').text();
+        $news.append(`<li><a href="${link}">${title}</a><p>${description}</p></li>`);
       });
     }
   });
