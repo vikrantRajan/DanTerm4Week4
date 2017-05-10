@@ -1,12 +1,19 @@
+function displayNewsHeadlines(response) {
+  $(response).find('item').each((index, element) => {
+    console.log(element);
+  });
+}
+
 function getRssNews() {
   // Who is the RSS provider?
-  // todo inclass Answer
+  const providerUrl = $(this).val();
 
   $.ajax({
     url: '/api/rss',
-    success: (response) => {
-      console.log(response);
-    }
+    data: {
+      url: providerUrl // jQuery will generate query string as ?url=*
+    },
+    success: displayNewsHeadlines
   });
 }
 
