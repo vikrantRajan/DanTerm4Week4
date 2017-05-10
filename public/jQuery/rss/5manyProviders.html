@@ -12,6 +12,13 @@
 <h3>Goal</h3>
 <p>As a user, I want to change the news providers via... (a UI design pattern of your choice)</p>
 
+<h3>Dev steps</h3>
+<ol>
+	<li>Where is the RSS content coming from? RSS route from server side with a query string variable</li>
+	<li>When will AJAX query the RSS route? ?</li>
+	<li>How will you display the RSS content? ?</li>
+</ol>
+
 <h3>Technologies</h3>
 <ul>
 	<li>RSS</li>
@@ -32,5 +39,12 @@
 </select>
 
 <ul id="news"></ul>
+
+<!-- Attach jQuery library -->
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Attach all the bundles JavaScript files in /src/js -->
+<script src="/js/critical.js"></script>
+<!-- Execute page specific function -->
+<script>manyProviders();</script>
 </body>
 </html>
