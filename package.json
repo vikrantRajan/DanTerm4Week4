@@ -38,7 +38,7 @@
     "gulp-expect-file": "0.0.7",
     "gulp-htmlhint": "^0.3.0",
     "gulp-load-plugins": "^1.0.0-rc.1",
-    "gulp-mocha": "^3.0.1",
+    "gulp-mocha": "^4.3.1",
     "gulp-uglify": "^2.0.0",
     "htmlhint-stylish": "^1.0.3"
   },
@@ -52,6 +52,6 @@
     "request": "^2.72.0",
     "twit": "^2.2.4",
     "vision": "^4.0.0",
-    "wreck": "^10.0.0"
+    "wreck": "^12.2.0"
   }
 }
