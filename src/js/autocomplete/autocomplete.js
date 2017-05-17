@@ -1,6 +1,7 @@
 function autocomplete() {
   $('#country_keywords').keyup((element) => {
-    $('#country_suggestions').html(`<li>${$(element.target).val()}</li>`);
+    const keyword = $(element.target).val();
+    $('#country_suggestions').html(`<li>${keyword}</li>`);
   });
 }
 
