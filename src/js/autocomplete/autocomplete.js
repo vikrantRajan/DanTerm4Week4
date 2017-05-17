@@ -1,5 +1,17 @@
-function displayList(raw) {
-  $('#country_suggestions').html(`<li>${raw}</li>`);
+function displayCountries(output) {
+  $('#country_suggestions').html(output);
+}
+
+function formatCountries(countries) {
+  const html = [];
+  $.each(countries, (index, country) => {
+    html.push(`<li>${country}</li>`);
+  });
+
+  // ES6 advanced code
+  // const html = countries.map(country => `<li>${country}</li>`);
+
+  displayCountries(html.join(''));
 }
 
 function queryService(keyword) {
@@ -7,7 +19,7 @@ function queryService(keyword) {
     url: '/api/autocomplete',
     data: { keyword },
     success: (response) => {
-      displayList(response.items);
+      formatCountries(response.items);
     }
   });
 }
