@@ -3,8 +3,13 @@ function displayList(raw) {
 }
 
 function queryService(keyword) {
-  // todo inclass
-  displayList(keyword);
+  $.ajax({
+    url: '/api/autocomplete',
+    data: { keyword },
+    success: (response) => {
+      displayList(response.items);
+    }
+  });
 }
 
 function listenToInput() {
