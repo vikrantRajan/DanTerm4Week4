@@ -1,3 +1,44 @@
+let autocompletePosition = 0;
+const keys = {
+  left: 37,
+  up: 38,
+  right: 39,
+  down: 40
+};
+
+function hightlightSuggestion(direction) {
+  if (direction === 'down') {
+    autocompletePosition += 1;
+  } else if (direction === 'up') {
+    autocompletePosition -= 1;
+  }
+
+  $('#country_suggestions .hightlight').removeClass('hightlight');
+  const hightlightValue = $(`#country_suggestions li:nth-child(${autocompletePosition})`)
+    .addClass('hightlight')
+    .text();
+
+  $('#country_keywords').val(hightlightValue);
+}
+
+function listenForArrows() {
+  $(document).keydown((event) => {
+    switch (event.which) {
+      case keys.up:
+        hightlightSuggestion('up');
+        break;
+
+      case keys.down:
+        hightlightSuggestion('down');
+        break;
+
+      default: return; // exit this handler for other keys
+    }
+
+    event.preventDefault(); // prevent the default action (scroll / move caret)
+  });
+}
+
 function toggleSpinner() {
   $('#spinner').toggleClass('hide');
 }
@@ -25,6 +66,7 @@ function queryService(keyword) {
     url: '/api/autocomplete',
     data: { keyword },
     success: (response) => {
+      listenForArrows();
       formatCountries(response.items);
     }
   });
@@ -32,6 +74,10 @@ function queryService(keyword) {
 
 function listenToInput() {
   $('#country_keywords').keyup((element) => {
+    if (event.which === keys.up || event.which === keys.down) {
+      return;
+    }
+
     const keyword = $(element.target).val();
     queryService(keyword);
   });
