@@ -65,6 +65,71 @@ exports.register = (server, pluginOptions, next) => {
     }
   });
 
+  server.route({
+    method: 'GET',
+    path: '/autocomplete',
+    handler: (request, reply) => {
+      const output = {};
+      const keyword = request.query.keyword;
+      const places = [];
+      const reg = new RegExp(keyword);
+      const sugg = [];
+
+      if (keyword !== '') {
+        places.push('Afghanistan');
+        places.push('Albania');
+        places.push('Algeria');
+        places.push('American Samoa');
+        places.push('Antarctica');
+        places.push('Argentina');
+        places.push('Armenia');
+        places.push('Aruba');
+        places.push('Australia');
+        places.push('Austria');
+        places.push('Bahamas');
+        places.push('Bangladesh');
+        places.push('Barbados');
+        places.push('Belarus');
+        places.push('Belgium');
+        places.push('Belize');
+        places.push('Bermuda');
+        places.push('Bolivia');
+        places.push('Brazil');
+        places.push('Bulgaria');
+        places.push('Cambodia');
+        places.push('Cameroon');
+        places.push('Canada');
+        places.push('Cayman Islands');
+        places.push('Chad');
+        places.push('Chile');
+        places.push('China');
+        places.push('Colombia');
+        places.push('Congo');
+        places.push('Cook Islands');
+        places.push('Costa Rica');
+        places.push('Côte d\'Ivoire');
+        places.push('Croatia');
+        places.push('Cuba');
+        places.push('Cyprus');
+        places.push('Czech Republic');
+      }
+
+      for (let i = 0; i < places.length; i += 1) {
+        if (reg.test(places[i].toLowerCase())) {
+          sugg.push(places[i]);
+        }
+      }
+
+      if (sugg.length === 0) {
+        sugg.push('No matches found');
+      }
+
+      output.items = sugg;
+
+      setTimeout(() => reply(output), 1500);  // 1.5 sec
+    }
+  });
+
   next();
 };
 
