@@ -1,5 +1,5 @@
 function displayCountries(output) {
-  $('#country_suggestions').html(output);
+  $('#country_suggestions').html(output).addClass('expanded');
 }
 
 function formatCountries(countries) {

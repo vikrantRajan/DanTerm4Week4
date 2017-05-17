@@ -4,7 +4,18 @@
 	<meta charset="utf-8">
 	<title>Autocomplete Design Patter</title>
 	<style>
-	.hide { display: none; }
+		.hide { display: none; }
+		#country_keywords, #country_suggestions { width: 200px; }
+		#country_suggestions.expanded {
+			border-width: 0 1px 1px 1px;
+			border-color: black;
+			border-style: solid;
+			box-shadow: 6px 10px 5px 6px #ccc;
+			margin-top: 0;
+			padding-left: 0;
+		}
+		#country_suggestions ul { margin: 0; padding: 0; }
+		#country_suggestions li { list-style-type: none; padding: 0 4px; }
 	</style>
 </head>
 
