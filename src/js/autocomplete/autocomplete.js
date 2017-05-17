@@ -1,8 +1,21 @@
-function autocomplete() {
+function displayList(raw) {
+  $('#country_suggestions').html(`<li>${raw}</li>`);
+}
+
+function queryService(keyword) {
+  // todo inclass
+  displayList(keyword);
+}
+
+function listenToInput() {
   $('#country_keywords').keyup((element) => {
     const keyword = $(element.target).val();
-    $('#country_suggestions').html(`<li>${keyword}</li>`);
+    queryService(keyword);
   });
+}
+
+function autocomplete() {
+  listenToInput();
 }
 
 // If Node.js then export as public
