@@ -25,6 +25,7 @@
 	* Rename instructor's files with your initials (i.e. hello-dan.js where "-dan" is the suffix)
 	* Update the /.gitignore file with *-dan* to avoid committing your changes
 
+
 # Start web server
 ## Visual Studio Code
 1. View Integrated Terminal (Menu Bar > View > Integrated Terminal)
@@ -35,7 +36,6 @@
 1. Navigate to web site root (i.e. c:/node.js/course-files)
 1. Hold Shift key and Right click
 1. Select `Open command window here`
-
 
 ## Commands
 * `npm start` Start the web server
@@ -49,3 +49,16 @@
 1. Gulp.js has a build step that is executed with command `npm run dev` (into CLI)
 	* To trigger the build, save a JavaScript file in the `src` folder
 1. This file is created with the goal of decreasing the number of files downloaded by the browser; from many to one.
+
+
+# File system
+## Folders
+* `/src/js/*` Folder for storing JavaScript source files. These files will be bundled into critical.js
+* `/public/jQuery/*` jQuery course folder for storing HTML, CSS, images and other public static assets
+* `/public/social-apis/*` Third-party APIs course folder for storing HTML, CSS, images and other public static assets
+
+## Instructor provided files
+* Dan will sync in-class content throughout the class duration.
+* Use GitHub Desktop to get the latest files from GitHub.com to your local computer
+* **Avoid** conflicts with Dan's file by applying your initials to your files such as *./math-db/sum.html* and *./math-db/sum.js*
+	* Tip: Update the */.gitignore* file to include `*-db` to hide your custom files from Git
