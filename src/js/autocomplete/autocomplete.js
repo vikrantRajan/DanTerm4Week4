@@ -1,3 +1,5 @@
+/* global document */
+
 let autocompletePosition = 0;
 const keys = {
   left: 37,
@@ -73,12 +75,12 @@ function queryService(keyword) {
 }
 
 function listenToInput() {
-  $('#country_keywords').keyup((element) => {
+  $('#country_keywords').keyup((event) => {
     if (event.which === keys.up || event.which === keys.down) {
       return;
     }
 
-    const keyword = $(element.target).val();
+    const keyword = $(event.target).val();
     queryService(keyword);
   });
 }
