@@ -14,6 +14,10 @@ function shareAsset() {
     });
 
     $('#menu').html(htmlResponse);
+
+    $('#menuCities').parent().click(() => {
+      console.log('clicked');
+    });
   });
 }
 
