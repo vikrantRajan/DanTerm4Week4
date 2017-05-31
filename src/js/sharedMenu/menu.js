@@ -11,19 +11,24 @@ function shareAsset() {
     $.ajax({ url: 'weather.json', success: callback });
   }
 
+  // ideal for unit testing
+  function transformToCssClassName(raw) {
+    // Mostly Cloudy --> mostly_cloudy
+    return raw.toLowerCase().split(' ').join('_');
+  }
+
   getHtml((htmlResponse) => {
     getCss((cssResponse) => {
       $('head').append(`<style>${cssResponse}</style>`);
-      // not the best approach, I recommend using link element
     });
 
-    $('#menu').html(htmlResponse);
-
+    $('#menu').append(htmlResponse);
     $('#menuCities').parent().click(() => {
       getJson((jsonResponse) => {
         const html = [];
         $.each(jsonResponse.result.cities, (index, cityName) => {
-          html.push('<li>', cityName, '</li>');
+          const condition = jsonResponse.result[cityName].condition;
+          html.push('<li class="', transformToCssClassName(condition), '">', cityName, '</li>');
         });
         $('#menuCities').html(html.join(''));
       });
