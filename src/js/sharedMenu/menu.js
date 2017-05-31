@@ -7,6 +7,10 @@ function shareAsset() {
     $.ajax({ url: 'menu.css', success: callback });
   }
 
+  function getJson(callback) {
+    $.ajax({ url: 'weather.json', success: callback });
+  }
+
   getHtml((htmlResponse) => {
     getCss((cssResponse) => {
       $('head').append(`<style>${cssResponse}</style>`);
@@ -16,7 +20,9 @@ function shareAsset() {
     $('#menu').html(htmlResponse);
 
     $('#menuCities').parent().click(() => {
-      console.log('clicked');
+      getJson((jsonResponse) => {
+        console.log(jsonResponse);
+      });
     });
   });
 }
