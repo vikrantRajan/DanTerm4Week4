@@ -4,7 +4,7 @@ function shareAsset() {
   }
 
   getHtml((htmlResponse) => {
-    console.log(htmlResponse);
+    $('#menu').html(htmlResponse);
   });
 }
 
