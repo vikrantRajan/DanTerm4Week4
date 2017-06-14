@@ -9,6 +9,7 @@
 		<li><a href="/slides/js-events">Input Events</a></li>
 		<li><a href="/slides/json">JSON</a></li>
 		<li><a href="/slides/ajax">AJAX</a></li>
+		<li><a href="/slides/git">Git</a></li>
 	</ol>
 
 	<script src="js/critical.js"></script>

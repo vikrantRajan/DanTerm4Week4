@@ -1,5 +1,5 @@
 exports.register = (server, pluginOptions, next) => {
-  const slides = ['client-side', 'js-var-types', 'cdn', 'js-events', 'json', 'ajax'];
+  const slides = ['client-side', 'js-var-types', 'cdn', 'js-events', 'json', 'ajax', 'git'];
 
   server.route({
     method: 'GET',
