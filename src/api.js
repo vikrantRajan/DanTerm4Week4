@@ -1,3 +1,4 @@
+const credentials = require('../credentials.json');
 const wreck = require('wreck');
 
 exports.register = (server, pluginOptions, next) => {
@@ -6,7 +7,7 @@ exports.register = (server, pluginOptions, next) => {
     path: '/flickr',
     handler: (request, reply) => {
       // todo request Flickr API content
-      const apiKey = '';
+      const apiKey = credentials.flickr.api_key;
       const address = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=vancouver&format=json&nojsoncallback=1`;
       wreck.get(address, { json: true }, (error, response, payload) => {
          // todo reply Flickr API response
