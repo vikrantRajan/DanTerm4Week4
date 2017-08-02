@@ -1,9 +1,18 @@
+const wreck = require('wreck');
+
 exports.register = (server, pluginOptions, next) => {
   server.route({
     method: 'GET',
     path: '/flickr',
     handler: (request, reply) => {
-      reply({ hello: true });
+      // todo request Flickr API content
+      const apiKey = '';
+      const address = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=vancouver&format=json&nojsoncallback=1`;
+      wreck.get(address, { json: true }, (error, response, payload) => {
+         // todo reply Flickr API response
+        console.log(payload);
+        reply(payload);
+      });
     }
   });
 
