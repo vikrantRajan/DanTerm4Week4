@@ -1,6 +1,14 @@
 exports.register = (server, pluginOptions, next) => {
   server.route({
     method: 'GET',
+    path: '/flickr',
+    handler: (request, reply) => {
+      reply({ hello: true });
+    }
+  });
+
+  server.route({
+    method: 'GET',
     path: '/slow-fruit',
     handler: (request, reply) => {
       const SLEEP = 2 * 1000; // 2 sec
