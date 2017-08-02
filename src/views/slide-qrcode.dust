@@ -1,0 +1,142 @@
+{>"layout-slide"/}
+
+	{<body}
+<section>
+<h1>QR codes</h1>
+<h3>Quick Response codes</h3>
+<img src="../assets/qrcode_cant_scan_this.jpg">
+<p><small>Can't <s>touch</s> scan this <small>(source <a class="wiki_link_ext" href="http://blog.bjvicks.com/post/4217416627/cant-scan-this" rel="nofollow">bjvicks</a>)</small></small></p>
+</section>
+
+<section>
+<h2>Subway Grocer</h2>
+<iframe width="420" height="315" src="http://www.youtube.com/embed/h7HnR02kJxY" frameborder="0" allowfullscreen></iframe>
+</section>
+
+<section>
+<h2>Fiat coin</h2>
+<p>Engadget <a href="http://www.engadget.com/2011/06/18/dutch-coins-feature-qr-codes-promise-surprises/">Dutch coins feature QR code</a></p>
+</section>
+
+<section>
+<h2>Bitcoins</h2>
+<h3>Money transaction on the street</h3>
+<img src="../assets/bitcoin/wallet_qrcode.jpg">
+<p><small><a href="https://localbitcoins.com/ad/1005/buy-bitcoins-with-cash-downtown-vancouver-bc-west-end-">LocalBitcoins.com</a></small></p>
+</section>
+
+<section>
+<h2>Signage</h2>
+<img src="../assets/qrcode_catch_them_all.jpg">
+<p><small><a href="http://wtfqrcodes.com/">WTF QR codes</a></small></p>
+</section>
+
+<section>
+<h2>Apps</h2>
+<h4>QR code scanner</h4>
+<p><small>iOS <a href="http://itunes.apple.com/us/app/bakodo-barcode-scanner-qr/id371932548?mt=8">Bakodo</a></small></p>
+
+<p><small>Android <a href="https://play.google.com/store/apps/details?id=com.google.zxing.client.android&hl=en">Barcode Scanner</a> or <a href="https://play.google.com/store/apps/details?id=la.droid.qr&hl=en">QR Droid</a></small></p>
+
+<p><small>Samsung Android - Optical Reader is bundled with the operating system</small></p>
+</section>
+
+<section>
+<h2>Generators</h2>
+<ul>
+	<li><a href="http://www.qrstuff.com/">QR Stuff</a> - different formats with colour</li>
+	<li><a href="http://www.qrcode-monkey.com/">QRCode-Monkey-Generator</a> - logo placement</li>
+</ul>
+</section>
+
+<section>
+<h2>Business Card</h2>
+<img src="../assets/qrcode_business_card.jpg">
+<p><small>Webdesigner Depot <a href="http://www.webdesignerdepot.com/2011/07/30-creative-qr-code-business-cards/">30 Creative QR code business cards</a></small></p>
+</section>
+
+<section>
+<h2>Formats</h2>
+<h3>vCard</h3>
+<pre><code contenteditable>BEGIN:VCARD
+VERSION:2.1
+N:Last;First
+FN:Full name
+ORG:Organization
+TITLE:Occupation title
+TEL;WORK;VOICE:(604) 123-4567
+TEL;HOME;VOICE:(778) 123-4567
+ADR;WORK:;;100 Waters Edge;Vancouver;BC;V7V7V7;Canada
+LABEL;WORK;ENCODING=QUOTED-PRINTABLE:100 Waters Edge=0D=Vancouver, BC V7V7V7=0D=0ACanada
+ADR;HOME:;;42 Plantation St.;Vancouver;BC;V7V7V7;Canada
+LABEL;HOME;ENCODING=QUOTED-PRINTABLE:42 Plantation St.=0D=Vancouver, BC V7V7V7=0D=0ACanada
+EMAIL;PREF;INTERNET:email@address.ca
+REV:20080424T195243Z
+END:VCARD</code></pre>
+<p><small><a href="http://en.wikipedia.org/wiki/Vcard">vCard format standard (wikipedia)</a></small></p>
+</section>
+
+<section>
+<h2>Formats</h2>
+<h3>meCard</h3>
+<pre><code contenteditable>MECARD:
+N:Last,First;
+NOTE:Occupation title;
+TEL:16041234567;
+EMAIL:email@address.ca;
+URL:http://www.website.com;;</code></pre>
+<p><small><a href="https://www.nttdocomo.co.jp/english/service/developer/make/content/barcode/function/application/addressbook/index.html">meCard format standard</a></small></p>
+</section>
+
+<section>
+<h2>Google Infographic API</h2>
+<a href="https://developers.google.com/chart/infographics/docs/qr_codes">QueryString API documentation</a>
+</section>
+
+<section>
+<section>
+	<h2>Inclass work</h2>
+	<p>As a user, I want my smartphone to display contextual information from the physical world.</p>
+	<p>As a dev, generate a QR code linking to our school's web address, so the smartphone browser will open said web page. The QR Code should be embedded into a web page.</p>
+	<h3>Technologies</h3>
+	<ul>
+		<li>Google Infographic API</li>
+		<li>Smartphone with QR code scanning app</li>
+		<li>HTML</li>
+	</ul>
+</section>
+
+<section>
+	<h2>Inclass work</h2>
+	<p>As a user, I want my vitals stored in a MeCard format.</p>
+	<p>As a dev, collect first &amp; last name, job title, and web address via an HTML form.  On submit display the captured data in a MeCard format.</p>
+
+	<h3>Technologies</h3>
+	<ul>
+		<li>JavaScript</li>
+		<li>jQuery</li>
+		<li>HTML</li>
+	</ul>
+</section>
+
+<section>
+	<h2>Inclass work</h2>
+	<p>As a dev, collect first &amp; last name, job title, and web address via an HTML form then generate a QR code containing meCard data.  When the QR code is scanned, the mobile phone user will have the option of adding to their address book.</p>
+
+	<h3>Technologies</h3>
+	<ul>
+		<li>Google Infographic API</li>
+		<li>meCard</li>
+		<li>Smartphone with QR code scanning app</li>
+		<li>JavaScript</li>
+	</ul>
+</section>
+</section>
+
+<section>
+<h2>Resources</h2>
+<ol>
+	<li>SEW <a href="http://searchenginewatch.com/sew/how-to/2066777/top-14-things-marketers-need-know-about-qr-codes">Top 14 Things Marketers Need to Know About QR Codes</a></li>
+</ol>
+</section>
+	{/body}

@@ -10,6 +10,9 @@
 		<li><a href="/slides/json">JSON</a></li>
 		<li><a href="/slides/ajax">AJAX</a></li>
 		<li><a href="/slides/git">Git</a></li>
+		<li><a href="/slides/api">API</a></li>
+		<li><a href="/slides/qrcode">QR Code</a></li>
+		<li><a href="/slides/flickr">Flickr</a></li>
 	</ol>
 
 	<script src="js/critical.js"></script>
