@@ -46,33 +46,10 @@ URL:http://www.website.com;;</pre>
 </form>
 
 <!-- Attach jQuery library -->
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<!-- Page specific code -->
-<script>
-	/*
-	 Bind submit (event) to form (element)
-	 cancel form action event.preventDefault() or return false;
-	 then update textarea with "hello"
-	 change the textarea to display first name value
-	 change the textarea to display all field's value
-	 change the textarea to display all field's value in MeCard format
-	 */
-	$('form').on('submit', function (event) {
-		var fname = $('#fname').val(),
-			lname = $('#lname').val(),
-			title = $('#title').val(),
-			url = $('#url').val(),
-			mecard = ["MECARD:"];
-
-		mecard.push('N:', lname, ',', fname, ';');
-		mecard.push('NOTE:', title, ';');
-		mecard.push('URL:', url, ';');
-		mecard.push(';'); // close MeCard
-
-		$('#mecard').val(mecard.join(''));
-
-		event.preventDefault(); // cancel form action
-	});
-</script>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Attach all the bundles JavaScript files in /src/js -->
+<script src="/js/critical.js"></script>
+<!-- Execute page specific function -->
+<script>buildMecard();</script>
 </body>
 </html>

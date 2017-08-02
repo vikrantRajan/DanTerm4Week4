@@ -47,27 +47,10 @@ URL:http://www.website.com;;</pre>
 </form>
 
 <!-- Attach jQuery library -->
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<!-- Page specific code -->
-<script>
-	$('form').on('submit', function (event) {
-		var fname = $('#fname').val(),
-			lname = $('#lname').val(),
-			title = $('#title').val(),
-			url = $('#url').val(),
-			mecard = ["MECARD:"],
-			apiEndpoint = 'https://chart.googleapis.com/chart',
-			apiArgs = '?cht=qr&chs=300x300&chl=';
-
-		mecard.push('N:', lname, ',', fname, ';');
-		mecard.push('NOTE:', title, ';');
-		mecard.push('URL:', url, ';');
-		mecard.push(';'); // close MeCard
-
-		$('#qr_code').attr('src', apiEndpoint + apiArgs + mecard.join(''));
-
-		event.preventDefault(); // cancel form action
-	});
-</script>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Attach all the bundles JavaScript files in /src/js -->
+<script src="/js/critical.js"></script>
+<!-- Execute page specific function -->
+<script>buildMecardQr();</script>
 </body>
 </html>

@@ -23,20 +23,12 @@
 <h3>Live demo</h3>
 <textarea id="qr_source"></textarea>
 <img id="qr_code">
-<!-- Attach jQuery library -->
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<!-- Page specific code -->
-<script>
-	function generateQrCode(val) {
-		var src = ["https://chart.googleapis.com/chart?cht=qr", "chs=300x300", "chl=" + val].join("&");
-		//var src = "https://chart.googleapis.com/chart?cht=qr&chs=500x500&chl=" + val;
-		$("#qr_code").attr("src", src);
-	};
-	generateQrCode('');
 
-	$("#qr_source").keyup(function () {
-		generateQrCode(this.value);
-	});
-</script>
+<!-- Attach jQuery library -->
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Attach all the bundles JavaScript files in /src/js -->
+<script src="/js/critical.js"></script>
+<!-- Execute page specific function -->
+<script>showTextarea();</script>
 </body>
 </html>
