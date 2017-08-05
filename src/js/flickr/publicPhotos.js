@@ -2,7 +2,9 @@ function getFlickrPublicPhotos() {
   $.ajax({
     url: '/api/flickr',
     success: (response) => {
-      console.log(response);
+      $.each(response.photos, (index, jpgPath) => {
+        $('#photos').append(`<li><img src="${jpgPath}"></li>`);
+      });
     }
   });
 }
