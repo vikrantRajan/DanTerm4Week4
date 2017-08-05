@@ -13,6 +13,7 @@
 		<li><a href="/slides/api">API</a></li>
 		<li><a href="/slides/qrcode">QR Code</a></li>
 		<li><a href="/slides/flickr">Flickr</a></li>
+		<li><a href="/slides/twitter">Twitter</a></li>
 	</ol>
 
 	<script src="js/critical.js"></script>
