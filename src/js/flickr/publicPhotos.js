@@ -1,5 +1,10 @@
 function getFlickrPublicPhotos() {
-  console.log('Hello browser');
+  $.ajax({
+    url: '/api/flickr',
+    success: (response) => {
+      console.log(response);
+    }
+  });
 }
 
 // If Node.js then export as public
