@@ -3,8 +3,22 @@
 * Cancel any node process in Integrate Terminal
 * Menu Bar > View > Debug
 * Ensure default configuration is set to Node.js
+	* Sample launch.json
+		{
+			"version": "0.2.0",
+			"configurations": [
+				{
+					"name": "Launch Program",
+					"type": "node",
+					"request": "launch",
+					"program": "${workspaceRoot}\\index.js",
+					"cwd": "${workspaceRoot}"
+				}
+			]
+		}
+
 * Set breakpoint on file (i.e. server.js)
-    * Click mouse in left gutter of line number
+	* Click mouse in left gutter of line number
 * Press Start Debugging green arrow button
 
 ## ESLint
