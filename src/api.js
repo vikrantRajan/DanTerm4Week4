@@ -1,11 +1,6 @@
 const credentials = require('../credentials.json');
 const wreck = require('wreck');
 
-function flickrPhoto(photo) {
-  const photoPath = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
-  return photoPath;
-}
-
 exports.register = (server, pluginOptions, next) => {
   server.route({
     method: 'GET',
@@ -19,12 +14,10 @@ exports.register = (server, pluginOptions, next) => {
         // todo reply Flickr API raw response
         // todo reply JPG paths by modifying the raw Flickr response
 
-        const jpgPaths = [];
-        payload.photos.photo.forEach((photo) => {
-          jpgPaths.push(flickrPhoto(photo));
-        });
+        const photo = payload.photos.photo[0];
+        const photoPath = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
 
-        reply({ photos: jpgPaths });
+        reply(photoPath);
       });
     }
   });
