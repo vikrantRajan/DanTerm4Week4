@@ -8,3 +8,7 @@
 	* Create an app for the API key
 	* Store secret and tokens in server file
 	* Use a library or driver to aid with authenication steps
+
+# Update server to consume API
+1. New route
+	* `src/api.js` is where API routes are defined for the server
