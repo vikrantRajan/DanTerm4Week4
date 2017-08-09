@@ -7,6 +7,16 @@ function flickrPhoto(photo) {
   return photoPath;
 }
 
+function twitterTweets(timeline) {
+  const tweets = [];
+
+  timeline.forEach((message) => {
+    tweets.push(message.text);
+  });
+
+  return tweets;
+}
+
 exports.register = (server, pluginOptions, next) => {
   server.route({
     method: 'GET',
@@ -26,7 +36,7 @@ exports.register = (server, pluginOptions, next) => {
           return;
         }
 
-        reply(payload);
+        reply(twitterTweets(payload));
       });
     }
   });
