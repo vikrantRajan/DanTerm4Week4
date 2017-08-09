@@ -10,11 +10,11 @@ function flickrPhoto(photo) {
 function twitterTweets(timeline) {
   const tweets = [];
 
-  timeline.forEach((message) => {
-    tweets.push(message.text);
+  timeline.forEach((tweet) => {
+    tweets.push(tweet.text);
   });
 
-  return tweets;
+  return { tweets };
 }
 
 exports.register = (server, pluginOptions, next) => {
