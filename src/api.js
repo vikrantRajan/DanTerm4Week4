@@ -7,7 +7,13 @@ function flickrPhoto(photo) {
 }
 
 exports.register = (server, pluginOptions, next) => {
-  // todo inclass: Create a new Twitter route with JSON output such as { hello: true }
+  server.route({
+    method: 'GET',
+    path: '/twitter',
+    handler: (request, reply) => {
+      reply({ hello: true });
+    }
+  });
 
   server.route({
     method: 'GET',
@@ -50,7 +56,7 @@ exports.register = (server, pluginOptions, next) => {
           apple: 'green',
           banana: 'yellow',
           cherry: 'red',
-          durrian: 'blue'
+          durian: 'blue'
         });
       }, SLEEP);
     }
