@@ -7,4 +7,5 @@ Services need to verify if a website has permission for an action such as provid
 ### Endpoint
 #### AKA Resource URL
 #### AKA Root URL
+#### AKA Example Request
 Service address used to connect to for API communication. AJAX and Node.js HTTP request are made to API endpoints

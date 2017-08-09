@@ -7,6 +7,8 @@ function flickrPhoto(photo) {
 }
 
 exports.register = (server, pluginOptions, next) => {
+  // todo inclass: Create a new Twitter route with JSON output such as { hello: true }
+
   server.route({
     method: 'GET',
     path: '/flickr',
