@@ -1,9 +1,11 @@
+/* global formatTwitterDate */
+
 function getTwitterTweets() {
   $.ajax({
     url: '/api/twitter',
     success: (response) => {
       $.each(response.tweets, (index, tweet) => {
-        $('#tweets').append(`<li>${tweet.text} <b>${tweet.date}</b></li>`);
+        $('#tweets').append(`<li>${tweet.text} <b>${formatTwitterDate(tweet.date)}</b></li>`);
       });
     }
   });

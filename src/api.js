@@ -33,7 +33,7 @@ exports.register = (server, pluginOptions, next) => {
         timeout_ms: 60 * 1000  // optional HTTP request timeout to apply to all requests.
       });
 
-      t.get('statuses/user_timeline', { screen_name: 'vanarts' }, (error, payload) => {
+      t.get('statuses/user_timeline', { screen_name: 'danactive' }, (error, payload) => {
         if (error) {
           reply(error.message);
           return;
