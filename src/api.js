@@ -11,7 +11,10 @@ function twitterTweets(timeline) {
   const tweets = [];
 
   timeline.forEach((tweet) => {
-    tweets.push(tweet.text);
+    tweets.push({
+      date: tweet.created_at,
+      text: tweet.text
+    });
   });
 
   return { tweets };
