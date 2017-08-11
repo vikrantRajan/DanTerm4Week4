@@ -36,6 +36,11 @@ exports.register = (server, pluginOptions, next) => {
           return;
         }
 
+        if (request.query.raw && request.query.raw === 'true') {
+          reply(payload);
+          return;
+        }
+
         reply(twitterTweets(payload));
       });
     }
