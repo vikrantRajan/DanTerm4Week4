@@ -62,3 +62,6 @@
 * Use GitHub Desktop to get the latest files from GitHub.com to your local computer
 * **Avoid** conflicts with Dan's file by applying your initials to your files such as *./math-db/sum.html* and *./math-db/sum.js*
 	* Tip: Update the */.gitignore* file to include `*-db` to hide your custom files from Git
+* Student may create a JavaScript file `/src/js/api-student.js` for server API routes
+	* Routes cannot conflict, so rename the student route to be unique
+	* Plugin name must be unique such as `exports.register.attributes = { name: 'api-student', version: '1.0.0' };`

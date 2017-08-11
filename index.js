@@ -8,6 +8,15 @@ const libApi = require('./src/api');
 const libSlides = require('./src/slides');
 const utils = require('./src/js/utils');
 
+let libStudentApi;
+try {
+  libStudentApi = require('./src/api-student'); // eslint-disable-line global-require, import/no-unresolved
+} catch (e) {
+  if (e instanceof Error && e.code !== 'MODULE_NOT_FOUND') {
+    throw e;
+  }
+}
+
 const server = new Hapi.Server();
 server.connection({ port: 8080 });
 dust.config.whitespace = true;
@@ -18,6 +27,10 @@ const plugins = [
   { register: libSlides, routes: { prefix: '/slides' } },
   lout
 ];
+
+if (libStudentApi) {
+  plugins.push({ register: libStudentApi, routes: { prefix: '/api' } });
+}
 
 function registerCallback() {
   server.views({
