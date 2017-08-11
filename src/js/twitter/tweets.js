@@ -2,8 +2,8 @@ function getTwitterTweets() {
   $.ajax({
     url: '/api/twitter',
     success: (response) => {
-      $.each(response.tweets, (index, text) => {
-        $('#tweets').append(`<li>${text}</li>`);
+      $.each(response.tweets, (index, tweet) => {
+        $('#tweets').append(`<li>${tweet.text} <b>${tweet.date}</b></li>`);
       });
     }
   });
