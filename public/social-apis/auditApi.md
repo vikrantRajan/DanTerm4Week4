@@ -1,3 +1,6 @@
+# Avoid API
+1. Use Web Feed, Embed, or Social Plugin to save time to acheive the business goal
+
 # Steps to audit an API
 1. Ensure the API solves our business case
 	* Select the best API method
