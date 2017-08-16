@@ -2,6 +2,9 @@ const credentials = require('../credentials.json');
 const instagram = require('instagram-node');
 const Twit = require('twit');
 const wreck = require('wreck');
+const Yql = require('yql');
+
+const ig = instagram.instagram();
 
 function flickrPhoto(photo) {
   const photoPath = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
@@ -22,12 +25,51 @@ function twitterTweets(timeline) {
 }
 
 exports.register = (server, pluginOptions, next) => {
-  const ig = instagram.instagram();
-  const redirectLandingAddress = 'http://localhost:8080/api/instagram-login';
+  server.route({
+    method: 'GET',
+    path: '/weather',
+    handler: (request, reply) => {
+      const address = 'https://query.yahooapis.com/v1/public/yql?q=select item from weather.forecast where woeid = 9807 and u=\'c\'&format=json';
+
+      wreck.get(address, { json: true }, (error, response, payload) => {
+        if (error) {
+          reply(error);
+          return;
+        }
+
+        const weatherItem = payload.query.results.channel.item;
+        const condition = weatherItem.condition.text;
+        const conditionCss = condition.replace(/\s/g, '');
+        const temperature = weatherItem.condition.temp;
+
+        reply({ weather: { condition, conditionCss, temperature } });
+      });
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/yahoo',
+    handler: (request, reply) => {
+      const query = new Yql('select item from weather.forecast where woeid = 9807 and u=\'c\'');
+
+      query.exec((error, payload) => {
+        const weatherItem = payload.query.results.channel.item;
+        const condition = weatherItem.condition.text;
+        const conditionCss = condition.replace(/\s/g, '');
+        const temperature = weatherItem.condition.temp;
+
+        reply({ weather: { condition, conditionCss, temperature } });
+      });
+    }
+  });
+
   server.route({
     method: 'GET',
     path: '/instagram-login',
     handler: (request, reply) => {
+      const redirectLandingAddress = 'http://localhost:8080/api/instagram-login';
+
       if (request.query.code) {
         ig.authorize_user(request.query.code, redirectLandingAddress, (authError, result) => {
           if (authError) {
