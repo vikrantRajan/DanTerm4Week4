@@ -27,6 +27,32 @@ function twitterTweets(timeline) {
 exports.register = (server, pluginOptions, next) => {
   server.route({
     method: 'GET',
+    path: '/instagram-media',
+    handler: (request, reply) => {
+      const address = 'https://www.instagram.com/yvrairport/media/';
+
+      wreck.get(address, { json: true }, (error, response, payload) => {
+        if (error) {
+          reply(error);
+          return;
+        }
+
+        const items = [];
+        payload.items.forEach((item) => {
+          items.push({
+            thumbnail: {
+              url: item.images.thumbnail.url
+            }
+          });
+        });
+
+        reply({ items });
+      });
+    }
+  });
+
+  server.route({
+    method: 'GET',
     path: '/weather',
     handler: (request, reply) => {
       const address = 'https://query.yahooapis.com/v1/public/yql?q=select item from weather.forecast where woeid = 9807 and u=\'c\'&format=json';

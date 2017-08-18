@@ -11,9 +11,23 @@ function instagram() {
   });
 }
 
+function instagramMedia() {
+  $.ajax({
+    url: '/api/instagram-media',
+    success: (response) => {
+      const html = [];
+      response.items.forEach((item) => {
+        html.push(`<img src="${item.thumbnail.url}">`);
+      });
+      $('body').append(html.join(''));
+    }
+  });
+}
+
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    instagram
+    instagram,
+    instagramMedia
   };
 }
