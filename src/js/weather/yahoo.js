@@ -1,7 +1,7 @@
 function yahooCallback(response) {
   const weatherItem = response.query.results.channel.item;
   const condition = weatherItem.condition.text;
-  const conditionCss = condition.replace(/\s/g, '');
+  const conditionCss = condition.replace(/\s/g, ''); // Mostly Cloudy -> MostlyCloudy
   const temperature = weatherItem.condition.temp;
 
   $('#weather').html(`<div>${temperature}C</div><div class="${conditionCss}" title="${condition}">&nbsp;</div>`);
