@@ -30,7 +30,8 @@ exports.register = (server, pluginOptions, next) => {
     path: '/facebook',
     handler: (request, reply) => {
       const accessParam = `access_token=${credentials.facebook.app_id}|${credentials.facebook.app_secret}`;
-      const address = `https://graph.facebook.com/v2.10/vancouver.institute.of.media.arts?fields=cover&${accessParam}`;
+      const object = request.query.object || 'vancouver.institute.of.media.arts?fields=cover';
+      const address = `https://graph.facebook.com/v2.10/${object}&${accessParam}`;
 
       wreck.get(address, { json: true }, (error, response, payload) => {
         if (error) {
