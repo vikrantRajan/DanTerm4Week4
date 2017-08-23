@@ -27,6 +27,24 @@ function twitterTweets(timeline) {
 exports.register = (server, pluginOptions, next) => {
   server.route({
     method: 'GET',
+    path: '/facebook',
+    handler: (request, reply) => {
+      const accessParam = `access_token=${credentials.facebook.app_id}|${credentials.facebook.app_secret}`;
+      const address = `https://graph.facebook.com/v2.10/vancouver.institute.of.media.arts?fields=cover&${accessParam}`;
+
+      wreck.get(address, { json: true }, (error, response, payload) => {
+        if (error) {
+          reply(error);
+          return;
+        }
+
+        reply(payload).type('application/json');
+      });
+    }
+  });
+
+  server.route({
+    method: 'GET',
     path: '/instagram-media',
     handler: (request, reply) => {
       const address = 'https://www.instagram.com/yvrairport/media/';
