@@ -1,6 +1,6 @@
 {
   "name": "js-courses",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Node.js site scaffolding with unit testing",
   "main": "app-teacher.js",
   "scripts": {
@@ -18,7 +18,7 @@
   },
   "author": "Dan BROOKS",
   "engines": {
-    "node": ">=6.x.x",
+    "node": ">=6.11.x",
     "npm": ">=3.x.x"
   },
   "license": "Dan BROOKS",
@@ -28,14 +28,14 @@
   },
   "homepage": "https://github.com/VanArts/course-files",
   "devDependencies": {
-    "eslint": "^3.4.0",
-    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
     "eslint-plugin-import": "^2.0.0",
     "expect.js": "^0.3.1",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-develop-server": "^0.5.2",
-    "gulp-eslint": "^3.0.1",
+    "gulp-eslint": "^4.0.0",
     "gulp-expect-file": "0.0.7",
     "gulp-htmlhint": "^0.3.0",
     "gulp-load-plugins": "^1.0.0-rc.1",
