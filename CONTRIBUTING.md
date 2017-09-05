@@ -2,7 +2,7 @@
 * CLI
 	* CLI is Command Line Interface otherwise known as Command Prompt, Powershell, Terminal, Bash, Shell
 * [Node.js](http://nodejs.org/)
-	* Install v6.9.x
+	* Install v6.11.x
 		* Visit official website and install
 	* Verify
 		* Open CLI
@@ -14,7 +14,7 @@
 		* Run `npm install`
 	* Verify
 		* Open CLI
-		* Run `npm start`
+		* Run `npm run start`
 
 * Follow team standard with text editor
 	* [Visual Studio Code](https://code.visualstudio.com/)
@@ -22,14 +22,15 @@
 			* EditorConfig for VS Code
 			
 * Avoid file conflicts
-	* Rename instructor's files with your initials (i.e. hello-dan.js where "-dan" is the suffix)
-	* Update the /.gitignore file with *-dan* to avoid committing your changes
+	* Instructor files end with the *teacher* suffix
+	* Files that you may create and edit end with the *student* suffix
+	* Update the /.gitignore file with *-student* to avoid committing your changes
 
 
 # Start web server
 ## Visual Studio Code
 1. View Integrated Terminal (Menu Bar > View > Integrated Terminal)
-1. Type `npm start` into terminal
+1. Type `npm run start` into terminal
 1. Visit web server address in browser
 
 ## Windows Explorer
@@ -38,8 +39,10 @@
 1. Select `Open command window here`
 
 ## Commands
-* `npm start` Start the web server
+* `npm run start` Start the web server
+* `npm run start:student` Start your edited web server
 * `npm run dev` Start the web server in developement mode watching files to lint, concat, and unit testing
+* `npm run dev:student` Start your edited web server in developement mode watching files to lint, concat, and unit testing
 * `npm test` Execute JS unit test suite
 * `npm run bundle` Manually prepare your JS for public
 * `npm run lint` Manually lint your JS
@@ -60,8 +63,8 @@
 ## Instructor provided files
 * Dan will sync in-class content throughout the class duration.
 * Use GitHub Desktop to get the latest files from GitHub.com to your local computer
-* **Avoid** conflicts with Dan's file by applying your initials to your files such as *./math-db/sum.html* and *./math-db/sum.js*
-	* Tip: Update the */.gitignore* file to include `*-db` to hide your custom files from Git
+* **Avoid** conflicts with Dan's file by applying your initials to your files such as *./math-student/sum.html* and *./math-student/sum.js*
+	* Tip: Update the */.gitignore* file to include `*-student` to hide your custom files from Git
 * Student may create a JavaScript file `/src/js/api-student.js` for server API routes
 	* Routes cannot conflict, so rename the student route to be unique
 	* Plugin name must be unique such as `exports.register.attributes = { name: 'api-student', version: '1.0.0' };`

@@ -11,7 +11,7 @@
 					"name": "Launch Program",
 					"type": "node",
 					"request": "launch",
-					"program": "${workspaceRoot}\\index.js",
+					"program": "${workspaceRoot}\\app-teacher.js",
 					"cwd": "${workspaceRoot}"
 				}
 			]

@@ -4,7 +4,7 @@ const inert = require('inert');
 const lout = require('lout');
 const vision = require('vision');
 
-const libApi = require('./src/api');
+const libApi = require('./src/api-teacher');
 const libSlides = require('./src/slides');
 const utils = require('./src/js/utils');
 

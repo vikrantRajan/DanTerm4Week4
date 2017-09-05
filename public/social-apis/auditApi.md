@@ -14,4 +14,4 @@
 
 # Update server to consume API
 1. New route
-	* `src/api.js` is where API routes are defined for the server
+	* `src/api-teacher.js` is where API routes are defined for the server

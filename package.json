@@ -1,15 +1,16 @@
 {
-  "name": "js-starter",
-  "version": "1.5.1",
+  "name": "js-courses",
+  "version": "1.6.0",
   "description": "Node.js site scaffolding with unit testing",
-  "main": "index.js",
+  "main": "app-teacher.js",
   "scripts": {
     "build": "gulp build",
     "dev": "gulp dev",
+    "dev:student": "gulp dev:student",
     "lint": "gulp lint",
     "start": "node .",
-    "test": "gulp test",
-    "watch": "gulp watch"
+    "start:student": "node app-student",
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,7 @@
   "homepage": "https://github.com/VanArts/course-files",
   "devDependencies": {
     "eslint": "^3.4.0",
-    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-config-airbnb-base": "^11.3.2",
     "eslint-plugin-import": "^2.0.0",
     "expect.js": "^0.3.1",
     "gulp": "^3.9.0",
@@ -39,20 +40,19 @@
     "gulp-htmlhint": "^0.3.0",
     "gulp-load-plugins": "^1.0.0-rc.1",
     "gulp-mocha": "^4.3.1",
-    "gulp-uglify": "^2.0.0",
     "htmlhint-stylish": "^1.0.3"
   },
   "dependencies": {
     "dustjs-linkedin": "^2.7.2",
-    "hapi": "^16.0.1",
+    "hapi": "^16.5.2",
     "inert": "^4.0.0",
     "instagram-node": "^0.5.8",
     "lout": "^10.0.1",
-    "mongodb": "^2.2.24",
+    "mongodb": "^2.2.31",
     "request": "^2.72.0",
     "twit": "^2.2.4",
     "vision": "^4.0.0",
-    "wreck": "^12.2.0",
+    "wreck": "^12.4.0",
     "yql": "^1.0.2"
   }
 }

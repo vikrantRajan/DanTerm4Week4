@@ -22,10 +22,6 @@ gulp.task('build', () => {
     .pipe(plugins.concat(`${newFilename}.js`))
     .pipe(gulp.dest(`${DESTINATION_FOLDER}js`))
     .pipe(plugins.expectFile(expectRules, `${DESTINATION_FOLDER}js/${newFilename}.js`));
-    // .pipe(plugins.uglify())
-    // .pipe(plugins.concat(`${newFilename}.min.js`))
-    // .pipe(gulp.dest(`${DESTINATION_FOLDER}js`))
-    // .pipe(plugins.expectFile(expectRules, `${DESTINATION_FOLDER}js/${newFilename}.min.js`));
 });
 
 gulp.task('lint', () => {
@@ -45,11 +41,15 @@ gulp.task('test', ['lint'], () => {
     .pipe(plugins.mocha({ reporter: 'nyan' }));
 });
 
-gulp.task('dev', () => {
-  plugins.developServer.listen({ path: pkg.main });
+function watch(entry) {
+  const path = entry || pkg.main;
+  plugins.developServer.listen({ path });
   return gulp.watch(paths.jsAll, () => {
     gulp.start('test');
     gulp.start('build');
     plugins.developServer.restart();
   });
-});
+}
+
+gulp.task('dev', () => watch());
+gulp.task('dev:student', () => watch('app-student'));

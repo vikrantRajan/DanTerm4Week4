@@ -7,9 +7,9 @@
 1. jQuery events
 1. Form Validation
 1. jQuery loops and objects
-1. jQuery AJAX
+1. jQuery AJAX + Fetch
 1. AJAX local server
-1. RSS & AJAX XML
+1. RSS + AJAX XML
 1. Autocomplete
 1. Chess
 

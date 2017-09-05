@@ -22,92 +22,10 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 	<script src="http://momentjs.com/downloads/moment.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-	<script>
-		$('#calendar').fullCalendar({
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay,listWeek'
-			},
-			firstDay: 1, // Monday start
-			defaultDate: '2017-08-16',
-			navLinks: true, // can click day/week names to navigate views
-			editable: true,
-			eventLimit: true, // allow "more" link when too many events
-			events: [
-				{
-					title: 'jQuery 08 (School)',
-					start: '2017-05-03'
-				},{
-					title: 'jQuery 09 (Remote)',
-					start: '2017-05-10'
-				},
-				{
-					title: 'jQuery 10 (School)',
-					start: '2017-05-17'
-				},
-				{
-					title: 'jQuery 11 (School)',
-					start: '2017-05-24'
-				},
-				{
-					title: 'API 01 (School)',
-					start: '2017-05-31'
-				},
-				{
-					title: 'API 02 (Siem Reap)',
-					start: '2017-06-07'
-				},
-				{
-					title: 'API 03 (Bangkok)',
-					start: '2017-06-14'
-				},
-				{
-					title: 'API 04 (Remote Rescheduled)',
-					start: '2017-06-21'
-				},
-				{
-					title: 'API 04 (James in School)',
-					start: '2017-06-28'
-				},
-				{
-					title: 'API 05 (Dan in School)',
-					start: '2017-08-02 09:00:00',
-					end: '2017-08-02 12:15:00'
-				},
-				{
-					title: 'API 06 (School)',
-					start: '2017-08-05 11:00:00',
-					end: '2017-08-05 14:15:00'
-				},
-				{
-					title: 'API 07 (School)',
-					start: '2017-08-09 09:00:00',
-					end: '2017-08-09 12:15:00'
-				},
-				{
-					title: 'API 08 (School)',
-					start: '2017-08-11 10:00:00',
-					end: '2017-08-11 13:15:00'
-				},
-				{
-					title: 'API 09 (School)',
-					start: '2017-08-16 09:00:00',
-					end: '2017-08-16 12:15:00'
-				},
-				{
-					title: 'API 10 (School)',
-					start: '2017-08-18 10:00:00',
-					end: '2017-08-18 13:15:00'
-				},
-				{
-					title: 'API 11 (School)',
-					start: '2017-08-23 09:00:00',
-					end: '2017-08-23 12:15:00'
-				}
-			]
-		});
-	</script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.0/fullcalendar.min.js"></script>
+	<!-- Attach all the bundles JavaScript files in /src/js -->
+	<script src="/js/critical.js"></script>
+	<!-- Execute page specific function -->
+	<script>courseCalendar();</script>
 </body>
 </html>
