@@ -28,7 +28,13 @@
 		// todo inclass: apply GST 5% to total bill
 		var count = parseInt(document.getElementById('count').value, 10);
 		var size = parseFloat(document.getElementById('size').value);
-		window.alert('$' + (count * size));
+		window.alert('Subtotal $' + (count * size));
+
+		// SOLUTION
+		var subtotal = count * size;
+		var gst = 0.05;
+		window.alert('Total $' + subtotal * (1 + gst)); // $25.20000000000000000003
+		window.alert('Total $' + Math.ceil(subtotal * (1 + gst))); // $26
 	</script>
 </body>
 </html>
