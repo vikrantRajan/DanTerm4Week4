@@ -34,7 +34,7 @@
 1. Visit web server address in browser
 
 ## Windows Explorer
-1. Navigate to web site root (i.e. c:/node.js/course-files)
+1. Navigate to web site root (i.e. c:/javascript/course-files)
 1. Hold Shift key and Right click
 1. Select `Open command window here`
 
