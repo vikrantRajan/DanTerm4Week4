@@ -22,8 +22,13 @@
 	Email: <input type="text" id="email" value="dan@vanarts.com"><br>
 	<input type="submit" id="newsletter-signup" text="Signup for newsletter">
 	<script>
-		// todo inclass alert the full name and email
-		// pass to server side
+		// TODO inclass alert the full name and email
+		
+		// SOLUTION
+		var fullname = document.getElementById('fullname').value;
+		window.alert('Your full name is ' + fullname);
+		var email = document.getElementById('email').value;
+		window.alert('Your email is ' + email);
 	</script>
 </body>
 </html>
