@@ -21,6 +21,7 @@
 	<h3>Reference</h3>
 	<ul>
 		<li>w3schools <a href="http://www.w3schools.com/jsref/jsref_obj_array.asp">Array methods</a></li>
+		<li>MDN <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join">join method</a></li>
 	</ul>
 	
 	<h3>Live demo</h3>
@@ -32,8 +33,8 @@
 		var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 		console.log(months.reverse());
 		
-		// convert from array to string
-		console.log(months.join(' and ')); // memorize
+		// export from array to string
+		console.log(months.join(' and ')); // important so memorize
 		
 		// build a sentance without concatenating
 		var sentence = ['sit', 'a'];
@@ -43,8 +44,16 @@
 		sentence.splice(2, 0, 'in'); // add to middle, second index without removing
 		console.log(sentence.join(' '));
 		
-		// todo inclass: Output to the console as a string, a list of month's name each with an italic element by using the array methods (i.e. <i>Jan</i> <i>Feb</i> <i>Mar</i>...)
+		/* todo inclass: Output to the console as a string, a list of month's name each with an italic element by 
+		using the array methods (i.e. <i>Jan</i> <i>Feb</i> <i>Mar</i>...) */
 		// Note: Do not modify the code above, and reuse the months variable
+
+		// SOLUTION
+		// months.reverse() Correct order [Jan, Feb, Mar]
+		// months.reverse().join('') Convert to string "Jan, Feb, Mar"
+		// months.reverse().join('</i> <i>') With advance delimiter (seperator) "Jan</i> <i>Feb</i> <i>Mar"
+		// '<i>' + months.reverse().join('</i> <i>') + '</i>' Bookend the italic elements <i>Jan</i> <i>Feb</i> <i>Mar</i>
+		console.log('<i>' + months.reverse().join('</i> <i>') + '</i>');
 	</script>
 </body>
 </html>

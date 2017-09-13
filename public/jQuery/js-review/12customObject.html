@@ -28,7 +28,7 @@
 				if (this.toppings === '') { // compares value and variable type 'true' is NOT equal to true
 					this.toppings = newTopping;
 				} else {
-					//this.toppings = this.toppings + ', ' + newTopping;
+					// this.toppings = this.toppings + ', ' + newTopping;
 					this.toppings += ', ' + newTopping; // shortcut
 				}
 			}
@@ -46,7 +46,16 @@
 			method is a function; often with multiple lines of code; reusable; changing a value or computing
 			property is a value (string, number, boolean, array, object)
 			if statement has not been taught so the solution does NOT need the use of ifs
-		*/		
+		*/
+
+		// SOLUTION
+		// an immutable variable is an variable whose state cannot be modified after it is created
+		// pizza is a mutable variable, meaning the state may be changed
+		pizza.addCrust = function (newCrust) {
+			this.crust = newCrust;
+		};
+		pizza.addCrust('multigrain');
+		console.log('I will eat a pizza with ' + pizza.toppings + ' toppings and has this crust ' + pizza.crust );
 	</script>
 
 </body>
