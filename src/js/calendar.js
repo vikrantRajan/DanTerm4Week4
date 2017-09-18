@@ -42,7 +42,9 @@ function createCourseSchedule(courseTitle = 'Dan\'s class') {
       const daysNextClass = betweenClasses.splice(0, 1);
       nextDate.setHours(24 * daysNextClass);
 
-      return { title, day, start, end };
+      return {
+        title, day, start, end
+      };
     },
     setDaysBetweenClasses: (between) => {
       classCount = between.length;
