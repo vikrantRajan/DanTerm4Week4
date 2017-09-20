@@ -34,11 +34,31 @@
 	var attributes = {
 		href: 'http://www.vanarts.com/',
 		title: 'VanArts',
-		// style: 'text-decoration: none', // overwritten due to line below
+		// style: 'text-decoration: none; color: yellow', // overwritten due to line below
 		style: 'text-decoration: none; color: purple'
 	};
 
 	// SOLUTION
+	$('#demo')
+		.attr(attributes)
+		.html('<b>VanArts</b>.com');
+		// .attr('style', 'text-decoration: none')
+		// .attr('style', 'color: red')  // overwrite any style attributes above
+		// .css('color', 'green'); // overwrite any style attributes above
+
+	// var element = document.getElementById('demo');
+	// element.innerHTML = '<b>VanArts</b>.com';
+	// element.setAttribute('href', attributes.href);
+	// element.setAttribute('title', attributes.title);
+	// element.setAttribute('style', attributes.style);
+
+	// var element = document.getElementById('demo');
+	// function setAttributes(el, attrs) {
+	// 	Object.keys(attrs).forEach(key => el.setAttribute(key, attrs[key]));
+	// }
+
+	// element.innerHTML = '<b>VanArts</b>.com';
+	// setAttributes(element, attributes);
 </script>
 </body>
 </html>
