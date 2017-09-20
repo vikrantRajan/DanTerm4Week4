@@ -10,7 +10,9 @@
 	<h2>Attach using CDN</h2>
 
 	<h3>Resources</h3>
-	<p><a href="https://code.jquery.com/">jQuery CDNs</a></p>
+	<ul>
+		<li><a href="https://code.jquery.com/">jQuery CDNs</a></li>
+	</ul>
 
 	<h3>Technologies</h3>
 	<ul>
@@ -20,5 +22,15 @@
 
 	<h3>Live demo</h3>
 	<div id="demo"></div>
+	<!-- Attach jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<!-- Page specific JavaScript -->
+	<script>
+		// selector  method
+		// Before <div id="demo"></div>
+		// After <div id="demo">Text, HTML, or Inner HTML</div>
+		$('#demo').text('Hello this is jQuery');
+		document.querySelector('#demo').innerHTML = 'Hello this is vanilla JavaScript';
+	</script>
 </body>
 </html>
