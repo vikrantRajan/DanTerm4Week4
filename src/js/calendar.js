@@ -42,7 +42,9 @@ function createCourseSchedule(courseTitle = 'Dan\'s class') {
       const daysNextClass = betweenClasses.splice(0, 1);
       nextDate.setHours(24 * daysNextClass);
 
-      return { title, day, start, end };
+      return {
+        title, day, start, end
+      };
     },
     setDaysBetweenClasses: (between) => {
       classCount = between.length;
@@ -61,7 +63,8 @@ function createCourseSchedule(courseTitle = 'Dan\'s class') {
 function courseCalendar() {
   const firstDate = new Date(2017, 8, 6); // Sept 6th
   const course = createCourseSchedule('jQuery')
-    .setFirstClassDate(firstDate);
+    .setFirstClassDate(firstDate)
+    .setDaysBetweenClasses([7, 7, 7, 14, 7, 7, 7, 7, 7, 7, 7]);
   const events = course.getAllClasses();
 
   $('#calendar').fullCalendar({

@@ -181,7 +181,7 @@ exports.register = (server, pluginOptions, next) => {
         consumer_secret: credentials.twitter.consumer_secret,
         access_token: credentials.twitter.access_token,
         access_token_secret: credentials.twitter.access_token_secret,
-        timeout_ms: 60 * 1000  // optional HTTP request timeout to apply to all requests.
+        timeout_ms: 60 * 1000 // optional HTTP request timeout to apply to all requests.
       });
 
       t.get('statuses/user_timeline', { screen_name: 'danactive' }, (error, payload) => {
@@ -299,9 +299,8 @@ exports.register = (server, pluginOptions, next) => {
   server.route({
     method: 'GET',
     path: '/autocomplete',
-    handler: (request, reply) => {
+    handler: ({ query: { keyword } }, reply) => {
       const output = {};
-      const keyword = request.query.keyword;
       const places = [];
       const reg = new RegExp(keyword);
       const sugg = [];
@@ -357,7 +356,7 @@ exports.register = (server, pluginOptions, next) => {
 
       output.items = sugg;
 
-      setTimeout(() => reply(output), 1500);  // 1.5 sec
+      setTimeout(() => reply(output), 1500); // 1.5 sec
     }
   });
 
