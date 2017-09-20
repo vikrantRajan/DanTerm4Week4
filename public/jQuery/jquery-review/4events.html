@@ -23,7 +23,8 @@
 	
 	<h3>Live demo</h3>
 	
-	<a href="javascript:;">Dumb link</a><br>
+	<a href="javascript:;">Dumb link (preferred)</a><br>
+	<a href="#">Dumb link as #</a><br>
 	<a href="javascript:;" onclick="clickLog()">Click event using HTML attribute JavaScript</a><br>
 	<a href="javascript:;" id="click">Click event using traditional JS binding</a><br>
 	<a href="javascript:;" id="hover">Hover event</a><br>
@@ -33,7 +34,7 @@
 		<input type="text" value="Keyboard events" id="keyboard"><br>
 	
 		<input type="submit" value="Submit event">
-		<input type="button" value="Button not submit button">
+		<input type="button" value="Button not submit button" id="btn">
 	</form>
 	
 <script>
@@ -44,7 +45,9 @@
 	// tradition JS binding
 	document.getElementById('click').onclick = clickLog; // named function
 	
-	window.onload = function () { console.log('Load event - all the HTML in the document has rendered'); }; // an anonymous function
+	window.onload = function () { // an anonymous function
+		console.log('Load event - all the HTML in the document has rendered');
+	};
 	
 	// hover (mouseOver & mouseOut)
 	document.getElementById('hover').onmouseover = function () {
@@ -63,7 +66,7 @@
 	// keyboard events
 	document.getElementById('keyboard').onkeydown = function () { console.log('Key Down'); };
 	document.getElementById('keyboard').onkeyup = function () { console.log('Key Up'); };
-	document.getElementById('keyboard').onkeypress = function () { console.log('Key Press'); };
+	document.getElementById('keyboard').onkeypress = function () { console.log('Key Press (not triggered by arrows or Ctrl)'); };
 	
 	// Down & Press occur on repetition
 	// Press only occurs when a character is added to HTML
@@ -75,6 +78,8 @@
 		console.log('Submit');
 		return false; // cancels form action; prevents form submission
 	};
+
+	document.getElementById('btn').onclick = clickLog;
 
 	// todo inclass convert classic JavaScript to jQuery events
 </script>
