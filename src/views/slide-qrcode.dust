@@ -31,15 +31,16 @@
 <p><small><a href="http://wtfqrcodes.com/">WTF QR codes</a></small></p>
 </section>
 
-<section>
-<h2>Apps</h2>
-<h4>QR code scanner</h4>
-<p><small>iOS <a href="http://itunes.apple.com/us/app/bakodo-barcode-scanner-qr/id371932548?mt=8">Bakodo</a></small></p>
+<section data-markdown><textarea data-template>
+## Apps
 
-<p><small>Android <a href="https://play.google.com/store/apps/details?id=com.google.zxing.client.android&hl=en">Barcode Scanner</a> or <a href="https://play.google.com/store/apps/details?id=la.droid.qr&hl=en">QR Droid</a></small></p>
+#### QR code scanner
 
-<p><small>Samsung Android - Optical Reader is bundled with the operating system</small></p>
-</section>
+* iOS 11 has QR Code reader built into Photo app
+* iOS [Bakodo](http://itunes.apple.com/us/app/bakodo-barcode-scanner-qr/id371932548?mt=8)
+* Android [Barcode Scanner](https://play.google.com/store/apps/details?id=com.google.zxing.client.android&hl=en) or [QR Droid](https://play.google.com/store/apps/details?id=la.droid.qr&hl=en)
+* Samsung Android - Optical Reader is bundled with the operating system
+</textarea></section>
 
 <section>
 <h2>Generators</h2>
@@ -48,6 +49,13 @@
 	<li><a href="http://www.qrcode-monkey.com/">QRCode-Monkey-Generator</a> - logo placement</li>
 </ul>
 </section>
+
+<section data-markdown><textarea data-template>
+## WiFi Hotspot
+
+* [Example](https://twitter.com/MarcelmeyerMm/status/872204014070284289)
+* `WIFI:S:<SSID>;T:<WPA|WEP|>;P:<password>;;`
+</textarea></section>
 
 <section>
 <h2>Business Card</h2>
@@ -74,6 +82,7 @@ EMAIL;PREF;INTERNET:email@address.ca
 REV:20080424T195243Z
 END:VCARD</code></pre>
 <p><small><a href="http://en.wikipedia.org/wiki/Vcard">vCard format standard (wikipedia)</a></small></p>
+<p><small><a href="https://www.macrumors.com/2017/06/06/iphone-can-scan-qr-codes-ios-11/">iOS 11 vCard support</a></small></p>
 </section>
 
 <section>
