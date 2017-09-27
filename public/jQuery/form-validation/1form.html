@@ -56,5 +56,16 @@
 		<input type="submit" value="Are my fields valid?">
 	</form>
 
+<!-- Attach jQuery library -->
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Page specific code -->
+<script>
+	$('#contact-form').submit(function (event) {
+		console.log('Form is submitted');
+		
+		event.preventDefault(); // cancel form action
+		// return false; // cancel form action using traditional JavaScript
+	});
+</script>
 </body>
 </html>
