@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>CSS tree</title>
+	<title>jQuery DOM tree</title>
 	<style>
 		.rule1 { font-style: italic; }
 		.rule2 { background-color: yellow; }
@@ -19,22 +19,34 @@
 
 <h3>Technology</h3>
 <ul>
+	<li>jQuery</li>
+	<li>JavaScript</li>
 	<li>CSS</li>
+	<li>HTML</li>
 </ul>
+
+<h3>Resources</h3>
+<ul>
+	<li>jQuery Documentation <a href="http://api.jquery.com/category/traversing/tree-traversal/">Tree traversal</a></li>
+	<li>Wikipedia <a href="https://en.wikipedia.org/wiki/Document_Object_Model">Document Object Model</a></li>
+	<li>Mozilla MDN <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">Intro to DOM</a></li>
+</ul>
+
+<h3>Goal</h3>
+<p>Remove the class names from the HTML structure, then using jQuery to traverse the DOM and apply the class names to acheive the same styling.</p>
  
-<h3>Live Demo</h3>
 <!-- Ancestors (upwards) -->
 <ul>
 	<li>Great grandparent
 	<ul>
-		<li class="rule2">Grandparent
+		<li>Grandparent
 		<ul>
-			<li class="rule1">Parent 
+			<li>Parent 
 			<ul>
 				<li id="here">Tree structure relative to here
-				<ul><li class="rule3">Child</li><li>Children</li></ul> <!-- Descendant (downwards) -->
+				<ul><li>Child</li><li>Children</li></ul> <!-- Descendant (downwards) -->
 				</li>
-				<li class="rule4">Sibling</li>
+				<li>Sibling</li>
 			</ul>
 			</li>
 		</ul>
