@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>Image gallery with rollovers</title>
 	<style>
-		
+		.photo { width: 40em; height: 30em; }
 	</style>
 </head>
 
@@ -31,5 +31,23 @@
 	</ul>
 
 	<h3>Live demo</h3>
+	<img src="1926.jpg" alt="Stanley Park" class="photo js-rollover">
+
+<!-- Attach jQuery library -->
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Page specific code -->
+<script>
+	function rollOn() {
+		var $image = $(this); // `this` references the <img> that triggered the event
+		
+		$image.attr('src', '2004.jpg');
+	}
+
+	function rollOff() {
+		console.log('World');
+	}
+
+	$('.js-rollover').hover(rollOn, rollOff);
+</script>
 </body>
 </html>
