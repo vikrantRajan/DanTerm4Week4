@@ -31,7 +31,7 @@
 	</ul>
 
 	<h3>Live demo</h3>
-	<img src="1926.jpg" alt="Stanley Park" class="photo js-rollover">
+	<img src="1926.jpg" data-reveal="2004.jpg" alt="Stanley Park" class="photo js-rollover">
 
 <!-- Attach jQuery library -->
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -39,12 +39,22 @@
 <script>
 	function rollOn() {
 		var $image = $(this); // `this` references the <img> that triggered the event
-		
-		$image.attr('src', '2004.jpg');
+		var revealSrc = $image.attr('data-reveal');
+		var originalSrc = $image.attr('src');
+
+		// backup original image source
+		$image.attr('data-original', originalSrc);
+
+		$image.attr('src', revealSrc);
 	}
 
+	// DRY = Don't Repeat Yourself
+
 	function rollOff() {
-		console.log('World');
+		var $image = $(this);
+		var originalSrc = $image.attr('data-original');
+
+		$image.attr('src', originalSrc);
 	}
 
 	$('.js-rollover').hover(rollOn, rollOff);
