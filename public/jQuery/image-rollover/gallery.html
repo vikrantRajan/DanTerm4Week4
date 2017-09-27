@@ -37,24 +37,24 @@
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <!-- Page specific code -->
 <script>
+	// DRY = Don't Repeat Yourself
+	function setSrc(img, readAttribute) {
+		var src = $(img).attr(readAttribute);
+		$(img).attr('src', src);
+	}
+
 	function rollOn() {
 		var $image = $(this); // `this` references the <img> that triggered the event
-		var revealSrc = $image.attr('data-reveal');
 		var originalSrc = $image.attr('src');
 
 		// backup original image source
 		$image.attr('data-original', originalSrc);
 
-		$image.attr('src', revealSrc);
+		setSrc(this, 'data-reveal');
 	}
 
-	// DRY = Don't Repeat Yourself
-
 	function rollOff() {
-		var $image = $(this);
-		var originalSrc = $image.attr('data-original');
-
-		$image.attr('src', originalSrc);
+		setSrc(this, 'data-original');
 	}
 
 	$('.js-rollover').hover(rollOn, rollOff);
