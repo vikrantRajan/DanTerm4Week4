@@ -5,8 +5,7 @@
 	<title>Form Validation</title>
 	<style>
 		input:invalid { background: red; }
-		.hide { display: none; }
-		.highlight { border: 2px solid green; }
+		:focus { border: 2px solid green; }
 	</style>
 </head>
 
@@ -19,8 +18,8 @@
 		<li>Prevent a user from submitting using client-side code.</li>
 		<li>As a developer, prevent the form action when any instruction is visible (when all visible then form is valid)</li>
 		<li>As a user, I want to see an instruction message when the input field is blank</li>
-		<li>As a user, I want the submit button to shake when form is invalid</li>
-		<li>As a user, when form is invalid, I want the first blank field to be in focus</li>
+		<li>As a user, I want the invalid fields to shake when form is invalid</li>
+		<li>As a user, when form is invalid, I want the first invalid field to be in focus</li>
 		<li>As a user, I want to see a colour change of the in focus field outline</li>
 	</ol>
 	
@@ -41,7 +40,7 @@
 		</div>
 		<div>
 			<label>
-				Location <input type="text" id="location" placeholder="Postal code/Zip code">
+				Location <input type="text" id="location" required placeholder="Postal code/Zip code">
 			</label>
 		</div>
 		<div>
@@ -55,18 +54,23 @@
 
 <!-- Attach jQuery library -->
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Attach jQuery UI library -->
+<script src="jquery-ui.min.js"></script>
 <!-- Page specific code -->
 <script>
 	// User Experience (UX) rule: Display the field's instruction when field is valid
 	// find all hide CSS classes, if any hide classes are found then the form is invalid, no hide classes is valid
 
-	$('#contact-form').submit(function (event) {
-		// todo inclass step #2:
-		var isValid = ($(this).find('i.hide').length === 0);
+	$('input[type="submit"]').click(function (event) {
+		var isValid = document.querySelector('#contact-form').checkValidity();
 
 		if (!isValid) {
 			event.preventDefault(); // cancel form action
-			// return false; // cancel form action using traditional JavaScript
+			
+			$('input:invalid')
+				.effect('shake', { distance: 5, times: 2 })
+				.first()
+				.focus();
 		}
 	});
 </script>
