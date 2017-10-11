@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>Form Validation</title>
 	<style>
-		.required { background: red; }
+		input:invalid { background: red; }
 		.hide { display: none; }
 		.highlight { border: 2px solid green; }
 	</style>
@@ -34,9 +34,9 @@
 	
 	<h3>Live demo</h3>
 	<form action="http://www.vanarts.com/" id="contact-form">
-		<div class="required">
+		<div>
 			<label>
-				Email <input type="text" id="email">
+				Email <input type="text" id="email" required>
 				<i class="hide">sample@domain.ca</i>
 			</label>
 		</div>
