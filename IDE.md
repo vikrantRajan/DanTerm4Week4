@@ -1,4 +1,4 @@
-# VS Code
+# Visual Studio Code
 ## Debug
 * Cancel any node process in Integrate Terminal
 * Menu Bar > View > Debug
@@ -27,6 +27,9 @@
 ## Editorconfig
 ![.editorconfig Extension](https://github.com/VanArts/course-files/blob/master/public/assets/visualStudioCode/extension-editorconfig.png)
 
-# Sublime Text
+# Atom
 ## Editorconfig
+* [LF line ending](https://github.com/atom/line-ending-selector/issues/5#issuecomment-254846516)
+
+# Sublime Text
 * Install Sublime Text [package manager](https://packagecontrol.io/installation)
