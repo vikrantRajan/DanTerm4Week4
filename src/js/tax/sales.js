@@ -2,17 +2,10 @@
 
 function displayProvinces() {
   // jQuery each loop
+  const $provinces = $('#provinces');
+
   $.each(salesTaxData.provinces, (provinceAbbr, provinceData) => {
-    $('body').append(provinceData.name);
-  });
-
-  // vanilla JavaScript
-  const listProvinceAbbr = Object.keys(salesTaxData.provinces);
-
-  listProvinceAbbr.forEach((provinceAbbr) => {
-    // AB
-    // BC
-    $('body').append(salesTaxData.provinces[provinceAbbr].name);
+    $provinces.append(`<option>${provinceData.name}</option>`);
   });
 }
 
