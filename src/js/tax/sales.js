@@ -1,11 +1,21 @@
 /* global salesTaxData */
 
+function calculateTax(data) {
+  let taxTotal = data.taxes[0].tax;
+  if (data.taxes.length === 2) {
+    taxTotal += data.taxes[1].tax;
+  }
+
+  return taxTotal.toFixed(2); // fix decical to cents
+}
+
 function displayProvinces() {
   // jQuery each loop
   const $provinces = $('#provinces');
 
   $.each(salesTaxData.provinces, (provinceAbbr, provinceData) => {
-    $provinces.append(`<option>${provinceData.name}</option>`);
+    const tax = calculateTax(provinceData); // todo dev step #3
+    $provinces.append(`<option value="${tax}">${provinceData.name}</option>`);
   });
 }
 
