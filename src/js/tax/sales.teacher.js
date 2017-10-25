@@ -24,22 +24,22 @@ function calculateTax(data) {
   return taxTotal.toFixed(2); // fix decical to cents
 }
 
-// function displayProvinces() {
-//   // jQuery each loop
-//   const $provinces = $('#provinces');
+function displayProvinces(salesTaxData) {
+  // jQuery each loop
+  const $provinces = $('#provinces');
 
-//   $.each(salesTaxData.provinces, (provinceAbbr, provinceData) => {
-//     const tax = calculateTax(provinceData); // todo dev step #3
-//     $provinces.append(`<option value="${tax}">${provinceData.name}</option>`);
-//   });
-// }
+  $.each(salesTaxData.provinces, (provinceAbbr, provinceData) => {
+    const tax = calculateTax(provinceData); // todo dev step #3
+    $provinces.append(`<option value="${tax}">${provinceData.name}</option>`);
+  });
+}
 
 function getSalesData() {
   // request JSON for sales data (provinces and tax)
   $.ajax({
-    url: 'FAKErates.json',
+    url: 'rates.json',
     success: (response) => {
-      console.log(response);
+      displayProvinces(response);
     },
     error: (jqXHR, textStatus, errorThrown ) => {
       console.log(errorThrown);
@@ -49,7 +49,6 @@ function getSalesData() {
 
 function salesTeacher() {
   getSalesData();
-  // displayProvinces();
   $('#price').change(updatePrice);
   $('#provinces').change(updatePrice);
 }
