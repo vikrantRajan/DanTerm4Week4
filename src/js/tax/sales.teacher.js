@@ -41,13 +41,13 @@ function getSalesData() {
     success: (response) => {
       displayProvinces(response);
     },
-    error: (jqXHR, textStatus, errorThrown ) => {
-      console.log(errorThrown);
+    error: (jqXHR, textStatus, errorThrown) => {
+      console.log(errorThrown); // eslint-disable-line no-console
     }
   });
 }
 
-function salesTeacher() {
+function sales() {
   getSalesData();
   $('#price').change(updatePrice);
   $('#provinces').change(updatePrice);

@@ -3,19 +3,25 @@ const gulp = require('gulp');
 const loadPlugins = require('gulp-load-plugins');
 
 const pkg = require('./package.json');
+const course = require('./course.json');
 
 const expectRules = { errorOnFailure: true };
 const paths = {
   jsAll: ['*.js', 'src/*.js', 'src/js/**/*.js', 'src/test/**/*.js'],
   jsPublic: ['src/js/**/*.js'],
+  jsTeacherFiles: ['!src/js/**/*.teacher.js'],
   jsTests: ['src/test/**/*.js']
 };
 const plugins = loadPlugins({ camelize: true });
 const DESTINATION_FOLDER = 'public/';
 
 gulp.task('build', () => {
-  const bundleFiles = paths.jsPublic;
+  let bundleFiles = paths.jsPublic;
   const newFilename = 'critical';
+
+  if (course.isTeacher === 'false') {
+    bundleFiles = bundleFiles.concat(paths.jsTeacherFiles);
+  }
 
   return gulp.src(bundleFiles)
     .pipe(plugins.expectFile(expectRules, bundleFiles))
