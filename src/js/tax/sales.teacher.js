@@ -1,5 +1,3 @@
-/* global salesTaxData */
-
 function outputTotalPrice(price) {
   const priceGrouped = price.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
   const currency = `$${priceGrouped}`;
@@ -26,18 +24,32 @@ function calculateTax(data) {
   return taxTotal.toFixed(2); // fix decical to cents
 }
 
-function displayProvinces() {
-  // jQuery each loop
-  const $provinces = $('#provinces');
+// function displayProvinces() {
+//   // jQuery each loop
+//   const $provinces = $('#provinces');
 
-  $.each(salesTaxData.provinces, (provinceAbbr, provinceData) => {
-    const tax = calculateTax(provinceData); // todo dev step #3
-    $provinces.append(`<option value="${tax}">${provinceData.name}</option>`);
+//   $.each(salesTaxData.provinces, (provinceAbbr, provinceData) => {
+//     const tax = calculateTax(provinceData); // todo dev step #3
+//     $provinces.append(`<option value="${tax}">${provinceData.name}</option>`);
+//   });
+// }
+
+function getSalesData() {
+  // request JSON for sales data (provinces and tax)
+  $.ajax({
+    url: 'FAKErates.json',
+    success: (response) => {
+      console.log(response);
+    },
+    error: (jqXHR, textStatus, errorThrown ) => {
+      console.log(errorThrown);
+    }
   });
 }
 
-function sales() {
-  displayProvinces();
+function salesTeacher() {
+  getSalesData();
+  // displayProvinces();
   $('#price').change(updatePrice);
   $('#provinces').change(updatePrice);
 }
