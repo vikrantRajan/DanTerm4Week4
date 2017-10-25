@@ -2,7 +2,7 @@ function appendActor(actor) {
   $('#actors').append(`<option>${actor.name}</option>`);
 }
 
-function populateActors(response) {
+function success(response) {
   // response.movies[0].abridged_cast.forEach(actor => appendActor(actor));
 
   response.movies.forEach((movie) => {
@@ -10,17 +10,8 @@ function populateActors(response) {
   });
 }
 
-function getFilmData() {
-  $.ajax({
-    url: 'cowboy.json',
-    success: (response) => {
-      populateActors(response);
-    }
-  });
-}
-
 function cowboysDropdown() {
-  getFilmData();
+  $.ajax({ success, url: 'cowboy.json' });
 }
 
 // If Node.js then export as public
