@@ -1,8 +1,10 @@
+/* global utils */
+
 function getFilmData() {
   $.ajax({
     url: 'cowboy.json',
     success: (response) => {
-      console.log(response);
+      utils.print(response);
     }
   });
 }

@@ -1,3 +1,5 @@
+/* global utils */
+
 function outputTotalPrice(price) {
   const priceGrouped = price.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
   const currency = `$${priceGrouped}`;
@@ -42,7 +44,7 @@ function getSalesData() {
       displayProvinces(response);
     },
     error: (jqXHR, textStatus, errorThrown) => {
-      console.log(errorThrown); // eslint-disable-line no-console
+      utils.print(errorThrown);
     }
   });
 }
