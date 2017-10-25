@@ -22,8 +22,9 @@
 			* EditorConfig for VS Code
 			
 * Avoid file conflicts
-	* Instructor files end with the *teacher* suffix
-	* Files that you may create and edit end with the *student* suffix
+	* Instructor files end with the *teacher* suffix (i.e. tax.teacher.js)
+	* In student mode, teacher files will not be added to `critical.js`
+	* For node.js server files, if you want to alter my files then create and edit end with the *student* suffix
 	* Update the /.gitignore file with *-student* to avoid committing your changes
 
 
