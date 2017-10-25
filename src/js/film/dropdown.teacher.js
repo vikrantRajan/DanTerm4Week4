@@ -1,8 +1,13 @@
-/* global utils */
+function appendActor(actor) {
+  $('#actors').append(`<option>${actor.name}</option>`);
+}
 
 function populateActors(response) {
-  const harrison = response.movies[0].abridged_cast[2].name;
-  $('#actors').append(`<option>${harrison}</option>`);
+  // response.movies[0].abridged_cast.forEach(actor => appendActor(actor));
+
+  response.movies.forEach((movie) => {
+    movie.abridged_cast.forEach(actor => appendActor(actor));
+  });
 }
 
 function getFilmData() {
