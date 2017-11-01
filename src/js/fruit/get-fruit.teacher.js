@@ -23,9 +23,25 @@ function fruitSpinner() {
   });
 }
 
+function parseXmlResponse(response) {
+  $(response).find('fruit').each((index, element) => {
+    const colour = $(element).text();
+    const fruitName = $(element).attr('name');
+    appendFruit(fruitName, colour);
+  });
+}
+
+function fruitXml() {
+  $.ajax({
+    url: '/api/fruit?format=xml',
+    success: parseXmlResponse
+  });
+}
+
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    fruitSpinner
+    fruitSpinner,
+    fruitXml
   };
 }
