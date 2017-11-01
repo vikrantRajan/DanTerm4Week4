@@ -1,5 +1,12 @@
+function displayFruit(response) {
+  console.log(response);
+}
+
 function fruitSpinner() {
-  console.log('fruitSpinner');
+  $.ajax({
+    url: '/api/slow-fruit',
+    success: displayFruit
+  });
 }
 
 // If Node.js then export as public
