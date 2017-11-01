@@ -9,11 +9,17 @@ function parseResponse(response) {
   });
 }
 
-function fruitSpinner() {
+function hideSpinner() {
   $('#fruits').empty(); // delete the HTML <li>Todo</li>
+}
+
+function fruitSpinner() {
   $.ajax({
     url: '/api/slow-fruit',
-    success: parseResponse
+    success: (response) => {
+      hideSpinner();
+      parseResponse(response);
+    }
   });
 }
 
