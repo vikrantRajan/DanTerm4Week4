@@ -299,9 +299,8 @@ exports.register = (server, pluginOptions, next) => {
   server.route({
     method: 'GET',
     path: '/autocomplete',
-    handler: ({ query: { keyword } }, reply) => {
+    handler: ({ query: { keyword = '' } }, reply) => {
       const places = [];
-      const reg = new RegExp(keyword);
 
       if (keyword !== '') {
         places.push('Afghanistan');
@@ -342,10 +341,14 @@ exports.register = (server, pluginOptions, next) => {
         places.push('Czech Republic');
       }
 
-      const items = places.filter(place => reg.test(place.toLowerCase()));
+      const items = places.filter(place => place.toLowerCase().includes(keyword.toLowerCase()));
 
       if (items.length === 0) {
-        items.push('No matches found');
+        if (keyword === '') {
+          items.push('No matches found');
+        } else { // show all
+          items.push(...places);
+        }
       }
 
       setTimeout(() => reply({ items }), 1500); // 1.5 sec
