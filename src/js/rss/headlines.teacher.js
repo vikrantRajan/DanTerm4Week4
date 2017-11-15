@@ -1,4 +1,9 @@
-function appendRssNews({ $container, description, link, title }) {
+function appendRssNews({
+  $container,
+  description,
+  link,
+  title
+}) {
   $container.append(`<li><a href="${link}">${title}</a><p>${description}</p></li>`);
 }
 
@@ -8,7 +13,12 @@ function parseRssNews(response) {
     const description = $(item).children('description').text();
     const link = $(item).children('link').text();
     const title = $(item).children('title').text();
-    appendRssNews({ $container: $news, description, link, title });
+    appendRssNews({
+      $container: $news,
+      description,
+      link,
+      title
+    });
   });
 }
 

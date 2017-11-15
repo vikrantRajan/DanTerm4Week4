@@ -300,10 +300,8 @@ exports.register = (server, pluginOptions, next) => {
     method: 'GET',
     path: '/autocomplete',
     handler: ({ query: { keyword } }, reply) => {
-      const output = {};
       const places = [];
       const reg = new RegExp(keyword);
-      const sugg = [];
 
       if (keyword !== '') {
         places.push('Afghanistan');
@@ -344,19 +342,13 @@ exports.register = (server, pluginOptions, next) => {
         places.push('Czech Republic');
       }
 
-      for (let i = 0; i < places.length; i += 1) {
-        if (reg.test(places[i].toLowerCase())) {
-          sugg.push(places[i]);
-        }
+      const items = places.filter(place => reg.test(place.toLowerCase()));
+
+      if (items.length === 0) {
+        items.push('No matches found');
       }
 
-      if (sugg.length === 0) {
-        sugg.push('No matches found');
-      }
-
-      output.items = sugg;
-
-      setTimeout(() => reply(output), 1500); // 1.5 sec
+      setTimeout(() => reply({ items }), 1500); // 1.5 sec
     }
   });
 
@@ -365,5 +357,5 @@ exports.register = (server, pluginOptions, next) => {
 
 exports.register.attributes = {
   name: 'api',
-  version: '1.0.0'
+  version: '1.0.1'
 };
