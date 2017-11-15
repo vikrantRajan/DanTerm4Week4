@@ -1,12 +1,22 @@
-function listenToInput() {
-  $('#country_keywords').keyup((event) => {
-    const keyword = $(event.target).val(); // $(this).val()
-
-    $('#country_suggestions').html(`<li>${keyword}</li>`);
+function queryService(keyword) {
+  $.ajax({
+    url: '/api/autocomplete',
+    data: { keyword },
+    success: (response) => {
+      // todo format in own function
+      $('#country_suggestions').html(`<li>${response.items}</li>`);
+    }
   });
 }
 
-function autocomplete() {
+function listenToInput() {
+  $('#country_keywords').keyup((event) => {
+    const keyword = $(event.target).val();
+    queryService(keyword);
+  });
+}
+
+function autocomplete() { // HTML initates
   listenToInput();
 }
 
