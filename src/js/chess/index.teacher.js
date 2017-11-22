@@ -1,26 +1,27 @@
+/* global document, keys */
+
 function listenForChessArrows() {
   $(document).keydown((event) => {
-    switch (event.which) {
-      case keys.up:
-        console.log('up');
-        break;
+    let isArrow = false;
+    const $chessPiece = $('.highlight');
 
-      case keys.right:
-        console.log('right');
-        break;
-
-      case keys.down:
-        console.log('down');
-        break;
-
-      case keys.left:
-        console.log('left');
-        break;
-
-      default: return; // exit this handler for other keys
+    if (event.which === keys.left) {
+      $chessPiece.css('left', '-=100px');
+      isArrow = true;
+    } else if (event.which === keys.up) {
+      $chessPiece.css('top', '-=100px');
+      isArrow = true;
+    } else if (event.which === keys.right) {
+      $chessPiece.css('left', '+=100px');
+      isArrow = true;
+    } else if (event.which === keys.down) {
+      $chessPiece.css('top', '+=100px');
+      isArrow = true;
     }
 
-    event.preventDefault(); // prevent the default action (scroll / move caret)
+    if (isArrow) {
+      event.preventDefault(); // prevent the default action (scroll / move caret)
+    }
   });
 }
 
