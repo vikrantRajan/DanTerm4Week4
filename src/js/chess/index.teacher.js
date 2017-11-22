@@ -1,21 +1,27 @@
 /* global document, keys */
 
 function listenForChessArrows() {
+  const boardCorners = {
+    leftTop: 50,
+    rightBottom: 750
+  };
+
   $(document).keydown((event) => {
     let isArrow = false;
     const $chessPiece = $('.highlight');
+    const currentPosition = $chessPiece.position();
 
-    if (event.which === keys.left) {
-      $chessPiece.css('left', '-=100px');
+    if (event.which === keys.left && currentPosition.left > boardCorners.leftTop) {
+      $chessPiece.css('left', '-=100');
       isArrow = true;
-    } else if (event.which === keys.up) {
-      $chessPiece.css('top', '-=100px');
+    } else if (event.which === keys.up && currentPosition.top > boardCorners.leftTop) {
+      $chessPiece.css('top', '-=100');
       isArrow = true;
-    } else if (event.which === keys.right) {
-      $chessPiece.css('left', '+=100px');
+    } else if (event.which === keys.right && currentPosition.left < boardCorners.rightBottom) {
+      $chessPiece.css('left', '+=100');
       isArrow = true;
-    } else if (event.which === keys.down) {
-      $chessPiece.css('top', '+=100px');
+    } else if (event.which === keys.down && currentPosition.top < boardCorners.rightBottom) {
+      $chessPiece.css('top', '+=100');
       isArrow = true;
     }
 
