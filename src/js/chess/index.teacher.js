@@ -12,16 +12,16 @@ function listenForChessArrows() {
     const currentPosition = $chessPiece.position();
 
     if (event.which === keys.left && currentPosition.left > boardCorners.leftTop) {
-      $chessPiece.css('left', '-=100');
+      $chessPiece.animate({ left: '-=100' }, { queue: false });
       isArrow = true;
     } else if (event.which === keys.up && currentPosition.top > boardCorners.leftTop) {
-      $chessPiece.css('top', '-=100');
+      $chessPiece.animate({ top: '-=100' }, { queue: false });
       isArrow = true;
     } else if (event.which === keys.right && currentPosition.left < boardCorners.rightBottom) {
-      $chessPiece.css('left', '+=100');
+      $chessPiece.animate({ left: '+=100' }, { queue: false });
       isArrow = true;
     } else if (event.which === keys.down && currentPosition.top < boardCorners.rightBottom) {
-      $chessPiece.css('top', '+=100');
+      $chessPiece.animate({ top: '+=100' }, { queue: false });
       isArrow = true;
     }
 
