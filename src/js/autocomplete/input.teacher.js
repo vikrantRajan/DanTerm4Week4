@@ -4,7 +4,9 @@ function displayCountries(output) {
 
 function formatCountries(countries) {
   // Imperative programming
-  // The term is often used in contrast to declarative programming, which focuses on what the program should accomplish without specifying how the program should achieve the result.
+  // The term is often used in contrast to declarative programming
+  // which focuses on what the program should accomplish without
+  // specifying how the program should achieve the result.
 
   // const html = [];
   // $.each(countries, (index, country) => {
