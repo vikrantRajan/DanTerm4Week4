@@ -1,4 +1,5 @@
 function highlightPiece() {
+  $('.highlight').removeClass('highlight');
   $(this).addClass('highlight');
 }
 
