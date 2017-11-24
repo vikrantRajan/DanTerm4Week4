@@ -61,10 +61,10 @@ function createCourseSchedule(courseTitle = 'Dan\'s class') {
 }
 
 function courseCalendar() {
-  const firstDate = new Date(2017, 8, 6); // Sept 6th
-  const course = createCourseSchedule('jQuery')
+  const firstDate = new Date(2017, 10, 29); // Nov 29
+  const course = createCourseSchedule('API')
     .setFirstClassDate(firstDate)
-    .setDaysBetweenClasses([7, 7, 7, 14, 7, 7, 7, 7, 7, 7, 7]);
+    .setDaysBetweenClasses([7, 7, 21, 7, 7, 7, 7, 7, 7, 7, 7]);
   const events = course.getAllClasses();
 
   $('#calendar').fullCalendar({
