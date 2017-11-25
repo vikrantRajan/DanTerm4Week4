@@ -1,7 +1,7 @@
 const dust = require('dustjs-linkedin');
-const Hapi = require('hapi');
+const hapi = require('hapi');
 const inert = require('inert');
-const lout = require('lout');
+// const lout = require('lout'); // TODO support hapi v17 https://github.com/hapijs/lout/issues/175
 const vision = require('vision');
 
 const libApi = require('./src/api-teacher');
@@ -17,22 +17,25 @@ try {
   }
 }
 
-const server = new Hapi.Server();
-server.connection({ port: 8080 });
 dust.config.whitespace = true;
+
 const plugins = [
   inert,
   vision,
-  { register: libApi, routes: { prefix: '/api' } },
-  { register: libSlides, routes: { prefix: '/slides' } },
-  lout
+  { plugin: libApi },
+  { plugin: libSlides, routes: { prefix: '/slides' } }
+  // lout
 ];
 
 if (libStudentApi) {
-  plugins.push({ register: libStudentApi, routes: { prefix: '/api' } });
+  plugins.push({ plugin: libStudentApi });
 }
 
-function registerCallback() {
+async function startServer() {
+  const server = hapi.Server({ port: 8080 });
+
+  await server.register(plugins);
+
   server.views({
     engines: {
       dust: {
@@ -63,34 +66,37 @@ function registerCallback() {
     partialsPath: 'src/views',
     layoutPath: 'src/views'
   });
+
+  // Register route for static assets
+  server.route({
+    method: 'GET',
+    path: '/{path*}',
+    options: {
+      description: 'Serve static content',
+      tags: ['starter']
+    },
+    handler: {
+      directory: {
+        path: 'public',
+        listing: true,
+        index: false
+      }
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/',
+    handler: (request, h) => h.view('home'),
+    options: { tags: ['starter'] }
+  });
+
+  try {
+    await server.start();
+    utils.print('Server running at:', server.info.uri);
+  } catch (error) {
+    utils.print(error);
+  }
 }
 
-server.register(plugins, registerCallback);
-
-// Register route for static assets
-server.route({
-  method: 'GET',
-  path: '/{path*}',
-  config: {
-    description: 'Serve static content',
-    tags: ['starter']
-  },
-  handler: {
-    directory: {
-      path: 'public',
-      listing: true,
-      index: false
-    }
-  }
-});
-
-server.route({
-  method: 'GET',
-  path: '/',
-  handler: (request, reply) => reply.view('home'),
-  config: { tags: ['starter'] }
-});
-
-server.start(() => {
-  utils.print('Server running at:', server.info.uri);
-});
+startServer();
