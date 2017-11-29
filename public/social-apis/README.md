@@ -1,8 +1,8 @@
 # Third-Party APIs
 
 ## Outline
+1. Node.js + Unit Testing
 1. jQuery Review
-1. Node.js
 1. Git & GitHub
 1. Flickr
 1. Twitter
@@ -10,7 +10,8 @@
 1. Slippy Map
 1. Facebook
 1. MongoDB
-1. YouTube & Corporate Life
+1. Build our own API
+1. YouTube + Corporate Life
 
 ## Assessment
 * Attendance record represent **33%** of the course mark
@@ -23,5 +24,5 @@
 * Use [assessment.js](../../src/js/assessment.js) to previous course mark
 * Homework is evaluated at the beginning of class. If you arrive after the class homework has been verified you will receive a zero mark for that assignment. An alternative for tardy arrival is to Slack your homework before class using a code sharing tool:
 	* Commit homework to [your private GitHub.com repository](https://help.github.com/articles/create-a-repo/)
-	* [JSFiddle](https://jsfiddle.net/).
+	* [CodePen](https://codepen.io).
 	* Send static files through Slack's private message
