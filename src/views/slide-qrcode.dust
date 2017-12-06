@@ -36,7 +36,7 @@
 
 #### QR code scanner
 
-* iOS 11 has QR Code reader built into Photo app
+* iOS 11 has QR Code reader built into Camera app
 * iOS [Bakodo](http://itunes.apple.com/us/app/bakodo-barcode-scanner-qr/id371932548?mt=8)
 * Android [Barcode Scanner](https://play.google.com/store/apps/details?id=com.google.zxing.client.android&hl=en) or [QR Droid](https://play.google.com/store/apps/details?id=la.droid.qr&hl=en)
 * Samsung Android - Optical Reader is bundled with the operating system
