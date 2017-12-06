@@ -47,7 +47,6 @@ const autocompleteHandler = ({ query: { keyword = '' } }) => {
 
   // I promise to return the value when setTimeout resolves with the answer
   return new Promise(resolve => setTimeout(resolve, DELAY, { items }));
-  // setTimeout(() => reply({ items }), 1500); // 1.5 sec
 };
 
 exports.plugin = {

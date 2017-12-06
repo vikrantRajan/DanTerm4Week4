@@ -25,7 +25,12 @@ describe('Autocomplete route', () => {
     expect(expected).to.be(actual);
   });
 
-  it('should return some countries', () => {
-    // expect(math.sum(10, 2)).to.be(12);
+  it('should return some countries', async () => {
+    const args = { query: { keyword: 'Cana' } };
+
+    const actual = (await routes.autocompleteHandler(args)).items[0];
+    const expected = 'Canada';
+
+    expect(expected).to.be(actual);
   });
 });
