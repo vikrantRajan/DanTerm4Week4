@@ -44,14 +44,12 @@ const autocompleteHandler = ({ query: { keyword = '' } }) => {
   const items = places.filter(place => place.toLowerCase().includes(keyword.toLowerCase()));
 
   if (items.length === 0) {
-    if (keyword === '') {
-      items.push('No matches found');
-    } else { // show all
-      items.push(...places);
-    }
+    items.push('No matches found');
   }
 
+  // I promise to return the value when setTimeout resolves with the answer
   return new Promise(resolve => setTimeout(resolve, DELAY, { items }));
+  // setTimeout(() => reply({ items }), 1500); // 1.5 sec
 };
 
 exports.plugin = {

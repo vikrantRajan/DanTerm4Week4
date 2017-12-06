@@ -4,7 +4,7 @@ const routes = require('../api-teacher.js');
 
 describe('Autocomplete route', () => {
   it('should return no matches', async () => {
-    const args = { query: {} };
+    const args = { query: { keyword: 'Zambia' } };
 
     const actual = (await routes.autocompleteHandler(args)).items[0];
     const expected = 'No matches found';
