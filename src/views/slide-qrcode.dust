@@ -103,46 +103,6 @@ URL:http://www.website.com;;</code></pre>
 </section>
 
 <section>
-<section>
-	<h2>Inclass work</h2>
-	<p>As a user, I want my smartphone to display contextual information from the physical world.</p>
-	<p>As a dev, generate a QR code linking to our school's web address, so the smartphone browser will open said web page. The QR Code should be embedded into a web page.</p>
-	<h3>Technologies</h3>
-	<ul>
-		<li>Google Infographic API</li>
-		<li>Smartphone with QR code scanning app</li>
-		<li>HTML</li>
-	</ul>
-</section>
-
-<section>
-	<h2>Inclass work</h2>
-	<p>As a user, I want my vitals stored in a MeCard format.</p>
-	<p>As a dev, collect first &amp; last name, job title, and web address via an HTML form.  On submit display the captured data in a MeCard format.</p>
-
-	<h3>Technologies</h3>
-	<ul>
-		<li>JavaScript</li>
-		<li>jQuery</li>
-		<li>HTML</li>
-	</ul>
-</section>
-
-<section>
-	<h2>Inclass work</h2>
-	<p>As a dev, collect first &amp; last name, job title, and web address via an HTML form then generate a QR code containing meCard data.  When the QR code is scanned, the mobile phone user will have the option of adding to their address book.</p>
-
-	<h3>Technologies</h3>
-	<ul>
-		<li>Google Infographic API</li>
-		<li>meCard</li>
-		<li>Smartphone with QR code scanning app</li>
-		<li>JavaScript</li>
-	</ul>
-</section>
-</section>
-
-<section>
 <h2>Resources</h2>
 <ol>
 	<li>SEW <a href="http://searchenginewatch.com/sew/how-to/2066777/top-14-things-marketers-need-know-about-qr-codes">Top 14 Things Marketers Need to Know About QR Codes</a></li>
