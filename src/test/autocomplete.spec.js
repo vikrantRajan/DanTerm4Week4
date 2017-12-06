@@ -1,10 +1,15 @@
 /* global describe, it */
 const expect = require('expect.js');
-const route = require('../api-teacher.js');
+const routes = require('../api-teacher.js');
 
 describe('Autocomplete route', () => {
-  it('should return no matches', () => {
-    expect(route.autocompleteHandler).to.be();
+  it('should return no matches', async () => {
+    const args = { query: {} };
+
+    const actual = (await routes.autocompleteHandler(args)).items[0];
+    const expected = 'No matches found';
+
+    expect(expected).to.be(actual);
   });
 
   it('should return all countries', () => {

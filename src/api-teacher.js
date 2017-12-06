@@ -56,7 +56,7 @@ const autocompleteHandler = ({ query: { keyword = '' } }) => {
 
 exports.plugin = {
   name: 'api',
-  version: '1.1.0',
+  version: '1.2.0',
   register: (server) => {
     server.route({
       method: 'GET',
