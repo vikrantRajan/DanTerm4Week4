@@ -10,21 +10,34 @@ function createQrBlob() {
   });
 }
 
+function toJSON( form ) {
+  var obj = {};
+  var elements = form.querySelectorAll( "input, select, textarea" );
+  for( var i = 0; i < elements.length; ++i ) {
+    var element = elements[i];
+    var name = element.name;
+    var value = element.value;
+
+    if( name ) {
+      obj[ name ] = value;
+    }
+  }
+
+  return obj;
+}
+
 function buildVcard() {
   $('form').on('submit', (event) => {
-    const fname = $('#fname').val();
-    const lname = $('#lname').val();
-    const title = $('#title').val();
-    const url = $('#url').val();
+    const fields = toJSON(document.getElementsByTagName('form')[0]);
     const vcard = ['BEGIN:VCARD\nVERSION:3.0'];
 
-    vcard.push('N:', lname, ';', fname, '\n');
-    vcard.push('FN:', fname, ' ', lname, '\n');
-    vcard.push('TITLE:', title, '\n');
-    vcard.push('URL:', url, '\n');
+    vcard.push('N:', lname.value, ';', fname.value, '\n');
+    vcard.push('FN:', fname.value, ' ', lname.value, '\n');
+    vcard.push('TITLE:', title.value, '\n');
+    vcard.push('URL:', url.value, '\n');
     vcard.push('END:VCARD'); // close vcard
 
-    $('#vcard').val(vcard.join(''));
+    document.querySelector('#vcard').value = vcard.join('');
 
 //     const vcardTemplate = `BEGIN:VCARD
 // VERSION:3.0
