@@ -12,6 +12,7 @@
 	
 	<h3>Goal</h3>
 	<p>As a user, I want to see a QR Code based on the text in the form</p>
+	<p>As a dev, I want to display a QR Code when there is text. Scanning the QR Code will visualize the form's text. Generate a QR Code per key input</p>
 	
 	<h3>Technologies</h3>
 	<ul>
@@ -22,11 +23,17 @@
 	</ul>
 	
 	<h3>Live demo</h3>
+	<form>
+		QR Code generator
+		<textarea id="qr_source"></textarea>
+	</form>
+	<section id="qr_code"></section>
+	
 	<!-- Attach jQuery library -->
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<!-- Page specific code -->
-	<script>
-		
-	</script>
+	<!-- Attach all the bundles JavaScript files in /src/js -->
+	<script src="/js/critical.js"></script>
+	<!-- Execute page specific function -->
+	<script>createQrBlob();</script>
 </body>
 </html>
