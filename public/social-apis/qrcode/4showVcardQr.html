@@ -26,18 +26,8 @@ URL:vanarts.com
 END:VCARD</pre>
     
 	<h3>Goal</h3>
-	<p>As a user, I want a vCard generator.</p>
-	<p>As a dev, get these fields from a HTML form: first &amp; last name, job title, and web address. On submit display the captured data in a vCard format.</p>
-
-	<h3>Dev steps</h3>
-	<ol>
-		<li>Bind submit (event) to form (element)</li>
-		<li>cancel form action event.preventDefault() or return false;</li>
-		<li>then update textarea with "hello"</li>
-		<li>change the textarea to display first name value</li>
-		<li>change the textarea to display all field's value</li>
-		<li>change the textarea to display all field's value in vcard format</li>
-	</ol>
+	<p>As a user, I want a QR code storing a vCard.</p>
+	<p>As a dev, get these fields from a HTML form: first &amp; last name, job title, and web address. On submit display the captured data as a QR Code that visualizes the vCard format.</p>
 
 	<h3>Resources</h3>
 	<ul>
@@ -46,20 +36,22 @@ END:VCARD</pre>
 	
 	<h3>Technologies</h3>
 	<ul>
+		<li>Google Infographic API</li>
 		<li>jQuery</li>
 		<li>JavaScript</li>
 		<li>HTML</li>
 	</ul>
 	
 	<h3>Live demo</h3>
+	
 	<form>
 		<div><label for="fname">First name</label><input type="text" id="fname" name="fname"></div>
 		<div><label for="lname">Last name</label><input type="text" id="lname" name="lname"></div>
 		<div><label for="title">Job title</label><input type="text" id="title" name="title"></div>
 		<div><label for="url">Web Address</label><input type="text" id="url" name="url"></div>
 
-		<div><input type="submit" value="Generate vCard"></div>
-		<div><textarea id="vcard"></textarea></div>
+		<div><input type="submit" value="Generate QR Code"></div>
+		<div><img id="qr_code"></div>
 	</form>
 
 	<!-- Attach jQuery library -->
@@ -67,6 +59,6 @@ END:VCARD</pre>
 	<!-- Attach all the bundles JavaScript files in /src/js -->
 	<script src="/js/critical.js"></script>
 	<!-- Execute page specific function -->
-	<script>buildVcard();</script>
+	<script>buildVcardQr();</script>
 </body>
 </html>
