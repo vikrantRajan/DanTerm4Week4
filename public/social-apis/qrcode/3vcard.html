@@ -15,12 +15,13 @@
 	<h2>Visualize vCard</h2>
 	
 	<h3>vCard format</h3>
-	<pre>vcard:
-N:Last,First;
-NOTE:Occupation title;
-TEL:16041234567;
-EMAIL:email@address.ca;
-URL:http://www.website.com;;</pre>
+	<pre>BEGIN:VCARD
+VERSION:2.1
+N:Last;First;
+TITLE:Occupation title
+TEL;WORK;VOICE:16041234567
+EMAIL:email@address.ca
+END:VCARD</pre>
     
 	<h3>Goal</h3>
 	<p>As a user, I want a vCard generator.</p>
@@ -35,6 +36,11 @@ URL:http://www.website.com;;</pre>
 		<li>change the textarea to display all field's value</li>
 		<li>change the textarea to display all field's value in vcard format</li>
 	</ol>
+
+	<h3>Resources</h3>
+	<ul>
+		<li><a href="https://en.wikipedia.org/wiki/VCard">vCard spec</a></li>
+	</ul>
 	
 	<h3>Technologies</h3>
 	<ul>
