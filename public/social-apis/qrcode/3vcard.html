@@ -16,11 +16,13 @@
 	
 	<h3>vCard format</h3>
 	<pre>BEGIN:VCARD
-VERSION:2.1
-N:Last;First;
-TITLE:Occupation title
-TEL;WORK;VOICE:16041234567
-EMAIL:email@address.ca
+VERSION:3.0
+N:Last;First
+FN:First Last
+TITLE:Job Title
+TEL;CELL:6046822787
+EMAIL;WORK;INTERNET:email@vanarts.com
+URL:vanarts.com
 END:VCARD</pre>
     
 	<h3>Goal</h3>
@@ -57,7 +59,7 @@ END:VCARD</pre>
 		<div><label for="title">Job title</label><input type="text" id="title" name="title"></div>
 		<div><label for="url">Web Address</label><input type="text" id="url" name="url"></div>
 
-		<div><input type="submit" value="Generate vcard"></div>
+		<div><input type="submit" value="Generate vCard"></div>
 		<div><textarea id="vcard"></textarea></div>
 	</form>
 </body>
