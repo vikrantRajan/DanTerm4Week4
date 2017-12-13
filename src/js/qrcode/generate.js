@@ -26,18 +26,22 @@ function toJSON( form ) {
   return obj;
 }
 
+function formatVcard(fields) {
+  const vcard = ['BEGIN:VCARD\nVERSION:3.0'];
+
+  vcard.push('N:', lname.value, ';', fname.value, '\n');
+  vcard.push('FN:', fname.value, ' ', lname.value, '\n');
+  vcard.push('TITLE:', title.value, '\n');
+  vcard.push('URL:', url.value, '\n');
+  vcard.push('END:VCARD'); // close vcard
+
+  return vcard.join('');
+}
+
 function buildVcard() {
   $('form').on('submit', (event) => {
     const fields = toJSON(document.getElementsByTagName('form')[0]);
-    const vcard = ['BEGIN:VCARD\nVERSION:3.0'];
-
-    vcard.push('N:', lname.value, ';', fname.value, '\n');
-    vcard.push('FN:', fname.value, ' ', lname.value, '\n');
-    vcard.push('TITLE:', title.value, '\n');
-    vcard.push('URL:', url.value, '\n');
-    vcard.push('END:VCARD'); // close vcard
-
-    document.querySelector('#vcard').value = vcard.join('');
+    document.querySelector('#vcard').value = formatVcard(fields);
 
 //     const vcardTemplate = `BEGIN:VCARD
 // VERSION:3.0
@@ -53,10 +57,24 @@ function buildVcard() {
   });
 }
 
+function buildVcardQr() {
+  $('form').on('submit', (event) => {
+    const fields = toJSON(document.getElementsByTagName('form')[0]);
+    const vcard = encodeURIComponent(formatVcard(fields));
+    const apiEndpoint = 'https://chart.googleapis.com/chart';
+    const apiArgs = '?cht=qr&chs=300x300&chl=';
+
+    $('#qr_code').attr('src', apiEndpoint + apiArgs + vcard);
+
+    event.preventDefault();
+  });
+}
+
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
     createQrBlob,
-    buildVcard
+    buildVcard,
+    buildVcardQr
   };
 }
