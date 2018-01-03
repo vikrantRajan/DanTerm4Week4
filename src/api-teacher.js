@@ -1,3 +1,5 @@
+const Wreck = require('wreck');
+
 const autocompleteHandler = ({ query: { keyword = '' } }) => {
   const DELAY = 1500; // 1.5 sec
   const places = [];
@@ -51,8 +53,27 @@ const autocompleteHandler = ({ query: { keyword = '' } }) => {
 
 exports.plugin = {
   name: 'api',
-  version: '1.2.0',
+  version: '1.2.1',
   register: (server) => {
+    server.route({
+      method: 'GET',
+      path: '/api/flickr',
+      handler: () => {
+        const getData = async function () {
+          const { res, payload } = await Wreck.get('https://api.flickr.com/services/feeds/photos_public.gne?tags=seabus&format=json');
+          console.log(payload.toString());
+        };
+
+        try {
+          getData();
+        } catch (error) {
+          console.error(error);
+        }
+
+        // return { hello: 'world' };
+      }
+    });
+
     server.route({
       method: 'GET',
       path: '/api/slow-fruit',
