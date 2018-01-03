@@ -4,7 +4,7 @@ function bindCalc() {
   const numB = document.getElementById('numB');
   const operator = document.getElementById('operator');
 
-  const log = message => console.log(message);
+  const log = message => console.log(message); // eslint-disable-line no-console
   const calc = () => {
     const math = (operator.value === 'Add') ? sum : difference;
     log(math(numA.value, numB.value));

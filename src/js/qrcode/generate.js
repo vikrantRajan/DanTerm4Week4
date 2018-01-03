@@ -1,3 +1,5 @@
+/* global document */
+
 function generateQrCode({ text, $container }) {
   const safeText = encodeURIComponent(text);
   const src = `https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=${safeText}`;
@@ -10,24 +12,28 @@ function createQrBlob() {
   });
 }
 
-function toJSON( form ) {
-  var obj = {};
-  var elements = form.querySelectorAll( "input, select, textarea" );
-  for( var i = 0; i < elements.length; ++i ) {
-    var element = elements[i];
-    var name = element.name;
-    var value = element.value;
+function toJSON(form) {
+  const obj = {};
+  const elements = form.querySelectorAll('input, select, textarea');
+  elements.forEach((element) => {
+    const { name, value } = element;
 
-    if( name ) {
-      obj[ name ] = value;
+    if (name) {
+      obj[name] = value;
     }
-  }
+  });
 
   return obj;
 }
 
 function formatVcard(fields) {
   const vcard = ['BEGIN:VCARD\nVERSION:3.0'];
+  const {
+    fname,
+    lname,
+    title,
+    url
+  } = fields;
 
   vcard.push('N:', lname.value, ';', fname.value, '\n');
   vcard.push('FN:', fname.value, ' ', lname.value, '\n');
@@ -43,15 +49,15 @@ function buildVcard() {
     const fields = toJSON(document.getElementsByTagName('form')[0]);
     document.querySelector('#vcard').value = formatVcard(fields);
 
-//     const vcardTemplate = `BEGIN:VCARD
-// VERSION:3.0
-// N: ${lname}; ${fname}
-// FN ${fname} ${lname}
-// TITLE: ${title}
-// URL: ${url}
-// END:VCARD`;
+    //     const vcardTemplate = `BEGIN:VCARD
+    // VERSION:3.0
+    // N: ${lname}; ${fname}
+    // FN ${fname} ${lname}
+    // TITLE: ${title}
+    // URL: ${url}
+    // END:VCARD`;
 
-//     $('#vcard').val(vcardTemplate);
+    // $('#vcard').val(vcardTemplate);
 
     event.preventDefault(); // cancel form action
   });
