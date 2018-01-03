@@ -4,7 +4,11 @@ function getFlickrPublicPhotos() {
     jsonpCallback: 'jsonFlickrFeed',
     dataType: 'jsonp', // JSON with Padding. Whereas padding is the function name that Flickr is wrapping JSON in
     success: (response) => {
-
+      const html = [];
+      response.items.forEach((item) => {
+        html.push(`<img src="${item.media.m}">`);
+      });
+      $('body').append(html.join(''));
     }
   });
 }

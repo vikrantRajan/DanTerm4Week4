@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>1cms.html</title>
+	<title>Flickr API.html</title>
 </head>
 
 <body>
@@ -13,11 +13,11 @@
 	<p>Photos will be hosted by Flickr. We will leverage the tools provided by Flickr especially input and image manipulation services. Apps are available for mobile devices for convient photo uploading.</p>
 
 	<h3>Goal</h3>
-	<p>Display public photos of Vancouver</p>
+	<p>Display public photos within 1km radius around VanArts</p>
 	
 	<h3>Technologies</h3>
 	<ul>
-		<li>Flickr Web Feeds</li>
+		<li>Flickr API</li>
 		<li>JavaScript</li>
 		<li>jQuery</li>
 		<li>jQuery AJAX</li>
@@ -30,6 +30,6 @@
 <!-- Attach all the bundles JavaScript files in /src/js -->
 <script src="/js/critical.js"></script>
 <!-- Execute page specific function -->
-<script>getFlickrPublicPhotos();</script>
+<script>getFlickrGeoPublicPhotos();</script>
 </body>
 </html>
