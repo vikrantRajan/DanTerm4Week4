@@ -1,5 +1,7 @@
 const Wreck = require('wreck');
 
+const credentials = require('../credentials.json');
+
 const autocompleteHandler = ({ query: { keyword = '' } }) => {
   const DELAY = 1500; // 1.5 sec
   const places = [];
@@ -59,8 +61,11 @@ exports.plugin = {
       method: 'GET',
       path: '/api/flickr',
       handler: () => {
+        const apiKey = credentials.flickr.api_key;
+        const address = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&lat=49.282712&lon=-123.115337&radius=0.5&format=json&nojsoncallback=1`;
+
         const getData = async function () {
-          const { res, payload } = await Wreck.get('https://api.flickr.com/services/feeds/photos_public.gne?tags=seabus&format=json');
+          const { res, payload } = await Wreck.get(address);
           console.log(payload.toString());
         };
 
