@@ -1,3 +1,4 @@
+const Twit = require('twit');
 const Wreck = require('wreck');
 
 const credentials = require('../credentials.json');
@@ -72,6 +73,29 @@ exports.plugin = {
   name: 'api',
   version: '1.2.1',
   register: (server) => {
+    server.route({
+      method: 'GET',
+      path: '/api/twitter',
+      handler: () => new Promise((resolve, reject) => {
+        const T = new Twit({
+          consumer_key: credentials.twitter.consumer_key,
+          consumer_secret: credentials.twitter.consumer_secret,
+          access_token: credentials.twitter.access_token,
+          access_token_secret: credentials.twitter.access_token_secret,
+          timeout_ms: 60 * 1000
+        });
+
+        T.get('statuses/user_timeline', { screen_name: 'vanarts', count: 5 }, (error, data) => {
+          if (error) {
+            reject(error);
+            return;
+          }
+
+          resolve(data);
+        });
+      })
+    });
+
     server.route({
       method: 'GET',
       path: '/api/flickr',
