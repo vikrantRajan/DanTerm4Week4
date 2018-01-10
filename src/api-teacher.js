@@ -53,6 +53,21 @@ const autocompleteHandler = ({ query: { keyword = '' } }) => {
   return new Promise(resolve => setTimeout(resolve, DELAY, { items }));
 };
 
+const flickrJpgPath = (flickrResponse) => {
+  const paths = flickrResponse.photos.photo.map((photo) => {
+    const {
+      farm,
+      id,
+      secret,
+      server
+    } = photo;
+
+    return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
+  });
+
+  return paths;
+};
+
 exports.plugin = {
   name: 'api',
   version: '1.2.1',
@@ -66,9 +81,10 @@ exports.plugin = {
 
         const getData = async function getData() {
           const { payload } = await Wreck.get(address);
-          // todo for homework: add a data transform step, display list of JPG paths
+          const paths = flickrJpgPath(JSON.parse(payload));
+
           const output = h
-            .response(payload.toString())
+            .response({ paths })
             .type('application/json');
 
           resolve(output);
