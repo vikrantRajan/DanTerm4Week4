@@ -1,14 +1,28 @@
-function getTwitterTweets() {
-  console.log('Hello Twitter');
-
+function queryTwitter(success) {
   $.ajax({
     url: '/api/twitter',
-    success: (response) => {
-      const html = response.tweets.map(item => `<li>${item.text}</li>`);
-
-      $('body').append(`<ul>${html.join('')}</ul>`);
-    }
+    success
   });
+}
+
+function getTwitterTweets() {
+  const success = (response) => {
+    const html = response.tweets.map(item => `<li>${item.text}</li>`);
+
+    $('body').append(`<ul>${html.join('')}</ul>`);
+  };
+
+  queryTwitter(success);
+}
+
+function getTwitterTweetsWithDate() {
+  const success = (response) => {
+    const html = response.tweets.map(({ date, text }) => `<li>(${date}) ${text}</li>`);
+
+    $('body').append(`<ul>${html.join('')}</ul>`);
+  };
+
+  queryTwitter(success);
 }
 
 // If Node.js then export as public

@@ -85,7 +85,10 @@ const flickrJpgPath = (flickrResponse) => {
 // Declarative programming paradigm
 // tweet = { created_at, comments, text, users }
 // returning { text }
-const twitterTweets = timeline => timeline.map(tweet => ({ text: tweet.text }));
+const twitterTweets = timeline => timeline.map(tweet => ({
+  date: tweet.created_at,
+  text: tweet.text
+}));
 
 exports.plugin = {
   name: 'api',
