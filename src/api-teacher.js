@@ -69,6 +69,24 @@ const flickrJpgPath = (flickrResponse) => {
   return paths;
 };
 
+// Imperative programming paradigm
+// const twitterTweets = (timeline) => {
+//   const tweets = [];
+
+//   timeline.forEach((tweet) => {
+//     tweets.push({
+//       text: tweet.text
+//     });
+//   });
+
+//   return tweets;
+// };
+
+// Declarative programming paradigm
+// tweet = { created_at, comments, text, users }
+// returning { text }
+const twitterTweets = timeline => timeline.map(tweet => ({ text: tweet.text }));
+
 exports.plugin = {
   name: 'api',
   version: '1.2.1',
@@ -82,7 +100,7 @@ exports.plugin = {
           consumer_secret: credentials.twitter.consumer_secret,
           access_token: credentials.twitter.access_token,
           access_token_secret: credentials.twitter.access_token_secret,
-          timeout_ms: 60 * 1000
+          timeout_ms: 3 * 1000
         });
 
         T.get('statuses/user_timeline', { screen_name: 'vanarts', count: 5 }, (error, data) => {
@@ -91,7 +109,7 @@ exports.plugin = {
             return;
           }
 
-          resolve(data);
+          resolve({ tweets: twitterTweets(data) });
         });
       })
     });
