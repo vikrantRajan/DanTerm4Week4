@@ -4,10 +4,8 @@ function getTwitterTweets() {
   $.ajax({
     url: '/api/twitter',
     success: (response) => {
-      const html = [];
-      response.tweets.forEach((item) => {
-        html.push(`<li>${item.text}</li>`);
-      });
+      const html = response.tweets.map(item => `<li>${item.text}</li>`);
+
       $('body').append(`<ul>${html.join('')}</ul>`);
     }
   });
