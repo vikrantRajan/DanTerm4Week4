@@ -1,5 +1,8 @@
+const instagram = require('instagram-node');
 const Twit = require('twit');
-const Wreck = require('wreck');
+const wreck = require('wreck');
+
+const ig = instagram.instagram();
 
 const credentials = require('../credentials.json');
 const { formatTwitterDate } = require('./js/twitter/date');
@@ -97,6 +100,68 @@ exports.plugin = {
   register: (server) => {
     server.route({
       method: 'GET',
+      path: '/api/instagram-login',
+      handler: (request, h) => new Promise((resolve, reject) => {
+        const redirectLandingAddress = 'http://localhost:8080/api/instagram-login';
+
+        if (request.query.code) {
+          ig.authorize_user(request.query.code, redirectLandingAddress, (authError, result) => {
+            if (authError) {
+              reject(authError);
+              return;
+            }
+
+            credentials.instagram.access_token = result.access_token;
+
+            ig.use({
+              access_token: credentials.instagram.access_token,
+              client_secret: credentials.instagram.client_secret
+            });
+
+            // error, medias, pagination, remaining, limit
+            ig.tag_media_recent('vancouver', { count: 10 }, (mediaError, media) => {
+              if (mediaError) {
+                reject(mediaError);
+                return;
+              }
+
+              resolve(media);
+            });
+          });
+        } else {
+          ig.use({
+            client_id: credentials.instagram.client_id,
+            client_secret: credentials.instagram.client_secret
+          });
+
+          resolve(h.redirect(ig.get_authorization_url(redirectLandingAddress, { scope: ['public_content'] })));
+        }
+      })
+    });
+
+    server.route({
+      method: 'GET',
+      path: '/api/instagram',
+      handler: () => new Promise((resolve, reject) => {
+        ig.use({
+          access_token: credentials.instagram.access_token,
+          client_secret: credentials.instagram.client_secret
+        });
+
+        // error, medias, pagination, remaining, limit
+        ig.tag_media_recent('vancouver', { count: 10 }, (mediaError, media) => {
+          if (mediaError) {
+            reject(mediaError);
+            return;
+          }
+
+          resolve(media);
+        });
+      })
+    });
+
+    server.route({
+      method: 'GET',
       path: '/api/twitter',
       handler: () => new Promise((resolve, reject) => {
         const T = new Twit({
@@ -126,7 +191,7 @@ exports.plugin = {
         const address = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&lat=49.282712&lon=-123.115337&radius=0.5&format=json&nojsoncallback=1`;
 
         const getData = async function getData() {
-          const { payload } = await Wreck.get(address);
+          const { payload } = await wreck.get(address);
           const paths = flickrJpgPath(JSON.parse(payload));
 
           const output = h
