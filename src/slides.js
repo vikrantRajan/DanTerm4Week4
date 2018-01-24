@@ -1,8 +1,8 @@
 exports.plugin = {
   name: 'slides',
-  version: '1.0.1',
+  version: '1.1.0',
   register: (server) => {
-    const slides = ['client-side', 'js-var-types', 'cdn', 'js-events', 'json', 'ajax', 'git', 'api', 'qrcode', 'flickr', 'twitter', 'facebook'];
+    const slides = ['client-side', 'js-var-types', 'cdn', 'js-events', 'json', 'ajax', 'git', 'api', 'qrcode', 'flickr', 'twitter', 'instagram', 'facebook'];
 
     server.route({
       method: 'GET',
