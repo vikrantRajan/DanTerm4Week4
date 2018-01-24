@@ -101,13 +101,13 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/instagram-login',
-      handler: (request, h) => new Promise((resolve, reject) => {
+      handler: (request, h) => new Promise((resolve) => {
         const redirectLandingAddress = 'http://localhost:8080/api/instagram-login';
 
         if (request.query.code) {
           ig.authorize_user(request.query.code, redirectLandingAddress, (authError, result) => {
             if (authError) {
-              reject(authError);
+              resolve(h.response(JSON.stringify(authError)));
               return;
             }
 
@@ -121,7 +121,7 @@ exports.plugin = {
             // error, medias, pagination, remaining, limit
             ig.tag_media_recent('vancouver', { count: 10 }, (mediaError, media) => {
               if (mediaError) {
-                reject(mediaError);
+                resolve(h.response(JSON.stringify(mediaError)));
                 return;
               }
 
