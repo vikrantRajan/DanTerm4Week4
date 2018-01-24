@@ -2,6 +2,7 @@ const Twit = require('twit');
 const Wreck = require('wreck');
 
 const credentials = require('../credentials.json');
+const { formatTwitterDate } = require('./js/twitter/date');
 
 const autocompleteHandler = ({ query: { keyword = '' } }) => {
   const DELAY = 1500; // 1.5 sec
@@ -86,7 +87,7 @@ const flickrJpgPath = (flickrResponse) => {
 // tweet = { created_at, comments, text, users }
 // returning { text }
 const twitterTweets = timeline => timeline.map(tweet => ({
-  date: tweet.created_at,
+  date: formatTwitterDate(tweet.created_at),
   text: tweet.text
 }));
 
@@ -106,7 +107,7 @@ exports.plugin = {
           timeout_ms: 3 * 1000
         });
 
-        T.get('statuses/user_timeline', { screen_name: 'vanarts', count: 5 }, (error, data) => {
+        T.get('statuses/user_timeline', { screen_name: 'danactive', count: 5 }, (error, data) => {
           if (error) {
             reject(error);
             return;

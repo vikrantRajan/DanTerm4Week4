@@ -18,6 +18,7 @@ function getTwitterTweets() {
 function getTwitterTweetsWithDate() {
   const success = (response) => {
     const html = response.tweets.map(({ date, text }) => `<li>(${date}) ${text}</li>`);
+    // const html = response.tweets.map(item => `<li>(${item.date}) ${item.text}</li>`);
 
     $('body').append(`<ul>${html.join('')}</ul>`);
   };
@@ -28,7 +29,8 @@ function getTwitterTweetsWithDate() {
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    getTwitterTweets
+    getTwitterTweets,
+    getTwitterTweetsWithDate
   };
 }
 
