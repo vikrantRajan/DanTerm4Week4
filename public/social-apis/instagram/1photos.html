@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Instagram photos</title>
+</head>
+
+<body>
+	<h1>Instagram</h1>
+  <h2>Photos and Video hosting platform</h2>
+
+  <h3>Photography</h3>
+  <p>Photos will be hosted by Instagram. We will leverage the tools provided by Instagram especially input and image manipulation services. Apps are available for mobile devices for convient photo uploading.</p>
+
+  <h3>Goal</h3>
+  <p>Our client has used the <a href="https://itunes.apple.com/ca/app/instagram/id389801252?mt=8">Instagram iOS app</a> to upload photos of their YVR to Instagram which are available to the public.</p>
+  <p>As a user, I want to see photos of the YVR</p>
+  <ol>
+    <li>Using jQuery AJAX, connect to Instagram to request photos</li>
+    <li>Copy and Paste one JPG path, and use jQuery to add one photo to page</li>
+    <li>Dynamically read the JPG path, and use jQuery to add one photo to page</li>
+    <li>Loop through Instagram response and display all photos to page</li>
+  </ol>
+
+  <h3>Technologies</h3>
+  <ul>
+    <li>Instagram API</li>
+    <li>JavaScript</li>
+    <li>jQuery</li>
+    <li>jQuery AJAX</li>
+    <li>node.js</li>
+    <li>hapi.js</li>
+  </ul>
+
+  <h3>Live demo</h3>
+  <p><a href="http://localhost:8080/api/instagram-login" target="_blank">Login into Instagram (for photo access token)</a></p>
+	
+	<!-- Attach jQuery library -->
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- Page specific -->
+  <script src="/js/critical.js"></script>
+  <!-- Execute specific function -->
+  <script>instagramPhotos();</script>
+</body>
+</html>
