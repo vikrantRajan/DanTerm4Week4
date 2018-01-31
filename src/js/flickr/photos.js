@@ -1,5 +1,5 @@
 /* global document, fetch */
-function getFlickrGeoPublicPhotos() {
+async function getFlickrGeoPublicPhotos() {
   const toImg = path => `<li><img src="${path}" alt="Photo"></li>`;
   const url = '/api/flickr';
 
@@ -8,14 +8,33 @@ function getFlickrGeoPublicPhotos() {
     document.querySelector('#photos').innerHTML = html;
   };
 
-  fetch(url)
-    .then(rawResponse => rawResponse.json())
-    .then(success)
-    .catch(error => {
-      // console.log('Dan Error:', error);
-      document.querySelector('#photos').innerHTML = '<li>Unable to load gallery</li>';
-    });
+  try {
+    const rawResponse = await fetch(url);
+    const response = await rawResponse.json();
+    success(response);
+  } catch (error) {
+    // console.log('Error:', error);
+    document.querySelector('#photos').innerHTML = '<li>Unable to load gallery</li>';
+  }
 }
+
+// function getFlickrGeoPublicPhotos() {
+//   const toImg = path => `<li><img src="${path}" alt="Photo"></li>`;
+//   const url = '/api/flickr';
+
+//   const success = (response) => {
+//     const html = response.paths.map(toImg);
+//     document.querySelector('#photos').innerHTML = html;
+//   };
+
+//   fetch(url)
+//     .then(rawResponse => rawResponse.json())
+//     .then(success)
+//     .catch(error => {
+//       // console.log('Dan Error:', error);
+//       document.querySelector('#photos').innerHTML = '<li>Unable to load gallery</li>';
+//     });
+// }
 
 // function getFlickrGeoPublicPhotos() {
 //   const toImg = path => `<li><img src="${path}" alt="Photo"></li>`;
