@@ -1,3 +1,20 @@
+function getFlickrGeoPublicPhotos() {
+  const toImg = path => `<li><img src="${path}" alt="Photo"></li>`;
+  const url = '/api/flickr';
+
+  const success = (response) => {
+    const html = response.paths.map(toImg);
+    $('#photos').html(html);
+  };
+
+  const options = {
+    url,
+    success
+  };
+
+  $.ajax(options);
+}
+
 function getFlickrPublicPhotos() {
   $.ajax({
     url: 'https://api.flickr.com/services/feeds/photos_public.gne?tags=seabus&format=json',
@@ -16,6 +33,7 @@ function getFlickrPublicPhotos() {
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    getFlickrPublicPhotos
+    getFlickrPublicPhotos,
+    getFlickrGeoPublicPhotos
   };
 }
