@@ -16,4 +16,6 @@ As a user, I want to see the weather temperature for Vancouver, BC in celcius an
 ## Deadline
 * Feb 21th at end of day 23:59 hosted via
 	* GitHub using VanArts organization with private repository
-* Send GitHub repository address to me via [Slack](https://domaindesign.slack.com/)
+* Send me the details of your assignment to me via [Slack](https://domaindesign.slack.com/):
+	* GitHub repository address
+	* Direct link to your solution HTML file
