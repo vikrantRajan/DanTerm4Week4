@@ -12,6 +12,7 @@ As a user, I want to see the weather temperature for Vancouver, BC in celcius an
 * 3 points to create private repository with the VanArts organization
 * *2 points penalty* for including `node_modules` in either GitHub or zip
 * *3 points penalty* for every 4 hours late delivered after deadline
+* This is a closed source assignment, meaning do not copy or view other solutions of your classmates
 
 ## Deadline
 * Feb 21th at end of day 23:59 hosted via
