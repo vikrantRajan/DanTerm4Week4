@@ -100,6 +100,23 @@ exports.plugin = {
   register: (server) => {
     server.route({
       method: 'GET',
+      path: '/api/facebook',
+      handler: (request, h) => new Promise((resolve, reject) => {
+        const accessParam = `access_token=${credentials.facebook.app_id}|${credentials.facebook.app_secret}`;
+        const object = 'vancouver.institute.of.media.arts?fields=cover';
+        const address = `https://graph.facebook.com/v2.12/${object}&${accessParam}`;
+
+        wreck.get(address)
+          .then(({ payload }) => {
+            resolve(h.response(payload).type('application/json'));
+          })
+          .catch(error => reject(error));
+          // .catch(reject);
+      })
+    });
+
+    server.route({
+      method: 'GET',
       path: '/api/instagram-login',
       handler: (request, h) => new Promise((resolve) => {
         const redirectLandingAddress = 'http://localhost:8080/api/instagram-login';
