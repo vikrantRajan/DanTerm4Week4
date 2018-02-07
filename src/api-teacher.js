@@ -101,14 +101,14 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/facebook',
-      handler: (request, reply) => new Promise(async (resolve, reject) => {
+      handler: () => new Promise(async (resolve, reject) => {
         const accessParam = `access_token=${credentials.facebook.app_id}|${credentials.facebook.app_secret}`;
         const object = 'vancouver.institute.of.media.arts?fields=cover';
         const address = `https://graph.facebook.com/v2.12/${object}&${accessParam}`;
 
         try {
           const { payload } = await wreck.get(address);
-          resolve(reply.response(payload).type('application/json'));
+          resolve(JSON.parse(payload));
         } catch (error) {
           reject(error);
         }
