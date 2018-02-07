@@ -101,14 +101,14 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/facebook',
-      handler: (request, h) => new Promise(async (resolve, reject) => {
+      handler: (request, reply) => new Promise(async (resolve, reject) => {
         const accessParam = `access_token=${credentials.facebook.app_id}|${credentials.facebook.app_secret}`;
         const object = 'vancouver.institute.of.media.arts?fields=cover';
         const address = `https://graph.facebook.com/v2.12/${object}&${accessParam}`;
 
         try {
           const { payload } = await wreck.get(address);
-          resolve(h.response(payload).type('application/json'));
+          resolve(reply.response(payload).type('application/json'));
         } catch (error) {
           reject(error);
         }
@@ -118,13 +118,13 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/instagram-login',
-      handler: (request, h) => new Promise((resolve) => {
+      handler: (request, reply) => new Promise((resolve) => {
         const redirectLandingAddress = 'http://localhost:8080/api/instagram-login';
 
         if (request.query.code) {
           ig.authorize_user(request.query.code, redirectLandingAddress, (authError, result) => {
             if (authError) {
-              resolve(h.response(JSON.stringify(authError)));
+              resolve(reply.response(JSON.stringify(authError)));
               return;
             }
 
@@ -138,7 +138,7 @@ exports.plugin = {
             // error, medias, pagination, remaining, limit
             ig.tag_media_recent('vancouver', { count: 10 }, (mediaError, media) => {
               if (mediaError) {
-                resolve(h.response(JSON.stringify(mediaError)));
+                resolve(reply.response(JSON.stringify(mediaError)));
                 return;
               }
 
@@ -151,7 +151,7 @@ exports.plugin = {
             client_secret: credentials.instagram.client_secret
           });
 
-          resolve(h.redirect(ig.get_authorization_url(redirectLandingAddress, { scope: ['public_content'] })));
+          resolve(reply.redirect(ig.get_authorization_url(redirectLandingAddress, { scope: ['public_content'] })));
         }
       })
     });
@@ -203,7 +203,7 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/flickr',
-      handler: (request, h) => new Promise((resolve, reject) => {
+      handler: (request, reply) => new Promise((resolve, reject) => {
         const apiKey = credentials.flickr.api_key;
         const address = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&lat=49.282712&lon=-123.115337&radius=0.5&format=json&nojsoncallback=1`;
 
@@ -211,7 +211,7 @@ exports.plugin = {
           const { payload } = await wreck.get(address);
           const paths = flickrJpgPath(JSON.parse(payload));
 
-          const output = h
+          const output = reply
             .response({ paths })
             .type('application/json');
 
@@ -245,13 +245,13 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/fruit',
-      handler: (request, h) => {
+      handler: (request, reply) => {
         // Browser web address http://localhost:3000/api/fruit?format=json
         // output blank, xml, json
         console.log(request.query.format); // eslint-disable-line no-console
         // PHP is echo($_GET['format']) // outputs blank, xml, json
         if (request.query.format === 'xml') {
-          return h
+          return reply
             .response('<fruits><fruit name="apple">green</fruit><fruit name="banana">yellow</fruit><fruit name="cherry">red</fruit></fruits>')
             .type('application/xml');
         }
@@ -267,7 +267,7 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/rss',
-      handler: (request, h) => new Promise((resolve, reject) => {
+      handler: (request, reply) => new Promise((resolve, reject) => {
         const url = request.query.url || 'http://www.cbc.ca/cmlink/rss-canada';
         const isSSL = (url.substring(0, 5) === 'https');
         const httpRequest = (isSSL) ? require('https') : require('http'); // eslint-disable-line global-require
@@ -281,7 +281,7 @@ exports.plugin = {
               body += data;
             });
             response.on('end', () => {
-              resolve(h.response(body).type('application/xml'));
+              resolve(reply.response(body).type('application/xml'));
             });
           } else {
             reject(new URIError(`Service call failed with HTTP status code: ${response.statusCode}`));
