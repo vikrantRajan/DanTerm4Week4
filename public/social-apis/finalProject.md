@@ -5,6 +5,7 @@ As a user, I want to see the weather temperature for Vancouver, BC in celcius an
 
 ## Assessment
 * 10 points to query Yahoo API with correct data in response (*6 points penalty* for using another API)
+	* Must use metric
 * 4 points for using existing `course-files` folder structure (new folders within course-files are allowed). When submitting with the `course-files` structure, please include all files (excluding `node_modules`)
 * 5 points to display weather temperature and condition in the browser
 * 3 points to display weather condition as a colour
