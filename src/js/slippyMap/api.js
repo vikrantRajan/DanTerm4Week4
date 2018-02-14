@@ -12,7 +12,13 @@ function initMap() {
     title: location.title
   });
 
-  createMarker(varArts);
+  const marker = createMarker(varArts);
+
+  const infobubble = new google.maps.InfoWindow({
+    content: '<img src="https://pbs.twimg.com/profile_images/816732848384188416/_ODt1Jo2_400x400.jpg">'
+  });
+
+  marker.addListener('click', () => infobubble.open(map, marker));
 }
 
 // If Node.js then export as public
