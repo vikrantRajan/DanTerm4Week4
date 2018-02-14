@@ -12,13 +12,17 @@ function initMap() {
     title: location.title
   });
 
+  const addBubble = (pin) => {
+    const infobubble = new google.maps.InfoWindow({
+      content: '<img src="https://pbs.twimg.com/profile_images/816732848384188416/_ODt1Jo2_400x400.jpg">'
+    });
+
+    pin.addListener('click', () => infobubble.open(map, pin));
+  };
+
   const marker = createMarker(varArts);
 
-  const infobubble = new google.maps.InfoWindow({
-    content: '<img src="https://pbs.twimg.com/profile_images/816732848384188416/_ODt1Jo2_400x400.jpg">'
-  });
-
-  marker.addListener('click', () => infobubble.open(map, marker));
+  addBubble(marker);
 }
 
 // If Node.js then export as public

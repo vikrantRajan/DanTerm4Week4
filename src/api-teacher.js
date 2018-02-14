@@ -259,16 +259,15 @@ exports.plugin = {
           nojsoncallback: 1,
           tags: 'yvr'
         };
-        // const address = `https:/.flickr.com/services/rest/?${querystring.stringify(flickrRequest)}`;
-        const address = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&lat=49.282712&lon=-123.115337&radius=0.5&format=json&nojsoncallback=1`;
+        const address = `https://api.flickr.com/services/rest/?${querystring.stringify(flickrRequest)}`;
 
         try {
           const { payload } = await wreck.get(address);
 
-          const output = flickrPathsWithGeo(payload);
+          // const output = flickrPathsWithGeo(payload);
           // const contentType = response.headers['content-type'];
-          // resolve(reply(output).type(contentType));
-          resolve(output);
+          // resolve(reply(payload).type('application/json'));
+          resolve(JSON.parse(payload));
         } catch (error) {
           resolve(error);
         }
