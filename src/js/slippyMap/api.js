@@ -1,12 +1,19 @@
 /* global document, google */
 
 function initMap() {
+  const varArtsGeo = { lat: 49.282873, lng: -123.115368 };
   const options = {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8
+    center: varArtsGeo,
+    zoom: 20
   };
 
-  new google.maps.Map(document.getElementById('map'), options);
+  const map = new google.maps.Map(document.getElementById('map'), options);
+
+  new google.maps.Marker({ // eslint-disable-line no-new
+    position: varArtsGeo,
+    map,
+    title: 'VanArts'
+  });
 }
 
 // If Node.js then export as public
