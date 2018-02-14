@@ -1,4 +1,5 @@
 const instagram = require('instagram-node');
+const querystring = require('querystring');
 const Twit = require('twit');
 const wreck = require('wreck');
 
@@ -72,6 +73,24 @@ const flickrJpgPath = (flickrResponse) => {
 
   return paths;
 };
+
+function flickrPathsWithGeo(payload) {
+  const output = { items: [] };
+
+  payload.photos.photo.forEach((photo) => {
+    output.items.push({
+      media: {
+        // size documentation https://www.flickr.com/services/misc.urls.html
+        // _t is thumbnail
+        m: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_t.jpg`
+      },
+      latitude: parseFloat(photo.latitude),
+      longitude: parseFloat(photo.longitude)
+    });
+  });
+
+  return output;
+}
 
 // Imperative programming paradigm
 // const twitterTweets = (timeline) => {
@@ -222,6 +241,36 @@ exports.plugin = {
           getData();
         } catch (error) {
           reject(error);
+        }
+      })
+    });
+
+    server.route({
+      method: 'GET',
+      path: '/api/flickr/geo',
+      handler: (request, reply) => new Promise(async (resolve) => {
+        const apiKey = credentials.flickr.api_key;
+        const flickrRequest = {
+          api_key: apiKey,
+          extras: 'geo',
+          has_geo: 1,
+          method: 'flickr.photos.search',
+          format: 'json',
+          nojsoncallback: 1,
+          tags: 'yvr'
+        };
+        // const address = `https:/.flickr.com/services/rest/?${querystring.stringify(flickrRequest)}`;
+        const address = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&lat=49.282712&lon=-123.115337&radius=0.5&format=json&nojsoncallback=1`;
+
+        try {
+          const { payload } = await wreck.get(address);
+
+          const output = flickrPathsWithGeo(payload);
+          // const contentType = response.headers['content-type'];
+          // resolve(reply(output).type(contentType));
+          resolve(output);
+        } catch (error) {
+          resolve(error);
         }
       })
     });
