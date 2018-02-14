@@ -4,9 +4,6 @@
 <head>
   <meta charset="utf-8">
   <title>Basic API map</title>
-  <style>
-    #map { height: 400px; }
-  </style>
 </head>
 
 <body>
@@ -38,6 +35,12 @@
   </ul>
 
   <h3>Live demo</h3>
-  <div id="map"></div>
+	<div id="map" style="height: 400px;"></div>
+	
+	<!-- Attach all the bundles JavaScript files in /src/js -->
+	<script src="/js/critical.js"></script>
+	<!-- Attach Google Maps JS v3 -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwP120TZQId__tHUCaPe2zMWuzcOoETW0&callback=initMap"
+    async defer></script>
 </body>
 </html>
