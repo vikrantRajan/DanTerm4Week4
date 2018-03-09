@@ -14,6 +14,7 @@ As a user, I want to see the weather temperature for Vancouver, BC in celcius an
 * *2 points penalty* for including `node_modules` in either GitHub or zip
 * *3 points penalty* for every 4 hours late delivered after deadline
 * This is a closed source assignment, meaning do not copy or view other solutions of your classmates
+* Template for calculating marks `getSkillPercent([[0,10], [0,4], [0,5], [0,3], [0,1], [0,3]]);` using the [assessment.js](./src/js/assessment.js)
 
 ## Deadline
 * Feb 21th at end of day 23:59 hosted via
