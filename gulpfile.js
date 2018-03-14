@@ -10,7 +10,7 @@ const paths = {
   jsAll: ['*.js', 'src/*.js', 'src/js/**/*.js', 'src/test/**/*.js'],
   jsPublic: ['src/js/**/*.js'],
   jsTeacherFiles: ['!src/js/**/*.teacher.js'],
-  jsTests: ['src/test/**/*.js']
+  jsTests: ['src/test/**/*.js'],
 };
 const plugins = loadPlugins({ camelize: true });
 const DESTINATION_FOLDER = 'public/';

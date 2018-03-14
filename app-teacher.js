@@ -23,7 +23,7 @@ const plugins = [
   inert,
   vision,
   { plugin: libApi },
-  { plugin: libSlides, routes: { prefix: '/slides' } }
+  { plugin: libSlides, routes: { prefix: '/slides' } },
   // lout
 ];
 
@@ -57,14 +57,14 @@ async function startServer() {
             } else {
               dust.filters[name] = helper;
             }
-          }
-        }
-      }
+          },
+        },
+      },
     },
     relativeTo: __dirname,
     path: 'src/views',
     partialsPath: 'src/views',
-    layoutPath: 'src/views'
+    layoutPath: 'src/views',
   });
 
   // Register route for static assets
@@ -73,22 +73,22 @@ async function startServer() {
     path: '/{path*}',
     options: {
       description: 'Serve static content',
-      tags: ['starter']
+      tags: ['starter'],
     },
     handler: {
       directory: {
         path: 'public',
         listing: true,
-        index: false
-      }
-    }
+        index: false,
+      },
+    },
   });
 
   server.route({
     method: 'GET',
     path: '/',
     handler: (request, h) => h.view('home'),
-    options: { tags: ['starter'] }
+    options: { tags: ['starter'] },
   });
 
   try {

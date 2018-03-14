@@ -43,7 +43,7 @@ function createCourseSchedule(courseTitle = 'Dan\'s class') {
       nextDate.setHours(24 * daysNextClass);
 
       return {
-        title, day, start, end
+        title, day, start, end,
       };
     },
     setDaysBetweenClasses: (between) => {
@@ -54,7 +54,7 @@ function createCourseSchedule(courseTitle = 'Dan\'s class') {
     setFirstClassDate: (date) => {
       nextDate = new Date(date.getTime());
       return course;
-    }
+    },
   };
 
   return course;
@@ -71,14 +71,14 @@ function courseCalendar() {
     header: {
       left: 'prev,next today',
       center: 'title',
-      right: 'month,agendaWeek,agendaDay,listWeek'
+      right: 'month,agendaWeek,agendaDay,listWeek',
     },
     firstDay: 1, // Monday start
     defaultDate: getDateDay(new Date()),
     navLinks: true, // can click day/week names to navigate views
     editable: true,
     eventLimit: true, // allow "more" link when too many events
-    events
+    events,
   });
 }
 
@@ -89,6 +89,6 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     getDateDay,
     getDateStart,
     getDateEnd,
-    createCourseSchedule
+    createCourseSchedule,
   };
 }

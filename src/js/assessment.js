@@ -22,6 +22,6 @@ function getSkillPercent(homeworkMarks) {
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
     getCoursePercent,
-    getSkillPercent
+    getSkillPercent,
   };
 }

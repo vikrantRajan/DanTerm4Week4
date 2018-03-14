@@ -12,6 +12,6 @@ function difference(a, b) {
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
     sum,
-    difference
+    difference,
   };
 }

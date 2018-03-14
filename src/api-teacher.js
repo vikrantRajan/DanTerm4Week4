@@ -14,11 +14,11 @@ exports.plugin = {
           apple: 'green',
           banana: 'yellow',
           cherry: 'red',
-          durian: 'blue'
+          durian: 'blue',
         };
 
         return new Promise(resolve => setTimeout(resolve, DELAY, OUT));
-      }
+      },
     });
 
     server.route({
@@ -39,9 +39,9 @@ exports.plugin = {
         return {
           apple: 'green',
           banana: 'yellow',
-          cherry: 'red'
+          cherry: 'red',
         };
-      }
+      },
     });
 
     server.route({
@@ -69,7 +69,7 @@ exports.plugin = {
         }).on('error', (e) => {
           reject(new URIError(`Service call failed due to error: ${e.message}`));
         });
-      })
+      }),
     });
-  }
+  },
 };

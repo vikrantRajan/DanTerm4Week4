@@ -19,7 +19,7 @@ function fruitSpinner() {
     success: (response) => {
       hideSpinner();
       parseResponse(response);
-    }
+    },
   });
 }
 
@@ -34,7 +34,7 @@ function parseXmlResponse(response) {
 function fruitXml() {
   $.ajax({
     url: '/api/fruit?format=xml',
-    success: parseXmlResponse
+    success: parseXmlResponse,
   });
 }
 
@@ -42,6 +42,6 @@ function fruitXml() {
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
     fruitSpinner,
-    fruitXml
+    fruitXml,
   };
 }

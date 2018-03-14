@@ -8,6 +8,7 @@
     "dev": "gulp dev",
     "dev:student": "gulp dev:student",
     "lint": "gulp lint",
+    "lintfix": "eslint --fix *.js src",
     "start": "node .",
     "start:student": "node app-student",
     "test": "gulp test"
