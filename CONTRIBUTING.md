@@ -8,20 +8,13 @@
 		* Open CLI
 		* Run `node -v`
 		* Expect a version number
-* [Yarn](https://yarnpkg.com/)
-	* Install v1.3.2
-		* Visit [official website](https://yarnpkg.com/en/docs/install) and install
-	* Verify
-		* Open CLI
-		* Run `yarn -v`
-		* Expect a version number
 * Local dependencies (including gulp.js)
 	* Install
 		* Change directory to the web site root
-		* Run `yarn`
+		* Run `npm install`
 	* Verify
 		* Open CLI
-		* Run `yarn start`
+		* Run `npm run start`
 
 * Follow team standard with text editor
 	* [Visual Studio Code](https://code.visualstudio.com/)
@@ -38,7 +31,7 @@
 # Start web server
 ## Visual Studio Code
 1. View Integrated Terminal (Menu Bar > View > Integrated Terminal)
-1. Type `yarn start` into terminal
+1. Type `npm run start` into terminal
 1. Visit web server address in browser
 
 ## Windows Explorer
@@ -47,17 +40,17 @@
 1. Select `Open command window here`
 
 ## Commands
-* `yarn start` Start the web server
-* `yarn start:student` Start your edited web server
-* `yarn dev` Start the web server in developement mode watching files to lint, concat, and unit testing
-* `yarn dev:student` Start your edited web server in developement mode watching files to lint, concat, and unit testing
-* `yarn test` Execute JS unit test suite
-* `yarn bundle` Manually prepare your JS for public
-* `yarn lint` Manually lint your JS
+* `npm run start` Start the web server
+* `npm run start:student` Start your edited web server
+* `npm run dev` Start the web server in developement mode watching files to lint, concat, and unit testing
+* `npm run dev:student` Start your edited web server in developement mode watching files to lint, concat, and unit testing
+* `npm run test` Execute JS unit test suite
+* `npm run bundle` Manually prepare your JS for public
+* `npm run lint` Manually lint your JS
 
 ## Bundled critical.js
 1. All JavaScript files inside the `/course-files/src/js/*.js` are bundled and concatenated into `/course-files/public/js/critical.js`
-1. Gulp.js has a build step that is executed with command `yarn dev` (into CLI)
+1. Gulp.js has a build step that is executed with command `npm run dev` (into CLI)
 	* To trigger the build, save a JavaScript file in the `src` folder
 1. This file is created with the goal of decreasing the number of files downloaded by the browser; from many to one.
 
