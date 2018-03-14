@@ -1,13 +1,27 @@
 exports.plugin = {
   name: 'slides',
-  version: '1.1.0',
+  version: '1.1.1',
   register: (server) => {
-    const slides = ['client-side', 'js-var-types', 'cdn', 'js-events', 'json', 'ajax', 'git', 'api', 'qrcode', 'flickr', 'twitter', 'instagram', 'facebook'];
+    const slides = [
+      'client-side',
+      'js-var-types',
+      'cdn',
+      'js-events',
+      'json',
+      'ajax',
+      'git',
+      'api',
+      'qrcode',
+      'flickr',
+      'twitter',
+      'instagram',
+      'facebook'
+    ];
 
     server.route({
       method: 'GET',
       path: '/',
-      handler: (request, h) => h.view('slides', { slides }),
+      handler: (request, reply) => reply.view('slides', { slides }),
       options: { tags: ['starter', 'slide'] }
     });
 
@@ -15,7 +29,7 @@ exports.plugin = {
       server.route({
         method: 'GET',
         path: `/${slideName}`,
-        handler: (request, h) => h.view(`slide-${slideName}`),
+        handler: (request, reply) => reply.view(`slide-${slideName}`),
         options: { tags: ['starter', 'slide'] }
       });
     });

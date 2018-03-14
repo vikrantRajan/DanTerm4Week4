@@ -1,279 +1,10 @@
-const instagram = require('instagram-node');
-const querystring = require('querystring');
-const Twit = require('twit');
-const wreck = require('wreck');
-
-const ig = instagram.instagram();
-
-const credentials = require('../credentials.json');
-const { formatTwitterDate } = require('./js/twitter/date');
-
-const autocompleteHandler = ({ query: { keyword = '' } }) => {
-  const DELAY = 1500; // 1.5 sec
-  const places = [];
-
-  places.push('Afghanistan');
-  places.push('Albania');
-  places.push('Algeria');
-  places.push('American Samoa');
-  places.push('Antarctica');
-  places.push('Argentina');
-  places.push('Armenia');
-  places.push('Aruba');
-  places.push('Australia');
-  places.push('Austria');
-  places.push('Bahamas');
-  places.push('Bangladesh');
-  places.push('Barbados');
-  places.push('Belarus');
-  places.push('Belgium');
-  places.push('Belize');
-  places.push('Bermuda');
-  places.push('Bolivia');
-  places.push('Brazil');
-  places.push('Bulgaria');
-  places.push('Cambodia');
-  places.push('Cameroon');
-  places.push('Canada');
-  places.push('Cayman Islands');
-  places.push('Chad');
-  places.push('Chile');
-  places.push('China');
-  places.push('Colombia');
-  places.push('Congo');
-  places.push('Cook Islands');
-  places.push('Costa Rica');
-  places.push('Côte d\'Ivoire');
-  places.push('Croatia');
-  places.push('Cuba');
-  places.push('Cyprus');
-  places.push('Czech Republic');
-
-  const items = places.filter(place => place.toLowerCase().includes(keyword.toLowerCase()));
-
-  if (items.length === 0) {
-    items.push('No matches found');
-  }
-
-  // I promise to return the value when setTimeout resolves with the answer
-  return new Promise(resolve => setTimeout(resolve, DELAY, { items }));
-};
-
-const flickrJpgPath = (flickrResponse) => {
-  const paths = flickrResponse.photos.photo.map((photo) => {
-    const {
-      farm,
-      id,
-      secret,
-      server
-    } = photo;
-
-    return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
-  });
-
-  return paths;
-};
-
-function flickrPathsWithGeo(payload) {
-  const output = { items: [] };
-
-  payload.photos.photo.forEach((photo) => {
-    output.items.push({
-      media: {
-        // size documentation https://www.flickr.com/services/misc.urls.html
-        // _t is thumbnail
-        m: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_t.jpg`
-      },
-      latitude: parseFloat(photo.latitude),
-      longitude: parseFloat(photo.longitude)
-    });
-  });
-
-  return output;
-}
-
-// Imperative programming paradigm
-// const twitterTweets = (timeline) => {
-//   const tweets = [];
-
-//   timeline.forEach((tweet) => {
-//     tweets.push({
-//       text: tweet.text
-//     });
-//   });
-
-//   return tweets;
-// };
-
-// Declarative programming paradigm
-// tweet = { created_at, comments, text, users }
-// returning { text }
-const twitterTweets = timeline => timeline.map(tweet => ({
-  date: formatTwitterDate(tweet.created_at),
-  text: tweet.text
-}));
+const https = require('https');
+const http = require('http');
 
 exports.plugin = {
   name: 'api',
-  version: '1.2.1',
+  version: '1.3.0',
   register: (server) => {
-    server.route({
-      method: 'GET',
-      path: '/api/facebook',
-      handler: () => new Promise(async (resolve, reject) => {
-        const accessParam = `access_token=${credentials.facebook.app_id}|${credentials.facebook.app_secret}`;
-        const object = 'vancouver.institute.of.media.arts?fields=cover';
-        const address = `https://graph.facebook.com/v2.12/${object}&${accessParam}`;
-
-        try {
-          const { payload } = await wreck.get(address);
-          resolve(JSON.parse(payload));
-        } catch (error) {
-          reject(error);
-        }
-      })
-    });
-
-    server.route({
-      method: 'GET',
-      path: '/api/instagram-login',
-      handler: (request, reply) => new Promise((resolve) => {
-        const redirectLandingAddress = 'http://localhost:8080/api/instagram-login';
-
-        if (request.query.code) {
-          ig.authorize_user(request.query.code, redirectLandingAddress, (authError, result) => {
-            if (authError) {
-              resolve(reply.response(JSON.stringify(authError)));
-              return;
-            }
-
-            credentials.instagram.access_token = result.access_token;
-
-            ig.use({
-              access_token: credentials.instagram.access_token,
-              client_secret: credentials.instagram.client_secret
-            });
-
-            // error, medias, pagination, remaining, limit
-            ig.tag_media_recent('vancouver', { count: 10 }, (mediaError, media) => {
-              if (mediaError) {
-                resolve(reply.response(JSON.stringify(mediaError)));
-                return;
-              }
-
-              resolve(media);
-            });
-          });
-        } else {
-          ig.use({
-            client_id: credentials.instagram.client_id,
-            client_secret: credentials.instagram.client_secret
-          });
-
-          resolve(reply.redirect(ig.get_authorization_url(redirectLandingAddress, { scope: ['public_content'] })));
-        }
-      })
-    });
-
-    server.route({
-      method: 'GET',
-      path: '/api/instagram',
-      handler: () => new Promise((resolve, reject) => {
-        ig.use({
-          access_token: credentials.instagram.access_token,
-          client_secret: credentials.instagram.client_secret
-        });
-
-        // error, medias, pagination, remaining, limit
-        ig.tag_media_recent('vancouver', { count: 10 }, (mediaError, media) => {
-          if (mediaError) {
-            reject(mediaError);
-            return;
-          }
-
-          resolve(media);
-        });
-      })
-    });
-
-    server.route({
-      method: 'GET',
-      path: '/api/twitter',
-      handler: () => new Promise((resolve, reject) => {
-        const T = new Twit({
-          consumer_key: credentials.twitter.consumer_key,
-          consumer_secret: credentials.twitter.consumer_secret,
-          access_token: credentials.twitter.access_token,
-          access_token_secret: credentials.twitter.access_token_secret,
-          timeout_ms: 3 * 1000
-        });
-
-        T.get('statuses/user_timeline', { screen_name: 'danactive', count: 5 }, (error, data) => {
-          if (error) {
-            reject(error);
-            return;
-          }
-
-          resolve({ tweets: twitterTweets(data) });
-        });
-      })
-    });
-
-    server.route({
-      method: 'GET',
-      path: '/api/flickr',
-      handler: (request, reply) => new Promise((resolve, reject) => {
-        const apiKey = credentials.flickr.api_key;
-        const address = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&lat=49.282712&lon=-123.115337&radius=0.5&format=json&nojsoncallback=1`;
-
-        const getData = async function getData() {
-          const { payload } = await wreck.get(address);
-          const paths = flickrJpgPath(JSON.parse(payload));
-
-          const output = reply
-            .response({ paths })
-            .type('application/json');
-
-          resolve(output);
-        };
-
-        try {
-          getData();
-        } catch (error) {
-          reject(error);
-        }
-      })
-    });
-
-    server.route({
-      method: 'GET',
-      path: '/api/flickr/geo',
-      handler: (request, reply) => new Promise(async (resolve) => {
-        const apiKey = credentials.flickr.api_key;
-        const flickrRequest = {
-          api_key: apiKey,
-          extras: 'geo',
-          has_geo: 1,
-          method: 'flickr.photos.search',
-          format: 'json',
-          nojsoncallback: 1,
-          tags: 'yvr'
-        };
-        const address = `https://api.flickr.com/services/rest/?${querystring.stringify(flickrRequest)}`;
-
-        try {
-          const { payload } = await wreck.get(address);
-
-          // const output = flickrPathsWithGeo(payload);
-          // const contentType = response.headers['content-type'];
-          // resolve(reply(payload).type('application/json'));
-          resolve(JSON.parse(payload));
-        } catch (error) {
-          resolve(error);
-        }
-      })
-    });
-
     server.route({
       method: 'GET',
       path: '/api/slow-fruit',
@@ -298,6 +29,7 @@ exports.plugin = {
         // output blank, xml, json
         console.log(request.query.format); // eslint-disable-line no-console
         // PHP is echo($_GET['format']) // outputs blank, xml, json
+
         if (request.query.format === 'xml') {
           return reply
             .response('<fruits><fruit name="apple">green</fruit><fruit name="banana">yellow</fruit><fruit name="cherry">red</fruit></fruits>')
@@ -318,7 +50,7 @@ exports.plugin = {
       handler: (request, reply) => new Promise((resolve, reject) => {
         const url = request.query.url || 'http://www.cbc.ca/cmlink/rss-canada';
         const isSSL = (url.substring(0, 5) === 'https');
-        const httpRequest = (isSSL) ? require('https') : require('http'); // eslint-disable-line global-require
+        const httpRequest = (isSSL) ? https : http;
 
         httpRequest.get(url, (response) => {
           let body = '';
@@ -339,13 +71,5 @@ exports.plugin = {
         });
       })
     });
-
-    server.route({
-      method: 'GET',
-      path: '/api/autocomplete',
-      handler: autocompleteHandler
-    });
   }
 };
-
-exports.autocompleteHandler = autocompleteHandler;
