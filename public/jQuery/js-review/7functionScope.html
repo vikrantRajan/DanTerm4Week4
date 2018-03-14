@@ -31,7 +31,7 @@
 		showMsg(); // execute
 
 		getCity(); // execute before definition
-		function getCity() { // define named function; Dan's preferred syntax
+		function getCity() { // define named function; hoisting moves this to the top
 			window.alert('You are in Vancouver');
 		}
 		getCity(); // execute

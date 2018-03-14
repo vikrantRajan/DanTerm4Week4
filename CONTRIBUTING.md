@@ -40,6 +40,7 @@
 1. Select `Open command window here`
 
 ## Commands
+* *Ctrl + C* to kill process (Mac is *Command + C*)
 * `npm run start` Start the web server
 * `npm run start:student` Start your edited web server
 * `npm run dev` Start the web server in developement mode watching files to lint, concat, and unit testing

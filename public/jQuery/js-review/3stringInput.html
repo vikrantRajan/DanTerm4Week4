@@ -20,15 +20,18 @@
 	<h3>Live demo</h3>
 	Full name: <input type="text" id="fullname" value="Dan BROOKS"><br>
 	Email: <input type="text" id="email" value="dan@vanarts.com"><br>
-	<input type="submit" id="newsletter-signup" text="Signup for newsletter">
+	<input type="submit" id="newsletter-signup" value="Signup for newsletter">
 	<script>
-		// TODO inclass alert the full name and email
+		// TODO inclass alert the button text
 		
 		// SOLUTION
 		var fullname = document.getElementById('fullname').value;
 		window.alert('Your full name is ' + fullname);
 		var email = document.getElementById('email').value;
 		window.alert('Your email is ' + email);
+
+		var buttonText = document.getElementById('newsletter-signup').value;
+		window.alert('The button text is ' + buttonText);
 	</script>
 </body>
 </html>

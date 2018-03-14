@@ -25,7 +25,7 @@
 		<option value="20">Large</option>
 	</select>
 	<script>
-		// todo inclass: apply GST 5% to total bill
+		// todo inclass: apply GST + PST 7% to total bill, and round down to the nearest dollar
 		var count = parseInt(document.getElementById('count').value, 10);
 		var size = parseFloat(document.getElementById('size').value);
 		window.alert('Subtotal $' + (count * size));
@@ -34,7 +34,11 @@
 		var subtotal = count * size;
 		var gst = 0.05;
 		window.alert('Total $' + subtotal * (1 + gst)); // $25.20000000000000000003
-		window.alert('Total $' + Math.ceil(subtotal * (1 + gst))); // $26
+		window.alert('Total with GST $' + Math.ceil(subtotal * (1 + gst))); // $26
+
+		var pst = 0.07;
+		var totalWithTaxes = Math.floor(subtotal * (1 + (pst + gst)));
+		window.alert('Total with GST + PST $' + totalWithTaxes); // $26
 	</script>
 </body>
 </html>
