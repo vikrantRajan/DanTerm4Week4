@@ -18,8 +18,7 @@
 
 <h3>Live demo</h3>
 	<script>
-		var today = 'mon'; // assign a value of string mon
-		
+		var today; // assign a value of string mon
 	
 		/* operators
 		|| or (pipe pipe)
@@ -36,8 +35,14 @@
 			console.log('weekday');
 		}
 
-		// todo inclass: Modify `today` variable on line 21 so the console will display 'no value'
+		// todo inclass: Modify `today` variable on line 21
+		// so the console will display 'no value'
 		// SOLUTION
+		// else if (today === undefined || today === null || today === '')
+		// var today = ''; //  failure as assigning a value of blank
+		// var today = null; // failure as assigning a value of nothing
+		// var today = undefined; // success
+		// var today; // success
 </script>
  
 </body></html>
