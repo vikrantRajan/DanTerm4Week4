@@ -31,19 +31,27 @@
 </ul>
 
 <h3>Live demo</h3>
-<img src="1926.jpg" alt="Stanley Park" class="rollover js-rollover">
-<img src="daytime.jpg" alt="Building" class="rollover js-rollover">
+<img src="1926.jpg" alt="Stanley Park" data-secondary="2004.jpg" class="rollover js-rollover">
+<img src="daytime.jpg" alt="Building" data-secondary="evening.jpg" class="rollover js-rollover">
 
 <!-- Attach jQuery library -->
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <!-- Page specific code -->
 <script>
+	function setImgSrc(selector, readAttr) {
+		var path = $(selector).attr(readAttr);
+		$(selector).attr('src', path);
+	}
+
 	function hoverOn() {
-		console.log($(this).attr('src'));
+		var sourcePath = $(this).attr('src');
+		$(this).attr('data-primary', sourcePath); // backup the source path
+
+		setImgSrc(this, 'data-secondary');
 	}
 
 	function hoverOff() {
-		console.log('you hoved off');
+		setImgSrc(this, 'data-primary');
 	}
 
 	$('img.js-rollover').hover(hoverOn, hoverOff);
