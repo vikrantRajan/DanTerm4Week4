@@ -54,8 +54,14 @@
 
 <!-- Attach jQuery library -->
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Attach jQuery UI library -->
+<script src="jquery-ui.min.js"></script>
 <!-- Page specific code -->
 <script>
+	document.querySelector('#contact-form input[type=submit]').addEventListener('click', function () {
+		$('input:invalid').effect('shake', { distance: 5, times: 2 });
+	});
+	
 	// $('#contact-form').submit(
 	document.querySelector('#contact-form').addEventListener('submit', function (event) {
 		var isFormValid = document.querySelector('#contact-form').checkValidity();
