@@ -4,8 +4,8 @@
 	<meta charset="utf-8">
 	<title>Form Validation</title>
 	<style>
-		input:invalid { background: red; }
-		:focus { border: 2px solid green; }
+		input:invalid { background: pink; }
+		:focus { border: 2px solid yellow; }
 	</style>
 </head>
 
@@ -56,6 +56,14 @@
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <!-- Page specific code -->
 <script>
+	// $('#contact-form').submit(
+	document.querySelector('#contact-form').addEventListener('submit', function (event) {
+		var isFormValid = document.querySelector('#contact-form').checkValidity();
+		
+		if (!isFormValid) {
+			event.preventDefault();
+		}
+	});
 </script>
 </body>
 </html>
