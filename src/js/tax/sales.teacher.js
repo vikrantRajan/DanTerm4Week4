@@ -1,9 +1,21 @@
 /* global document, salesTaxData */
+
+function calculateTax(data) {
+  let taxTotal = data.taxes[0].tax;
+  if (data.taxes.length === 2) {
+    taxTotal += data.taxes[1].tax;
+  }
+
+  // return taxTotal;
+  return taxTotal.toFixed(2); // fix decical to cents
+}
+
 // function displayProvinces(salesTaxData) {
 //   const provincesDropdown = $('#provinces');
 
 //   $.each(salesTaxData.provinces, (provinceAbbr, provinceData) => {
-//     provincesDropdown.append(`<option>${provinceData.name}</option>`);
+//     const tax = calculateTax(provinceData);
+//     provincesDropdown.append(`<option value="${tax}">${provinceData.name}</option>`);
 //   });
 // }
 
@@ -11,7 +23,10 @@ function displayProvinces(salesTaxData) {
   const provincesDropdown = document.querySelector('#provinces');
 
   const html = Object.values(salesTaxData.provinces)
-    .map(item => `<option>${item.name}</option>`);
+    .map((item) => {
+      const tax = calculateTax(item);
+      return `<option value="${tax}">${item.name}</option>`;
+    });
 
   $(provincesDropdown).append(html);
 }
