@@ -24,10 +24,19 @@
 
 	<h3>Steps</h3>
 	<ol>
-		<li>As a developer, I want the DOM to display every province name (not abbreviated)</li>
-		<li>As a user, I want to select my province from a dropdown list.</li>
-		<li>As a developer, when a province is selected I want to console.log the sales tax</li>
-		<li>As a user, I want to input the pizza price to learn the cost based on my province</li>
+		<li>As a developer, I want to log every province name (not abbreviated)</li>
+		<li>
+			<ul>
+				<li>As a developer, I want the DOM to display every province name (not abbreviated)</li>
+				<li>As a user, I want to select my province from a dropdown list.</li>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li>As a developer, when a province is selected I want to console.log the sales tax</li>
+				<li>As a user, I want to input the pizza price to learn the cost based on my province</li>
+			</ul>
+		</li>
 		<li>As a user, I want to input the pizza price to learn the cost based on my province and display as currency.</li>
 	</ol>
 
@@ -42,6 +51,8 @@
 
 	<!-- Attach jQuery library -->
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<!-- Attach rates lite database -->
+	<script src="rates.js"></script>
 	<!-- Attach all the bundles JavaScript files in /src/js -->
 	<script src="/js/critical.js"></script>
 	<!-- Execute page specific function -->
