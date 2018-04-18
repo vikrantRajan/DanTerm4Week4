@@ -1,4 +1,4 @@
-/* global document, salesTaxData, utils */
+/* global document, salesTaxData */
 
 function calculateTax(data) {
   let taxTotal = data.taxes[0].tax;
@@ -6,7 +6,6 @@ function calculateTax(data) {
     taxTotal += data.taxes[1].tax;
   }
 
-  // return taxTotal;
   return taxTotal.toFixed(2); // fix decical to cents
 }
 
@@ -31,9 +30,18 @@ function displayProvinces(salesTaxData) {
   $(provincesDropdown).append(html);
 }
 
+function outputTotalPrice(price) {
+  $('#pizzaCost').text(price);
+}
+
+function calculateTotalPrice(salesValue, pizzaValue) {
+  const salesTax = 1 + Number(salesValue);
+  const pizzaPrice = Number(pizzaValue);
+  outputTotalPrice(salesTax * pizzaPrice);
+}
+
 function updatePrice() {
-  const price = $(this).val();
-  utils.print(price);
+  calculateTotalPrice($('#provinces').val(), $('#price').val());
 }
 
 function pizzaSales() {
