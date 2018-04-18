@@ -1,4 +1,4 @@
-/* global document, salesTaxData */
+/* global document, salesTaxData, utils */
 
 function calculateTax(data) {
   let taxTotal = data.taxes[0].tax;
@@ -31,8 +31,15 @@ function displayProvinces(salesTaxData) {
   $(provincesDropdown).append(html);
 }
 
+function updatePrice() {
+  const price = $(this).val();
+  utils.print(price);
+}
+
 function pizzaSales() {
   displayProvinces(salesTaxData);
+  $('#price').change(updatePrice);
+  $('#provinces').change(updatePrice);
 }
 
 // If Node.js then export as public
