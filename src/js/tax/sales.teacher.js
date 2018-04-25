@@ -1,4 +1,4 @@
-/* global document, salesTaxData */
+/* global document */
 
 function calculateTax(data) {
   let taxTotal = data.taxes[0].tax;
@@ -47,8 +47,20 @@ function updatePrice() {
   calculateTotalPrice($('#provinces').val(), $('#price').val());
 }
 
+function getSalesData() {
+  $.ajax({
+    url: 'rates.json',
+    success: (response) => {
+      displayProvinces(response);
+    },
+    error: (jqXHR, textStatus, errorMessage) => {
+      console.log(`AJAX error (${errorMessage})`);
+    },
+  });
+}
+
 function pizzaSales() {
-  displayProvinces(salesTaxData);
+  getSalesData();
   $('#price,#provinces').change(updatePrice);
 }
 
