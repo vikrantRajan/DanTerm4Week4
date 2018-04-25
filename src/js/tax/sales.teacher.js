@@ -31,11 +31,14 @@ function displayProvinces(salesTaxData) {
 }
 
 function outputTotalPrice(price) {
-  $('#pizzaCost').text(price);
+  const priceGrouped = price.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+  const currency = `$${priceGrouped}`;
+
+  $('#pizzaCost').text(currency);
 }
 
 function calculateTotalPrice(salesValue, pizzaValue) {
-  const salesTax = 1 + Number(salesValue);
+  const salesTax = 1 + Number(salesValue); // parseInt 10
   const pizzaPrice = Number(pizzaValue);
   outputTotalPrice(salesTax * pizzaPrice);
 }
@@ -46,8 +49,7 @@ function updatePrice() {
 
 function pizzaSales() {
   displayProvinces(salesTaxData);
-  $('#price').change(updatePrice);
-  $('#provinces').change(updatePrice);
+  $('#price,#provinces').change(updatePrice);
 }
 
 // If Node.js then export as public
