@@ -10,3 +10,8 @@ See [CONTRIBUTING](CONTRIBUTING.md)
 
 ## IDE or Text editor
 See [IDE](IDE.md)
+
+## Homework
+See mark assessment rules for
+* [jQuery course](./public/jQuery#assessment)
+* [Social Third-Party APIs course](./public/social-apis#assessment)
