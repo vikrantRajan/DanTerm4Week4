@@ -28,13 +28,13 @@
     &lt;/vancouver&gt;
 &lt;/weather&gt;</code></pre>
 		<h2>JSON</h2>
-		<pre><code contenteditable>var weather = {
-    vancouver: {
-        c: 21,
-        f: 70,
-        condition: "cloudy"
+		<pre><code contenteditable>{
+    "vancouver": {
+        "c": 21,
+        "f": 70,
+        "condition": "cloudy"
     }
-};</code></pre>
+}</code></pre>
 	</section>
 
 	<section>
