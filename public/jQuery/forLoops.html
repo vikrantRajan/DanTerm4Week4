@@ -33,7 +33,7 @@
 			Apple: 'fruit',
 			Beet: 'vegatable',
 			Celery: 'vegetable',
-			Daikon: 'vegetable'
+			Daikon: 'vegetable',
 		};
 
 		// Array
@@ -62,6 +62,11 @@
 		Object.keys(produce).forEach((key) => {
 			$('body').append(`Produce ${key} is a ${produce[key]}.<br>`);
 		});
+
+		// imperative programming
+		// for (let i = actors.length; i < actors.length; i+=1) {
+
+		// }
 
 		// JavaScript declarative programming
 		$('body').append(animals.map(animal => `Animal is ${animal}.<br>`));
