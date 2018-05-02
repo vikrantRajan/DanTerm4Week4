@@ -1,3 +1,4 @@
+/* global document */
 function appendFruit(fruitName, colour) {
   $('#fruits')
     .append(`<li style="background-color: ${colour}">${fruitName}</li>`);
@@ -9,13 +10,25 @@ function parseFruitResponse(response) {
   });
 }
 
+function hideSpinner() {
+  // $('#fruits li:first').hide();
+  // $('#fruits li').first().hide();
+  // $('#fruits li:nth-child(0)').hide();
+  // $('#fruits li:first-child').hide();
+  // $('#fruits li:first-child').attr('style', 'display: none');
+  // $('#fruits li:first-child').css('display', 'none');
+  // document.getElementById('fruits').children[0].style.display = 'none'
+  document.querySelector('#fruits li').style.display = 'none';
+}
+
 function getFruitData() {
   $.ajax({
     url: '/api/slow-fruit',
-    // success: (response) => {
-    //   parseFruitResponse(response);
-    // },
-    success: parseFruitResponse,
+    success: (response) => {
+      hideSpinner();
+      parseFruitResponse(response);
+    },
+    // success: parseFruitResponse,
   });
 }
 
