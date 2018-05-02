@@ -24,6 +24,7 @@ function hideSpinner() {
 function getFruitData() {
   $.ajax({
     url: '/api/slow-fruit',
+    dataType: 'json',
     success: (response) => {
       hideSpinner();
       parseFruitResponse(response);
