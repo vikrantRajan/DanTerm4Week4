@@ -3,12 +3,16 @@
 <head>
 	<meta charset="utf-8">
 	<title>Spinner</title>
+	<style>
+		#fruits li[style] { color: white; padding: 1em; margin-left: -1em; }
+		#fruits li[style]::before { content: "•"; color: black; padding-right: 1em; }
+	</style>
 </head>
 
 <body>
 	<h1>AJAX</h1>
 	<h2>Local Server via route</h2>
-	
+
 	<h3>Goal</h3>
 	<p>As a user, I want to the fruit with a background colour from the API, and see a visual indicator when the server has slow response times.</p>
 	<p>As a dev, display the fruit as a bulleted list from our new route</p>

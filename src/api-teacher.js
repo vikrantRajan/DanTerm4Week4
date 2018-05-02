@@ -12,7 +12,7 @@ exports.plugin = {
         const DELAY = 2 * 1000; // 2 sec
         const OUT = {
           apple: 'green',
-          banana: 'yellow',
+          banana: 'gold',
           cherry: 'red',
           durian: 'blue',
           eggplant: 'purple',
