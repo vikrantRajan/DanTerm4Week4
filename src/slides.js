@@ -9,6 +9,7 @@ exports.plugin = {
       'js-events',
       'json',
       'ajax',
+      'rss',
       'git',
       'api',
       'qrcode',
