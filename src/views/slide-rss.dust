@@ -12,6 +12,14 @@
     <p>The workaround to the browser security is to proxy the external content into our domain name. I am providing a Node.js proxy that will screen scrape the RSS content and mirror it locally.</p>
 	</section>
 
+	<section data-markdown>
+		**Phishing** is when a bogus address such as *TBBank.ca* is used instead of *TDBank.ca* to maliciously capture user data.
+	
+		There are two solutions to avoid the browser security
+		1. Content Provider set a DNS rule to allow our JavaScript (CORS rule)
+		2. Our server-side code proxy the CBC content onto our domain (localhost)
+	</section>
+
 	<section>
 		<h2>RSS Reader</h2>
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/0klgLsSxGsU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
