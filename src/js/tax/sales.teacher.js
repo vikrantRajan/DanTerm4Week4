@@ -1,4 +1,4 @@
-/* global document */
+/* global document, utils */
 
 function calculateTax(data) {
   let taxTotal = data.taxes[0].tax;
@@ -54,7 +54,7 @@ function getSalesData() {
       displayProvinces(response);
     },
     error: (jqXHR, textStatus, errorMessage) => {
-      console.log(`AJAX error (${errorMessage})`);
+      utils.print(`AJAX error (${errorMessage})`);
     },
   });
 }

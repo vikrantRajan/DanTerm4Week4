@@ -4,12 +4,12 @@ const inert = require('inert');
 const lout = require('lout');
 const vision = require('vision');
 
-const options = require('./course.json');
+const courseOptions = require('./course.json');
 const libApi = require('./src/api-teacher');
 const libSlides = require('./src/slides');
 const utils = require('./src/js/utils');
 
-const port = options.port || 8080;
+const port = courseOptions.port || 8080;
 
 let libStudentApi;
 try {
