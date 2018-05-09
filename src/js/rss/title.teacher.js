@@ -13,9 +13,17 @@ function getLocalRss() {
   });
 }
 
+function getRemoteRss() {
+  $.ajax({
+    url: '/api/rss',
+    success: parseRss,
+  });
+}
+
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
     getLocalRss,
+    getRemoteRss,
   };
 }
