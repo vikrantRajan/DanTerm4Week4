@@ -31,7 +31,11 @@ gulp.task('build', () => {
 });
 
 gulp.task('lint', () => {
-  const jsFiles = paths.jsAll;
+  let jsFiles = paths.jsAll;
+
+  if (course.isTeacher === 'false') {
+    jsFiles = jsFiles.concat(paths.jsTeacherFiles);
+  }
 
   return gulp.src(jsFiles)
     .pipe(eslint())
