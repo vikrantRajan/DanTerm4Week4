@@ -1,3 +1,4 @@
 {
-  "isTeacher": "false"
+  "isTeacher": "false",
+  "port": 8080
 }

@@ -1,12 +1,15 @@
 const dust = require('dustjs-linkedin');
 const hapi = require('hapi');
 const inert = require('inert');
-// const lout = require('lout'); // TODO support hapi v17 https://github.com/hapijs/lout/issues/175
+const lout = require('lout');
 const vision = require('vision');
 
+const options = require('./course.json');
 const libApi = require('./src/api-teacher');
 const libSlides = require('./src/slides');
 const utils = require('./src/js/utils');
+
+const port = options.port || 8080;
 
 let libStudentApi;
 try {
@@ -24,7 +27,7 @@ const plugins = [
   vision,
   { plugin: libApi },
   { plugin: libSlides, routes: { prefix: '/slides' } },
-  // lout
+  lout,
 ];
 
 if (libStudentApi) {
@@ -32,7 +35,7 @@ if (libStudentApi) {
 }
 
 async function startServer() {
-  const server = hapi.Server({ port: 8080 });
+  const server = hapi.Server({ port });
 
   await server.register(plugins);
 
