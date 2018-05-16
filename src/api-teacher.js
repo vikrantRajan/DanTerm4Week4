@@ -58,6 +58,13 @@ exports.plugin = {
   name: 'api',
   version: '1.3.0',
   register: (server) => {
+
+    server.route({
+      method: 'GET',
+      path: '/api/autocomplete',
+      handler: autocompleteHandler,
+    });
+
     server.route({
       method: 'GET',
       path: '/api/slow-fruit',
