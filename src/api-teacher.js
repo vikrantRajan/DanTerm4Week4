@@ -58,7 +58,6 @@ exports.plugin = {
   name: 'api',
   version: '1.3.0',
   register: (server) => {
-
     server.route({
       method: 'GET',
       path: '/api/autocomplete',

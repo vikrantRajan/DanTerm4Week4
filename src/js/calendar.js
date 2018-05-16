@@ -61,11 +61,16 @@ function createCourseSchedule(courseTitle = 'Dan\'s class') {
 }
 
 function courseCalendar() {
-  const firstDate = new Date(2018, 2, 14); // Mar 14
-  const course = createCourseSchedule('jQuery')
-    .setFirstClassDate(firstDate)
+  const firstDateJq = new Date(2018, 2, 14); // Mar 14
+  const courseJq = createCourseSchedule('jQuery')
+    .setFirstClassDate(firstDateJq)
     .setDaysBetweenClasses([7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]);
-  const events = course.getAllClasses();
+
+  const firstDateApi = new Date(2018, 5, 6); // Jun 6
+  const courseApi = createCourseSchedule('API')
+    .setFirstClassDate(firstDateApi)
+    .setDaysBetweenClasses([14, 4, 3, 7, 7, 7, 7, 7, 7, 7, 7]);
+  const events = courseJq.getAllClasses().concat(courseApi.getAllClasses());
 
   $('#calendar').fullCalendar({
     header: {
