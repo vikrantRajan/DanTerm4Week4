@@ -27,6 +27,9 @@
 ## Editorconfig
 ![.editorconfig Extension](https://github.com/VanArts/course-files/blob/master/public/assets/visualStudioCode/extension-editorconfig.png)
 
+## Remote sharing
+* [Visual Studio Code Share](https://docs.microsoft.com/en-us/visualstudio/liveshare/use/vscode)
+
 # Atom
 ## Editorconfig
 * [LF line ending](https://github.com/atom/line-ending-selector/issues/5#issuecomment-254846516)
