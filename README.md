@@ -11,6 +11,9 @@ See [CONTRIBUTING](CONTRIBUTING.md)
 ## IDE or Text editor
 See [IDE](IDE.md)
 
+## Tooling
+See [Tools](TOOLS.md)
+
 ## Homework
 See mark assessment rules for
 * [jQuery course](./public/jQuery#assessment)
