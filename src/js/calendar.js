@@ -69,7 +69,7 @@ function courseCalendar() {
   const firstDateApi = new Date(2018, 5, 6); // Jun 6
   const courseApi = createCourseSchedule('API')
     .setFirstClassDate(firstDateApi)
-    .setDaysBetweenClasses([14, 4, 3, 7, 7, 7, 7, 7, 7, 7, 7]);
+    .setDaysBetweenClasses([14, 3, 4, 7, 7, 7, 7, 7, 7, 7, 7]);
   const events = courseJq.getAllClasses().concat(courseApi.getAllClasses());
 
   $('#calendar').fullCalendar({
