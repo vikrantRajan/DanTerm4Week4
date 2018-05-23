@@ -1,5 +1,9 @@
 function highlightPiece() {
+  // highlight count 0 or 1
+  $('.highlight').removeClass('highlight');
+  // highlight count 0
   $(this).addClass('highlight');
+  // highlight count 1
 }
 
 
