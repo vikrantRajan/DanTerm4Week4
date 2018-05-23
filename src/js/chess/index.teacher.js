@@ -17,18 +17,18 @@ function handleArrow(event) {
   let isArrow = false;
   const $chessPiece = $('.highlight');
   const currentPosition = $chessPiece.position();
-console.log(currentPosition);
+
   if (event.which === keys.left && currentPosition.left > boardCorners.leftTop) {
-    $chessPiece.css('left', '-=100px');
+    $chessPiece.animate({ left: '-=100px' }, { queue: false });
     isArrow = true;
   } else if (event.which === keys.up && currentPosition.top > boardCorners.leftTop) {
-    $chessPiece.css('top', '-=100px');
+    $chessPiece.animate({ top: '-=100px' }, { queue: false });
     isArrow = true;
   } else if (event.which === keys.right && currentPosition.left < boardCorners.rightBottom) {
-    $chessPiece.css('left', '+=100px');
+    $chessPiece.animate({ left: '+=100px' }, { queue: false });
     isArrow = true;
   } else if (event.which === keys.down && currentPosition.top < boardCorners.rightBottom) {
-    $chessPiece.css('top', '+=100px');
+    $chessPiece.animate({ top: '+=100px' }, { queue: false });
     isArrow = true;
   }
 
