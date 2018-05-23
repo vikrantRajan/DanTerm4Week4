@@ -9,19 +9,25 @@ function highlightPiece() {
 }
 
 function handleArrow(event) {
+  const boardCorners = {
+    leftTop: 50,
+    rightBottom: 750,
+  };
+
   let isArrow = false;
   const $chessPiece = $('.highlight');
-
-  if (event.which === keys.left) {
+  const currentPosition = $chessPiece.position();
+console.log(currentPosition);
+  if (event.which === keys.left && currentPosition.left > boardCorners.leftTop) {
     $chessPiece.css('left', '-=100px');
     isArrow = true;
-  } else if (event.which === keys.up) {
+  } else if (event.which === keys.up && currentPosition.top > boardCorners.leftTop) {
     $chessPiece.css('top', '-=100px');
     isArrow = true;
-  } else if (event.which === keys.right) {
+  } else if (event.which === keys.right && currentPosition.left < boardCorners.rightBottom) {
     $chessPiece.css('left', '+=100px');
     isArrow = true;
-  } else if (event.which === keys.down) {
+  } else if (event.which === keys.down && currentPosition.top < boardCorners.rightBottom) {
     $chessPiece.css('top', '+=100px');
     isArrow = true;
   }
