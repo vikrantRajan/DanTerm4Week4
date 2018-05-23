@@ -10,6 +10,8 @@ function highlightPiece() {
 
 function listenForChessArrows() {
   $(document).keydown((event) => {
+    event.preventDefault(); // prevent the default action (scroll / move caret)
+
     switch (event.which) {
       case keys.up:
         console.log('up');
