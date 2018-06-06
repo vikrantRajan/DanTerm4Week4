@@ -1,17 +1,18 @@
 # Third-Party APIs
 
 ## Outline
-1. Node.js + Unit Testing
-1. jQuery Review
-1. Git & GitHub
+1. Node.js, CI, Unit Testing
+1. QR Code
 1. Flickr
+1. API
 1. Twitter
-1. Instagram
-1. Slippy Map
 1. Facebook
+1. Fetch
+1. Slippy Map
 1. MongoDB
-1. Build our own API
-1. YouTube + Corporate Life
+1. YouTube & Corporate Life
+1. Instagram
+
 
 ## Assessment
 * Attendance record represent **33%** of the course mark

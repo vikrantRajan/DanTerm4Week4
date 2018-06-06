@@ -1,6 +1,6 @@
 {
   "name": "js-courses",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "Node.js site scaffolding with unit testing",
   "main": "app-teacher.js",
   "scripts": {
@@ -48,7 +48,6 @@
     "inert": "^5.0.1",
     "instagram-node": "^0.5.8",
     "lout": "^11.0.0",
-    "mongodb": "^2.2.33",
     "request": "^2.83.0",
     "twit": "^2.2.9",
     "vision": "^5.2.0",
