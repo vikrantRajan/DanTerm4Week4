@@ -20,6 +20,22 @@ describe('Math.js', () => {
       expect(math.sum('-1', '2')).to.be(1);
       expect(math.sum('1', '-2')).to.be(-1);
     });
+    it('should return 0 with blank values', () => {
+      expect(math.sum('', '')).to.be(0);
+      expect(math.sum('', 1)).to.be(1);
+      expect(math.sum(1, '')).to.be(1);
+    });
+    it('should return 0 with undefined values', () => {
+      expect(math.sum()).to.be(0);
+      expect(math.sum(undefined, undefined)).to.be(0);
+      expect(math.sum(undefined, 1)).to.be(1);
+      expect(math.sum(1, undefined)).to.be(1);
+    });
+    it('should return 0 with null values', () => {
+      expect(math.sum(null, null)).to.be(0);
+      expect(math.sum(null, 1)).to.be(1);
+      expect(math.sum(1, null)).to.be(1);
+    });
   });
 
   describe('difference', () => {
@@ -38,6 +54,22 @@ describe('Math.js', () => {
     it('strings passes with negative values', () => {
       expect(math.difference('-1', '2')).to.be(-3);
       expect(math.difference('1', '-2')).to.be(3);
+    });
+    it('should return 0 with blank values', () => {
+      expect(math.difference('', '')).to.be(0);
+      expect(math.difference('', 1)).to.be(-1);
+      expect(math.difference(1, '')).to.be(1);
+    });
+    it('should return 0 with undefined values', () => {
+      expect(math.difference()).to.be(0);
+      expect(math.difference(undefined, undefined)).to.be(0);
+      expect(math.difference(undefined, 1)).to.be(-1);
+      expect(math.difference(1, undefined)).to.be(1);
+    });
+    it('should return 0 with null values', () => {
+      expect(math.difference(null, null)).to.be(0);
+      expect(math.difference(null, 1)).to.be(-1);
+      expect(math.difference(1, null)).to.be(1);
     });
   });
 
@@ -58,6 +90,11 @@ describe('Math.js', () => {
     it('strings passes with negative values', () => {
       expect(math.multiply('-1', '2')).to.be(-2);
       expect(math.multiply('1', '-2')).to.be(-2);
+    });
+    it('should return 0 with blank values', () => {
+      expect(math.multiply('', '')).to.be(0);
+      expect(math.multiply('', 1)).to.be(0);
+      expect(math.multiply(1, '')).to.be(0);
     });
     it('should return 0 with undefined values', () => {
       expect(math.multiply()).to.be(0);

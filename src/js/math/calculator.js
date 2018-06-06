@@ -4,15 +4,21 @@ function bindCalc() {
   const numB = document.getElementById('numB');
   const operator = document.getElementById('operator');
 
-  const log = message => console.log(message); // eslint-disable-line no-console
   const calc = () => {
+    const log = message => console.log(message); // eslint-disable-line no-console
     const math = (operator.value === 'Add') ? sum : difference;
+
     log(math(numA.value, numB.value));
   };
 
-  numA.addEventListener('change', calc);
-  numB.addEventListener('change', calc);
-  operator.addEventListener('change', calc);
+
+  function calcListeners() {
+    numA.addEventListener('change', calc);
+    numB.addEventListener('change', calc);
+    operator.addEventListener('change', calc);
+  }
+
+  calcListeners();
 
   // $('#numA, #numB, #operator').change(() => {
   //   const numA = $('#numA').val();

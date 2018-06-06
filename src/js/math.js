@@ -1,10 +1,10 @@
 /* global module */
 
-function sum(a, b) {
-  return parseInt(a, 10) + parseInt(b, 10);
+function sum(a = 0, b = 0) {
+  return Number(a) + Number(b); // parseInt() will return NaN
 }
 
-function difference(a, b) {
+function difference(a = 0, b = 0) {
   return a - b;
 }
 
