@@ -1,4 +1,4 @@
-/* global document, difference, sum */
+/* global document, difference, multiply, sum */
 function bindCalc() {
   const numA = document.getElementById('numA');
   const numB = document.getElementById('numB');
@@ -6,7 +6,10 @@ function bindCalc() {
 
   const calc = () => {
     const log = message => console.log(message); // eslint-disable-line no-console
-    const math = (operator.value === 'Add') ? sum : difference;
+    let math = sum;
+
+    if (operator.value === 'Subtract') math = difference;
+    if (operator.value === 'Multiply') math = multiply;
 
     log(math(numA.value, numB.value));
   };
