@@ -40,4 +40,35 @@ describe('Math.js', () => {
       expect(math.difference('1', '-2')).to.be(3);
     });
   });
+
+  // SOLUTION
+  describe('multiply', () => {
+    it('passes with positive values', () => {
+      expect(math.multiply(1, 2)).to.be(2);
+      expect(math.multiply(10, 2)).to.be(20);
+    });
+    it('passes with negative values', () => {
+      expect(math.multiply(-1, 2)).to.be(-2);
+      expect(math.multiply(1, -2)).to.be(-2);
+    });
+    it('strings passes with positive values', () => {
+      expect(math.multiply('1', '2')).to.be(2);
+      expect(math.multiply('10', '2')).to.be(20);
+    });
+    it('strings passes with negative values', () => {
+      expect(math.multiply('-1', '2')).to.be(-2);
+      expect(math.multiply('1', '-2')).to.be(-2);
+    });
+    it('should return 0 with undefined values', () => {
+      expect(math.multiply()).to.be(0);
+      expect(math.multiply(undefined, undefined)).to.be(0);
+      expect(math.multiply(undefined, 1)).to.be(0);
+      expect(math.multiply(1, undefined)).to.be(0);
+    });
+    it('should return 0 with null values', () => {
+      expect(math.multiply(null, null)).to.be(0);
+      expect(math.multiply(null, 1)).to.be(0);
+      expect(math.multiply(1, null)).to.be(0);
+    });
+  });
 });
