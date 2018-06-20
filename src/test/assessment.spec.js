@@ -3,10 +3,10 @@ const expect = require('expect.js');
 const lib = require('../js/assessment');
 
 describe('Assessment.js', () => {
-  describe('getCoursePercent', () => {
-    expect(lib.getCoursePercent(100)).to.be(100);
-    expect(lib.getCoursePercent(50)).to.be.within(66, 67);
-    expect(lib.getCoursePercent(0)).to.be(33);
+  describe('getJqueryCoursePercent', () => {
+    expect(lib.getJqueryCoursePercent(100)).to.be(100);
+    expect(lib.getJqueryCoursePercent(50)).to.be.within(66, 67);
+    expect(lib.getJqueryCoursePercent(0)).to.be(33);
   });
 
   describe('getSkillPercent', () => {

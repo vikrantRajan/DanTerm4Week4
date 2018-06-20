@@ -1,4 +1,10 @@
-function getCoursePercent(skillMarkOf100, attendanceMarkOf100 = 100) {
+function getApiCoursePercent(skillMarkOf100, attendanceMarkOf100 = 100) {
+  const skills = ((skillMarkOf100 / 100) * (2 / 3) * 100);
+  const attendance = ((attendanceMarkOf100 / 100) * (1 / 3) * 100);
+  return Math.round(skills + attendance);
+}
+
+function getJqueryCoursePercent(skillMarkOf100, attendanceMarkOf100 = 100) {
   const skills = ((skillMarkOf100 / 100) * (2 / 3) * 100);
   const attendance = ((attendanceMarkOf100 / 100) * (1 / 3) * 100);
   return Math.round(skills + attendance);
@@ -21,7 +27,8 @@ function getSkillPercent(homeworkMarks) {
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
-    getCoursePercent,
+    getApiCoursePercent,
+    getJqueryCoursePercent,
     getSkillPercent,
   };
 }
