@@ -4,9 +4,23 @@ const lib = require('../js/assessment');
 
 describe('Assessment.js', () => {
   describe('getJqueryCoursePercent', () => {
-    expect(lib.getJqueryCoursePercent(100)).to.be(100);
-    expect(lib.getJqueryCoursePercent(50)).to.be.within(66, 67);
-    expect(lib.getJqueryCoursePercent(0)).to.be(33);
+    it('100% attendance', () => {
+      expect(lib.getJqueryCoursePercent(100)).to.be(100);
+      expect(lib.getJqueryCoursePercent(50)).to.be.within(66, 67);
+      expect(lib.getJqueryCoursePercent(0)).to.be(33);
+    });
+
+    it('80% attendance', () => {
+      expect(lib.getJqueryCoursePercent(100, 80)).to.be(93);
+      expect(lib.getJqueryCoursePercent(50, 80)).to.be(60);
+      expect(lib.getJqueryCoursePercent(0, 80)).to.be(27);
+    });
+
+    it('60% attendance', () => {
+      expect(lib.getJqueryCoursePercent(100, 60)).to.be(87);
+      expect(lib.getJqueryCoursePercent(50, 60)).to.be(53);
+      expect(lib.getJqueryCoursePercent(0, 60)).to.be(20);
+    });
   });
 
   describe('getSkillPercent', () => {
