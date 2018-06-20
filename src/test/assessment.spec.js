@@ -3,6 +3,32 @@ const expect = require('expect.js');
 const lib = require('../js/assessment');
 
 describe('Assessment.js', () => {
+  describe('getApiCoursePercent', () => {
+    it('100% all', () => {
+      expect(lib.getApiCoursePercent({ homework: 100, final: 100 })).to.be(100);
+    });
+
+    it('100% attendance, final', () => {
+      expect(lib.getApiCoursePercent({ final: 100 })).to.be(73);
+    });
+
+    it('100% attendance, homework', () => {
+      expect(lib.getApiCoursePercent({ homework: 100 })).to.be(60);
+    });
+
+    it('100% attendance', () => {
+      expect(lib.getApiCoursePercent()).to.be(33);
+    });
+
+    it('100% final', () => {
+      expect(lib.getApiCoursePercent({ attendance: 0, final: 100 })).to.be(40);
+    });
+
+    it('100% homework', () => {
+      expect(lib.getApiCoursePercent({ attendance: 0, homework: 100 })).to.be(27);
+    });
+  });
+
   describe('getJqueryCoursePercent', () => {
     it('100% attendance', () => {
       expect(lib.getJqueryCoursePercent(100)).to.be(100);
@@ -59,6 +85,13 @@ describe('Assessment.js', () => {
     it('assignments with decimal result', () => {
       expect(lib.getSkillPercent([[1, 3], [7, 13], [17, 17]])).to.be(Math.round((25 / 33) * 100));
       expect(lib.getSkillPercent([[5, 7], [11, 13], [14, 17]])).to.be(Math.round((30 / 37) * 100));
+    });
+  });
+
+  describe('getApiCoursePercent with getSkillPercent', () => {
+    it('100% all', () => {
+      const homework = lib.getSkillPercent([[10, 10]]);
+      expect(lib.getApiCoursePercent({ homework, final: 100 })).to.be(100);
     });
   });
 });
