@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Keyword search with Web Feed</title>
+	<title>Radius search - Flickr API</title>
 </head>
 
 <body>
@@ -12,21 +12,17 @@
 <h3>Photography</h3>
 <p>Photos will be hosted by Flickr. We will leverage the tools provided by Flickr especially input and image manipulation services. Apps are available for mobile devices for convient photo uploading.</p>
 
-<h3>Resources</h3>
-<ul>
-	<li><a href="https://itunes.apple.com/us/app/flickr/id328407587">iOS App Store</a></li>
-	<li><a href="https://play.google.com/store/apps/details?id=com.yahoo.mobile.client.android.flickr&hl=en_US">Android Google Play</a></li>
-</ul>
-
 <h3>Goal</h3>
-<p>As a user, I want to see thumbnails photos of Vancouver</p>
+<p>As a user, I want to see thumbnail photos within 1km radius around VanArts</p>
 
 <h3>Technologies</h3>
 <ul>
-	<li>Flickr Web Feeds</li>
+	<li>Flickr API</li>
 	<li>JavaScript</li>
 	<li>jQuery</li>
 	<li>jQuery AJAX</li>
+	<li>hapi.js</li>
+	<li>node.js</li>
 </ul>
 
 <ul id="photos"></ul>
@@ -36,6 +32,6 @@
 <!-- Attach all the bundles JavaScript files in /src/js -->
 <script src="/js/critical.js"></script>
 <!-- Execute page specific function -->
-<script>getFlickrPublicPhotos();</script>
+<script>getFlickrGeoPublicPhotos();</script>
 </body>
 </html>
