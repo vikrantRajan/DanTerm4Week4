@@ -1,5 +1,6 @@
 const https = require('https');
 const http = require('http');
+const wreck = require('wreck');
 
 const autocompleteHandler = ({ query: { keyword = '' } }) => {
   const DELAY = 1500; // 1.5 sec
@@ -62,9 +63,13 @@ exports.plugin = {
       method: 'GET',
       path: '/api/flickr',
       handler: (request, reply) => new Promise((resolve, reject) => {
+        const address = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=<API-KEY>&format=json&nojsoncallback=1&lat=49.282705&lon=-123.115358&radius=1';
+
         const getData = async function getData() {
+          const { payload } = await wreck.get(address);
+
           const output = reply
-            .response({ output: true })
+            .response({ payload: JSON.parse(payload) })
             .type('application/json');
 
           resolve(output);
