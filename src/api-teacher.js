@@ -60,6 +60,26 @@ exports.plugin = {
   register: (server) => {
     server.route({
       method: 'GET',
+      path: '/api/flickr',
+      handler: (request, reply) => new Promise((resolve, reject) => {
+        const getData = async function getData() {
+          const output = reply
+            .response({ output: true })
+            .type('application/json');
+
+          resolve(output);
+        };
+
+        try {
+          getData();
+        } catch (error) {
+          reject(error);
+        }
+      }),
+    });
+
+    server.route({
+      method: 'GET',
       path: '/api/autocomplete',
       handler: autocompleteHandler,
     });
