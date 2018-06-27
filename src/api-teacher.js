@@ -1,6 +1,9 @@
 const https = require('https');
 const http = require('http');
+const Twit = require('twit');
 const wreck = require('wreck');
+
+const credentials = require('../credentials.json');
 
 const autocompleteHandler = ({ query: { keyword = '' } }) => {
   const DELAY = 1500; // 1.5 sec
@@ -59,6 +62,28 @@ exports.plugin = {
   name: 'api',
   version: '1.3.0',
   register: (server) => {
+    server.route({
+      method: 'GET',
+      path: '/api/twitter',
+      handler: () => new Promise((resolve) => {
+        const twit = new Twit({
+          consumer_key: credentials.twitter.consumer_key,
+          consumer_secret: credentials.twitter.consumer_secret,
+          access_token: credentials.twitter.access_token,
+          access_token_secret: credentials.twitter.access_token_secret,
+          timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests.
+          strictSSL: true, // optional - requires SSL certificates to be valid.
+        });
+
+        //
+        //  search twitter for all tweets containing the word 'banana' since July 11, 2011
+        //
+        twit.get('search/tweets', { q: 'banana since:2017-07-11', count: 100 }, (err, data) => {
+          resolve(data);
+        });
+      }),
+    });
+
     server.route({
       method: 'GET',
       path: '/api/flickr',
