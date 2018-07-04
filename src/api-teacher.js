@@ -77,19 +77,36 @@ exports.plugin = {
           strictSSL: true, // optional - requires SSL certificates to be valid.
         });
 
-        const params = { screen_name: 'vanartsFAKE' };
-        twit.get('statuses/user_timeline', params, (err, data) => {
-          if (data.errors) { // server error
-            // normalize: reduce complexity and standardize schema (structure)
+        const params = { screen_name: 'vanarts' };
+        const GENERIC_USER_ERROR = 'VanArts Twitter Timeline is unavailable';
 
-            logger('Twitter API server error', JSON.stringify(data));
+        try {
+          twit.get('statuses/user_timeline', params, (error, data) => {
+            if (error) { // client error
+              logger('Internal error connecting to Twitter API', JSON.stringify(error));
 
-            // change the error from developer to user facing message
-            resolve({ message: 'VanArts Twitter Timeline is unavailable' });
-          }
+              // change the error from developer to user facing message
+              resolve({ message: GENERIC_USER_ERROR });
+              return;
+            }
 
-          resolve(data);
-        });
+            if (data.errors) { // server error
+              // normalize: reduce complexity and standardize schema (structure)
+
+              logger('Twitter API server error', JSON.stringify(data));
+
+              // change the error from developer to user facing message
+              resolve({ message: GENERIC_USER_ERROR });
+              return;
+            }
+
+            resolve(data);
+          });
+        } catch (error) {
+          logger('Internal error before Twitter API', JSON.stringify(error));
+
+          resolve({ message: GENERIC_USER_ERROR });
+        }
       }),
     });
 
