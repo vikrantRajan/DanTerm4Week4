@@ -4,6 +4,7 @@ const Twit = require('twit');
 const wreck = require('wreck');
 
 const credentials = require('../credentials.json');
+const { twitterTweets } = require('./js/twitter/filter');
 
 const logger = (...messages) => console.log(messages, new Date());
 
@@ -81,13 +82,13 @@ exports.plugin = {
         const GENERIC_TWITTER_ERROR = 'VanArts Twitter Timeline is unavailable';
 
         try {
-          twit.get('statuses/user_timeline', params, (error, data) => {
+          twit.get('statuses/user_timeline', params, (error, response) => {
             if (error) { // server error
               logger(
                 'Twitter API server error',
                 JSON.stringify(params),
                 JSON.stringify(error.statusCode),
-                JSON.stringify(data),
+                JSON.stringify(response),
               );
 
               // change the error from developer to user facing message
@@ -95,7 +96,7 @@ exports.plugin = {
               return;
             }
 
-            resolve(data);
+            resolve(twitterTweets(response));
           });
         } catch (error) { // syntax error
           logger('Internal error before Twitter API', JSON.stringify(error));
@@ -116,7 +117,7 @@ exports.plugin = {
 
           const output = reply
             .response({ payload: JSON.parse(payload) })
-            .type('application/json');
+            .type('application/json'); // overwrite text/plain
 
           resolve(output);
         };
