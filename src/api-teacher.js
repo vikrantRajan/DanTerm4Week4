@@ -75,10 +75,8 @@ exports.plugin = {
           strictSSL: true, // optional - requires SSL certificates to be valid.
         });
 
-        //
-        //  search twitter for all tweets containing the word 'banana' since July 11, 2011
-        //
-        twit.get('search/tweets', { q: 'banana since:2017-07-11', count: 100 }, (err, data) => {
+        const params = { screen_name: 'vanarts' };
+        twit.get('statuses/user_timeline', params, (err, data) => {
           resolve(data);
         });
       }),
