@@ -1,10 +1,17 @@
 // Imperative programming paradigm
-const twitterTweets = (response) => { // response is the user timeline
+const twitterTweets = (response, options = {}) => { // response is the user timeline
   const tweets = [];
+  const formatDate = (createdAtDate) => {
+    if (options.rawDate) {
+      return createdAtDate;
+    }
+
+    return 'todo, handle rawDate is false scenario';
+  };
 
   response.forEach((tweet) => {
     tweets.push({
-      date: tweet.created_at,
+      date: formatDate(tweet.created_at),
       text: tweet.text,
     });
   });
