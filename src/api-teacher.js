@@ -82,18 +82,13 @@ exports.plugin = {
 
         try {
           twit.get('statuses/user_timeline', params, (error, data) => {
-            if (error) { // client error
-              logger('Internal error connecting to Twitter API', JSON.stringify(error));
-
-              // change the error from developer to user facing message
-              resolve({ message: GENERIC_USER_ERROR });
-              return;
-            }
-
-            if (data.errors) { // server error
-              // normalize: reduce complexity and standardize schema (structure)
-
-              logger('Twitter API server error', JSON.stringify(data));
+            if (error) { // server error
+              logger(
+                'Twitter API server error',
+                JSON.stringify(params),
+                JSON.stringify(error.statusCode),
+                JSON.stringify(data),
+              );
 
               // change the error from developer to user facing message
               resolve({ message: GENERIC_USER_ERROR });
@@ -102,7 +97,7 @@ exports.plugin = {
 
             resolve(data);
           });
-        } catch (error) {
+        } catch (error) { // syntax error
           logger('Internal error before Twitter API', JSON.stringify(error));
 
           resolve({ message: GENERIC_USER_ERROR });
