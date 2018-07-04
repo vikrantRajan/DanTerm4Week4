@@ -5,6 +5,8 @@ const wreck = require('wreck');
 
 const credentials = require('../credentials.json');
 
+const logger = (...messages) => console.log(messages, new Date());
+
 const autocompleteHandler = ({ query: { keyword = '' } }) => {
   const DELAY = 1500; // 1.5 sec
   const places = [];
@@ -75,8 +77,17 @@ exports.plugin = {
           strictSSL: true, // optional - requires SSL certificates to be valid.
         });
 
-        const params = { screen_name: 'vanarts' };
+        const params = { screen_name: 'vanartsFAKE' };
         twit.get('statuses/user_timeline', params, (err, data) => {
+          if (data.errors) { // server error
+            // normalize: reduce complexity and standardize schema (structure)
+
+            logger('Twitter API server error', JSON.stringify(data));
+
+            // change the error from developer to user facing message
+            resolve({ message: 'VanArts Twitter Timeline is unavailable' });
+          }
+
           resolve(data);
         });
       }),
