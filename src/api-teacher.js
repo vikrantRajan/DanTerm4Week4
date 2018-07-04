@@ -78,7 +78,7 @@ exports.plugin = {
         });
 
         const params = { screen_name: 'vanarts' };
-        const GENERIC_USER_ERROR = 'VanArts Twitter Timeline is unavailable';
+        const GENERIC_TWITTER_ERROR = 'VanArts Twitter Timeline is unavailable';
 
         try {
           twit.get('statuses/user_timeline', params, (error, data) => {
@@ -91,7 +91,7 @@ exports.plugin = {
               );
 
               // change the error from developer to user facing message
-              resolve({ message: GENERIC_USER_ERROR });
+              resolve({ message: GENERIC_TWITTER_ERROR });
               return;
             }
 
@@ -100,7 +100,7 @@ exports.plugin = {
         } catch (error) { // syntax error
           logger('Internal error before Twitter API', JSON.stringify(error));
 
-          resolve({ message: GENERIC_USER_ERROR });
+          resolve({ message: GENERIC_TWITTER_ERROR });
         }
       }),
     });
