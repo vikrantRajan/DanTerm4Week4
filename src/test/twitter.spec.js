@@ -61,18 +61,18 @@ describe('Twitter', () => {
         .to.be('4 weeks ago');
     });
 
-    // it('calculates weeks to months', () => {
-    //   expect(formatTwitterDate(`Wed Dec 07 10:00:00 ${timeZoneOffset} 2016`, feb1))
-    //     .to.be('2 months ago');
+    it('calculates weeks to months', () => {
+      expect(formatTwitterDate(`Wed Dec 07 10:00:00 ${timeZoneOffset} 2016`, feb1))
+        .to.be('2 months ago');
 
-    //   expect(formatTwitterDate(`Wed Oct 05 10:00:00 ${timeZoneOffset} 2016`, feb1))
-    //     .to.be('4 months ago');
+      expect(formatTwitterDate(`Wed Oct 05 10:00:00 ${timeZoneOffset} 2016`, feb1))
+        .to.be('4 months ago');
 
-    //   expect(formatTwitterDate(`Wed May 04 10:00:00 ${timeZoneOffset} 2016`, feb1))
-    //     .to.be('10 months ago');
+      expect(formatTwitterDate(`Wed May 04 10:00:00 ${timeZoneOffset} 2016`, feb1))
+        .to.be('10 months ago');
 
-    //   expect(formatTwitterDate(`Wed Feb 03 10:00:00 ${timeZoneOffset} 2016`, feb1))
-    //     .to.be('13 months ago');
-    // });
+      expect(formatTwitterDate(`Wed Feb 03 10:00:00 ${timeZoneOffset} 2016`, feb1))
+        .to.be('13 months ago');
+    });
   });
 });

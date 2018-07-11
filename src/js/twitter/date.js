@@ -16,12 +16,13 @@ function formatTwitterDate(stamp, compareDate = new Date()) {
     (secDiff < 7200 && '1 hour ago') ||
     (secDiff < 86400 && `${Math.floor(secDiff / 3600).toString()} hours ago`)
   );
-  // todo inclass support older tweets such as 1 month ago or x months ago
+
   return (dayDiff === 0 && lessThanDay) ||
     (dayDiff === 1 && 'Yesterday') ||
     (dayDiff < 7 && `${dayDiff.toString()} days ago`) ||
     (dayDiff === 7 && '1 week ago') ||
-    (dayDiff < 30 && `${Math.ceil(dayDiff / 7).toString()} weeks ago`);
+    (dayDiff < 30 && `${Math.ceil(dayDiff / 7).toString()} weeks ago`) ||
+    (dayDiff >= 30 && `${Math.ceil(dayDiff / 30).toString()} months ago`);
 }
 
 // If Node.js then export as public
