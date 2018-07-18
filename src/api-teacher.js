@@ -134,7 +134,7 @@ exports.plugin = {
 
           // todo inclass: transform the payload JSON object to JPG paths
           const output = reply
-            .response({ payload: JSON.parse(payload) })
+            .response({ paths: flickrJpgPath(JSON.parse(payload)) })
             .type('application/json'); // overwrite text/plain
 
           resolve(output);
