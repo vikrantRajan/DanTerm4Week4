@@ -1,10 +1,16 @@
 /* global fetch */
-function getFlickrGeoPublicPhotos() {
-  fetch('/api/flickr')
-    .then(response => response.json())
-    .then((payload) => {
-      console.log(payload);
-    });
+async function getFlickrGeoPublicPhotos() {
+  // fetch('/api/flickr')
+  //   .then(response => response.json())
+  //   .then((payload) => {
+  //     console.log('Success');
+  //     console.log(payload);
+  //   });
+
+  const response = await fetch('/api/flickr');
+  const payload = await response.json();
+  console.log('Success');
+  console.log(payload);
 }
 
 function getFlickrPublicPhotos() {
