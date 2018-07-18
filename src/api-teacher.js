@@ -61,6 +61,23 @@ const autocompleteHandler = ({ query: { keyword = '' } }) => {
 
 exports.autocompleteHandler = autocompleteHandler;
 
+const flickrJpgPath = (flickrResponse) => {
+  const paths = flickrResponse.photos.photo.map((photo) => {
+    const {
+      farm,
+      id,
+      secret,
+      server,
+    } = photo;
+
+    return `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
+  });
+
+  return paths;
+};
+
+exports.flickrJpgPath = flickrJpgPath;
+
 exports.plugin = {
   name: 'api',
   version: '1.3.0',
