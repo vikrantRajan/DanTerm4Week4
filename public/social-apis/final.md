@@ -14,6 +14,7 @@ User story written in this GitHub issue https://github.com/planlazy/nearby/issue
 ## Deadline
 * Aug 21th at end of day 23:59 hosted via
 	* GitHub using VanArts organization with private repository
+	* Commit final to your [private GitHub.com repository](https://help.github.com/articles/create-a-repo/)
 * Send me the details of your assignment to me via [Slack](https://domaindesign.slack.com/):
 	* GitHub repository address
 	* Direct link to your solution HTML file
