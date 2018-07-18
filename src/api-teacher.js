@@ -126,18 +126,13 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/flickr',
-      handler: (request, reply) => new Promise((resolve, reject) => {
+      handler: () => new Promise((resolve, reject) => {
         const address = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${credentials.flickr.api_key}&format=json&nojsoncallback=1&lat=49.282705&lon=-123.115358&radius=1`;
 
         const getData = async function getData() {
           const { payload } = await wreck.get(address);
 
-          // todo inclass: transform the payload JSON object to JPG paths
-          const output = reply
-            .response({ paths: flickrJpgPath(JSON.parse(payload)) })
-            .type('application/json'); // overwrite text/plain
-
-          resolve(output);
+          resolve({ paths: flickrJpgPath(JSON.parse(payload)) });
         };
 
         try {
