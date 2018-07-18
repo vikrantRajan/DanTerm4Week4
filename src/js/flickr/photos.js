@@ -1,3 +1,12 @@
+/* global fetch */
+function getFlickrGeoPublicPhotos() {
+  fetch('/api/flickr')
+    .then(response => response.json())
+    .then((payload) => {
+      console.log(payload);
+    });
+}
+
 function getFlickrPublicPhotos() {
   $.ajax({
     url: 'https://api.flickr.com/services/feeds/photos_public.gne?tags=stanley+park&format=json&jsoncallback=getFlickrData',
@@ -17,5 +26,6 @@ function getFlickrPublicPhotos() {
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
     getFlickrPublicPhotos,
+    getFlickrGeoPublicPhotos,
   };
 }
