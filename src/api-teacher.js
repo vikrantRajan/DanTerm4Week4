@@ -6,7 +6,7 @@ const wreck = require('wreck');
 const credentials = require('../credentials.json');
 const { twitterTweets } = require('./js/twitter/filter');
 
-const logger = (...messages) => console.log(messages, new Date());
+const logger = (...messages) => console.log(messages, new Date()); // eslint-disable-line no-console
 
 const autocompleteHandler = ({ query: { keyword = '' } }) => {
   const DELAY = 1500; // 1.5 sec
