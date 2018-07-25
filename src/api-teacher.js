@@ -78,6 +78,25 @@ const flickrJpgPath = (flickrResponse) => {
 
 exports.flickrJpgPath = flickrJpgPath;
 
+const flickrGeoResults = (flickrResponse) => {
+  const jpgs = flickrJpgPath(flickrResponse);
+
+  return flickrResponse.photos.photo.map((photo, index) => {
+    const {
+      accuracy,
+      latitude,
+      longitude,
+    } = photo;
+
+    return {
+      accuracy,
+      latitude,
+      longitude,
+      path: jpgs[index],
+    };
+  });
+};
+
 exports.plugin = {
   name: 'api',
   version: '1.3.0',
@@ -129,14 +148,16 @@ exports.plugin = {
       handler: async (request) => {
         // default query type is = vanarts 1km radius
         let address = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${credentials.flickr.api_key}&format=json&nojsoncallback=1&lat=49.282705&lon=-123.115358&radius=1`;
+        let transform = flickrJpgPath;
         if (request.query.keyword) {
           // keyword search with geo results
           address = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${credentials.flickr.api_key}&format=json&nojsoncallback=1&tags=${request.query.keyword}&has_geo=1&extras=geo`;
+          transform = flickrGeoResults;
         }
 
         try {
           const { payload } = await wreck.get(address);
-          return { paths: flickrJpgPath(JSON.parse(payload)) };
+          return { paths: transform(JSON.parse(payload)) };
         } catch (error) {
           return { error: error.message };
         }
