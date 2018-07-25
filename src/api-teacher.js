@@ -126,17 +126,16 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/flickr',
-      handler: () => new Promise(async (resolve, reject) => {
+      handler: async () => {
         const address = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${credentials.flickr.api_key}&format=json&nojsoncallback=1&lat=49.282705&lon=-123.115358&radius=1`;
 
         try {
           const { payload } = await wreck.get(address);
-          throw ReferenceError('Status code 500');
-          resolve({ paths: flickrJpgPath(JSON.parse(payload)) });
+          return { paths: flickrJpgPath(JSON.parse(payload)) };
         } catch (error) {
-          reject({ error: error.message });
+          return { error: error.message };
         }
-      }),
+      },
     });
 
     server.route({
