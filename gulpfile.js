@@ -9,7 +9,7 @@ const expectRules = { errorOnFailure: true };
 const paths = {
   jsAll: ['*.js', 'src/*.js', 'src/js/**/*.js', 'src/test/**/*.js'],
   jsPublic: ['src/js/**/*.js'],
-  jsTeacherFiles: ['!src/js/**/*.teacher.js'],
+  jsNotTeacherFiles: ['!src/js/**/*.teacher.js'],
   jsTests: ['src/test/**/*.js'],
 };
 const plugins = loadPlugins({ camelize: true });
@@ -20,7 +20,7 @@ gulp.task('build', () => {
   const newFilename = 'critical';
 
   if (course.isTeacher === 'false') {
-    bundleFiles = bundleFiles.concat(paths.jsTeacherFiles);
+    bundleFiles = bundleFiles.concat(paths.jsNotTeacherFiles);
   }
 
   return gulp.src(bundleFiles)
@@ -34,7 +34,7 @@ gulp.task('lint', () => {
   let jsFiles = paths.jsAll;
 
   if (course.isTeacher === 'false') {
-    jsFiles = jsFiles.concat(paths.jsTeacherFiles);
+    jsFiles = jsFiles.concat(paths.jsNotTeacherFiles);
   }
 
   return gulp.src(jsFiles)
