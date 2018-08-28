@@ -5,6 +5,8 @@ const response = require('./fixtures/flickr-photos_search.json'); // Flickr serv
 const { flickrJpgPath } = require('../api-teacher');
 
 describe('Flickr', () => {
+  if (!flickrJpgPath) return;
+
   it('should return a valid JPG path', () => {
     const mockPhoto = {
       farm: 5,

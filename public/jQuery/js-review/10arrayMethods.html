@@ -47,20 +47,6 @@
 		/* todo inclass: Output to the console as a string, a list of month's name each with an italic element by 
 		using the array methods (i.e. <i>Jan</i> <i>Feb</i> <i>Mar</i>...) */
 		// Note: Do not modify the code above, and reuse the months variable
-
-		// SOLUTION
-		// months.reverse() Correct order [Jan, Feb, Mar]
-		// months.reverse().join('') Convert to string "Jan, Feb, Mar"
-		// months.reverse().join('</i> <i>') With advance delimiter (seperator) "Jan</i> <i>Feb</i> <i>Mar"
-		// '<i>' + months.reverse().join('</i> <i>') + '</i>' Bookend the italic elements <i>Jan</i> <i>Feb</i> <i>Mar</i>
-		console.log('<i>' + months.reverse().join('</i> <i>') + '</i>');
-
-		// todo inclass Move Jan between Apr and May
-		// SOLUTION
-		months.splice(4, 0, months[0]);
-		console.log(months);
-		months.splice(0, 1); // or shift method
-		console.log(months);
 	</script>
 </body>
 </html>

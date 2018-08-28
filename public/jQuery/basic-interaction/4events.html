@@ -58,27 +58,5 @@
 		console.log('Mouse out event');
 		this.className = ''; // remove class
 	};
-	
-	// blur/focus
-	document.getElementById('blur').onblur = function () { this.value = 'Blur'; };
-	document.getElementById('blur').onfocus = function () { this.value = 'Focus'; };
-	
-	// keyboard events
-	document.getElementById('keyboard').onkeydown = function () { console.log('Key Down'); };
-	document.getElementById('keyboard').onkeyup = function () { console.log('Key Up'); };
-	document.getElementById('keyboard').onkeypress = function () { console.log('Key Press (not triggered by arrows or Ctrl)'); };
-	
-	// Down & Press occur on repetition
-	// Press only occurs when a character is added to HTML
-	// Down supports arrows too (Chrome, Firefox also triggers Press)
-	// Up occurs on release
-	
-	// submit only works on <form> with a input submit button (will not trigger on type="button")
-	document.getElementById('submit').onsubmit = function () {
-		console.log('Submit');
-		return false; // cancels form action; prevents form submission
-	};
-
-	document.getElementById('btn').onclick = clickLog;
 </script>
 </body></html>
