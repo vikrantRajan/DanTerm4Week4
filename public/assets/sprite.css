@@ -1,6 +1,6 @@
 .balsamiqSprite {background-image:url(sprite.png); margin: 0 auto; background-repeat:no-repeat;}
-#layersJsCssHtml {width:446px;height:169px;background-position:-255px -14px;}
-#layersJsCssHtmlData {width:454px;height:199px;background-position:-247px -213px;}
+#layersJsCssHtml {width:446px;height:169px;background-position:-255px -14px; margin-left: 25%;}
+#layersJsCssHtmlData {width:454px;height:199px;background-position:-247px -213px; margin-left: 25%;}
 .page {width:190px; height:202px; background-position:-1px -0px;}
 .doubleTopTop {width:100px; height:40px; background-position:-5px -215px;}
 .sendTopSide {width:103px; height:47px; background-position:-0px -275px;}
