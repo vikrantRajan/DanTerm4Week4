@@ -1,9 +1,9 @@
 # How-to setup on your first day
 
 ## Main communiation tool
-1. Setup user for this course at [Slack (subdomain Domain Design) for this course](http://domaindesign.slack.com)
 1. Email instructor (Dan BROOKS [dan@vanarts.com](dan@vanarts.com)) your email address and ask to be invitied to use Slack
   	* Slack forces you to setup a user per Slack team so you may customize for VanArts
+1. Setup user for this course at [http://domaindesign.slack.com](http://domaindesign.slack.com)
 1. Check your email inbox for Slack invitation
 1. Join Slack #general channel (see Slack invite)
 1. Dan will invite you to the course private channel
