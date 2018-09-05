@@ -15,6 +15,7 @@
  	 * Starter files and course examples will be shared via GitHub
 1. Share your GitHub username on Slack in the course's private channel (i.e. [#vanarts-jquery-web14](https://domaindesign.slack.com/messages/GCGCGSG48/))
 1. Dan will then grant you permission to the [jQuery course starter files](https://github.com/VanArts/course-files)
+1. Check your email inbox for GitHub invitation
 	* Verify you can see the [CONTRIBUTING.md file on GitHub.com](https://github.com/VanArts/course-files/blob/master/CONTRIBUTING.md)
 
 ## SourceTree to pull code locally
