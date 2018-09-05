@@ -21,6 +21,9 @@
 ## SourceTree to pull code locally
 1. Download your git client (or use existing). Recommended SourceTree [https://www.sourcetreeapp.com/](https://www.sourcetreeapp.com/)
 1. Setup and / or Sign-in to Atlassian (owner of SourceTree)
+1. Authorize SourceTree to access GitHub.com by [creating an SSH key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
+1. [Link SSH key to GitHub.com user](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
+	* If SourceTree icon is missing then try viewing this address in Window Explorer `C:\Users\{username}\AppData\Local\SourceTree\`
 1. Clone **course-files** repo
   	* Save to `c:\javascript\course-files`
   	* Verify in Windows Explorer the GitHub.com files match your local (i.e. on C drive)
