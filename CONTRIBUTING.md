@@ -17,7 +17,7 @@
 		* Run `npm run start`
 
 * Follow team standard with text editor
-	* [Visual Studio Code](https://code.visualstudio.com/)
+	* [Visual Studio Code](https://code.visualstudio.com/) or [WebStorm](https://www.jetbrains.com/webstorm/)
 		* Install Extension(s)
 			* EditorConfig for VS Code
 			
