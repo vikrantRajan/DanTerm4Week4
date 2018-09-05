@@ -61,7 +61,7 @@ function createCourseSchedule(courseTitle = 'Dan\'s class') {
 }
 
 function courseCalendar() {
-  const firstDateJq = new Date(2018, 7, 29); // Aug 29
+  const firstDateJq = new Date(2018, 8, 5); // Sep 5
   const courseJq = createCourseSchedule('jQuery')
     .setFirstClassDate(firstDateJq)
     .setDaysBetweenClasses([7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]);
