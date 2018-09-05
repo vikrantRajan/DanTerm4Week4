@@ -10,11 +10,16 @@
 	<h2>Number</h2>
 
 	<h3>Goal</h3>
-	<p>Convert from string to whole number.</p>
+	<p>As a dev, I want to convert from string to whole number.</p>
 
 	<h3>Technologies</h3>
 	<ul>
 		<li>JavaScript</li>
+	</ul>
+
+	<h3>Resources</h3>
+	<ul>
+		<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math">Math Functions</a></li>
 	</ul>
 
 	<h3>Live demo</h3>
@@ -22,19 +27,17 @@
 		window.alert(2 * 6); // multiply; 12
 		window.alert(6 / 2); // divide; 3
 
-		var vancouver_olympics = '2010'; // string
+		let vancouver_olympics = '2010'; // string
 		// vancouver_olympics = parseInt(vancouver_olympics, 10); // convert
 		vancouver_olympics = Number(vancouver_olympics); // convert
-		window.alert(vancouver_olympics + 4); // when is Sochi?
+		window.alert(vancouver_olympics + 4); // when was Sochi?
 
-		var james = '007Bond';
+		const james = '007Bond';
 		// window.alert( parseInt(james, 10) ); // convert to integer; 7
 		window.alert( Number(james) ); // convert to integer; NaN - Not a Number
 
-		var temp = '11.5C';
-		window.alert( (parseFloat(temp) + 1) + 'C'); // convert to decimal
-
-		// Math functions https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
+		const temp = '11.5C';
+		window.alert( (parseFloat(temp) + 1) + 'C'); // convert to decimal; 12.5C
 	</script>
 </body>
 </html>

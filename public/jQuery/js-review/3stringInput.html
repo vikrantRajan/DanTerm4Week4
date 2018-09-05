@@ -22,7 +22,11 @@
 	Email: <input type="text" id="email" value="dan@vanarts.com"><br>
 	<input type="submit" id="newsletter-signup" value="Signup for newsletter">
 	<script>
-		// TODO inclass alert the button text
+		// TODO inclass alert the button text (ideally by reading the input)
+
+		// SOLUTION
+		const button = document.getElementById('newsletter-signup');
+		window.alert(button.value);
 	</script>
 </body>
 </html>
