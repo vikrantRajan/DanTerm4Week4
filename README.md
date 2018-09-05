@@ -5,6 +5,9 @@ It's your first day on the job. You are an employee working with a medium sized 
 
 This web app is a node.js folder structure with unit testing.
 
+## Setup your first-day
+See [FIRST-DAY](FIRST-DAY.md)
+
 ## Contributing to this open-source project
 See [CONTRIBUTING](CONTRIBUTING.md)
 
