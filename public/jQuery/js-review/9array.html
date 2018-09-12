@@ -19,17 +19,20 @@
 	
 	<h3>Live demo</h3>
 	<script>
-		var fruit = []; // square bracket recommended syntax for creating an array
-		var third = 'Durian';
-		fruit[0] = 'Apple';
+		const fruit = []; // square bracket recommended syntax for creating an array
+		const third = 'Durian';
+		fruit[0] = 'Apple'; // zero-index (not one)
 		fruit[1] = 'Banana';
 		fruit[2] = 'Cherry';
 		fruit[3] = third;
 		fruit[4] = { // curly brace for object
 			fruitName: 'Eggplant' // key value pair
 		};
-		fruit[5] = [1, 2, 3];
+		fruit[5] = [1, 2, 3]; // An array of arrays
 		// undefined fills the un-declared indexes
+		fruit[6] = undefined;
+		fruit[7] = null;
+		fruit[8] = '';
 		fruit[200] = 'Z';
 
 		window.alert(fruit);
