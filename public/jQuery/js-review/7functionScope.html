@@ -25,10 +25,15 @@
 	<h3>Live demo</h3>
 	<script>
 		//showMsg(); // error
-		var showMsg = function () { // define anonymous function
+		const showMsg = function showMsg() { // define named function
 			window.alert('Hello World');
 		};
 		showMsg(); // execute
+
+		const showMessage = () => { // ES6 arrow syntax; recommened
+			window.alert('Hello World as ES6');
+		};
+		showMessage(); // execute
 
 		getCity(); // execute before definition
 		function getCity() { // define named function; hoisting moves this to the top
