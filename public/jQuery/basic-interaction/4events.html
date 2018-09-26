@@ -10,7 +10,6 @@
 	</style>
 </head>
 <body>
- 
 	<h1>Events</h1>
 	
 	<h3>Goal</h3>
@@ -18,7 +17,7 @@
 
 	<h3>Technologies</h3>
 	<ol>
-			<li>JavaScript</li>
+		<li>JavaScript</li>
 	</ol>
 	
 	<h3>Live demo</h3>
@@ -38,12 +37,12 @@
 	</form>
 	
 <script>
-	function clickLog() {
+	const clickLog = () => {
 		console.log('hello click');
 	};
 	
 	// tradition JS binding
-	document.getElementById('click').onclick = clickLog; // named function
+	document.getElementById('click').onclick = clickLog; // named function (preferred approach)
 	
 	window.onload = function () { // an anonymous function
 		console.log('Load event - all the HTML in the document has rendered');
@@ -58,5 +57,32 @@
 		console.log('Mouse out event');
 		this.className = ''; // remove class
 	};
+
+	// todo inclass when a user blurs or focuses on text field on ID blur I want to see a console log
+	// SOLUTION blur/focus
+	document.getElementById('blur').onblur = function () { this.value = 'Blur'; };
+	document.getElementById('blur').onfocus = function () { this.value = 'Focus'; };
+
+	// todo inclass: Apply keydown, keyup, and keypress to the text field on ID keyboard
+	// SOLUTION keyboard events
+	document.getElementById('keyboard').onkeydown = () => { console.log('Key Down'); };
+	document.getElementById('keyboard').onkeyup = () => { console.log('Key Up'); };
+	document.getElementById('keyboard').onkeypress = () => { console.log('Key Press (Chrome not triggered by arrows. FF or Chrome not Ctrl, Shift, Alt)'); };
+
+	// Down & Press occur on repetition
+	// Press only occurs when a character is added to HTML
+	// Down supports arrows too (Chrome, Firefox also triggers Press)
+	// Up occurs on release
+
+	// submit only works on <form> with a input submit button (will not trigger on type="button")
+	// todo class: Apply submit event when form submitted
+	// todo class: Apply click event when "Button not submit button"
+
+	// SOLUTION
+	document.getElementById('submit').onsubmit = () => {
+		console.log('Submit');
+		return false; // cancels form action; prevents form submission
+	};
+	document.getElementById('btn').onclick = clickLog;
 </script>
 </body></html>
