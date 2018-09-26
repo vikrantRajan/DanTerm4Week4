@@ -14,6 +14,8 @@ const Hello = () => {
         </div>
     );
 };
+// todo inclass: change the text inside the div element
+// todo inclass: change the colour of the div element
 
 ReactDOM.render(
     <Hello />,

@@ -1,6 +1,6 @@
 const StyledHello = () => {
     const Container = styled.default.div`
-        color: red;
+        color: green;
     `;
 
     return (
