@@ -5,6 +5,6 @@ class Hello extends React.Component {
 }
 
 ReactDOM.render(
-  <Hello name="World" />,
+  <Hello name="Dan BROOKS (third change)" />,
   document.getElementById('container')
 );
