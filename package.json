@@ -5,6 +5,7 @@
   "main": "app-teacher.js",
   "scripts": {
     "build": "gulp build",
+    "build-react": "npx babel --watch public/jQuery/react --out-dir public/jQuery/react --presets react-app/prod",
     "dev": "gulp dev",
     "dev:student": "gulp dev:student",
     "lint": "gulp lint",
@@ -43,6 +44,8 @@
     "htmlhint-stylish": "^1.0.3"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
     "dustjs-linkedin": "^2.7.5",
     "hapi": "^17.5.4",
     "inert": "^5.0.1",

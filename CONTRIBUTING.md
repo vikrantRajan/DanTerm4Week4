@@ -48,6 +48,7 @@
 * `npm run test` Execute JS unit test suite
 * `npm run bundle` Manually prepare your JS for public
 * `npm run lint` Manually lint your JS
+* `npm run build-react` Manually convert JSX to JS for React.js
 
 ## Bundled critical.js
 1. All JavaScript files inside the `/course-files/src/js/*.js` are bundled and concatenated into `/course-files/public/js/critical.js`
