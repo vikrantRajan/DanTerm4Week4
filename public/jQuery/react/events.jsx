@@ -1,17 +1,26 @@
 const Hello = () => {
-    const css = { color: 'red' };
+    const css = { color: 'purple' };
 
     const logHello = () => {
         console.log('Hello from React.js');
     };
 
+    // React.js rule, only one wrapper element per return
     return (
-        <div
-            onClick={logHello}
-            style={css}
-        >
-            Hello from React.js
-        </div>
+        <section>
+            <h1
+                onClick={() => console.log('Heading')}
+                style={{ color: 'green' }}
+            >
+                Heading One
+            </h1>
+            <div
+                onClick={logHello}
+                style={css}
+            >
+                Text inside!
+            </div>
+        </section>
     );
 };
 // todo inclass: change the text inside the div element
