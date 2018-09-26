@@ -30,7 +30,7 @@
 	* Load button
 	* Change folder to <User>/.ssh
 	* Select *.* all files
-	* Load the .ssh_rsa
+	* Load the .ssh/id_rsa
 	* Save private key as github.ppk
 	* Close Importer
 1. Load PPK into Putty
