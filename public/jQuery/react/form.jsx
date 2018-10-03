@@ -12,24 +12,63 @@
     <input type="button" value="Button not submit button" id="btn">
 </form> */}
 
-const Hello = () => {
-    const css = { color: 'red' };
-
-    const logHello = () => {
-        console.log('Hello from React.js');
+const Form = () => {
+    const clickHandler = () => console.log('Clicked');
+    const mouseOverHandler = () => console.log('Mouse over event');
+    const mouseOutHandler = () => console.log('Mouse out event');
+    const focusHandler = () => console.log('focus event');
+    const blurHandler = () => console.log('blur event');
+    const keyDownHandler = () => console.log('key down');
+    const keyPressHandler = () => console.log('key pressed');
+    const keyUpHandler = () => console.log('key up');
+    const submitHandler = (event) => {
+        console.log('submit');
+        event.preventDefault();
     };
 
     return (
-        <div
-            onClick={logHello}
-            style={css}
-        >
-            Hello from React.js
+        <div>
+            <a onClick={clickHandler}>Click event</a>
+            <br />
+            <a
+                onMouseOver={mouseOverHandler}
+                onMouseOut={mouseOutHandler}
+            >
+                Hover event
+            </a>
+            <br />
+            <form action="http://vanarts.com/" onSubmit={submitHandler}>
+                <input
+                    type="text"
+                    defaultValue="Blur/focus events"
+                    onFocus={focusHandler}
+                    onBlur={blurHandler}
+                />
+                <br />
+                <input
+                    type="text"
+                    defaultValue="Keyboard events"
+                    onKeyDown={keyDownHandler}
+                    onKeyPress={keyPressHandler}
+                    onKeyUp={keyUpHandler}
+                />
+                <br />
+                <input
+                    type="submit"
+                    defaultValue="Submit event"
+                />
+                <br />
+                <input
+                    type="button"
+                    defaultValue="Button not submit button"
+                    onClick={clickHandler}
+                />
+            </form>
         </div>
     );
 };
 
 ReactDOM.render(
-    <Hello />,
+    <Form />,
     document.getElementById('container'),
 );
