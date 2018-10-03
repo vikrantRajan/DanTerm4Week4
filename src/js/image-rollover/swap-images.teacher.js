@@ -1,5 +1,12 @@
 const applyImageRollover = () => {
-  console.log('Inside function');
+  const hoverOn = () => {
+    console.log('Hover on');
+  };
+  const hoverOff = () => {
+    console.log('Hover off');
+  };
+
+  $('.js-rollover').hover(hoverOn, hoverOff);
 };
 
 // If Node.js then export as public
