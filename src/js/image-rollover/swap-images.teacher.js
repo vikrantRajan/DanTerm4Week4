@@ -1,8 +1,8 @@
 const applyImageRollover = () => {
   const hoverOn = function hoverOn() {
-    // this.src = 'images/stanley-park-1926.jpg';
-    $(this).attr('src', 'images/stanley-park-1926.jpg');
-    console.log('Hover on');
+    // todo inclass: Read from the data-secondary attribute, not static image path
+    const secondaryPath = $(this).attr('data-secondary');
+    $(this).attr('src', secondaryPath);
   };
   const hoverOff = function hoverOff() {
     // this.src = 'images/stanley-park-2004.jpg';
