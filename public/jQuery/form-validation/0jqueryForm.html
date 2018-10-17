@@ -17,7 +17,7 @@
 <h3>Goal</h3>
 <ol>
 	<li>Prevent a user from submitting using client-side code.</li>
-	<li>As a developer, prevent the form action when at least one field is blank</li>
+	<li>As a developer, prevent the form action when at least one or more fields are blank</li>
 	<li>As a user, I want to see an instruction message when the input field is blank</li>
 	<li>As a user, I want the submit button to shake when form is invalid</li>
 	<li>As a user, when form is invalid, I want the first blank field to be in focus</li>
@@ -37,19 +37,19 @@
 	<div class="required">
 		<label>
 			Email <input type="text" id="email">
-			<i class="hide">sample@domain.ca</i>
+			<i>sample@domain.ca</i>
 		</label>
 	</div>
 	<div>
 		<label>
 			Location <input type="text" id="location">
-			<i class="hide">Postal code/Zip code</i>
+			<i>Postal code/Zip code</i>
 		</label>
 	</div>
 	<div>
 		<label>
 			Phone <input type="text" id="phone">
-			<i class="hide">Mobile telephone number</i>
+			<i>Mobile telephone number</i>
 		</label>
 	</div>
 
@@ -59,7 +59,9 @@
 <!-- Attach jQuery library -->
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <!-- Page specific code -->
+<script src="/js/critical.js"></script>
 <script>
+	jqueryFormValidation();
 </script>
 </body>
 </html>
