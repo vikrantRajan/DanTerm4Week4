@@ -38,11 +38,11 @@
 		* Setup [your private GitHub.com repository](https://help.github.com/articles/create-a-repo/)
 		* [Copy many files to your repository](https://confluence.atlassian.com/bitbucket/copy-your-repository-and-add-files-729980492.html)
 		* What files do you copy to your repository?
-			* Everything in `course-files` plus your homework files
-				* Configuration files (*/.editorconfig, /.eslintrc*)
-				* Web server files (*/app-teacher.js, /package.json*)
-				* Project source files (*/src*)
-				* Project public files (*/public*)
+			* Everything in *course-files* plus your homework files
+				* Configuration files (`/.editorconfig`, `/.eslintrc`...)
+				* Web server files (`/app-teacher.js`, `/package.json`...)
+				* Project source files (`/src/*`)
+				* Project public files (`/public/*`)
 				* **Plus your homework files**
 	* [JSFiddle](https://jsfiddle.net/)
 	* [Codepen](https://codepen.io/pen/)
