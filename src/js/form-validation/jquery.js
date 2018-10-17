@@ -8,8 +8,14 @@ const jqueryFormValidation = () => {
     }
   };
 
-  const keyupHandler = () => {
-    // TODO hide and show the instruction italic element based on if the form field is blank or not
+  const keyupHandler = function fieldKey() {
+    const $input = $(this);
+    const $i = $input.next();
+    if ($input.val() === '') {
+      $i.removeClass('hide');
+    } else {
+      $i.addClass('hide');
+    }
   };
 
   $('#contact-form').submit(submitHandler); // pass function by reference
