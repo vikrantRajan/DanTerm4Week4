@@ -27,7 +27,7 @@
 * Sample message [[2, 3], [4, 5]]
 	* **Two** points earned out of a sub-total of **three** on one homework assignment
 	* **Four** points earned out of a sub-total of **five** on two homework assignment
-* Use [assessment.js](../../src/js/assessment.js) to previous course mark
+* Use [assessment.js](../../src/js/assessment.js) to preview course mark
 	* Homework example `calculatePercent([[2, 3], [4, 5]])` (result 75%)
 	* ... with 80% attendance `getJqueryCoursePercent(75, 80)` (result 77%)
 
