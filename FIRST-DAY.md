@@ -25,20 +25,20 @@
 1. [Link SSH key to GitHub.com user](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 	* If SourceTree icon is missing then try viewing this address in Window Explorer `C:\Users\{username}\AppData\Local\SourceTree\`
 1. Convert SSH key to PPK for SourceTree
-	* Open SourceTree
-	* Menu Bar > Tools > Import SSH Keys
-	* Load button
-	* Change folder to <User>/.ssh
-	* Select *.* all files
-	* Load the .ssh/id_rsa
-	* Save private key as github.ppk
-	* Close Importer
+	1. Open SourceTree
+	1. Menu Bar > Tools > Import SSH Keys
+	1. Load button
+	1. Change folder to <User>/.ssh
+	1. Select *.* all files
+	1. Load the .ssh/id_rsa
+	1. Save private key as github.ppk
+	1. Close Importer
 1. Load PPK into Putty
-	* System tray > Putty
-	* Add Keys <user>/.ssh/github.ppk
+	1. System tray > Putty
+	1. Add Keys <user>/.ssh/github.ppk
 1. Verify
-	* System tray > Putty
-	* View Keys (new SSH key added)
+	1. System tray > Putty
+	1. View Keys (new SSH key added)
 1. Clone **course-files** repo
-  	* Save to `c:\javascript\course-files`
-  	* Verify in Windows Explorer the GitHub.com files match your local (i.e. on C drive)
+  	1. Save to `c:\javascript\course-files`
+  	1. Verify in Windows Explorer the GitHub.com files match your local (i.e. on C drive)
