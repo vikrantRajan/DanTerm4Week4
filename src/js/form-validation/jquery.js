@@ -1,5 +1,5 @@
 const jqueryFormValidation = () => {
-  const onSubmit = (event) => {
+  const submitHandler = (event) => {
     // the hide class will be added to the instruction when form field is valid
     const isFormValid = $('.hide').length === 3;
 
@@ -8,7 +8,14 @@ const jqueryFormValidation = () => {
     }
   };
 
-  $('#contact-form').submit(onSubmit); // pass function by reference
+  const keyupHandler = () => {
+    // TODO hide and show the instruction italic element based on if the form field is blank or not
+  };
+
+  $('#contact-form').submit(submitHandler); // pass function by reference
+
+  // add keyboard event listener to the form fields with the goal to hide the instruction message
+  $('input[type=text]').keyup(keyupHandler);
 };
 
 // If Node.js then export as public
