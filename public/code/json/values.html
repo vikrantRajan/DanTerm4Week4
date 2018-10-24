@@ -12,7 +12,7 @@
 	
 	<h3>Live demo</h3>
 	<script>
-			var valueTypes = {}; // new object
+			const valueTypes = {}; // new object
 
 			valueTypes.s = "string";
 			valueTypes.i = 1; // integer
@@ -22,6 +22,17 @@
 			valueTypes.o = {"nested": true};
 			
 			console.log(valueTypes);
+			console.log(JSON.stringify(valueTypes));
+
+			// JavaScript only
+			valueTypes.func = () => console.log('hello');
+			console.log(valueTypes);
+			console.log(JSON.stringify(valueTypes));
+
+			// todo inclass: update the valueTypes variable with a new property
+			// and display it in a JSON beautifier
+			valueTypes.vanarts = true;
+			console.log(JSON.stringify(valueTypes));
 	</script>
  
 </body></html>

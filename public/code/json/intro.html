@@ -12,19 +12,21 @@
 	
 	<h3>Live demo</h3>
 	<script>
-			var movie = {}; // new object
+			let movie = {}; // new object
 			// key value pairs
 			movie = { "horror": "Friday the 13th" }; // JSON doesn't use equal (=)  but colon (:)
 			console.log(movie);
 			
 			console.log(movie.horror); // dot syntax
 			
-			console.log(movie["horror"]); // named array
+			console.log(movie["horror"]); // named array syntax
 			
 			movie.comedy = ["Film", "Motion Picture"]; // a JSON variable (movie), with a property (comedy).  The comedy property has an array value
 			
 			console.log(movie);
 			
 			// todo inclass: reference the movie variable and output the "Film" value
+			// SOLUTION
+			console.log(movie.comedy[0]);
 	</script>
 </body></html>
