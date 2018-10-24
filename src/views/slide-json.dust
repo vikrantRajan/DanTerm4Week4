@@ -15,17 +15,18 @@
 	</section>
 
 	<section>
-		<h2>Resources</h2>
+		<h2>Tools</h2>
 		<ul>
-			<li>Ben Alman <a href="http://benalman.com/news/2010/03/theres-no-such-thing-as-a-json/">There's no such thing as a "JSON Object"</a></li>
-			<li>Stackoverflow <a href="http://stackoverflow.com/questions/2904131/what-is-the-difference-between-json-and-object-literal-notation">What is the difference between JSON and Object Literal Notation?</a></li>
+			<li><a href="http://jsonmate.com/">JSON Mate</a></li>
 		</ul>
 	</section>
 
 	<section>
-		<h2>Tools</h2>
+		<h2>Resources</h2>
 		<ul>
-			<li><a href="http://jsonmate.com/">JSON Mate</a></li>
+			<li>PHP.net <a href="http://php.net/manual/en/function.json-decode.php">PHP decode JSON</a></li>
+			<li>Ben Alman <a href="http://benalman.com/news/2010/03/theres-no-such-thing-as-a-json/">There's no such thing as a "JSON Object"</a></li>
+			<li>Stackoverflow <a href="http://stackoverflow.com/questions/2904131/what-is-the-difference-between-json-and-object-literal-notation">What is the difference between JSON and Object Literal Notation?</a></li>
 		</ul>
 	</section>
 {/body}
