@@ -1,7 +1,8 @@
 /* global salesTaxData */
 const pizzaSales = () => {
-  console.log('Hello from Pizza Sales');
-  console.log(salesTaxData);
+  $.each(salesTaxData.provinces, (provinceAbbr, provinceObj) => {
+    $('body').append(`Province name is ${provinceObj.name}<br>`);
+  });
 };
 
 // If Node.js then export as public
