@@ -2,7 +2,11 @@ const cowboysDropdown = () => {
   $.ajax({
     url: 'cowboy.json',
     success: (response) => {
-      $('#actors').append(`<option>${response.movies[0].abridged_cast[4].name}</option>`);
+      $.each(response.movies, (indexMovie, movie) => {
+        $.each(movie.abridged_cast, (indexActor, actor) => {
+          $('#actors').append(`<option>${actor.name}</option>`);
+        });
+      });
     },
   });
 };
