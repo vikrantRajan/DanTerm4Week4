@@ -47,8 +47,25 @@ const updatePrice = () => {
   calculateTotalPrice($('#provinces').val(), $('#price').val());
 };
 
-const pizzaSales = () => {
-  displayProvinces(salesTaxData);
+const getSalesTaxData = () => {
+  $.ajax({
+    url: 'rates.json',
+    success: (response) => {
+      displayProvinces(response);
+    },
+    error: (jqXHR, textStatus, errorThrown) => {
+      console.log(errorThrown);
+    },
+  });
+};
+
+const pizzaSales = (isAjax) => {
+  if (isAjax === true) {
+    getSalesTaxData();
+  } else {
+    displayProvinces(salesTaxData);
+  }
+
   $('#price,#provinces').change(updatePrice);
   $('#price').keyup(updatePrice);
 };
