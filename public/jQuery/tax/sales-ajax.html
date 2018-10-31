@@ -15,8 +15,10 @@
 
 	<h3>Technologies</h3>
 	<ul>
+		<li>JSON</li>
 		<li>JavaScript</li>
 		<li>jQuery</li>
+		<li>jQuery AJAX</li>
 	</ul>
 
 	<h3>User story</h3>
@@ -52,11 +54,9 @@
 
 	<!-- Attach jQuery library -->
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<!-- Attach the rates data file -->
-	<script src="/jquery/tax/rates.js"></script>
 	<!-- Attach all the bundles JavaScript files in /src/js -->
 	<script src="/js/critical.js"></script>
 	<!-- Execute page specific function -->
-	<script>pizzaSales();</script>
+	<script>pizzaSales('ajax');</script>
 </body>
 </html>
