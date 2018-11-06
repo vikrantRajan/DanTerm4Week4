@@ -31,8 +31,10 @@ const displayProvinces = (salesTaxData) => {
 };
 
 const outputTotalPrice = (price) => {
-  const priceGrouped = price.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-  const currency = `$${priceGrouped}`;
+  const currency = price.toLocaleString('en', {
+    style: 'currency',
+    currency: 'USD'
+  });
 
   $('#pizzaCost').text(currency);
 };
