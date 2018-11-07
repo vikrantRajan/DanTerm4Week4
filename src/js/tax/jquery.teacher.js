@@ -33,7 +33,7 @@ const displayProvinces = (salesTaxData) => {
 const outputTotalPrice = (price) => {
   const currency = price.toLocaleString('en', {
     style: 'currency',
-    currency: 'USD'
+    currency: 'USD',
   });
 
   $('#pizzaCost').text(currency);
