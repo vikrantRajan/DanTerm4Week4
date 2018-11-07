@@ -15,6 +15,8 @@ exports.plugin = {
           cherry: 'red',
           durian: 'blue',
           eggplant: 'purple',
+          'fuji-apple': 'lightgreen',
+          grape: 'magenta',
         };
 
         return new Promise(resolve => setTimeout(resolve, DELAY, OUT));
