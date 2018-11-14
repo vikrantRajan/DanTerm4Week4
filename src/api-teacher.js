@@ -1,4 +1,7 @@
-// const { print: logger } = require('./js/utils');
+const https = require('https');
+const http = require('http');
+
+const { print } = require('./js/utils');
 
 exports.plugin = {
   name: 'api',
@@ -44,6 +47,36 @@ exports.plugin = {
           cherry: 'red',
         };
       },
+    });
+
+    server.route({
+      method: 'GET',
+      path: '/api/rss',
+      handler: (request, reply) => new Promise((resolve) => {
+        const url = request.query.url || 'http://www.cbc.ca/cmlink/rss-canada';
+        const isSSL = (url.substring(0, 5) === 'https');
+        const httpRequest = (isSSL) ? https : http;
+
+        print(`Getting ${url} via ${isSSL ? 'https' : 'http'}`);
+
+        httpRequest.get(url, (response) => {
+          let body = '';
+
+          if (response.statusCode === 200) {
+            // Continuously update stream with data
+            response.on('data', (data) => {
+              body += data;
+            });
+            response.on('end', () => {
+              resolve(reply.response(body).type('application/xml'));
+            });
+          } else {
+            resolve(reply.response(`Service call failed with HTTP status code: ${response.statusCode}`));
+          }
+        }).on('error', (e) => {
+          resolve(reply.response(`Service call failed due to error: ${e.message}`));
+        });
+      }),
     });
   },
 };
