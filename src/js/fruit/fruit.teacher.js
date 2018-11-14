@@ -18,12 +18,14 @@ const fruitXml = () => {
     success: (response) => {
       const $fruits = $(response).find('fruit'); // array
 
-      // loop through fruit elements
       $fruits.each((index, fruitElement) => {
-        // inside loop console log the fruit name and colour
         const colour = $(fruitElement).text();
         const name = $(fruitElement).attr('name');
-        console.log('colour', colour, 'name', name);
+
+        // todo inclass output colour and name as HTML bullets
+        // $(selector).method()
+        // $('#fruits').append(`<li style="background-color: ${colour};">${name}</li>`);
+        $('#fruits').append(`<li class="bullet-${colour}">${name}</li>`);
       });
     },
     error: (a, b, errorMessage) => console.error('AJAX error', errorMessage),
