@@ -53,7 +53,7 @@ exports.plugin = {
       method: 'GET',
       path: '/api/rss',
       handler: (request, reply) => new Promise((resolve) => {
-        const url = request.query.url || 'http://www.cbc.ca/cmlink/rss-canada';
+        const url = request.query.url || 'https://www.cbc.ca/cmlink/rss-canada';
         const isSSL = (url.substring(0, 5) === 'https');
         const httpRequest = (isSSL) ? https : http;
 
