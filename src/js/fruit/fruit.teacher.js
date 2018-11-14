@@ -16,16 +16,15 @@ const fruitXml = () => {
   const options = {
     url: '/api/fruit?format=xml',
     success: (response) => {
-      console.log(response);
-      console.log($(response).find('fruit').length);
+      const $fruits = $(response).find('fruit'); // array
 
-      const appleFruit = $(response).find('fruit')[0];
-      const $appleFruit = $(response).find('fruit').eq(0);
-      console.log(appleFruit);
-      console.log(appleFruit.textContent);
-      console.log(appleFruit.innerHTML);
-      console.log($appleFruit.text());
-      console.log($appleFruit.attr('name'));
+      // loop through fruit elements
+      $fruits.each((index, fruitElement) => {
+        // inside loop console log the fruit name and colour
+        const colour = $(fruitElement).text();
+        const name = $(fruitElement).attr('name');
+        console.log('colour', colour, 'name', name);
+      });
     },
     error: (a, b, errorMessage) => console.error('AJAX error', errorMessage),
   };
