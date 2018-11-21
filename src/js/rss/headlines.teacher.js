@@ -11,10 +11,13 @@ const newsHeadlines = () => {
                 //   <title attr="">...</title>
                 //   <link>...</link>
                 // </item>
+                const description = $(item).find('description').text();
                 const link = $(item).find('link').text();
                 const title = $(item).find('title').text();
-                console.log(link, title);
+                
                 // display title with link as hyperlink use HTML
+                const html = `<li><a href="${link}">${title}</a><br>${description}</li>`;
+                $('#news').append(html);
             });
         },
         error: (a, b, errorMessage) => console.error(errorMessage),
