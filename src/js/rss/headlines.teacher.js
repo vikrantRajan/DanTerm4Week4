@@ -7,8 +7,14 @@ const newsHeadlines = () => {
             const items = $(response).find('item');
             // loop through items
             items.each((index, item) => {
-                console.log($(item).text());
-                // display title with link as hyperlink
+                // <item>
+                //   <title attr="">...</title>
+                //   <link>...</link>
+                // </item>
+                const link = $(item).find('link').text();
+                const title = $(item).find('title').text();
+                console.log(link, title);
+                // display title with link as hyperlink use HTML
             });
         },
         error: (a, b, errorMessage) => console.error(errorMessage),
