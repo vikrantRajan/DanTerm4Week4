@@ -3,7 +3,12 @@ const http = require('http');
 
 const { print } = require('./js/utils');
 
+// normal simple function
+// const sum = (a, b) => { a + b };
+
+// keyword is a new variable, when undefined set to blank. keyword is in an object with a parent property query
 const autocompleteHandler = ({ query: { keyword = '' } }) => {
+  // keyword is either blank or a string value
   const DELAY = 1500; // 1.5 sec
   const places = [];
 
@@ -54,12 +59,19 @@ const autocompleteHandler = ({ query: { keyword = '' } }) => {
   return new Promise(resolve => setTimeout(resolve, DELAY, { items }));
 };
 
+// Node.js rule, exports must in the root. Not inside a function or closure
 exports.autocompleteHandler = autocompleteHandler;
 
 exports.plugin = {
   name: 'api',
   version: '1.3.0',
   register: (server) => {
+    server.route({
+      method: 'GET',
+      path: '/api/autocomplete',
+      handler: autocompleteHandler,
+    });
+
     server.route({
       method: 'GET',
       path: '/api/slow-fruit',
