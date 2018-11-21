@@ -2,12 +2,16 @@ const newsHeadlines = () => {
     // todo inclass
     // gain access to XML via AJAX
     $.ajax({
-        url: '',
-        success: () => {
+        url: '/api/rss', // HTML page 1 --> Node backend /api/rss --> CBC RSS provider cbc.ca
+        success: (response) => {
+            const items = $(response).find('item');
             // loop through items
-            // display title with link as hyperlink
+            items.each((index, item) => {
+                console.log($(item).text());
+                // display title with link as hyperlink
+            });
         },
-        error: () => {},
+        error: (a, b, errorMessage) => console.error(errorMessage),
     });
 };
 
