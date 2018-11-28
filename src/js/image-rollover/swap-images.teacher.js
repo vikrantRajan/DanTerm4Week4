@@ -1,3 +1,5 @@
+/* global utils */
+
 const applyImageRollover = () => {
   const hoverOn = function hoverOn() {
     // todo inclass: Read from the data-secondary attribute, not static image path
@@ -7,7 +9,7 @@ const applyImageRollover = () => {
   const hoverOff = function hoverOff() {
     // this.src = 'images/stanley-park-2004.jpg';
     $(this).attr('src', 'images/stanley-park-2004.jpg');
-    console.log('Hover off');
+    utils.print('Hover off');
   };
 
   $('.js-rollover').hover(hoverOn, hoverOff);

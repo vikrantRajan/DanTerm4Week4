@@ -1,3 +1,5 @@
+/* global utils */
+
 const getLocalRss = () => {
   const options = {
     url: 'cbc.xml',
@@ -6,7 +8,7 @@ const getLocalRss = () => {
 
       $('body').append(title);
     },
-    error: (a, b, errorMessage) => console.error(errorMessage),
+    error: (a, b, errorMessage) => utils.print(errorMessage),
   };
 
   $.ajax(options);

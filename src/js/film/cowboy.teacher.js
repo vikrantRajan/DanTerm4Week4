@@ -1,3 +1,5 @@
+/* global utils */
+
 const cowboysDropdown = () => {
   $.ajax({
     url: 'cowboy.json',
@@ -24,7 +26,7 @@ const cowboyHomework = () => {
       });
     },
     error: (x, xx, errorMessage) => {
-      console.log('AJAX error', errorMessage);
+      utils.print('AJAX error', errorMessage);
     },
   });
 

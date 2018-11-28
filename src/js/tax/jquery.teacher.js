@@ -1,4 +1,4 @@
-/* global document, salesTaxData */
+/* global document, salesTaxData, utils */
 
 const calculateTax = (data) => {
   let taxTotal = data.taxes[0].tax;
@@ -56,7 +56,7 @@ const getSalesTaxData = () => {
       displayProvinces(response);
     },
     error: (jqXHR, textStatus, errorThrown) => {
-      console.log(errorThrown);
+      utils.print(errorThrown);
     },
   });
 };

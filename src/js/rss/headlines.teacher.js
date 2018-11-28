@@ -1,3 +1,5 @@
+/* global utils */
+
 const newsHeadlines = () => {
   // todo inclass
   // gain access to XML via AJAX
@@ -20,7 +22,7 @@ const newsHeadlines = () => {
         $('#news').append(html);
       });
     },
-    error: (a, b, errorMessage) => console.error(errorMessage),
+    error: (a, b, errorMessage) => utils.print(errorMessage),
   });
 };
 

@@ -1,3 +1,5 @@
+/* global utils */
+
 const autocomplete = () => {
   // $('body').append('<input type="text" id="keyword">');
 
@@ -13,7 +15,7 @@ const autocomplete = () => {
   // rare jQuery pattern is $(newHtml).method().appendTo()
   $('<input type="text">')
     .keyup(function keywordKey() {
-      console.log($(this).val());
+      utils.print($(this).val());
     })
     .appendTo('body'); // taking a virtual element appending to DOM
 };

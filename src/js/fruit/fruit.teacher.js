@@ -1,3 +1,5 @@
+/* global utils */
+
 const fruitWithSpinner = () => {
   $.ajax({
     url: '/api/slow-fruit',
@@ -8,7 +10,7 @@ const fruitWithSpinner = () => {
         $('#fruits').append(`<li style="background-color: ${fruitColour}">${fruitName}</li>`);
       });
     },
-    error: (a, b, errorMessage) => console.error('AJAX error', errorMessage),
+    error: (a, b, errorMessage) => utils.print('AJAX error', errorMessage),
   });
 };
 
@@ -28,7 +30,7 @@ const fruitXml = () => {
         $('#fruits').append(`<li class="bullet-${colour}">${name}</li>`);
       });
     },
-    error: (a, b, errorMessage) => console.error('AJAX error', errorMessage),
+    error: (a, b, errorMessage) => utils.print('AJAX error', errorMessage),
   };
 
   $.ajax(options);

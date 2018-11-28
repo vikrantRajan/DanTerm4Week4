@@ -1,3 +1,5 @@
+/* global utils */
+
 const displayRssConent = (response) => {
   const items = $(response).find('item');
 
@@ -23,7 +25,7 @@ const getRssContent = (url) => {
   $.ajax({
     url: `/api/rss?url=${url}`,
     success: displayRssConent,
-    error: (a, b, errorMessage) => console.log('error', errorMessage),
+    error: (a, b, errorMessage) => utils.print('error', errorMessage),
   });
 };
 
