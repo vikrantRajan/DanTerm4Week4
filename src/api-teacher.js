@@ -6,7 +6,8 @@ const { print } = require('./js/utils');
 // normal simple function
 // const sum = (a, b) => { a + b };
 
-// keyword is a new variable, when undefined set to blank. keyword is in an object with a parent property query
+// keyword is a new variable, when undefined set to blank.
+// keyword is in an object with a parent property query
 const autocompleteHandler = ({ query: { keyword = '' } }) => {
   // keyword is either blank or a string value
   const DELAY = 1500; // 1.5 sec
