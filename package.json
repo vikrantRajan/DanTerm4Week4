@@ -46,7 +46,9 @@
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-react-app": "^3.1.2",
+    "body-parser": "^1.18.3",
     "dustjs-linkedin": "^2.7.5",
+    "express": "^4.16.4",
     "hapi": "^17.5.4",
     "inert": "^5.0.1",
     "lout": "^11.1.0",
