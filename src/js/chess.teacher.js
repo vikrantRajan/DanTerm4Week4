@@ -1,5 +1,6 @@
 const playChess = () => {
   const highlightPiece = function highlightPiece() {
+    $('.highlight').removeClass('highlight');
     $(this).addClass('highlight');
   };
 
