@@ -9,12 +9,17 @@ const playChess = () => {
       down: 40,
     };
 
+    const $chessPiece = $('.highlight');
+
     // event.which normalized digit representation of a keyboard key (work in IE too)
-    if (event.which === arrow.left
-      || event.which === arrow.up
-      || event.which === arrow.right
-      || event.which === arrow.down) {
-      console.log(event.which);
+    if (event.which === arrow.left) {
+      $chessPiece.css('left', '-=100px');
+    } else if (event.which === arrow.up) {
+      $chessPiece.css('top', '-=100px');
+    } else if (event.which === arrow.right) {
+      $chessPiece.css('left', '+=100px');
+    } else if (event.which === arrow.down) {
+      $chessPiece.css('top', '+=100px');
     }
   };
 
