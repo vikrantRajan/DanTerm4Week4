@@ -4,7 +4,7 @@
 <section>
 <h1>QR codes</h1>
 <h3>Quick Response codes</h3>
-<img src="../assets/qrcode_cant_scan_this.jpg">
+<img src="../assets/qrcode/cant-scan-this.jpg">
 <p><small>Can't <s>touch</s> scan this <small>(source <a class="wiki_link_ext" href="http://blog.bjvicks.com/post/4217416627/cant-scan-this" rel="nofollow">bjvicks</a>)</small></small></p>
 </section>
 
@@ -21,14 +21,24 @@
 <section>
 <h2>Bitcoins</h2>
 <h3>Money transaction on the street</h3>
-<img src="../assets/bitcoin/wallet_qrcode.jpg">
+<img src="../assets/qrcode/bitcoin-wallet.jpg">
 <p><small><a href="https://localbitcoins.com/ad/1005/buy-bitcoins-with-cash-downtown-vancouver-bc-west-end-">LocalBitcoins.com</a></small></p>
 </section>
 
 <section>
 <h2>Signage</h2>
-<img src="../assets/qrcode_catch_them_all.jpg">
+<img src="../assets/qrcode/catch-them-all.jpg">
 <p><small><a href="http://wtfqrcodes.com/">WTF QR codes</a></small></p>
+</section>
+
+<section>
+<h2>Bus Stop</h2>
+<h3>Library or book store</h3>
+<img src="../assets/qrcode/bus-stop-books.jpg">
+</section>
+
+<section>
+<p><a href="https://messages.android.com/">Google Messenger</a></p>
 </section>
 
 <section data-markdown><textarea data-template>
@@ -59,7 +69,7 @@
 
 <section>
 <h2>Business Card</h2>
-<img src="../assets/qrcode_business_card.jpg">
+<img src="../assets/qrcode/business-card.jpg">
 <p><small>Webdesigner Depot <a href="http://www.webdesignerdepot.com/2011/07/30-creative-qr-code-business-cards/">30 Creative QR code business cards</a></small></p>
 </section>
 
