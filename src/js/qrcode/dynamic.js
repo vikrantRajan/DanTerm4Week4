@@ -1,14 +1,15 @@
 /* global document */
 const createQrBlob = () => {
-  const createImage = (label) => {
-    const qrContainer = document.getElementById('qr_code');
-    const serviceAddress = `https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=${label}`;
+  const getImageHtml = (rawLabel) => {
+    const encodedLabel = encodeURIComponent(rawLabel);
+    const serviceAddress = `https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=${encodedLabel}`;
 
-    qrContainer.innerHTML = `<img src="${serviceAddress}" alt="QR Code">`;
+    // Weakness poor performance as the image is destroyed and re-created every key tap
+    return `<img src="${serviceAddress}" alt="QR Code">`;
   };
 
   const updateQrCode = function keypressTrigger() {
-    createImage(this.value);
+    document.getElementById('qr_code').innerHTML = getImageHtml(this.value);
   };
 
   const bindDom = () => {
