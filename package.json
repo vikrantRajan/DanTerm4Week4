@@ -44,6 +44,7 @@
     "htmlhint-stylish": "^1.0.3"
   },
   "dependencies": {
+    "@slack/client": "^4.8.0",
     "babel-cli": "^6.26.0",
     "babel-preset-react-app": "^3.1.2",
     "body-parser": "^1.18.3",
@@ -54,7 +55,6 @@
     "lout": "^11.1.0",
     "natives": "^1.1.6",
     "request": "^2.88.0",
-    "slackbots": "^1.2.0",
     "vision": "^5.4.3",
     "wreck": "^14.1.3"
   }

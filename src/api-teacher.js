@@ -1,5 +1,6 @@
 const https = require('https');
 const http = require('http');
+const wreck = require('wreck');
 
 const { print } = require('./js/utils');
 
@@ -67,6 +68,19 @@ exports.plugin = {
   name: 'api',
   version: '1.3.0',
   register: (server) => {
+    server.route({
+      method: 'GET',
+      path: '/api/flickr',
+      handler: async () => {
+        try {
+          const { payload } = await wreck.get('http://localhost:8080/api/slow-fruit');
+          return payload.toString();
+        } catch (error) {
+          return { error: error.message };
+        }
+      },
+    });
+
     server.route({
       method: 'GET',
       path: '/api/autocomplete',
