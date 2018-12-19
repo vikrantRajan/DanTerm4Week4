@@ -1,4 +1,4 @@
-# API in-class final project
+# API final project
 
 ## Goal
 User story written in this GitHub issue https://github.com/planlazy/nearby/issues/1
@@ -15,7 +15,7 @@ User story written in this GitHub issue https://github.com/planlazy/nearby/issue
 * This is a closed source assignment, meaning do not copy or view other solutions of your classmates
 
 ## Deadline
-* Tuesday Feb 22th, 2019 at end of day 23:59 hosted via
+* Friday Feb 22th, 2019 at end of day 23:59 hosted via
 	* GitHub using VanArts organization with private repository
 	* Commit final to your [private GitHub.com repository](https://help.github.com/articles/create-a-repo/)
 * Send me the details of your assignment to me via [Slack](https://domaindesign.slack.com/):
