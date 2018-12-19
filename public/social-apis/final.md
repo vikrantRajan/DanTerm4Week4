@@ -1,4 +1,4 @@
-# API in-class final project
+# API final project
 
 ## Goal
 User story written in this GitHub issue https://github.com/planlazy/nearby/issues/1
