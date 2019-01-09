@@ -172,26 +172,24 @@ exports.plugin = {
       }),
     });
 
-    // server.route({
-    //   method: 'GET',
-    //   path: '/api/teacheraid/play',
-    //   handler: async (request, reply) => {
-    //     const webhookUrl = credentials.slack.webhook;
-    //     const webhook = new IncomingWebhook(webhookUrl);
+    server.route({
+      method: 'GET',
+      path: '/api/teacheraid/play',
+      handler: async () => {
+        const webhookUrl = credentials.slack.webhook;
+        const webhook = new IncomingWebhook(webhookUrl);
 
-    //     // Send simple text to the webhook channel
-    //     const { error, res } = await webhook.send('Hello there from route');
+        const message = 'Hello there from route as promise!';
 
-    //     if (error) {
-    //       return reply
-    //         .response({ error })
-    //         .type('application/json');
-    //     }
+        // Send simple text to the webhook channel
+        const { error } = await webhook.send(message);
 
-    //     return reply
-    //       .response({ message: res })
-    //       .type('application/json');
-    //   },
-    // });
+        if (error) {
+          return { error };
+        }
+
+        return { message };
+      },
+    });
   },
 };
