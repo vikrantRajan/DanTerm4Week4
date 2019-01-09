@@ -74,13 +74,20 @@ exports.plugin = {
       method: 'GET',
       path: '/api/flickr',
       handler: async () => {
+        const outputFlickrPhotos = (payload) => {
+          const photos = payload.photos.photo; // 250 photo items
+
+          const out = photos.map(photo => `<img src="https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg">`);
+
+          return out;
+        };
+
         try {
           const querystrings = `api_key=${credentials.flickr.api_key}&method=flickr.photos.search&lat=49.2826982&lon=-123.1175464&radius=1&format=json&nojsoncallback=1`;
-          const { payload } = await wreck.get(`https://api.flickr.com/services/rest/?${querystrings}`);
-          // todo format JSON to JPG paths
-          // https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
-          // https://www.flickr.com/services/api/misc.urls.html
-          return payload.toString();
+          const options = { json: true };
+          const { payload } = await wreck.get(`https://api.flickr.com/services/rest/?${querystrings}`, options);
+
+          return outputFlickrPhotos(payload);
         } catch (error) {
           return { error: error.message };
         }
@@ -165,22 +172,26 @@ exports.plugin = {
       }),
     });
 
-    server.route({
-      method: 'GET',
-      path: '/api/teacheraid/play',
-      handler: () => {
-        const webhookUrl = credentials.slack.webhook;
-        const webhook = new IncomingWebhook(webhookUrl);
+    // server.route({
+    //   method: 'GET',
+    //   path: '/api/teacheraid/play',
+    //   handler: async (request, reply) => {
+    //     const webhookUrl = credentials.slack.webhook;
+    //     const webhook = new IncomingWebhook(webhookUrl);
 
-        // Send simple text to the webhook channel
-        webhook.send('Hello there', (err, res) => {
-          if (err) {
-            print('Error:', err);
-          } else {
-            print('Message sent: ', res);
-          }
-        });
-      },
-    });
+    //     // Send simple text to the webhook channel
+    //     const { error, res } = await webhook.send('Hello there from route');
+
+    //     if (error) {
+    //       return reply
+    //         .response({ error })
+    //         .type('application/json');
+    //     }
+
+    //     return reply
+    //       .response({ message: res })
+    //       .type('application/json');
+    //   },
+    // });
   },
 };
