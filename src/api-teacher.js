@@ -3,6 +3,7 @@ const http = require('http');
 const wreck = require('wreck');
 
 const { print } = require('./js/utils');
+const credentials = require('../credentials.json');
 
 // normal simple function
 // const sum = (a, b) => { a + b };
@@ -73,7 +74,8 @@ exports.plugin = {
       path: '/api/flickr',
       handler: async () => {
         try {
-          const { payload } = await wreck.get('http://localhost:8080/api/slow-fruit');
+          const querystrings = `api_key=${credentials.flickr.api_key}&method=flickr.photos.search&lat=49.2826982&lon=-123.1175464&radius=1&format=json`;
+          const { payload } = await wreck.get(`https://api.flickr.com/services/rest/?${querystrings}`);
           return payload.toString();
         } catch (error) {
           return { error: error.message };
@@ -157,6 +159,20 @@ exports.plugin = {
           resolve(reply.response(`Service call failed due to error: ${e.message}`));
         });
       }),
+    });
+
+    server.route({
+      method: 'GET',
+      path: '/api/teacheraid/play',
+      handler: async () => {
+        try {
+          const webhookUrl = 'https://hooks.slack.com/services/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';
+          const { payload } = await wreck.post(webhookUrl, { payload: { text: 'Hello, World!' } });
+          return payload.toString();
+        } catch (error) {
+          return { error: error.message };
+        }
+      },
     });
   },
 };
