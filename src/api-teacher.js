@@ -74,8 +74,11 @@ exports.plugin = {
       path: '/api/flickr',
       handler: async () => {
         try {
-          const querystrings = `api_key=${credentials.flickr.api_key}&method=flickr.photos.search&lat=49.2826982&lon=-123.1175464&radius=1&format=json`;
+          const querystrings = `api_key=${credentials.flickr.api_key}&method=flickr.photos.search&lat=49.2826982&lon=-123.1175464&radius=1&format=json&nojsoncallback=1`;
           const { payload } = await wreck.get(`https://api.flickr.com/services/rest/?${querystrings}`);
+          // todo format JSON to JPG paths
+          // https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
+          // https://www.flickr.com/services/api/misc.urls.html
           return payload.toString();
         } catch (error) {
           return { error: error.message };
