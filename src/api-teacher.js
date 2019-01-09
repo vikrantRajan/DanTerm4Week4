@@ -1,5 +1,6 @@
 const https = require('https');
 const http = require('http');
+const { IncomingWebhook } = require('@slack/client');
 const wreck = require('wreck');
 
 const { print } = require('./js/utils');
@@ -167,14 +168,18 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/teacheraid/play',
-      handler: async () => {
-        try {
-          const webhookUrl = 'https://hooks.slack.com/services/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';
-          const { payload } = await wreck.post(webhookUrl, { payload: { text: 'Hello, World!' } });
-          return payload.toString();
-        } catch (error) {
-          return { error: error.message };
-        }
+      handler: () => {
+        const webhookUrl = credentials.slack.webhook;
+        const webhook = new IncomingWebhook(webhookUrl);
+
+        // Send simple text to the webhook channel
+        webhook.send('Hello there', (err, res) => {
+          if (err) {
+            print('Error:', err);
+          } else {
+            print('Message sent: ', res);
+          }
+        });
       },
     });
   },
