@@ -75,6 +75,13 @@ exports.plugin = {
       method: 'GET',
       path: '/api/twitter',
       handler: async () => {
+        const formatTwitterDate = tweets => tweets.map(tweet => (
+          {
+            date: tweet.created_at,
+            tweet: tweet.text,
+          }
+        ));
+
         const twit = new Twit({
           consumer_key: credentials.twitter.consumer_key,
           consumer_secret: credentials.twitter.consumer_secret,
@@ -82,14 +89,11 @@ exports.plugin = {
           access_token_secret: credentials.twitter.access_token_secret,
         });
 
-        // callback syntax (older style)
-        // twit.get('search/tweets', { q: 'banana since:2018-07-11', count: 100 }, (err, data) => {
-        //   print(data);
-        // });
-
         try {
-          const response = await twit.get('search/tweets', { q: 'banana since:2018-07-11', count: 100 });
-          return response.data.statuses;
+          const paramsToTwitter = { screen_name: 'vanarts', count: 100 };
+          const response = await twit.get('statuses/user_timeline', paramsToTwitter);
+
+          return formatTwitterDate(response.data);
         } catch (error) {
           return { error };
         }
