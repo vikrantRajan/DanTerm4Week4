@@ -1,6 +1,7 @@
 const https = require('https');
 const http = require('http');
 const { IncomingWebhook } = require('@slack/client');
+const Twit = require('twit');
 const wreck = require('wreck');
 
 const { print } = require('./js/utils');
@@ -70,6 +71,31 @@ exports.plugin = {
   name: 'api',
   version: '1.3.0',
   register: (server) => {
+    server.route({
+      method: 'GET',
+      path: '/api/twitter',
+      handler: async () => {
+        const twit = new Twit({
+          consumer_key: credentials.twitter.consumer_key,
+          consumer_secret: credentials.twitter.consumer_secret,
+          access_token: credentials.twitter.access_token,
+          access_token_secret: credentials.twitter.access_token_secret,
+        });
+
+        // callback syntax (older style)
+        // twit.get('search/tweets', { q: 'banana since:2018-07-11', count: 100 }, (err, data) => {
+        //   print(data);
+        // });
+
+        try {
+          const response = await twit.get('search/tweets', { q: 'banana since:2018-07-11', count: 100 });
+          return response.data.statuses;
+        } catch (error) {
+          return { error };
+        }
+      },
+    });
+
     server.route({
       method: 'GET',
       path: '/api/flickr',
