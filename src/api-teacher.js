@@ -4,8 +4,10 @@ const { IncomingWebhook } = require('@slack/client');
 const Twit = require('twit');
 const wreck = require('wreck');
 
-const { print } = require('./js/utils');
+const { calculatePercent } = require('./js/assessment');
+const course = require('../course.json');
 const credentials = require('../credentials.json');
+const { print } = require('./js/utils');
 const { formatTwitterDate } = require('./js/twitter/date');
 
 // normal simple function
@@ -206,11 +208,16 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/teacheraid/play',
-      handler: async () => {
+      handler: async (request) => {
         const webhookUrl = credentials.slack.webhook;
         const webhook = new IncomingWebhook(webhookUrl);
 
-        const message = 'Hello there from route as promise!';
+        const { student } = request.query;
+
+        const message = `Copy to ${student}
+        Class ${course[student].class} - Homework mark update ${JSON.stringify(course[student].homework)}
+        Your homework allocation is ${calculatePercent(course[student].homework)}%
+        Documentation https://github.com/VanArts/course-files/blob/master/public/social-apis/README.md#assessment`;
 
         // Send simple text to the webhook channel
         const { error } = await webhook.send(message);
