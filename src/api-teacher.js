@@ -6,6 +6,7 @@ const wreck = require('wreck');
 
 const { print } = require('./js/utils');
 const credentials = require('../credentials.json');
+const { formatTwitterDate } = require('./js/twitter/date');
 
 // normal simple function
 // const sum = (a, b) => { a + b };
@@ -75,10 +76,10 @@ exports.plugin = {
       method: 'GET',
       path: '/api/twitter',
       handler: async () => {
-        const formatTwitterDate = tweets => tweets.map(tweet => (
+        const transformTwitterTweet = tweets => tweets.map(tweet => (
           {
-            date: tweet.created_at,
-            tweet: tweet.text,
+            date: formatTwitterDate(tweet.created_at),
+            text: tweet.text,
           }
         ));
 
@@ -93,7 +94,7 @@ exports.plugin = {
           const paramsToTwitter = { screen_name: 'vanarts', count: 100 };
           const response = await twit.get('statuses/user_timeline', paramsToTwitter);
 
-          return formatTwitterDate(response.data);
+          return transformTwitterTweet(response.data);
         } catch (error) {
           return { error };
         }

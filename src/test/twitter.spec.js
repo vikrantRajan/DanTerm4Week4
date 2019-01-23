@@ -58,6 +58,9 @@ describe('Twitter', () => {
 
       expect(formatTwitterDate(`Wed Feb 03 10:00:00 ${timeZoneOffset} 2016`, feb1))
         .to.be('13 months ago');
+
+      expect(formatTwitterDate(`Wed Feb 03 10:00:00 ${timeZoneOffset} 2015`, feb1))
+        .to.be('25 months ago');
     });
   });
 });
