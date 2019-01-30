@@ -16,11 +16,16 @@ const loadHelloMap = () => {
     zoom: 18, // starting zoom
   });
 
-  const marker = new mapboxgl.Marker()
+  new mapboxgl.Marker()
     .setLngLat([vanarts.longitude, vanarts.latitude])
     .addTo(map);
 
-  return marker;
+  map.on('click', () => {
+    new mapboxgl.Popup()
+      .setLngLat([vanarts.longitude, vanarts.latitude])
+      .setHTML('<img src="https://pbs.twimg.com/profile_images/987068971168837632/r1a2mDq0_400x400.jpg" alt="VanArts">')
+      .addTo(map);
+  });
 };
 
 // If Node.js then export as public
