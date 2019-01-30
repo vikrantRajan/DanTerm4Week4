@@ -1,6 +1,6 @@
 const https = require('https');
 const http = require('http');
-const { IncomingWebhook } = require('@slack/client');
+const { IncomingWebhook, WebClient } = require('@slack/client');
 const Twit = require('twit');
 const wreck = require('wreck');
 
@@ -227,6 +227,42 @@ exports.plugin = {
         }
 
         return { message };
+      },
+    });
+
+    server.route({
+      method: 'GET',
+      path: '/api/teacheraid/play2',
+      handler: async () => {
+        const client = new WebClient();
+
+        try {
+          const res = await client.oauth.access({
+            client_id: credentials.slack.client_id,
+            client_secret: credentials.slack.client_secret,
+            code: credentials.slack.access_token_secret,
+          });
+          console.log(res.access_token);
+        } catch (error) {
+          console.error(error);
+        }
+
+        // // The client is initialized and then started to get an active connection to the platform
+        // const rtm = new RTMClient(credentials.slack.access_token);
+        // rtm.start();
+
+        // // This argument can be a channel ID, a DM ID, a MPDM ID, or a group ID
+        // // See the "Combining with the WebClient" topic below for an example
+        // of how to get this ID
+        // const conversationId = 'play2';
+
+        // // The RTM client can send simple string messages
+        // rtm.sendMessage('Hello there', conversationId)
+        //   .then((res) => {
+        //     // `res` contains information about the posted message
+        //     console.log('Message sent: ', res.ts);
+        //   })
+        //   .catch(console.error);
       },
     });
   },
