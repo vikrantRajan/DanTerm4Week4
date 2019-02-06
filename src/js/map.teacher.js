@@ -1,4 +1,4 @@
-/* global mapboxgl */
+/* global fetch, mapboxgl */
 if (mapboxgl) {
   mapboxgl.accessToken = 'pk.eyJ1IjoiZGFuYWN0aXZlLXRlYWNoIiwiYSI6ImNqcmppNDlveDBjdHk0M284MnNya2Ztb2wifQ.lUbes1e5nrEYV9nwRh49sQ';
 }
@@ -8,25 +8,49 @@ const vanarts = {
   longitude: -123.115433,
 };
 
-const loadFlickrMap = () => {
-  console.log('Hello Flickr Map');
+const createMap = () => new mapboxgl.Map({
+  container: 'map', // container id
+  style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+  center: [vanarts.longitude, vanarts.latitude], // starting position [lng, lat]
+  zoom: 18, // starting zoom
+});
+
+const createPin = ({ bubble = null, coordinates, map }) => {
+  new mapboxgl.Marker()
+    .setLngLat(coordinates)
+    .setPopup(bubble)
+    .addTo(map);
+};
+
+const loadFlickrMap = async () => {
+  const requestFlickr = async () => {
+    const response = await fetch('/api/flickr/map');
+    const json = await response.json();
+    return json;
+  };
+  //* Add Pin interaction to show JPG image
+
+  // HTTP Request to get JPG paths, geo coordinates
+  const flickrJson = await requestFlickr();
+  // Create an interactive slippy map
+  const map = createMap();
+  const plotPins = photo => createPin({ coordinates: photo.coordinates, map });
+
+  // Plot pins representing photos
+  flickrJson.photos.forEach(plotPins);
 };
 
 const loadHelloMap = () => {
-  const map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
-    center: [vanarts.longitude, vanarts.latitude], // starting position [lng, lat]
-    zoom: 18, // starting zoom
-  });
+  const map = createMap();
 
-  const infobubble = new mapboxgl.Popup()
+  const bubble = new mapboxgl.Popup()
     .setHTML('<img src="https://pbs.twimg.com/profile_images/987068971168837632/r1a2mDq0_400x400.jpg" alt="VanArts">');
 
-  new mapboxgl.Marker()
-    .setLngLat([vanarts.longitude, vanarts.latitude])
-    .setPopup(infobubble)
-    .addTo(map);
+  createPin({
+    bubble,
+    coordinates: [vanarts.longitude, vanarts.latitude],
+    map,
+  });
 };
 
 // If Node.js then export as public
