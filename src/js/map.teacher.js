@@ -8,6 +8,10 @@ const vanarts = {
   longitude: -123.115433,
 };
 
+const loadFlickrMap = () => {
+  console.log('Hello Flickr Map');
+};
+
 const loadHelloMap = () => {
   const map = new mapboxgl.Map({
     container: 'map', // container id
@@ -29,5 +33,6 @@ const loadHelloMap = () => {
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
     loadHelloMap,
+    loadFlickrMap,
   };
 }

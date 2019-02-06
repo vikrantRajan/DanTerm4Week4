@@ -14,10 +14,10 @@
 
   <h3>Technologies</h3>
   <ul>
-    <li>Flickr API</li>
-    <li>Mapbox GL JS API</li>
+    <li>Flickr API (Service)</li>
+    <li>Mapbox GL JS API (Library)</li>
     <li>JavaScript</li>
-    <li>jQuery AJAX</li>
+    <li>HTTP Request with Fetch</li>
     <li>CSS</li>
     <li>HTML</li>
   </ul>
@@ -28,6 +28,17 @@
     <li><a href="https://docs.mapbox.com/mapbox-gl-js/overview/">Mapbox GL JS API</a></li>
   </ul>
 
-  <h3>Live demo</h3>
+	<h3>Live demo</h3>
+	* HTTP Request to get JPG paths, geo coordinates
+	* Initalize Slippy Map
+	* Plot pins representing photos
+	* Add Pin interaction to show JPG image
+	<main id="map" style="height: 40rem;"></main>
+
+	<!-- Attach Mapbox library -->
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
+	<!-- Attach all the bundles JavaScript files in /src/js -->
+	<script src="/js/critical.js"></script>
+	<script>loadFlickrMap();</script>
 </body>
 </html>
