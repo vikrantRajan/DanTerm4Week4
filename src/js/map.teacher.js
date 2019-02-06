@@ -28,16 +28,19 @@ const loadFlickrMap = async () => {
     const json = await response.json();
     return json;
   };
-  //* Add Pin interaction to show JPG image
-
   // HTTP Request to get JPG paths, geo coordinates
   const flickrJson = await requestFlickr();
   // Create an interactive slippy map
   const map = createMap();
-  const plotPins = photo => createPin({ coordinates: photo.coordinates, map });
 
   // Plot pins representing photos
-  flickrJson.photos.forEach(plotPins);
+  flickrJson.photos.forEach((photo) => {
+    // Add Pin interaction to show JPG image
+    const bubble = new mapboxgl.Popup()
+      .setHTML(`<img src="${photo.src}" alt="${photo.title || 'Image of location'}">`);
+
+    createPin({ bubble, coordinates: photo.coordinates, map });
+  });
 };
 
 const loadHelloMap = () => {
