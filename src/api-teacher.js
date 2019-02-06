@@ -77,22 +77,29 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/flickr/map',
-      handler: () => ({
-        photos: [
-          {
-            src: 'https://coming.soon.jpg',
-            coordinates: [-121, 71],
-          },
-          {
-            src: 'https://coming.soon2.jpg',
-            coordinates: [-122, 72],
-          },
-          {
-            src: 'https://coming.soon3.jpg',
-            coordinates: [-123, 73],
-          },
-        ],
-      }),
+      handler: async () => {
+        const outputFlickrPhotos = (payload) => {
+          const photos = payload.photos.photo; // 250 photo items
+
+          const out = photos.map(photo => ({
+            coordinates: [photo.longitude, photo.latitude],
+            src: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
+            title: photo.title,
+          }));
+
+          return { photos: out };
+        };
+
+        try {
+          const querystrings = `api_key=${credentials.flickr.api_key}&method=flickr.photos.search&lat=49.282733&lon=-123.115433&radius=1&extras=geo&format=json&nojsoncallback=1`;
+          const options = { json: true };
+          const { payload } = await wreck.get(`https://api.flickr.com/services/rest/?${querystrings}`, options);
+
+          return outputFlickrPhotos(payload);
+        } catch (error) {
+          return { error: error.message };
+        }
+      },
     });
 
     server.route({
@@ -255,17 +262,17 @@ exports.plugin = {
       method: 'GET',
       path: '/api/teacheraid/play2',
       handler: async () => {
-        const rtm = new RTMClient(credentials.slack.access_token);
+        const rtm = new RTMClient(credentials.slack.bot_token);
         rtm.start();
 
-        const conversationId = 'play2';
+        const conversationId = 'GFLJPLLAU';
 
-        rtm.sendMessage('Hello there', conversationId)
-          .then((res) => {
-            // `res` contains information about the posted message
-            console.log('Message sent: ', res.ts);
-          })
-          .catch(console.error);
+        try {
+          const res = await rtm.sendMessage('Hello there', conversationId);
+          return { message: res.ts };
+        } catch (error) {
+          return { error };
+        }
       },
     });
   },
