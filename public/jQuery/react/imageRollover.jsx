@@ -11,11 +11,17 @@ const ImageRollover = (props) => {
   );
 }
 
-const rollOn = (event) => {
-  const secondaryPath = event.target.getAttribute('data-secondary');
-  event.target.setAttribute('src', secondaryPath);
+const setImgSrc = (selector, readAttr) => {
+  const imgPath = selector.getAttribute(readAttr);
+  selector.setAttribute('src', imgPath);
 };
-const rollOff = () => console.log('off');
+const rollOn = (event) => {
+  const srcPath = event.target.getAttribute('src');
+  event.target.setAttribute('data-primary', srcPath);
+
+  setImgSrc(event.target, 'data-secondary');
+};
+const rollOff = event => setImgSrc(event.target, 'data-primary');
 
 const gallery = [
   <ImageRollover
