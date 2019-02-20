@@ -265,10 +265,16 @@ exports.plugin = {
         const rtm = new RTMClient(credentials.slack.bot_token);
         rtm.start();
 
-        const conversationId = 'GFLJPLLAU';
+        const JESSICA = 'DD6BKBBPW';
+        // add scope https://api.slack.com/apps/ as permissions
+
+        // discover channel id
+        // https://stackoverflow.com/questions/40940327/what-is-the-simplest-way-to-find-a-slack-team-id-and-a-channel-id#40965105
+        // const conversationId = 'GFLJPLLAU';
+        const conversationId = JESSICA;
 
         try {
-          const res = await rtm.sendMessage('Hello there', conversationId);
+          const res = await rtm.sendMessage('Hi, I am testing a Slack bot', conversationId);
           return { message: res.ts };
         } catch (error) {
           return { error };
