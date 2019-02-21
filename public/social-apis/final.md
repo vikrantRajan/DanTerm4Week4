@@ -19,5 +19,7 @@ User story written in this GitHub issue https://github.com/planlazy/nearby/issue
 	* GitHub using VanArts organization with private repository
 	* Commit final to your [private GitHub.com repository](https://help.github.com/articles/create-a-repo/)
 * Send me the details of your assignment to me via [Slack](https://domaindesign.slack.com/):
-	* GitHub repository address
-	* Direct link to your solution HTML file
+	* GitHub repository address (GIT or HTTPS i.e. git@github.com:VanArts/student-name-api-final.git )
+	* Developer facing HTML address on GitHub ( i.e. https://github.com/VanArts/course-files/blob/master/public/social-apis/math/1calculator.html#L21 )
+	* Developer facing JavaScript address on GitHub ( i.e. https://github.com/VanArts/course-files/blob/master/src/js/math/calculator.teacher.js )
+	* User facing HTML address on Localhost ( http://localhost:8000/final.html )
