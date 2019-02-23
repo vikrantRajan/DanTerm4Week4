@@ -13,6 +13,7 @@ User story written in this GitHub issue https://github.com/planlazy/nearby/issue
 * *2 points penalty* for including `node_modules` in either GitHub or zip
 * *3 points penalty* for every 4 hours late delivered after deadline
 * This is a closed source assignment, meaning do not copy or view other solutions of your classmates
+	* *3 points penalty* for making this assignment or solution open source
 
 ## Deadline
 * Friday Feb 22th, 2019 at end of day 23:59 hosted via
