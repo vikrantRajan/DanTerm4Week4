@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery selectors</title>
+</head>
+
+<body>
+	<h1>jQuery</h1>
+	<h2>Selectors</h2>
+	<p>CSS uses selectors to reference HTML tags (i.e. p.className). jQuery has copied CSS and uses the same CSS selectors to reference HTML tags.</p>
+
+	<h3>Goal</h3>
+	<p>Keep the appearance the same for the user. We will convert the CSS to jQuery. Both CSS selectors and CSS rules work in jQuery with different syntax.</p>
+
+	<h3>Technologies</h3>
+	<ol>
+		<li>jQuery</li>
+		<li>JavaScript</li>
+		<li>CSS</li>
+	</ol>
+
+	<h3>Resource</h3>
+	<ul>
+		<li><a href="http://api.jquery.com/css/">CSS method</a></li>
+	</ul>
+
+	<h3>Live demo</h3>
+	<ol id="demo">
+		<li>This first bullet should be bold/strong</li>
+		<li class="red twenty">Red 20pt font with a dotted underline</li>
+		<li class="blue twenty">Blue 20pt font</li>
+		<li class="twenty">Normal 20pt font</li>
+		<li class="twenty red">Red 20pt font with a dotted underline</li>
+		<li class="red">Red text</li>
+	</ol>
+	<p><b>Todo <span class="blue">inclass</span>: Create CSS rules so each bullet is styled.</b></p>
+	<p>Notice there is no <span class="blue">bold</span> HTML element in this example.</p>
+
+	<p>Sample jQuery syntax: $(selector).method('CSS rule', 'CSS value');</p>
+	<code>$('.red').css('color', 'red');</code>
+
+	<!-- Attach jQuery library -->
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<!-- Page specific code -->
+	<script>
+		// SOLUTION
+	</script>
+	
+</body>
+</html>

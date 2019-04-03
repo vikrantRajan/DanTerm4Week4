@@ -7,7 +7,7 @@ const vision = require('vision');
 const courseOptions = require('./course.json');
 const libApi = require('./src/api-teacher');
 const libSlides = require('./src/slides');
-const utils = require('./src/js/utils');
+const utils = require('./src/js/utils.teacher');
 
 const port = courseOptions.port || 8080;
 

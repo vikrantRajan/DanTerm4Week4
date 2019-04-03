@@ -1,6 +1,6 @@
 /* global describe, it */
 const expect = require('expect.js');
-const math = require('../js/math.js');
+const math = require('../js/math.teacher.js');
 
 describe('Math.js', () => {
   describe('sum', () => {
