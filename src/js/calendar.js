@@ -72,6 +72,13 @@ function courseCalendar() {
     .setDaysBetweenClasses([7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]);
   const events = courseJq.getAllClasses().concat(courseApi.getAllClasses());
 
+  // Update times specifically on weekend
+  events[1].start = '2019-04-06 10:30:00';
+  events[1].end = '2019-04-06 13:45:00';
+
+  events[3].start = '2019-04-13 10:30:00';
+  events[3].end = '2019-04-13 13:45:00';
+
   $('#calendar').fullCalendar({
     header: {
       left: 'prev,next today',
