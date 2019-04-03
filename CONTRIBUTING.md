@@ -2,7 +2,7 @@
 * CLI
 	* CLI is Command Line Interface otherwise known as Command Prompt, Powershell, Terminal, Bash, Shell
 * [Node.js](http://nodejs.org/)
-	* Install v8.9.x
+	* Install v10.15.x
 		* Visit official website and install
 	* Verify
 		* Open CLI
