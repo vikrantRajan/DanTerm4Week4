@@ -12,7 +12,7 @@
 	* Install
 		* Change directory to the web site root
 		* Verify the files in the web site root matches the *course-files* on GitHub.com using `dir` on Windows and `ls` on Mac
-		* Run `npm install`
+		* Run `npm ci`
 	* Verify
 		* Open CLI
 		* Run `npm run start`
