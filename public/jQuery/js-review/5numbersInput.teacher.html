@@ -25,9 +25,21 @@
 		<option value="20">Large</option>
 	</select>
 	<script>
-		// todo inclass: apply GST + PST 7% to total bill
+		// todo inclass: apply GST 5% + PST 7% to total bill
 		// and round down to the nearest dollar
 		// and add currency symbol
+
+		// SOLUTION:
+		const quantity = document.getElementById('count').value; // 2
+		const price = document.getElementById('size').value; // 12
+		const subtotal = quantity * price; // 24
+		const PST = 0.07; // 7% -> 7/100 -> 0.07
+		const GST = 0.05; // 5% -> 5/100 -> 0.05
+		const total = Math.round(subtotal * (1 + PST + GST));
+		
+		// Appy Currency
+		// window.alert('$' + total); // ES5.1 concatenation
+		window.alert(`$${total}`); // ES6 string template
 	</script>
 </body>
 </html>
