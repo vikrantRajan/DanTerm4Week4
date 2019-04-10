@@ -19,8 +19,8 @@
 	
 	<h3>Live demo</h3>
 	<script>
-		var pizza = {
-			toppings: '', // property (var toppings = '';)
+		const pizza = {
+			toppings: '', // property (const toppings = '';)
 			addTopping: function (newTopping) { // method
 				// this is relative to the owner of the method, which is the object 'pizza'
 				
@@ -30,6 +30,9 @@
 					// this.toppings = this.toppings + ', ' + newTopping;
 					this.toppings += ', ' + newTopping; // shortcut
 				}
+			},
+			addCrust: function (newCrust) {
+				this.crust = newCrust;
 			},
 		};
 		
@@ -44,6 +47,9 @@
 			property is a value (string, number, boolean, array, object)
 			if statement has not been taught so the solution does NOT need the use of ifs
 		*/
+		// SOLUTION
+		pizza.addCrust('thin');
+		console.log(`I will eat a pizza with ${pizza.toppings} toppinds on a ${pizza.crust} crust.`);
 	</script>
 
 </body>

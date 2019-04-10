@@ -37,16 +37,19 @@
 		console.log(months.join(' and ')); // important so memorize
 		
 		// build a sentance without concatenating
-		var sentence = ['sit', 'a'];
+		const sentence = ['sit', 'a'];
 		sentence.push('classroom'); // add to end
 		sentence.unshift('I'); // add to beginning
 		// [I, sit, a, classroom]
 		sentence.splice(2, 0, 'in'); // add to middle, second index without removing
+		// [I, sit, in, a, classroom]
 		console.log(sentence.join(' '));
 		
 		/* todo inclass: Output to the console as a string, a list of month's name each with an italic element by 
 		using the array methods (i.e. <i>Jan</i> <i>Feb</i> <i>Mar</i>...) */
 		// Note: Do not modify the code above, and reuse the months variable
+
+		months.reverse()
 	</script>
 </body>
 </html>
