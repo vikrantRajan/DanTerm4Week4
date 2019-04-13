@@ -58,6 +58,40 @@
 		this.className = ''; // remove class
 	};
 
-	// todo inclass when a user blurs or focuses on text field on ID blur I want to see a console log
+	// TODO inclass when a user blurs or focuses on text field on ID blur
+	// I want to see a console log AND / OR change the value
+
+	// SOLUTION blur/focus
+	document.getElementById('blur').onblur = function () {
+		this.value = 'Blur';
+		console.log('Blur');
+	};
+	document.getElementById('blur').onfocus = function () {
+		this.value = 'Focus';
+		console.log('Focus');
+	};
+
+	// TODO inclass attach these events: key up, key down, and key press
+	// display a console log for each keyboard event
+
+	// SOLUTION keyboard events
+	document.getElementById('keyboard').onkeydown = () => { console.log('Key Down'); };
+	document.getElementById('keyboard').onkeyup = () => { console.log('Key Up'); };
+	document.getElementById('keyboard').onkeypress = () => { console.log('Key Press (Chrome not triggered by arrows. FF or Chrome not Ctrl, Shift, Alt)'); };
+
+	// Down & Press occur on repetition
+	// Press only occurs when a character is added to HTML
+	// Down supports arrows too (Chrome, Firefox also triggers Press)
+	// Up occurs on release
+
+	// submit only works on <form> with a input submit button (will not trigger on type="button")
+	// TODO class: Apply submit event when form submitted AND stop the page from redirecting
+	// TODO class: Apply click event when "Button not submit button"
+
+	document.getElementById('submit').onsubmit = () => {
+		console.log('Submit');
+		return false; // cancels form action; prevents form submission
+	};
+	document.getElementById('btn').onclick = clickLog;
 </script>
 </body></html>
