@@ -18,24 +18,28 @@
 
 <h3>Live demo</h3>
 	<script>
-		const today = 'wed'; // assign a value of string mon
-	
-		/* operators
-		|| or (pipe pipe)
-		&& and (ampersand ampersand)
-		!== strict not equal
-		=== strict equal
-		*/
-		
-		if (today === 'sat' || today === 'sun') {
-			console.log('weekend');
-		} else if (today === undefined) {
-			console.log('no value');
-		} else {
-			console.log('weekday');
-		}
+		const getTypeOfWeek = (today) => {
+			/* operators
+			|| or (pipe pipe)
+			&& and (ampersand ampersand)
+			!== strict not equal
+			=== strict equal
+			*/
+			
+			if (today === 'sat' || today === 'sun') {
+				console.log('weekend');
+			} else if (today === undefined) {
+				console.log('no value');
+			} else {
+				console.log('weekday');
+			}
+		};
 
-		// todo inclass: Modify `today` variable on line 21 so it is a weekday
+		getTypeOfWeek('wed');
+
+		// todo inclass:
+		// Call function with the expected value of weekend
+		getTypeOfWeek('sat');
 </script>
  
 </body></html>
