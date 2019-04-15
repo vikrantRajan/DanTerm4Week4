@@ -72,3 +72,8 @@
 * Student may create a JavaScript file `/src/js/api-student.js` for server API routes
 	* Routes cannot conflict, so rename the student route to be unique
 	* Plugin name must be unique such as `exports.register.attributes = { name: 'api-student', version: '1.0.0' };`
+
+## Docker
+* `npm run docker-build` Create Docker image based
+* `npm run docker-start` Start course-files from Docker image
+* `npm run docker-stop` Stop all Docker images (open in new terminal)

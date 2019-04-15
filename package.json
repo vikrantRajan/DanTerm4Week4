@@ -1,11 +1,14 @@
 {
   "name": "js-courses",
-  "version": "1.7.2",
+  "version": "1.8.3",
   "description": "Node.js site scaffolding with unit testing",
   "main": "app-teacher.js",
   "scripts": {
     "build": "gulp build",
     "build-react": "npx babel --watch public/jQuery/react/**.jsx --out-dir . --presets react-app/prod --silient",
+    "docker-build": "docker build -t course-files:${npm_package_version} .",
+    "docker-start": "docker run -p 8080:8080 course-files:${npm_package_version}",
+    "docker-stop": "docker stop $(docker ps -a -q)",
     "dev": "gulp dev",
     "dev:student": "gulp dev:student",
     "lint": "gulp lint",
