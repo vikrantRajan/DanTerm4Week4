@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>String Input</title>
+	</head>
+
+	<body>
+		<h1>JavaScript Intro</h1>
+		<h2>String</h2>
+
+		<h3>Goal</h3>
+		<p>
+			As a user, I want to subscribe to a newsletter with my full name and
+			email.
+		</p>
+
+		<h3>Technologies</h3>
+		<ul>
+			<li>JavaScript</li>
+		</ul>
+
+		<h3>Live demo</h3>
+		Full name: <input type="text" id="fullname" value="Dan BROOKS" /><br />
+		Email: <input type="text" id="email" value="dan@vanarts.com" /><br />
+		<input type="submit" id="newsletter-signup" value="Signup for newsletter" />
+		<script>
+			const name = document.getElementById("fullname").value;
+			const email = document.getElementById("email").value;
+			const save = document.getElementById("newsletter-signup");
+			save.addEventListener("click", function() {
+				alert(
+					`Thank you for your interest ${name} a newsletter will be mailed to ${email}`
+				);
+			});
+			// TODO inclass alert the button text (ideally by reading the input)
+		</script>
+	</body>
+</html>

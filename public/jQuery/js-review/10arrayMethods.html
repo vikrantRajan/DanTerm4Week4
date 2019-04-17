@@ -67,11 +67,11 @@
 			sentence.splice(2, 0, "in"); // add to middle, second index without removing
 			console.log(sentence.join(" "));
 
-			// let italicMonths = months.map(m => {
-			// 	return `<i>${m}</i>`;
-			// });
-			// console.log(italicMonths);
 			months.reverse();
+			let italicMonths = months.map(m => {
+				return `<i>${m}</i>`;
+			});
+			console.log(italicMonths);
 			// console.log(months.join("</i> <i>"), months.unshift("<i>"),  months.push("</i>"));
 
 			/* todo inclass: Output to the console as a string, a list of month's name each with an italic element by

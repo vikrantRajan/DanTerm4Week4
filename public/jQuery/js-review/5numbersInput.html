@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Number Input</title>
+	</head>
+
+	<body>
+		<h1>JavaScript Intro</h1>
+		<h2>Number</h2>
+
+		<h3>Goal</h3>
+		<p>As a user, I want to order some pizza.</p>
+
+		<h3>Technologies</h3>
+		<ul>
+			<li>JavaScript</li>
+		</ul>
+
+		<h3>Live demo</h3>
+		Pizza(s) <input type="text" id="count" value="2" /><br />
+		<select id="size">
+			<option value="9">Small</option>
+			<option value="12" selected="selected">Medium</option>
+			<option value="20">Large</option>
+		</select>
+		<script>
+			// todo inclass: apply GST + PST 7% to total bill
+			// and round down to the nearest dollar
+			// and add currency symbol
+			let numberOfPizzas = document.querySelector("#count").value;
+			let costOfPizza = numberOfPizzas * document.querySelector("#size").value;
+			const GST = costOfPizza * (5 / 100);
+			const PST = costOfPizza * (7 / 100);
+			let totalCost = costOfPizza + GST + PST;
+			console.log(
+				`The total bill with taxes is: $${Math.round(
+					totalCost
+				)}. The GST is : $${Math.round(GST)}. The PST is : $${Math.round(PST)}.`
+			);
+		</script>
+	</body>
+</html>
