@@ -31,14 +31,25 @@
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 <!-- Page specific code -->
 <script>
-	var attributes = {
+	const attributes = {
 		href: 'http://www.vanarts.com/',
 		title: 'VanArts',
 		// style: 'text-decoration: none; color: yellow', // overwritten due to line below
-		style: 'text-decoration: none; color: purple'
+		style: 'text-decoration: none; color: green'
 	};
 
 	// SOLUTION
+
+	// chaining approach
+	// $('#demo')
+	// 	.attr('href', attributes.href)
+	// 	.text(attributes.title)
+	// 	.attr('style', attributes.style);
+
+	// pass object to attributes
+	$('#demo')
+		.attr(attributes)
+		.text(attributes.title);
 </script>
 </body>
 </html>
