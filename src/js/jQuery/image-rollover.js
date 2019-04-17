@@ -3,8 +3,6 @@ const applyImageRollover = () => {
     const sourcePath = $(this).attr('src');
     const secondaryPath = $(this).attr('data-secondary');
 
-    // TODO inclass
-    // backup 2004 JPG path as HTML attribute "data-primary"
     $(this)
       .attr('data-primary', sourcePath)
       .attr('src', secondaryPath);
@@ -16,6 +14,24 @@ const applyImageRollover = () => {
   };
 
   $('.js-rollover').hover(handleIn, handleOut);
+
+  // const handleInClassic = function handleInClassic() {
+  //   const sourcePath = this.src;
+  //   const secondaryPath = this.getAttribute('data-secondary');
+
+  //   this.setAttribute('data-primary', sourcePath);
+  //   this.src = secondaryPath;
+  // };
+
+  // const handleOutClassic = function handleOutClassic() {
+  //   const primaryPath = this.getAttribute('data-primary');
+  //   this.setAttribute('src', primaryPath);
+  // };
+
+  // Array.from(document.querySelectorAll('.js-rollover')).forEach((img) => {
+  //   img.addEventListener('mouseover', handleInClassic);
+  //   img.addEventListener('mouseout', handleOutClassic);
+  // });
 };
 
 // If Node.js then export as public
