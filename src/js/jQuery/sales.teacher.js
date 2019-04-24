@@ -1,11 +1,13 @@
 /* global salesTaxData */
 
 const pizzaSales = () => {
-  console.log(salesTaxData.provinces.BC.name);
-
   $.each(salesTaxData.provinces, (abbr, province) => {
-    console.log(`Key is ${abbr} and value is ${province.name}.`); // Solution #2
     $('#provinces').append(`<option>${province.name}</option>`);
+  });
+
+  $('#provinces').click(function provinceClick() {
+    // #4 in progress. Improve the event and add values for the province <options>
+    console.log('Province selected', this);
   });
 };
 
