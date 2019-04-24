@@ -21,13 +21,15 @@
 	<script>
 		const fruit = []; // square bracket recommended syntax for creating an array
 		const third = 'Durian';
-		fruit[0] = 'Apple'; // zero-index (not one)
-		fruit[1] = 'Banana';
-		fruit[2] = 'Cherry';
-		fruit[3] = third;
-		fruit[4] = { // curly brace for object
+		const fourth = { // curly brace for object
 			fruitName: 'Eggplant' // key value pair
 		};
+
+		// fruit[0] = 'Apple'; // zero-index (not one)
+		// fruit[1] = 'Banana';
+		// fruit[2] = 'Cherry';
+		// fruit[3] = third;
+		fruit[4] = fourth.fruitName;
 		fruit[5] = [1, 2, 3]; // An array of arrays
 		// undefined fills the un-declared indexes
 		fruit[6] = undefined;

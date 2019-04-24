@@ -59,10 +59,15 @@ exports.plugin = {
 
         const { student } = request.query;
 
+        const homeworkMark = course.assessment[student].homework;
+        const { latestNote } = course.assessment[student];
+        const additionalNote = (latestNote) ? `Additional notes: ${latestNote}` : '';
+
         const message = `Copy to ${student}
-        Class ${course[student].class} - Homework mark update ${JSON.stringify(course[student].homework)}
-        Your homework allocation is ${calculatePercent(course[student].homework)}%
-        Documentation https://github.com/VanArts/course-files/blob/master/public/social-apis/README.md#assessment`;
+Class ${course.assessment.classNumber} - Homework mark update ${JSON.stringify(homeworkMark)}
+Your homework allocation is ${calculatePercent(homeworkMark)}%
+Documentation https://github.com/VanArts/course-files/tree/master/public/jQuery#assessment
+${additionalNote}`;
 
         // Send simple text to the webhook channel
         const { error } = await webhook.send(message);

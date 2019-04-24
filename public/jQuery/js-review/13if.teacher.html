@@ -11,6 +11,15 @@
 	
 	<h3>Goal</h3>
 	<p>Support multiple logical paths with conditional if statements</p>
+	<p>Follow the Best Practice and use explicit equallity (<code>===</code>)</p>
+
+	<h3>Terms</h3>
+	<ul>
+		<li><b>Anti-pattern</b> is allowable in the language (JavaScript) syntax, but will likely introduce bugs.</li>
+		<li><b>Best practice</b> is the language communities recommended syntax to avoid bugs and to communicate clearly.</li>
+		<li><b>Truthy</b> represents a true statement with or without being a boolean</li>
+		<li><b>Falsy</b> represents a false statement with or without being a boolean</li>
+	</ul>
 	
 	<h3>Technologies</h3>
 	<ul>
@@ -39,6 +48,10 @@
 
 		if (isJavaScript === true) {
 			console.log('true');
+		}
+
+		if (isJavaScript === 'true') {
+			console.log('Will not execute')
 		}
 
 		if (obj) {

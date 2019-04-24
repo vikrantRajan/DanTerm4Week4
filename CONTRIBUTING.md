@@ -44,7 +44,7 @@
 * *Ctrl + C* to kill process (Mac is *Command + C*)
 * `npm run start` Start the web server
 * `npm run start:student` Start your edited web server
-* `npm run dev` Start the web server in developement mode watching files to lint, concat, and unit testing
+* `npm run dev` Start the web server in developement mode watching files to generate `critical.js` and steps for lint, concat, and unit testing
 * `npm run dev:student` Start your edited web server in developement mode watching files to lint, concat, and unit testing
 * `npm run test` Execute JS unit test suite
 * `npm run bundle` Manually prepare your JS for public
@@ -72,3 +72,8 @@
 * Student may create a JavaScript file `/src/js/api-student.js` for server API routes
 	* Routes cannot conflict, so rename the student route to be unique
 	* Plugin name must be unique such as `exports.register.attributes = { name: 'api-student', version: '1.0.0' };`
+
+## Docker
+* `npm run docker-build` Create Docker image based
+* `npm run docker-start` Start course-files from Docker image
+* `npm run docker-stop` Stop all Docker images (open in new terminal)

@@ -1,110 +1,106 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>jQuery events</title>
-		<style>
-			#hover {
-				color: red;
-			} /* normal */
-			#hover:hover {
-				color: pink;
-			} /* CSS hover */
-			.hover {
-				text-decoration: none;
-			} /* remove underline via JS hover */
-		</style>
-	</head>
-	<body>
-		<h1>Events</h1>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery events</title>
+	<style>
+		#hover { color: red; } /* normal */
+		#hover:hover { color: pink; } /* CSS hover */
+		.hover { text-decoration: none; } /* remove underline via JS hover */
+	</style>
+</head>
+<body>
 
-		<h3>Goal</h3>
-		<p>
-			Learn the common mouse and keyboard events so JavaScript may respond to a
-			user's interactions.
-		</p>
+	<h1>Events</h1>
+	
+	<h3>Goal</h3>
+	<p>Learn the common mouse and keyboard events so jQuery may respond to a user's interactions.</p>
+	<p>As a developer, I want to interact with my jQuery playground to better understand all the events to bind the HTML alive. All of the events are seen in <a href="4events.teacher.html">the previous example using Classic JavaScript</a>.</p>
 
-		<h3>Technologies</h3>
-		<ol>
-			<li>jQuery</li>
-			<li>JavaScript</li>
-		</ol>
+	<h3>Technologies</h3>
+	<ol>
+		<li>jQuery</li>
+		<li>JavaScript</li>
+	</ol>
 
-		<h3>Resources</h3>
-		<ul>
-			<li>
-				<a href="http://api.jquery.com/category/events/">jQuery Events</a>
-			</li>
-		</ul>
+	<h3>Resources</h3>
+	<ul>
+		<li><a href="http://api.jquery.com/category/events/">jQuery Events</a></li>
+		<li><a href="4events.teacher.html">Classic JavaScript Events</a></li>
+	</ul>
+	
+	<h3>Live demo</h3>
+	<a href="javascript:;">Dumb link</a><br>
+	<a href="#">Dumb link as #</a><br>
+	<a href="javascript:;" onclick="clickLog()">Click event using HTML attribute JavaScript</a><br>
+	<a href="javascript:;" id="click">Click event using traditional JS binding</a><br>
+	<a href="javascript:;" id="hover">Hover event</a><br>
+	
+	<form action="http://vanarts.com/" id="submit">
+		<input type="text" value="Blur/focus events" id="blur"><br>
+		<input type="text" value="Keyboard events" id="keyboard"><br>
+	
+		<input type="submit" value="Submit event">
+		<input type="button" value="Button not submit button" id="btn">
+	</form>
 
-		<h3>Live demo</h3>
-		<a href="javascript:;">Dumb link</a><br />
-		<a href="#">Dumb link as #</a><br />
-		<a href="javascript:;" onclick="clickLog()"
-			>Click event using HTML attribute JavaScript</a
-		><br />
-		<a href="javascript:;" id="click"
-			>Click event using traditional JS binding</a
-		><br />
-		<a href="javascript:;" id="hover">Hover event</a><br />
+<!-- Attach jQuery library -->
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- Page specific code -->
+<script>
+	const clickLog = () => {
+		console.log('hello click');
+	};
+	
+	// tradition JS binding
+	// document.getElementById('click').onclick = clickLog; // named function
+	// jQuery event binding
+	$('#click').on('click', clickLog);
+	$('#click').click(clickLog);
 
-		<form action="http://vanarts.com/" id="submit">
-			<input type="text" value="Blur/focus events" id="blur" /><br />
-			<input type="text" value="Keyboard events" id="keyboard" /><br />
+	// todo inclass convert classic JavaScript to jQuery events
 
-			<input type="submit" value="Submit event" />
-			<input type="button" value="Button not submit button" id="btn" />
-		</form>
+	// https://stackoverflow.com/questions/38650315/why-window-load-is-not-working-in-jquery
+	$(window).on('load', () => {
+		console.log('Load event - all the HTML in the document has rendered');
+	});
 
-		<!-- Attach jQuery library -->
-		<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-		<!-- Page specific code -->
-		<script>
-			function clickLog() {
-				console.log("hello click");
-			}
+	$('#hover').hover(function () {
+		console.log('Hover in event');
+		$(this).addClass('hover');
+	}, function () {
+		console.log('Hover out event');
+		$(this).removeClass('hover');
+	});
 
-			// tradition JS binding
-			// document.getElementById('click').onclick = clickLog; // named function
-			// jQuery event binding
-			$("#hover").mouseover(() => {
-				console.log("Mouse over event");
-				this.className = "hover"; // add class
-			});
-			$("#hover").mouseout(() => {
-				console.log("Mouse out event");
-				this.className = ""; // remove class
-			});
+	$('#blur')
+		.blur(function () {
+			$(this).val('Blur');
+			console.log('Blur');
+		})
+		.focus(function () {
+			$(this).val('Focus');
+			console.log('Focus');
+		});
 
-			$("#click").on("click", clickLog);
-			$("#click").click(clickLog);
-			$("#blur").blur(function() {
-				// this.value = "Blur";
-				console.log("Blur");
-			});
-			$("#blur").focus(() => {
-				this.value = "Focus";
-				console.log("Focus");
-			});
-			$("#keyboard").keydown(() => {
-				console.log("Key Down");
-			});
-			$("#keyboard").keyup(() => {
-				console.log("Key Up");
-			});
-			$("#keyboard").keypress(() => {
-				console.log(
-					"Key Press (Chrome not triggered by arrows. FF or Chrome not Ctrl, Shift, Alt)"
-				);
-			});
+	$('#keyboard')
+		.keydown(() => {
+			console.log('Key Down');
+		})
+		.keyup(() => {
+			console.log('Key Up');
+		})
+		.keypress(() => {
+			console.log('Key Press (Chrome not triggered by arrows. FF or Chrome not Ctrl, Shift, Alt)');
+		});
 
-			$("#submit").onsubmit = () => {
-				console.log("Submit");
-				return false;
-			};
-			$("#btn").onclick = clickLog;
+	$('#submit').submit((event) => {
+		console.log('Submit');
 
-			// todo inclass convert classic JavaScript to jQuery events
-		</script>
-	</body>
-</html>
+		// cancels form action; prevents form submission
+		event.preventDefault();
+	});
+
+	$('#btn').click(clickLog);
+</script>
+</body></html>

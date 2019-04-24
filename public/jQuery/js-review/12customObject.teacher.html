@@ -1,63 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>object custom</title>
-	</head>
+<head>
+<meta charset="utf-8">
+	<title>object custom</title>
+</head>
 
-	<body>
-		<h1>Variable Types</h1>
-		<h2>Custom Object</h2>
-
-		<h3>Goal</h3>
-		<p>Better understand the different between methods and properties</p>
-
-		<h3>Technologies</h3>
-		<ul>
-			<li>JavaScript</li>
-		</ul>
-
-		<h3>Live demo</h3>
-		<script>
-			const pizza = {
-				toppings: "", // property (var toppings = '';)
-				crust: "",
-				addCrust: function(newCrust) {
-					if (this.crust === "") {
-						this.crust = newCrust;
-					} else {
-						this.crust += ", " + newCrust;
-					}
-				},
-				addTopping: function(newTopping) {
-					// method
-					// this is relative to the owner of the method, which is the object 'pizza'
-
-					if (this.toppings === "") {
-						// compares value and variable type 'true' is NOT equal to true
-						this.toppings = newTopping;
-					} else {
-						// this.toppings = this.toppings + ', ' + newTopping;
-						this.toppings += ", " + newTopping; // shortcut
-					}
+<body>
+	<h1>Variable Types</h1>
+	<h2>Custom Object</h2>
+	
+	<h3>Goal</h3>
+	<p>Better understand the different between methods and properties</p>
+	
+	<h3>Technologies</h3>
+	<ul>
+		<li>JavaScript</li>
+	</ul>
+	
+	<h3>Live demo</h3>
+	<script>
+		const pizza = {
+			toppings: '', // property (const toppings = '';)
+			addTopping: function (newTopping) { // method
+				// this is relative to the owner of the method, which is the object 'pizza'
+				
+				if (this.toppings === '') { // compares value and variable type 'true' is NOT equal to true
+					this.toppings = newTopping;
+				} else {
+					// this.toppings = this.toppings + ', ' + newTopping;
+					this.toppings += ', ' + newTopping; // shortcut
 				}
-			};
+			},
+			addCrust: function (newCrust) {
+				this.crust = newCrust;
+			},
+		};
+		
+		pizza.addTopping('tomato sauce');
+		pizza.addTopping('cheese');
+		
+		console.log('I will eat a pizza with ' + pizza.toppings );
 
-			pizza.addTopping("tomato sauce");
-			pizza.addTopping("cheese");
-			pizza.addCrust("white bread");
-			pizza.addCrust("multigrain");
-
-			console.log(
-				`I will eat a pizza with ${pizza.toppings} and ${pizza.crust}.`
-			);
-
-			//todo inclass: Add the addCrust method and add the crust property to the pizza object
-			/* pseudo code
+		//todo inclass: Add the addCrust method and add the crust property to the pizza object
+		/* pseudo code
 			method is a function; often with multiple lines of code; reusable; changing a value or computing
 			property is a value (string, number, boolean, array, object)
 			if statement has not been taught so the solution does NOT need the use of ifs
 		*/
-		</script>
-	</body>
+		// SOLUTION
+		pizza.addCrust('thin');
+		console.log(`I will eat a pizza with ${pizza.toppings} toppinds on a ${pizza.crust} crust.`);
+	</script>
+
+</body>
 </html>

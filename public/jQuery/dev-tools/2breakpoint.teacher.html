@@ -20,13 +20,24 @@
 	</ul>
 
 	<h3>Live demo</h3>
+	<img src="breakpoint-result-console.PNG">
 	<script>
 		let day = 'Wednesday';
 		day = 'Not Wed';
 		debugger; // programmatically set a breakpoint
 		day = 'Third change';
 		day = 'Fourth change';
-		console.log(day); // todo inclass: output "Hello World" by using a breakpoint and console to overwrite this variable without editing code
+		console.log(day);
+		// todo inclass: output "Hello World" by using a breakpoint and 
+		// console to overwrite this variable without editing code
+		// hint: use the debugger in dev tool
+
+		const closure = () => {
+			const sum = 1 + 1;
+			debugger;
+			return sum;
+		};
+		closure();
 	</script>
 </body>
 </html>
