@@ -1,4 +1,4 @@
-const { IncomingWebhook, RTMClient } = require('@slack/client');
+const { IncomingWebhook } = require('@slack/webhook');
 
 const { calculatePercent } = require('./js/assessment');
 const course = require('../course.json');
@@ -77,30 +77,6 @@ ${additionalNote}`;
         }
 
         return { message };
-      },
-    });
-
-    server.route({
-      method: 'GET',
-      path: '/api/teacheraid/play2',
-      handler: async () => {
-        const rtm = new RTMClient(credentials.slack.bot_token);
-        rtm.start();
-
-        const JESSICA = 'DD6BKBBPW';
-        // add scope https://api.slack.com/apps/ as permissions
-
-        // discover channel id
-        // https://stackoverflow.com/questions/40940327/what-is-the-simplest-way-to-find-a-slack-team-id-and-a-channel-id#40965105
-        // const conversationId = 'GFLJPLLAU';
-        const conversationId = JESSICA;
-
-        try {
-          const res = await rtm.sendMessage('Hi, I am testing a Slack bot', conversationId);
-          return { message: res.ts };
-        } catch (error) {
-          return { error };
-        }
       },
     });
   },
