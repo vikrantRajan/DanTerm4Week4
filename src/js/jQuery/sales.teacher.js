@@ -3,8 +3,8 @@
 const pizzaSales = () => {
   console.log(salesTaxData.provinces.BC.name);
 
-  $.each(salesTaxData.provinces, (key, value) => {
-    console.log(`Key is ${key} and value is ${value}.`);
+  $.each(salesTaxData.provinces, (abbr, province) => {
+    console.log(`Key is ${abbr} and value is ${province.name}.`); // Solution #2
   });
 };
 
