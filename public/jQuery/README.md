@@ -44,5 +44,11 @@
 				* Project source files (`/src/*`)
 				* Project public files (`/public/*`)
 				* **Plus your homework files**
+		* Send me the details of your assignment to me via [Slack](https://domaindesign.slack.com/):
+			* GitHub repository address (GIT or HTTPS i.e. git@github.com:VanArts/student-name-api-final.git )
+			* Developer facing HTML address on GitHub ( i.e. https://github.com/VanArts/course-files/blob/master/public/social-apis/math/1calculator.html#L21 )
+			* Developer facing JavaScript address on GitHub ( i.e. https://github.com/VanArts/course-files/blob/master/src/js/math/calculator.teacher.js )
+			* User facing HTML address on Localhost ( http://localhost:8000/final.html )
+
 	* [JSFiddle](https://jsfiddle.net/)
 	* [Codepen](https://codepen.io/pen/)
