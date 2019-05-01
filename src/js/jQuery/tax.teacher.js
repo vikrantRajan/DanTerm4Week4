@@ -16,15 +16,16 @@ const pizzaSales = () => {
     $('#provinces').append(`<option value="${totalTax}">${province.name}</option>`);
   });
 
-  $('#provinces').change(function provinceClick() {
+  $('#provinces,#price').change(() => {
     const pizzaPriceValue = $('#price').val();
     const pizzaPrice = (pizzaPriceValue === '') ? 0 : Number(pizzaPriceValue);
-    const salesTax = Number($(this).val());
+    const salesTax = Number($('#provinces').val());
 
-    const totalPrice = pizzaPrice * (salesTax + 1);
+    const totalPrice = (pizzaPrice * salesTax) + pizzaPrice;
 
     $('#pizzaCost').html(totalPrice);
   });
+  // todo inclass both province dropdown and price text fields should update the cost
 };
 
 // If Node.js then export as public
