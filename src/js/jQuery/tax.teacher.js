@@ -10,6 +10,14 @@ const calculateTotalTax = (provinceAbbr) => {
   return totalTax.toFixed(2);
 };
 
+const formatCurrency = price => `$${price.toFixed(2)}`;
+
+// const formatCurrencyConcat = price => '$' + price.toFixed(2);
+
+// const formatCurrencyLong = (price) => {
+//   return `$${price.toFixed(2)}`;
+// };
+
 const displayCost = () => {
   const pizzaPriceValue = $('#price').val();
   const pizzaPrice = (pizzaPriceValue === '') ? 0 : Number(pizzaPriceValue);
@@ -17,7 +25,7 @@ const displayCost = () => {
 
   const totalPrice = (pizzaPrice * salesTax) + pizzaPrice;
 
-  $('#pizzaCost').html(totalPrice);
+  $('#pizzaCost').html(formatCurrency(totalPrice));
 };
 
 const pizzaSales = () => {
