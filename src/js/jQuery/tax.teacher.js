@@ -10,22 +10,26 @@ const calculateTotalTax = (provinceAbbr) => {
   return totalTax.toFixed(2);
 };
 
+const displayCost = ($provinces) => {
+  const pizzaPriceValue = $('#price').val();
+  const pizzaPrice = (pizzaPriceValue === '') ? 0 : Number(pizzaPriceValue);
+  const salesTax = Number($provinces.val());
+
+  const totalPrice = (pizzaPrice * salesTax) + pizzaPrice;
+
+  $('#pizzaCost').html(totalPrice);
+};
+
 const pizzaSales = () => {
   $.each(salesTaxData.provinces, (abbr, province) => {
     const totalTax = calculateTotalTax(abbr);
     $('#provinces').append(`<option value="${totalTax}">${province.name}</option>`);
   });
 
-  $('#provinces,#price').change(() => {
-    const pizzaPriceValue = $('#price').val();
-    const pizzaPrice = (pizzaPriceValue === '') ? 0 : Number(pizzaPriceValue);
-    const salesTax = Number($('#provinces').val());
-
-    const totalPrice = (pizzaPrice * salesTax) + pizzaPrice;
-
-    $('#pizzaCost').html(totalPrice);
+  $('#provinces').change(function changeProvince() {
+    displayCost($(this));
   });
-  // todo inclass both province dropdown and price text fields should update the cost
+  $('#price').change(() => displayCost($('#provinces')));
 };
 
 // If Node.js then export as public
