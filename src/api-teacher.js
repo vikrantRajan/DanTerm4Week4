@@ -50,7 +50,7 @@ exports.plugin = {
       },
     });
 
-    const perStudentMessage = (student) => {
+    const buildMessage = (student) => {
       const homeworkMark = course.assessment[student].homework;
       const { latestNote } = course.assessment[student];
       const additionalNote = (latestNote) ? `Additional notes: ${latestNote}` : '';
@@ -64,23 +64,34 @@ ${additionalNote}`;
       return message;
     };
 
+    const sendSlackMessage = async ({ student, webhook }) => {
+      // Send simple text to the webhook channel
+      const { error } = await webhook.send(buildMessage(student));
+
+      if (error) {
+        return { error };
+      }
+
+      return { message: `Message sent to ${student} see play channel in Slack` };
+    };
+
     server.route({
       method: 'GET',
       path: '/api/teacheraid/play',
-      handler: async (request) => {
+      handler: (request) => {
         const webhookUrl = credentials.slack.webhook;
         const webhook = new IncomingWebhook(webhookUrl);
 
         const { student } = request.query;
 
-        // Send simple text to the webhook channel
-        const { error } = await webhook.send(perStudentMessage(student));
-
-        if (error) {
-          return { error };
+        if (student) {
+          return sendSlackMessage({
+            student,
+            webhook,
+          });
         }
 
-        return { message: `Message sent to ${student} see play channel in Slack` };
+        return { error: 'Missing student key' };
       },
     });
   },
