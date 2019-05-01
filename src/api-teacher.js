@@ -50,12 +50,13 @@ exports.plugin = {
       },
     });
 
-    const buildMessage = (student) => {
-      const homeworkMark = course.assessment[student].homework;
-      const { latestNote } = course.assessment[student];
+    const buildMessage = (studentKey) => {
+      const student = course.assessment.students[studentKey];
+      const homeworkMark = student.homework;
+      const { latestNote } = student;
       const additionalNote = (latestNote) ? `Additional notes: ${latestNote}` : '';
 
-      const message = `Copy to ${student}
+      const message = `Copy to ${studentKey}
 Class ${course.assessment.classNumber} - Homework mark update ${JSON.stringify(homeworkMark)}
 Your homework allocation is ${calculatePercent(homeworkMark)}%
 Documentation https://github.com/VanArts/course-files/tree/master/public/jQuery#assessment
@@ -78,20 +79,24 @@ ${additionalNote}`;
     server.route({
       method: 'GET',
       path: '/api/teacheraid/play',
-      handler: (request) => {
+      handler: async (request) => {
         const webhookUrl = credentials.slack.webhook;
         const webhook = new IncomingWebhook(webhookUrl);
 
-        const { student } = request.query;
+        const { student: studentRaw } = request.query;
 
-        if (student) {
+        if (studentRaw) {
           return sendSlackMessage({
-            student,
+            student: studentRaw,
             webhook,
           });
         }
 
-        return { error: 'Missing student key' };
+        const studentNames = Object.keys(course.assessment.students);
+        return Promise.all(studentNames.map(async student => sendSlackMessage({
+          student,
+          webhook,
+        })));
       },
     });
   },
