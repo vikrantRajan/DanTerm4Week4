@@ -10,10 +10,10 @@ const calculateTotalTax = (provinceAbbr) => {
   return totalTax.toFixed(2);
 };
 
-const displayCost = ($provinces) => {
+const displayCost = () => {
   const pizzaPriceValue = $('#price').val();
   const pizzaPrice = (pizzaPriceValue === '') ? 0 : Number(pizzaPriceValue);
-  const salesTax = Number($provinces.val());
+  const salesTax = Number($('#provinces').val());
 
   const totalPrice = (pizzaPrice * salesTax) + pizzaPrice;
 
@@ -26,10 +26,7 @@ const pizzaSales = () => {
     $('#provinces').append(`<option value="${totalTax}">${province.name}</option>`);
   });
 
-  $('#provinces').change(function changeProvince() {
-    displayCost($(this));
-  });
-  $('#price').change(() => displayCost($('#provinces')));
+  $('#provinces,#price').change(displayCost);
 };
 
 // If Node.js then export as public
