@@ -28,11 +28,22 @@ const displayCost = () => {
   $('#pizzaCost').html(formatCurrency(totalPrice));
 };
 
-const pizzaSales = () => {
-  $.each(salesTaxData.provinces, (abbr, province) => {
+const populateProvincesDropdown = (data) => {
+  $.each(data.provinces, (abbr, province) => {
     const totalTax = calculateTotalTax(abbr);
     $('#provinces').append(`<option value="${totalTax}">${province.name}</option>`);
   });
+};
+
+const pizzaSales = (isAjax) => {
+  if (isAjax) {
+    $.ajax({
+      url: 'http://localhost:8080/jquery/tax/rates.json',
+      success: response => populateProvincesDropdown(response),
+    });
+  } else {
+    populateProvincesDropdown(salesTaxData);
+  }
 
   $('#provinces,#price').change(displayCost);
 };
