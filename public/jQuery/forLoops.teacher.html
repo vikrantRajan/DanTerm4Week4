@@ -28,8 +28,9 @@
 	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<!-- Page specific code -->
 	<script>
-		var animals = ['Antelope', 'Bison', 'Cariboo', 'Deer', 'Elk'];
-		var produce = {
+		const animals = ['Antelope', 'Bison', 'Cariboo', 'Deer', 'Elk'];
+		const produce = {
+			Zucchini: 'fruit',
 			Apple: 'fruit',
 			Beet: 'vegetable',
 			Celery: 'vegetable',
@@ -54,8 +55,8 @@
 
 		// JavaScript loops
 		// Array
-		animals.forEach((animal) => {
-			$('body').append(`Animal is ${animal}.<br>`);
+		animals.forEach((value, index) => {
+			$('body').append(`Animal number ${index} is ${value}.<br>`);
 		});
 		
 		// Object

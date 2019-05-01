@@ -1,4 +1,4 @@
-const { IncomingWebhook, RTMClient } = require('@slack/client');
+const { IncomingWebhook } = require('@slack/webhook');
 
 const { calculatePercent } = require('./js/assessment');
 const course = require('../course.json');
@@ -50,6 +50,32 @@ exports.plugin = {
       },
     });
 
+    const buildMessage = (studentKey) => {
+      const student = course.assessment.students[studentKey];
+      const homeworkMark = student.homework;
+      const { latestNote } = student;
+      const additionalNote = (latestNote) ? `Additional notes: ${latestNote}` : '';
+
+      const message = `Copy to ${studentKey}
+Class ${course.assessment.classNumber} - Homework mark update ${JSON.stringify(homeworkMark)}
+Your homework allocation is ${calculatePercent(homeworkMark)}%
+Documentation https://github.com/VanArts/course-files/tree/master/public/jQuery#assessment
+${additionalNote}`;
+
+      return message;
+    };
+
+    const sendSlackMessage = async ({ student, webhook }) => {
+      // Send simple text to the webhook channel
+      const { error } = await webhook.send(buildMessage(student));
+
+      if (error) {
+        return { error };
+      }
+
+      return { message: `Message sent to ${student} see play channel in Slack` };
+    };
+
     server.route({
       method: 'GET',
       path: '/api/teacheraid/play',
@@ -57,50 +83,20 @@ exports.plugin = {
         const webhookUrl = credentials.slack.webhook;
         const webhook = new IncomingWebhook(webhookUrl);
 
-        const { student } = request.query;
+        const { student: studentRaw } = request.query;
 
-        const homeworkMark = course.assessment[student].homework;
-        const { latestNote } = course.assessment[student];
-        const additionalNote = (latestNote) ? `Additional notes: ${latestNote}` : '';
-
-        const message = `Copy to ${student}
-Class ${course.assessment.classNumber} - Homework mark update ${JSON.stringify(homeworkMark)}
-Your homework allocation is ${calculatePercent(homeworkMark)}%
-Documentation https://github.com/VanArts/course-files/tree/master/public/jQuery#assessment
-${additionalNote}`;
-
-        // Send simple text to the webhook channel
-        const { error } = await webhook.send(message);
-
-        if (error) {
-          return { error };
+        if (studentRaw) {
+          return sendSlackMessage({
+            student: studentRaw,
+            webhook,
+          });
         }
 
-        return { message };
-      },
-    });
-
-    server.route({
-      method: 'GET',
-      path: '/api/teacheraid/play2',
-      handler: async () => {
-        const rtm = new RTMClient(credentials.slack.bot_token);
-        rtm.start();
-
-        const JESSICA = 'DD6BKBBPW';
-        // add scope https://api.slack.com/apps/ as permissions
-
-        // discover channel id
-        // https://stackoverflow.com/questions/40940327/what-is-the-simplest-way-to-find-a-slack-team-id-and-a-channel-id#40965105
-        // const conversationId = 'GFLJPLLAU';
-        const conversationId = JESSICA;
-
-        try {
-          const res = await rtm.sendMessage('Hi, I am testing a Slack bot', conversationId);
-          return { message: res.ts };
-        } catch (error) {
-          return { error };
-        }
+        const studentNames = Object.keys(course.assessment.students);
+        return Promise.all(studentNames.map(async student => sendSlackMessage({
+          student,
+          webhook,
+        })));
       },
     });
   },
