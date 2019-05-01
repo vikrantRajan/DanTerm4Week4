@@ -17,8 +17,13 @@ const pizzaSales = () => {
   });
 
   $('#provinces').change(function provinceClick() {
-    // #4 in progress. Improve the event and add values for the province <options>
-    console.log('Province selected', $(this).val());
+    const pizzaPriceValue = $('#price').val();
+    const pizzaPrice = (pizzaPriceValue === '') ? 0 : Number(pizzaPriceValue);
+    const salesTax = Number($(this).val());
+
+    const totalPrice = pizzaPrice * (salesTax + 1);
+
+    $('#pizzaCost').html(totalPrice);
   });
 };
 
