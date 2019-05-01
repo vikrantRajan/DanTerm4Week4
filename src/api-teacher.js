@@ -50,6 +50,20 @@ exports.plugin = {
       },
     });
 
+    const perStudentMessage = (student) => {
+      const homeworkMark = course.assessment[student].homework;
+      const { latestNote } = course.assessment[student];
+      const additionalNote = (latestNote) ? `Additional notes: ${latestNote}` : '';
+
+      const message = `Copy to ${student}
+Class ${course.assessment.classNumber} - Homework mark update ${JSON.stringify(homeworkMark)}
+Your homework allocation is ${calculatePercent(homeworkMark)}%
+Documentation https://github.com/VanArts/course-files/tree/master/public/jQuery#assessment
+${additionalNote}`;
+
+      return message;
+    };
+
     server.route({
       method: 'GET',
       path: '/api/teacheraid/play',
@@ -59,24 +73,14 @@ exports.plugin = {
 
         const { student } = request.query;
 
-        const homeworkMark = course.assessment[student].homework;
-        const { latestNote } = course.assessment[student];
-        const additionalNote = (latestNote) ? `Additional notes: ${latestNote}` : '';
-
-        const message = `Copy to ${student}
-Class ${course.assessment.classNumber} - Homework mark update ${JSON.stringify(homeworkMark)}
-Your homework allocation is ${calculatePercent(homeworkMark)}%
-Documentation https://github.com/VanArts/course-files/tree/master/public/jQuery#assessment
-${additionalNote}`;
-
         // Send simple text to the webhook channel
-        const { error } = await webhook.send(message);
+        const { error } = await webhook.send(perStudentMessage(student));
 
         if (error) {
           return { error };
         }
 
-        return { message };
+        return { message: `Message sent to ${student} see play channel in Slack` };
       },
     });
   },
