@@ -99,5 +99,14 @@ ${additionalNote}`;
         })));
       },
     });
+
+    // Choose Web API
+    // https://medium.com/slack-developer-blog/getting-started-with-slacks-apis-f930c73fc889
+
+    // Auth token
+    // https://github.com/slackapi/node-slack-sdk/blob/master/docs/_main/getting_started.md#getting-a-token-to-use-the-web-api
+
+    // Scope for bot sending message
+    // https://api.slack.com/scopes/chat:write:bot
   },
 };
