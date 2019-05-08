@@ -1,10 +1,10 @@
 /* global salesTaxData */
 
-const calculateTotalTax = (provinceAbbr) => {
-  let totalTax = salesTaxData.provinces[provinceAbbr].taxes[0].tax;
+const calculateTotalTax = (provinceAbbr, data) => {
+  let totalTax = data.provinces[provinceAbbr].taxes[0].tax;
 
-  if (salesTaxData.provinces[provinceAbbr].taxes[1]) {
-    totalTax += salesTaxData.provinces[provinceAbbr].taxes[1].tax;
+  if (data.provinces[provinceAbbr].taxes[1]) {
+    totalTax += data.provinces[provinceAbbr].taxes[1].tax;
   }
 
   return totalTax.toFixed(2);
@@ -30,7 +30,7 @@ const displayCost = () => {
 
 const populateProvincesDropdown = (data) => {
   $.each(data.provinces, (abbr, province) => {
-    const totalTax = calculateTotalTax(abbr);
+    const totalTax = calculateTotalTax(abbr, data);
     $('#provinces').append(`<option value="${totalTax}">${province.name}</option>`);
   });
 };
