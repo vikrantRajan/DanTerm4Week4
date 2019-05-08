@@ -37,9 +37,15 @@ const populateProvincesDropdown = (data) => {
 
 const pizzaSales = (isAjax) => {
   if (isAjax) {
+    const url = 'rates.json';
+
     $.ajax({
-      url: 'http://localhost:8080/jquery/tax/rates.json',
+      url,
       success: response => populateProvincesDropdown(response),
+      error: (jqXHR, textStatus, errorMessage) => {
+        console.log('AJAX error', errorMessage, 'while requesting', url);
+        $('#provinces').append('<option value="0">Unable to populate provinces, try again</option>');
+      },
     });
   } else {
     populateProvincesDropdown(salesTaxData);
