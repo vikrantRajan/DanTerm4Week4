@@ -1,10 +1,20 @@
+const populateFruitList = (fruits) => {
+  let html = '';
+
+  $.each(fruits, (fruit, colour) => {
+    html += `<li>${fruit} + ${colour}</li>`;
+  });
+
+  $('#fruits').append(html);
+};
+
 const getFruitItems = () => {
   // get JSON from fruit route
 
   $.ajax({
     url: '/api/fruit',
     success: (response) => {
-      console.log('JSON received', response);
+      populateFruitList(response);
     },
     error: (x, xx, errorMessage) => {
       console.log('AJAX error', errorMessage);
