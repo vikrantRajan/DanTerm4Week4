@@ -1,8 +1,15 @@
+const hideSpinner = () => {
+  // $(selector).method();
+  // display none
+
+  $('#fruits > li').css('display', 'none');
+};
+
 const populateFruitList = (fruits) => {
   let html = '';
 
   $.each(fruits, (fruit, colour) => {
-    html += `<li>${fruit} + ${colour}</li>`;
+    html += `<li style="background: ${colour};">${fruit}</li>`;
   });
 
   $('#fruits').append(html);
@@ -12,11 +19,13 @@ const getFruitItems = () => {
   // get JSON from fruit route
 
   $.ajax({
-    url: '/api/fruit',
+    url: '/api/slow-fruit',
     success: (response) => {
+      hideSpinner();
       populateFruitList(response);
     },
     error: (x, xx, errorMessage) => {
+      hideSpinner();
       console.log('AJAX error', errorMessage);
     },
   });
