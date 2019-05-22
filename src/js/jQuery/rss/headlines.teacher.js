@@ -12,6 +12,7 @@ const newsHeadlines = () => {
         // <item>
         //   <title attr="">...</title>
         //   <link>...</link>
+        //   <description>...</description>
         // </item>
         const description = $(item).find('description').text();
         const link = $(item).find('link').text();
