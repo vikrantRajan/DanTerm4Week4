@@ -1,13 +1,46 @@
+const https = require('https');
+const http = require('http');
 const { IncomingWebhook } = require('@slack/webhook');
 
 const { calculatePercent } = require('./js/assessment');
 const course = require('../course.json');
 const credentials = require('../credentials.json');
+const { print } = require('./js/utils.teacher');
 
 exports.plugin = {
   name: 'api',
   version: '1.3.0',
   register: (server) => {
+    server.route({
+      method: 'GET',
+      path: '/api/rss',
+      handler: (request, reply) => new Promise((resolve) => {
+        const url = request.query.url || 'https://www.cbc.ca/cmlink/rss-canada';
+        const isSSL = (url.substring(0, 5) === 'https');
+        const httpRequest = (isSSL) ? https : http;
+
+        print(`Getting ${url} via ${isSSL ? 'https' : 'http'}`);
+
+        httpRequest.get(url, (response) => {
+          let body = '';
+
+          if (response.statusCode === 200) {
+            // Continuously update stream with data
+            response.on('data', (data) => {
+              body += data;
+            });
+            response.on('end', () => {
+              resolve(reply.response(body).type('application/xml'));
+            });
+          } else {
+            resolve(reply.response(`Service call failed with HTTP status code: ${response.statusCode}`));
+          }
+        }).on('error', (e) => {
+          resolve(reply.response(`Service call failed due to error: ${e.message}`));
+        });
+      }),
+    });
+
     server.route({
       method: 'GET',
       path: '/api/slow-fruit',
@@ -99,5 +132,14 @@ ${additionalNote}`;
         })));
       },
     });
+
+    // Choose Web API
+    // https://medium.com/slack-developer-blog/getting-started-with-slacks-apis-f930c73fc889
+
+    // Auth token
+    // https://github.com/slackapi/node-slack-sdk/blob/master/docs/_main/getting_started.md#getting-a-token-to-use-the-web-api
+
+    // Scope for bot sending message
+    // https://api.slack.com/scopes/chat:write:bot
   },
 };

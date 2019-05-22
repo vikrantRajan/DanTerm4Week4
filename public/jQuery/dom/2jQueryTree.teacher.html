@@ -4,6 +4,11 @@
 	<meta charset="utf-8">
 	<title>jQuery DOM tree</title>
 	<style>
+		/* SOLUTION */
+		.rule1 { font-style: italic; }
+		.rule2 { background-color: yellow; }
+		.rule3 { color: red; }
+		.rule4 { text-decoration: underline; }
 	</style>
 </head>
 <body>
@@ -61,8 +66,9 @@
 
 <!-- Attach jQuery library -->
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-<!-- Page specific code -->
-<script>
-</script>
+<!-- Attach all the bundles JavaScript files in /src/js -->
+<script src="/js/critical.js"></script>
+<!-- Execute page specific function -->
+<script>traverseDom();</script>
 
 </body></html>
