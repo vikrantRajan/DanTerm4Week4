@@ -1,6 +1,10 @@
 const bindDomAutocomplete = () => {
   $('#country').keyup(function countryKey() {
-    console.log($(this).val());
+    const keyword = $(this).val();
+
+    // todo inclass #2 make an AJAX call to autocomplete backend service
+    // and display the results in the DOM
+    $('#suggestion').html(`<li>${keyword}</li>`);
   });
 };
 
