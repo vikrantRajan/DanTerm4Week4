@@ -1,4 +1,4 @@
-/* global salesTaxData */
+/* global salesTaxData, utils */
 
 const calculateTotalTax = (provinceAbbr, data) => {
   let totalTax = data.provinces[provinceAbbr].taxes[0].tax;
@@ -43,7 +43,7 @@ const pizzaSales = (isAjax) => {
       url,
       success: response => populateProvincesDropdown(response),
       error: (jqXHR, textStatus, errorMessage) => {
-        console.log('AJAX error', errorMessage, 'while requesting', url);
+        utils.print('AJAX error', errorMessage, 'while requesting', url);
         $('#provinces').append('<option value="0">Unable to populate provinces, try again</option>');
       },
     });

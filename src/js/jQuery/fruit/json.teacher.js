@@ -1,3 +1,5 @@
+/* global utils */
+
 const hideSpinner = () => {
   // $(selector).method();
   // display none
@@ -26,7 +28,7 @@ const getFruitItems = () => {
     },
     error: (x, xx, errorMessage) => {
       hideSpinner();
-      console.log('AJAX error', errorMessage);
+      utils.print('AJAX error', errorMessage);
     },
   });
 };
