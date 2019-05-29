@@ -53,7 +53,7 @@ exports.plugin = {
       places.push('Croatia');
       places.push('Cuba');
       places.push('Cyprus');
-      places.push('Czech Republic');
+      places.push('Czechia');
 
       const items = places.filter(place => place.toLowerCase().includes(keyword.toLowerCase()));
 
@@ -77,6 +77,7 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/rss',
+      // handler: ({ query: { url } }, reply) => new Promise((resolve) => {
       handler: (request, reply) => new Promise((resolve) => {
         const url = request.query.url || 'https://www.cbc.ca/cmlink/rss-canada';
         const isSSL = (url.substring(0, 5) === 'https');
