@@ -11,6 +11,69 @@ exports.plugin = {
   name: 'api',
   version: '1.3.0',
   register: (server) => {
+    // keyword is a new variable, when undefined set to blank.
+    // keyword is in an object with a parent property query
+    const autocompleteHandler = ({ query: { keyword = '' } }) => {
+      // keyword is either blank or a string value
+      const DELAY = 1500; // 1.5 sec
+      const places = [];
+
+      places.push('Afghanistan');
+      places.push('Albania');
+      places.push('Algeria');
+      places.push('American Samoa');
+      places.push('Antarctica');
+      places.push('Argentina');
+      places.push('Armenia');
+      places.push('Aruba');
+      places.push('Australia');
+      places.push('Austria');
+      places.push('Bahamas');
+      places.push('Bangladesh');
+      places.push('Barbados');
+      places.push('Belarus');
+      places.push('Belgium');
+      places.push('Belize');
+      places.push('Bermuda');
+      places.push('Bolivia');
+      places.push('Brazil');
+      places.push('Bulgaria');
+      places.push('Cambodia');
+      places.push('Cameroon');
+      places.push('Canada');
+      places.push('Cayman Islands');
+      places.push('Chad');
+      places.push('Chile');
+      places.push('China');
+      places.push('Colombia');
+      places.push('Congo');
+      places.push('Cook Islands');
+      places.push('Costa Rica');
+      places.push('Côte d\'Ivoire');
+      places.push('Croatia');
+      places.push('Cuba');
+      places.push('Cyprus');
+      places.push('Czech Republic');
+
+      const items = places.filter(place => place.toLowerCase().includes(keyword.toLowerCase()));
+
+      if (items.length === 0) {
+        items.push('No matches found');
+      }
+
+      // I promise to return the value when setTimeout resolves with the answer
+      return new Promise(resolve => setTimeout(resolve, DELAY, { items }));
+    };
+
+    // Node.js rule, exports must in the root. Not inside a function or closure
+    exports.autocompleteHandler = autocompleteHandler;
+
+    server.route({
+      method: 'GET',
+      path: '/api/autocomplete',
+      handler: autocompleteHandler,
+    });
+
     server.route({
       method: 'GET',
       path: '/api/rss',
