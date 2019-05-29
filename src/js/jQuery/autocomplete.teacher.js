@@ -11,7 +11,11 @@ const bindDomAutocomplete = () => {
     $('#suggestion').empty();
 
     $.ajax({
-      url: `/api/autocomplete?keyword=${keyword}`,
+      // url: `/api/autocomplete?keyword=${keyword}`,
+      url: '/api/autocomplete',
+      data: {
+        keyword,
+      },
       success: displayCountries,
     });
   });
