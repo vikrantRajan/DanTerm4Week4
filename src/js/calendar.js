@@ -69,7 +69,7 @@ function courseCalendar() {
   const firstDateApi = new Date(2019, 5, 5); // Jun 5
   const courseApi = createCourseSchedule('API')
     .setFirstClassDate(firstDateApi)
-    .setDaysBetweenClasses([7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]);
+    .setDaysBetweenClasses([7, 7, 7, 7, 7, 7, 7, 7, 7, 7]);
   const events = courseJq.getAllClasses().concat(courseApi.getAllClasses());
 
   // Update times specifically on weekend
