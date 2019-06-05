@@ -11,13 +11,14 @@ function formatCountries(countries) {
   // ES6 advanced code
   const html = countries.map(country => `<li>${country}</li>`);
 
-  displayCountries(html.join(''));
+  // const html = [<li>afg</li>, <li>can</li>]
+  displayCountries(html.join('')); // <li>afg</li><li>can</li>
 }
 
 function queryService(keyword) {
   $.ajax({
     url: '/api/autocomplete',
-    data: { keyword },
+    data: { keyword }, // /api/autocomplete?keyword=a
     success: (response) => {
       formatCountries(response.items);
     },
