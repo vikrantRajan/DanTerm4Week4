@@ -1,3 +1,5 @@
+/* global document */
+
 function displayCountries(output) {
   $('#country_suggestions').html(output).addClass('expanded');
 }
@@ -16,11 +18,16 @@ function formatCountries(countries) {
 }
 
 function queryService(keyword) {
+  document.querySelector('#spinner').setAttribute('class', ''); // show spinner
+
   $.ajax({
     url: '/api/autocomplete',
     data: { keyword }, // /api/autocomplete?keyword=a
     success: (response) => {
       formatCountries(response.items);
+
+      // jQuery $('#spinner').attr('class','hide');
+      document.querySelector('#spinner').setAttribute('class', 'hide'); // hide spinner
     },
   });
 }
