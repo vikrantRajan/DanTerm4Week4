@@ -1,4 +1,5 @@
 /* global document */
+let autocompletePosition = 0;
 
 function displayCountries(output) {
   $('#country_suggestions').html(output).addClass('expanded');
@@ -18,6 +19,7 @@ function formatCountries(countries) {
 }
 
 function queryService(keyword) {
+  autocompletePosition = 0; // reset the counter
   document.querySelector('#spinner').setAttribute('class', ''); // show spinner
 
   $.ajax({
@@ -39,6 +41,25 @@ const arrows = {
   down: 40,
 };
 
+function highlightCountry(direction) {
+  if (direction === 'down') {
+    autocompletePosition += 1;
+  } else if (direction === 'up') {
+    autocompletePosition -= 1;
+  }
+
+  // remove previous highlighted list item
+  // $('#country_suggestions .highlight').removeClass('highlight');
+  const previousHighlightDom = document.querySelector('#country_suggestions .highlight');
+  if (previousHighlightDom) previousHighlightDom.classList.remove('highlight');
+
+  const highlightValue = $(`#country_suggestions li:nth-child(${autocompletePosition})`)
+    .addClass('highlight')
+    .text();
+
+  $('#country_keywords').val(highlightValue);
+}
+
 function bindDomAutocomplete() {
   $('#country_keywords').keyup((event) => {
     const isIgnoredKey = (
@@ -51,11 +72,11 @@ function bindDomAutocomplete() {
     if (isIgnoredKey) {
       let direction = 0;
       if (event.which === arrows.up) {
-        direction = -1;
+        direction = 'up';
       }
 
       if (event.which === arrows.down) {
-        direction = 1;
+        direction = 'down';
       }
 
       highlightCountry(direction); // -1 up +1 down
