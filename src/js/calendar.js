@@ -18,6 +18,10 @@ function getDateEnd(date) {
   return `${getDateDay(date)} 12:17:00`;
 }
 
+function getDateEndLong(date) {
+  return `${getDateDay(date)} 12:35:00`;
+}
+
 function createCourseSchedule(courseTitle = 'Dan\'s class') {
   const classes = [];
   const weeklyClassInterval = Array(11).fill(7);
@@ -36,7 +40,7 @@ function createCourseSchedule(courseTitle = 'Dan\'s class') {
     getNextClass: () => {
       const day = getDateDay(nextDate);
       const start = getDateStart(nextDate);
-      const end = getDateEnd(nextDate);
+      const end = (courseTitle === 'jQuery') ? getDateEnd(nextDate) : getDateEndLong(nextDate);
       const title = `${courseTitle} ${(classCount - betweenClasses.length) + 1}`;
 
       const daysNextClass = betweenClasses.splice(0, 1);
