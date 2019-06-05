@@ -41,10 +41,24 @@ const arrows = {
 
 function bindDomAutocomplete() {
   $('#country_keywords').keyup((event) => {
-    if (event.which === arrows.up
+    const isIgnoredKey = (
+      event.which === arrows.up
       || event.which === arrows.down
       || event.which === arrows.left
-      || event.which === arrows.right) {
+      || event.which === arrows.right
+    );
+
+    if (isIgnoredKey) {
+      let direction = 0;
+      if (event.which === arrows.up) {
+        direction = -1;
+      }
+
+      if (event.which === arrows.down) {
+        direction = 1;
+      }
+
+      highlightCountry(direction); // -1 up +1 down
       return; // abort AJAX
     }
 
