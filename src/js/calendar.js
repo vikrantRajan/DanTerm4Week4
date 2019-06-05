@@ -40,7 +40,7 @@ function createCourseSchedule(courseTitle = 'Dan\'s class') {
     getNextClass: () => {
       const day = getDateDay(nextDate);
       const start = getDateStart(nextDate);
-      const end = (courseTitle === 'jQuery') ? getDateEnd(nextDate) : getDateEndLong(nextDate);
+      const end = (courseTitle === 'API') ? getDateEndLong(nextDate) : getDateEnd(nextDate);
       const title = `${courseTitle} ${(classCount - betweenClasses.length) + 1}`;
 
       const daysNextClass = betweenClasses.splice(0, 1);
@@ -73,7 +73,7 @@ function courseCalendar() {
   const firstDateApi = new Date(2019, 5, 5); // Jun 5
   const courseApi = createCourseSchedule('API')
     .setFirstClassDate(firstDateApi)
-    .setDaysBetweenClasses([7, 7, 7, 7, 7, 7, 7, 7, 7, 7]);
+    .setDaysBetweenClasses([7, 5, 2, 7, 7, 7, 7, 7, 7, 7]);
   const events = courseJq.getAllClasses().concat(courseApi.getAllClasses());
 
   // Update times specifically on weekend
