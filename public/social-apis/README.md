@@ -1,17 +1,16 @@
 # Third-Party APIs
 
 ## Outline
+1. Chess
 1. Node.js, CI, Unit Testing
 1. QR Code
 1. Flickr
-1. API
+1. API (Flickr cont.)
 1. Twitter
-1. Facebook
 1. Fetch
 1. Slippy Map
-1. MongoDB
-1. YouTube & Corporate Life
-1. Instagram
+1. React.js
+1. Last class
 
 ## Assessment
 
