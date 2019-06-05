@@ -32,8 +32,22 @@ function queryService(keyword) {
   });
 }
 
+const arrows = {
+  left: 37,
+  up: 38,
+  right: 39,
+  down: 40,
+};
+
 function bindDomAutocomplete() {
   $('#country_keywords').keyup((event) => {
+    if (event.which === arrows.up
+      || event.which === arrows.down
+      || event.which === arrows.left
+      || event.which === arrows.right) {
+      return; // abort AJAX
+    }
+
     const keyword = $(event.target).val();
     queryService(keyword);
   });
