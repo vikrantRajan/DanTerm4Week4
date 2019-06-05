@@ -1,14 +1,15 @@
 const displayCountries = (response) => {
   $.each(response.items, (x, country) => {
-    $('#suggestion').append(`<li>${country}</li>`);
+    $('#country_suggestions').append(`<li>${country}</li>`);
   });
+  $('#country_suggestions').addClass('expanded');
 };
 
 const bindDomAutocomplete = () => {
-  $('#country').keyup(function countryKey() {
+  $('#country_keywords').keyup(function countryKey() {
     const keyword = $(this).val();
 
-    $('#suggestion').empty();
+    $('#country_suggestions').empty();
 
     $.ajax({
       // url: `/api/autocomplete?keyword=${keyword}`,
