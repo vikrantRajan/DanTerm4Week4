@@ -50,7 +50,7 @@ describe('Calendar.js', () => {
     expect(lastClass.title).to.be('API 3');
     expect(lastClass.day).to.be('2017-09-20');
     expect(lastClass.start).to.be('2017-09-20 09:00:00');
-    expect(lastClass.end).to.be('2017-09-20 12:17:00');
+    expect(lastClass.end).to.be('2017-09-20 12:35:00');
 
     // immutable test
     expect(firstDate.toString()).to.be(new Date(2017, 8, 6).toString());

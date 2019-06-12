@@ -5,6 +5,19 @@
 	<title>Autocomplete Design Pattern</title>
 	<style>
 		.hide { display: none; }
+		/* SOLUTION */
+		#country_keywords, #country_suggestions { width: 200px; }
+		#country_suggestions.expanded {
+			border-width: 0 1px 1px 1px;
+			border-color: black;
+			border-style: solid;
+			box-shadow: 6px 10px 5px 6px #ccc;
+			margin-top: 0;
+			padding-left: 0;
+		}
+		#country_suggestions ul { margin: 0; padding: 0; }
+		#country_suggestions li { list-style-type: none; padding: 0 4px; }
+		.highlight { background-color: yellow; color: purple }
 	</style>
 </head>
 
@@ -18,7 +31,8 @@
 <h3>Sub-goal</h3>
 <ol>
 	<li>As a developer, listen to the text input and display its value in the suggestion container for every character typed.</li>
-	<li>As a developer, listen to the text input, pass the value to the autocomplete service, and output the response in the suggestion container.</li>
+	<li>As a developer, listen to the text input, get the autocomplete service <b>response (all countries)</b>, and output the response in the suggestion container.</li>
+	<li>As a developer, listen to the text input, <b>pass the value</b> to the autocomplete service, and output the <b>filtered</b> response in the suggestion container.</li>
 	<li>As a developer, I want the autocomplete suggestions to displayed as a bulleted list</li>
 	<li>As a developer, I want the autocomplete suggestions to be styled one per line with a surrounding outline with drop shadow.</li>
 	<li>As a user, I want to be notified when the autocomplete service is slow and forces me to wait</li>
@@ -39,6 +53,10 @@
 
 <h3>Live demo</h3>
 <p>What country do you want to visit?</p>
+
+<!-- SOLUTION -->
+<input type="text" id="country_keywords"><img id="spinner" src="spinner.gif" class="hide" alt="Wait for countries to load">
+<ul id="country_suggestions"></ul>
 
 <!-- Attach jQuery library -->
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>

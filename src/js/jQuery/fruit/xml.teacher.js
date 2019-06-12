@@ -1,8 +1,10 @@
+/* global utils */
+
 const fruitXml = () => {
   const options = {
     url: '/api/fruit?format=xml',
     success: (response) => {
-      console.log('XML', response);
+      utils.print('XML', response);
     },
   };
 

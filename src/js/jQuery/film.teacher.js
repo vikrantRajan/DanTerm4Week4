@@ -1,3 +1,5 @@
+/* global utils */
+
 const populateCharacterDropdown = (response) => {
   $.each(response.movies[0].abridged_cast, (index, value) => {
     const actorName = value.name;
@@ -17,7 +19,7 @@ const getFilmData = () => {
       populateCharacterDropdown(response);
     },
     error: (x, xx, errorMessage) => {
-      console.log('AJAX error', errorMessage);
+      utils.print('AJAX error', errorMessage);
     },
   });
 };
