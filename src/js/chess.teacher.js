@@ -1,8 +1,11 @@
 /* global document */
 
 const highlightPiece = function highlightPiece() {
+  // $('.highlight').removeClass('highlight');
   // $(this).addClass('highlight');
 
+  const previousHighlight = document.querySelector('.highlight');
+  if (previousHighlight) previousHighlight.classList.remove('highlight');
   this.classList.add('highlight');
 };
 
