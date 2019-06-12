@@ -7,15 +7,16 @@ const movePiece = (event) => {
     right: 39,
     down: 40,
   };
+  const $chessPiece = $('.highlight');
 
   if (event.which === arrow.left) {
-    console.log('left');
+    $chessPiece.css('left', '-=100px');
   } else if (event.which === arrow.up) {
-    console.log('up');
+    $chessPiece.css('top', '-=100px');
   } else if (event.which === arrow.right) {
-    console.log('right');
+    $chessPiece.css('left', '+=100px');
   } else if (event.which === arrow.down) {
-    console.log('down');
+    $chessPiece.css('top', '+=100px');
   }
 };
 
