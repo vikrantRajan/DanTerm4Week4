@@ -30,12 +30,13 @@ const highlightPiece = function highlightPiece() {
 
 const playChess = () => {
   const bindDom = () => {
-    $('.piece').click(highlightPiece);
-    $(document).keyup(movePiece);
+    // $('.piece').click(highlightPiece);
+    // $(document).keyup(movePiece);
 
-    // document.querySelectorAll('.piece').forEach((piece) => {
-    //   piece.addEventListener('click', highlightPiece);
-    // });
+    document.addEventListener('keyup', movePiece);
+    document.querySelectorAll('.piece').forEach((piece) => {
+      piece.addEventListener('click', highlightPiece);
+    });
   };
 
   bindDom();
