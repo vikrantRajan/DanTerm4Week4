@@ -1,5 +1,5 @@
 const dust = require('dustjs-linkedin');
-const hapi = require('hapi');
+const hapi = require('@hapi/hapi');
 const inert = require('inert');
 const lout = require('lout');
 const vision = require('vision');
