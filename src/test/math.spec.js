@@ -126,10 +126,14 @@ describe('Math.js', () => {
       expect(math.divide('-10', '2')).to.be(-5);
       expect(math.divide('2', '-1')).to.be(-2);
     });
-    it('should return 0 with blank values', () => {
+    it('should return 0 with all blank values', () => {
       expect(math.divide('', '')).to.be(0);
+    });
+    it('should return 0 with first blank values', () => {
       expect(math.divide('', 1)).to.be(0);
-      expect(math.divide(1, '')).to.be(0);
+    });
+    it('should return 0 with last blank values', () => {
+      expect(math.divide('', 1)).to.be(0);
     });
     it('should return 0 with undefined values', () => {
       expect(math.divide()).to.be(0);
