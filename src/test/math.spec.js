@@ -108,4 +108,39 @@ describe('Math.js', () => {
       expect(math.multiply(1, null)).to.be(0);
     });
   });
+
+  describe('divide', () => {
+    it('passes with positive values', () => {
+      expect(math.divide(10, 2)).to.be(5);
+      expect(math.divide(2, 1)).to.be(2);
+    });
+    it('passes with negative values', () => {
+      expect(math.divide(-10, 2)).to.be(-5);
+      expect(math.divide(2, -1)).to.be(-2);
+    });
+    it('strings passes with positive values', () => {
+      expect(math.divide('10', '2')).to.be(5);
+      expect(math.divide('2', '1')).to.be(2);
+    });
+    it('strings passes with negative values', () => {
+      expect(math.divide('-10', '2')).to.be(-5);
+      expect(math.divide('2', '-1')).to.be(-2);
+    });
+    it('should return 0 with blank values', () => {
+      expect(math.divide('', '')).to.be(0);
+      expect(math.divide('', 1)).to.be(0);
+      expect(math.divide(1, '')).to.be(0);
+    });
+    it('should return 0 with undefined values', () => {
+      expect(math.divide()).to.be(0);
+      expect(math.divide(undefined, undefined)).to.be(0);
+      expect(math.divide(undefined, 1)).to.be(0);
+      expect(math.divide(1, undefined)).to.be(0);
+    });
+    it('should return 0 with null values', () => {
+      expect(math.divide(null, null)).to.be(0);
+      expect(math.divide(null, 1)).to.be(0);
+      expect(math.divide(1, null)).to.be(0);
+    });
+  });
 });
