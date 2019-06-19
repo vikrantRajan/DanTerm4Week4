@@ -198,25 +198,32 @@ ${additionalNote}`;
       },
     });
 
+    const sendSlackDirectMessage = slack => async ({ conversationId, studentName }) => {
+      const { error } = await slack.chat.postMessage({
+        text: `Hello ${studentName}!`,
+        channel: conversationId,
+      });
+
+      if (error) {
+        return { error };
+      }
+
+      return { message: `Message sent to ${studentName} as direct message in Slack` };
+    };
+
     server.route({
       method: 'GET',
       path: '/api/teacheraid/web',
       handler: (request, reply) => new Promise(async (resolve) => {
         const slack = new WebClient(credentials.slack.access_token_secret);
-
+        const sendDM = await sendSlackDirectMessage(slack);
         // Given some known conversation ID
         // (representing a public channel, private channel, DM or group DM)
-        const conversationId = '#play';
+        // const conversationId = '#play';
+        const conversationId = 'D0425RJBT'; // Slackbot user
+        const message = await sendDM({ conversationId, studentName: 'SlackBot' });
 
-        // Post a message to the channel, and await the result.
-        // Find more arguments and details of the response: https://api.slack.com/methods/chat.postMessage
-        const result = await slack.chat.postMessage({
-          text: 'Hello world!',
-          channel: conversationId,
-        });
-
-        // The result contains an identifier for the message, `ts`.
-        resolve(reply.response(`Successfully send message ${result.ts} in conversation ${conversationId}`));
+        resolve(reply.response(message));
       }),
     });
 
