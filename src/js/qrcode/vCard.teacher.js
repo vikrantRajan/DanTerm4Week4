@@ -1,7 +1,7 @@
 /* global document */
 
 const formSubmitted = (event) => {
-  document.getElementById('vcard').value = 'Hello value';
+  document.getElementById('vcard').value = document.getElementById('fname').value;
   event.preventDefault();
 };
 
