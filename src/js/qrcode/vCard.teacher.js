@@ -1,17 +1,14 @@
-/* global document */
+/* global document, FormData */
 
 const getFormAsVcard = () => {
-  const fname = document.getElementById('fname').value;
-  const lname = document.getElementById('lname').value;
-  const title = document.getElementById('title').value;
-  const url = document.getElementById('url').value;
+  const fields = new FormData(document.querySelector('form'));
 
   return `BEGIN:VCARD
 VERSION:3.0
-N:${lname};${fname}
-FN:${fname} ${lname}
-TITLE:${title}
-URL:${url}
+N:${fields.get('lname')};${fields.get('fname')}
+FN:${fields.get('fname')} ${fields.get('lname')}
+TITLE:${fields.get('title')}
+URL:${fields.get('url')}
 END:VCARD`;
 };
 
