@@ -4,7 +4,7 @@
 # Steps to audit a service
 1. Ensure the service solves our business case
 	* Select the best method
-	* Verify the method by *"static"* previewing in browser
+	* Verify the method by *"static"* previewing in browser (i.e. JSON/XML sample output)
 	* Verify the method by *"dynamic"* previewing in browser tab or API console/explorer
 		* Username or context should be used
 1. Understand authentication
