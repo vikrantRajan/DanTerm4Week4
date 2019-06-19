@@ -1,6 +1,7 @@
 const https = require('https');
 const http = require('http');
 const { IncomingWebhook } = require('@slack/webhook');
+const { WebClient } = require('@slack/web-api');
 
 const { calculatePercent } = require('./js/assessment');
 const course = require('../course.json');
@@ -197,6 +198,35 @@ ${additionalNote}`;
       },
     });
 
+    const sendSlackDirectMessage = slack => async ({ conversationId, studentName }) => {
+      const { error } = await slack.chat.postMessage({
+        text: `Hello ${studentName}!`,
+        channel: conversationId,
+      });
+
+      if (error) {
+        return { error };
+      }
+
+      return { message: `Message sent to ${studentName} as direct message in Slack` };
+    };
+
+    server.route({
+      method: 'GET',
+      path: '/api/teacheraid/web',
+      handler: (request, reply) => new Promise(async (resolve) => {
+        const slack = new WebClient(credentials.slack.access_token_secret);
+        const sendDM = await sendSlackDirectMessage(slack);
+        // Given some known conversation ID
+        // (representing a public channel, private channel, DM or group DM)
+        // const conversationId = '#play';
+        const conversationId = 'D0425RJBT'; // Slackbot user
+        const message = await sendDM({ conversationId, studentName: 'SlackBot' });
+
+        resolve(reply.response(message));
+      }),
+    });
+
     // Choose Web API
     // https://medium.com/slack-developer-blog/getting-started-with-slacks-apis-f930c73fc889
 
@@ -205,5 +235,11 @@ ${additionalNote}`;
 
     // Scope for bot sending message
     // https://api.slack.com/scopes/chat:write:bot
+
+    // Web API
+    // https://www.npmjs.com/package/@slack/web-api
+
+    // method for sending message from bot to user
+    // https://api.slack.com/methods/chat.postMessage
   },
 };

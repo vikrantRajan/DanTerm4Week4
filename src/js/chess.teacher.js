@@ -7,15 +7,21 @@ const movePiece = (event) => {
     right: 39,
     down: 40,
   };
+  const boardCorners = { // 50, 750 plus decimal
+    leftTop: 51,
+    rightBottom: 749,
+  };
+  const $chessPiece = $('.highlight');
+  const currentPosition = $chessPiece.position();
 
-  if (event.which === arrow.left) {
-    console.log('left');
-  } else if (event.which === arrow.up) {
-    console.log('up');
-  } else if (event.which === arrow.right) {
-    console.log('right');
-  } else if (event.which === arrow.down) {
-    console.log('down');
+  if (event.which === arrow.left && currentPosition.left > boardCorners.leftTop) {
+    $chessPiece.css('left', '-=100px');
+  } else if (event.which === arrow.up && currentPosition.top > boardCorners.leftTop) {
+    $chessPiece.css('top', '-=100px');
+  } else if (event.which === arrow.right && currentPosition.left < boardCorners.rightBottom) {
+    $chessPiece.css('left', '+=100px');
+  } else if (event.which === arrow.down && currentPosition.top < boardCorners.rightBottom) {
+    $chessPiece.css('top', '+=100px');
   }
 };
 
