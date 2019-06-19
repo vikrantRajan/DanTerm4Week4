@@ -205,5 +205,11 @@ ${additionalNote}`;
 
     // Scope for bot sending message
     // https://api.slack.com/scopes/chat:write:bot
+
+    // Web API
+    // https://www.npmjs.com/package/@slack/web-api
+
+    // method for sending message from bot to user
+    // https://api.slack.com/methods/chat.postMessage
   },
 };
