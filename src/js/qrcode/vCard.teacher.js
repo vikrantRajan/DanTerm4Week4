@@ -5,7 +5,14 @@ const getFormAsVcard = () => {
   const lname = document.getElementById('lname').value;
   const title = document.getElementById('title').value;
   const url = document.getElementById('url').value;
-  return `${fname}\n${lname}\n${title}\n${url}`;
+
+  return `BEGIN:VCARD
+VERSION:3.0
+N:${lname};${fname}
+FN:${fname} ${lname}
+TITLE:${title}
+URL:${url}
+END:VCARD`;
 };
 
 const formSubmitted = (event) => {
