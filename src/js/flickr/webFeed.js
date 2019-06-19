@@ -1,13 +1,11 @@
-/* global renderRssHTML */
-
 const getFlickrPublicPhotos = () => {
   $.ajax({
-    url: '/api/rss',
-    data: {
-      url: 'https://www.flickr.com/services/feeds/photos_public.gne?format=rss2&tags=vancouver',
-    },
+    url: 'https://www.flickr.com/services/feeds/photos_public.gne?format=json&tags=vancouver',
+    dataType: 'jsonp', // JSON with Padding. Whereas padding is the function name that Flickr is wrapping JSON in
+    jsonpCallback: 'jsonFlickrFeed',
     success: (response) => {
-      renderRssHTML(response, 'body');
+      const html = response.items.map(item => `<img src="${item.media.m}">`);
+      $('body').append(html);
     },
   });
 };
