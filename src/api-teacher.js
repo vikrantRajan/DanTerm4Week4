@@ -1,6 +1,7 @@
 const https = require('https');
 const http = require('http');
 const { IncomingWebhook } = require('@slack/webhook');
+const { WebClient } = require('@slack/web-api');
 
 const { calculatePercent } = require('./js/assessment');
 const course = require('../course.json');
@@ -195,6 +196,28 @@ ${additionalNote}`;
           webhook,
         })));
       },
+    });
+
+    server.route({
+      method: 'GET',
+      path: '/api/teacheraid/web',
+      handler: (request, reply) => new Promise(async (resolve) => {
+        const slack = new WebClient(credentials.slack.access_token_secret);
+
+        // Given some known conversation ID
+        // (representing a public channel, private channel, DM or group DM)
+        const conversationId = '#play';
+
+        // Post a message to the channel, and await the result.
+        // Find more arguments and details of the response: https://api.slack.com/methods/chat.postMessage
+        const result = await slack.chat.postMessage({
+          text: 'Hello world!',
+          channel: conversationId,
+        });
+
+        // The result contains an identifier for the message, `ts`.
+        resolve(reply.response(`Successfully send message ${result.ts} in conversation ${conversationId}`));
+      }),
     });
 
     // Choose Web API

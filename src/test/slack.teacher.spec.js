@@ -6,11 +6,11 @@ const credentials = require('../../credentials.json');
 
 describe('Slack', () => {
   if (!credentials.slack || !credentials.slack.access_token_secret) return;
-  const web = new WebClient();
+  const slack = new WebClient();
   const token = credentials.slack.access_token_secret;
 
   it('should have an okay token', async () => {
-    const actual = await web.auth.test({ token });
+    const actual = await slack.auth.test({ token });
     expect(actual.ok).to.be.ok();
   });
 
@@ -19,7 +19,7 @@ describe('Slack', () => {
     // Change scopes with Slack not token, add permission to your app
     // https://api.slack.com/apps
     // Reinstall is needed
-    const actual = await web.auth.test({ token });
+    const actual = await slack.auth.test({ token });
     expect(actual.response_metadata.scopes).to.be.ok();
     expect(actual.response_metadata.scopes).to.contain('bot');
     expect(actual.response_metadata.scopes).to.contain('chat:write:bot');
