@@ -16,7 +16,7 @@ User story written in this GitHub issue https://github.com/planlazy/nearby/issue
 	* *3 points penalty* for making this assignment or solution open source
 
 ## Deadline
-* Friday Feb 22th, 2019 at end of day 23:59 hosted via
+* Wednesday Aug 21st, 2019 at end of day 23:59 hosted via
 	* GitHub using VanArts organization with private repository
 	* Commit final to your [private GitHub.com repository](https://help.github.com/articles/create-a-repo/)
 * Send me the details of your assignment to me via [Slack](https://domaindesign.slack.com/):
