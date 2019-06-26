@@ -1,4 +1,4 @@
-/* global document, FormData */
+/* global document, FormData, getQrImageHtml */
 
 const getFormAsVcard = () => {
   const fields = new FormData(document.querySelector('form'));
@@ -21,9 +21,17 @@ const buildVcard = () => {
   document.querySelector('form').addEventListener('submit', formSubmitted);
 };
 
+const buildVcardQr = () => {
+  document.querySelector('form').addEventListener('submit', (event) => {
+    $('#qr_code').parent().html(getQrImageHtml(getFormAsVcard()));
+    event.preventDefault();
+  });
+};
+
 // If Node.js then export as public
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   module.exports = {
     buildVcard,
+    buildVcardQr,
   };
 }
