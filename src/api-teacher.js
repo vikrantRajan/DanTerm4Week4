@@ -1,6 +1,5 @@
 const https = require('https');
 const http = require('http');
-const { IncomingWebhook } = require('@slack/webhook');
 const { WebClient } = require('@slack/web-api');
 
 const { calculatePercent } = require('./js/assessment');
@@ -148,60 +147,26 @@ exports.plugin = {
       },
     });
 
-    const buildMessage = (studentKey) => {
+    const buildSlackMessage = (studentKey) => {
       const student = course.assessment.students[studentKey];
       const homeworkMark = student.homework;
       const { latestNote } = student;
       const additionalNote = (latestNote) ? `Additional notes: ${latestNote}` : '';
 
-      const message = `Copy to ${studentKey}
+      const message = `Hello ${studentKey}
 Class ${course.assessment.classNumber} - Homework mark update ${JSON.stringify(homeworkMark)}
 Your homework allocation is ${calculatePercent(homeworkMark)}%
-Documentation https://github.com/VanArts/course-files/tree/master/public/jQuery#assessment
+Documentation https://github.com/VanArts/course-files/tree/master/public/social-apis#assessment
 ${additionalNote}`;
 
       return message;
     };
 
-    const sendSlackMessage = async ({ student, webhook }) => {
-      // Send simple text to the webhook channel
-      const { error } = await webhook.send(buildMessage(student));
-
-      if (error) {
-        return { error };
-      }
-
-      return { message: `Message sent to ${student} see play channel in Slack` };
-    };
-
-    server.route({
-      method: 'GET',
-      path: '/api/teacheraid/play',
-      handler: async (request) => {
-        const webhookUrl = credentials.slack.webhook;
-        const webhook = new IncomingWebhook(webhookUrl);
-
-        const { student: studentRaw } = request.query;
-
-        if (studentRaw) {
-          return sendSlackMessage({
-            student: studentRaw,
-            webhook,
-          });
-        }
-
-        const studentNames = Object.keys(course.assessment.students);
-        return Promise.all(studentNames.map(async student => sendSlackMessage({
-          student,
-          webhook,
-        })));
-      },
-    });
-
     const sendSlackDirectMessage = slack => async ({ studentName }) => {
       const student = course.assessment.students[studentName];
+      const message = buildSlackMessage(studentName);
       const { error } = await slack.chat.postMessage({
-        text: `Hello ${studentName}!`,
+        text: message,
         channel: student.slackUserId,
       });
 
@@ -212,7 +177,7 @@ ${additionalNote}`;
         };
       }
 
-      return { message: `Slack Direct Message sent to ${studentName}` };
+      return { message: `Slack Direct Message sent to ${studentName}:\n${message}` };
     };
 
     server.route({
