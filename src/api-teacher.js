@@ -198,17 +198,21 @@ ${additionalNote}`;
       },
     });
 
-    const sendSlackDirectMessage = slack => async ({ conversationId, studentName }) => {
+    const sendSlackDirectMessage = slack => async ({ studentName }) => {
+      const student = course.assessment.students[studentName];
       const { error } = await slack.chat.postMessage({
         text: `Hello ${studentName}!`,
-        channel: conversationId,
+        channel: student.slackUserId,
       });
 
       if (error) {
-        return { error };
+        return {
+          error,
+          message: `Slack Direct Message failed to ${studentName}`,
+        };
       }
 
-      return { message: `Message sent to ${studentName} as direct message in Slack` };
+      return { message: `Slack Direct Message sent to ${studentName}` };
     };
 
     server.route({
@@ -217,13 +221,12 @@ ${additionalNote}`;
       handler: (request, reply) => new Promise(async (resolve) => {
         const slack = new WebClient(credentials.slack.access_token_secret);
         const sendDM = await sendSlackDirectMessage(slack);
-        // Given some known conversation ID
-        // (representing a public channel, private channel, DM or group DM)
-        // const conversationId = '#play';
-        const conversationId = 'D0425RJBT'; // Slackbot user
-        const message = await sendDM({ conversationId, studentName: 'SlackBot' });
 
-        resolve(reply.response(message));
+        const studentNames = Object.keys(course.assessment.students);
+        const messages = await Promise.all(
+          studentNames.map(async studentName => sendDM({ studentName })),
+        );
+        resolve(reply.response(messages));
       }),
     });
 
