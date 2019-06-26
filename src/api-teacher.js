@@ -107,6 +107,15 @@ exports.plugin = {
   register: (server) => {
     server.route({
       method: 'GET',
+      path: '/api/flickr',
+      handler: () => {
+        console.log('sdf');
+        return { hello: 'flickr' };
+      },
+    });
+
+    server.route({
+      method: 'GET',
       path: '/api/autocomplete',
       handler: autocompleteHandler,
     });
