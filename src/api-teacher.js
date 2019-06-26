@@ -7,6 +7,10 @@ const course = require('../course.json');
 const credentials = require('../credentials.json');
 const { print } = require('./js/utils.teacher');
 
+const flickrJpgPaths = response => response.photos.photo
+  .map(photo => `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`);
+exports.flickrJpgPaths = flickrJpgPaths;
+
 exports.plugin = {
   name: 'api',
   version: '1.3.0',

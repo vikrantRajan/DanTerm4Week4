@@ -1,7 +1,4 @@
-const buildFlickrImgSrc = (photo) => {
-  // https://www.flickr.com/services/api/misc.urls.html
-  return 'http://flickr.ca...jpg';
-};
+const buildFlickrImgSrc = photo => `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
 
 const getFlickrGeoPublicPhotos = () => {
   $.ajax({
@@ -9,7 +6,7 @@ const getFlickrGeoPublicPhotos = () => {
     dataType: 'jsonp', // JSON with Padding. Whereas padding is the function name that Flickr is wrapping JSON in
     jsonpCallback: 'jsonFlickrApi',
     success: (response) => {
-      const html = response.photos.photo.map(item => `<img alt="${item.title}" src="${buildFlickrImgSrc(item)}">`);
+      const html = response.photos.photo.map(item => `<img src="${buildFlickrImgSrc(item)}" alt="${item.title}">`);
       $('body').append(html);
     },
   });
