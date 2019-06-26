@@ -9,3 +9,5 @@ node_modules
 
 public/js/critical.js
 public/js/critical.min.js
+src/js/jQuery/chess.student.js
+public/jQuery/chess/game.css
