@@ -116,7 +116,11 @@ exports.plugin = {
 
         fetch(flickrServiceUrl)
           .then(response => response.json())
-          .then(json => resolve(json));
+          .then((json) => {
+            const photos = flickrJpgPaths(json);
+
+            resolve(photos); // output to user agent (browser)
+          });
       }),
     });
 
