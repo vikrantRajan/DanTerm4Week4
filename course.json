@@ -1,4 +1,5 @@
 {
   "isTeacher": "false",
+  "diagnosisMode": "false",
   "port": 8080
 }
