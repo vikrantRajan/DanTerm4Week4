@@ -112,7 +112,8 @@ exports.plugin = {
       method: 'GET',
       path: '/api/flickr',
       handler: () => new Promise((resolve) => {
-        const flickrServiceUrl = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=****&tags=vancouver&format=json&nojsoncallback=1';
+        const flickrServiceUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${credentials.flickr.api_key}&tags=vancouver&format=json&nojsoncallback=1`;
+
         fetch(flickrServiceUrl)
           .then(response => response.json())
           .then(json => resolve(json));
