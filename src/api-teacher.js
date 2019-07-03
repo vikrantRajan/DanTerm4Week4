@@ -111,18 +111,12 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/flickr',
-      handler: () => {
+      handler: () => new Promise((resolve) => {
         const flickrServiceUrl = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=****&tags=vancouver&format=json&nojsoncallback=1';
         fetch(flickrServiceUrl)
-          .then((response) => {
-            console.log('JSON received');
-            return response.json();
-          })
-          .then((json) => {
-            console.log('JSON', JSON.stringify(json));
-          });
-        return { hello: 'flickr' };
-      },
+          .then(response => response.json())
+          .then(json => resolve(json));
+      }),
     });
 
     server.route({
