@@ -1,7 +1,19 @@
 # API final project
 
 ## Goal
-User story written in this GitHub issue https://github.com/planlazy/nearby/issues/1
+As a user, I want to search for nearby images based on coordinates, and see thumbnails with tags based on content.
+
+### Requirements
+- [ ] JavaScript in browser or backend
+- [ ]  [Microsoft Azure's Computer Vision API v2.0](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/)
+- [ ] [Flickr API](https://www.flickr.com/services/developer/)
+- [ ] Input field to request coordinates (latitude and longitude))
+- [ ] Display thumbnails of photos within 2 km of coordinates
+- [ ] Display three tags beside each thumbnail sorted by highest confidence
+- [ ] No AirBnb lint errors
+- [ ] Pass unit tests
+- [ ] User experience mechanics for handling long service calls
+- [ ] Optional - Hosted on [GitHub Pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/) with public content in `docs` folder on `master` branch
 
 ## Assessment
 * Flickr service API is suggested, but not manditory so you may use other services such as Dropbox, Instagram, 500px...
