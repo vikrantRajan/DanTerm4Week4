@@ -123,8 +123,8 @@ exports.plugin = {
         });
 
         twitter.get('statuses/user_timeline', { screen_name: 'vanarts', count: 5 })
-          .catch(err => console.log('caught error', err.stack))
-          .then(result => resolve(result.data));
+          .catch(err => print('caught error', err.stack))
+          .then(result => resolve(result.data)); // todo reduce output, only display date and text
       }),
     });
 
