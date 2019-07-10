@@ -2,8 +2,9 @@
 
 const https = require('https');
 const http = require('http');
-const { WebClient } = require('@slack/web-api');
 require('isomorphic-fetch');
+const { WebClient } = require('@slack/web-api');
+const Twit = require('twit');
 
 const { calculatePercent } = require('./js/assessment');
 const course = require('../course.json');
@@ -108,6 +109,30 @@ exports.plugin = {
   name: 'api',
   version: '1.3.0',
   register: (server) => {
+    server.route({
+      method: 'GET',
+      path: '/api/twitter',
+      handler: () => {
+        const twitter = new Twit({
+          consumer_key: credentials.twitter.consumer_key,
+          consumer_secret: credentials.twitter.consumer_secret,
+          access_token: credentials.twitter.access_token,
+          access_token_secret: credentials.twitter.access_token_secret,
+          timeout_ms: 60 * 1000,
+          strictSSL: true,
+        });
+
+        //
+        //  search twitter for all tweets containing the word 'banana' since July 11, 2011
+        //
+        twitter.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, (err, data) => {
+          console.log(data);
+        });
+
+        return { in_progress: true };
+      },
+    });
+
     server.route({
       method: 'GET',
       path: '/api/flickr',
