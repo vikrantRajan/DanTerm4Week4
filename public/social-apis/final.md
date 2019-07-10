@@ -1,12 +1,12 @@
 # API final project
 
 ## Goal
-As an **Overlook** student user, I want to upload an image (i.e. a portfolio screenshot) and I want to see tags based on the image content. (@sanket064, @vikrantRajan, Ahmed)
+As an **Overlook** student user, I want to upload an image (i.e. a portfolio screenshot) and I want to see tags based on the image content. (@sanket064, @vikrantRajan, @AhmedM0)
 
 As a **Shoebox** user, I want to upload a memorable image (i.e. my favourite pet) and I want to see tags based on the image content. (@emlutz, @siimplypeachy, Kri)
 
 ## Related project
-This JavaScript API project has been customized to join your group project with Nathan, but they are independent. Adding this assignment to your group project is beyond the scope of the API final project. The look and feel should be related for futre inclusion (also similar file structure).
+This JavaScript API project has been customized to join your group project with Nathan, but they are independent. Adding this assignment to your group project is beyond the scope of the API final project. The look and feel should be related for future inclusion (also similar file structure).
 
 ### Requirements
 - [ ] JavaScript in browser or backend
@@ -22,6 +22,7 @@ This JavaScript API project has been customized to join your group project with 
 * 3 points to handle error based on exessive service calls
 * 5 points to display a nice user experience when service calls return slow results
 * 2 points to display a nice warning message when the service does not return results (e.g. upload an abstract image that confuses the Computer Vision service)
+* 2 points for no lint errors
 * *2 points penalty* for including `node_modules` in either GitHub or zip
 * *3 points penalty* for every 3 hours late delivered after deadline
 * This is a closed source assignment, meaning do not copy or view other solutions of your classmates
