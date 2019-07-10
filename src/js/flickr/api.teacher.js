@@ -1,11 +1,12 @@
+/* global document, fetch */
+
 const getFlickrGeoPublicPhotos = () => {
-  $.ajax({
-    url: '/api/flickr',
-    success: (response) => {
-      const html = response.photos.map(photo => `<img src="${photo.path}" alt="${photo.caption}">`);
-      $('body').append(html);
-    },
-  });
+  fetch('/api/flickr')
+    .then(response => response.json())
+    .then((json) => {
+      const html = json.map(photoSrc => `<li><img src="${photoSrc}"></li>`);
+      document.querySelector('#photos').innerHTML = html.join('');
+    });
 };
 
 // If Node.js then export as public

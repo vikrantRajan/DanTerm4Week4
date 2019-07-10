@@ -2,10 +2,12 @@
 const expect = require('expect.js');
 const { WebClient } = require('@slack/web-api');
 
+const course = require('../../course.json');
 const credentials = require('../../credentials.json');
 
 describe('Slack', () => {
   if (!credentials.slack || !credentials.slack.access_token_secret) return;
+  if (course.diagnosisMode !== 'true') return;
   const slack = new WebClient();
   const token = credentials.slack.access_token_secret;
 

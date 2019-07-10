@@ -1,6 +1,9 @@
+/* global fetch */
+
 const https = require('https');
 const http = require('http');
 const { WebClient } = require('@slack/web-api');
+require('isomorphic-fetch');
 
 const { calculatePercent } = require('./js/assessment');
 const course = require('../course.json');
@@ -108,10 +111,17 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/flickr',
-      handler: () => {
-        console.log('sdf');
-        return { hello: 'flickr' };
-      },
+      handler: () => new Promise((resolve) => {
+        const flickrServiceUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${credentials.flickr.api_key}&format=json&nojsoncallback=1&lat=49.282763&lon=-123.115529&radius=1`;
+
+        fetch(flickrServiceUrl)
+          .then(response => response.json())
+          .then((json) => {
+            const photos = flickrJpgPaths(json);
+
+            resolve(photos); // output to user agent (browser)
+          });
+      }),
     });
 
     server.route({
