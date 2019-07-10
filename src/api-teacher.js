@@ -112,7 +112,7 @@ exports.plugin = {
     server.route({
       method: 'GET',
       path: '/api/twitter',
-      handler: () => {
+      handler: () => new Promise((resolve) => {
         const twitter = new Twit({
           consumer_key: credentials.twitter.consumer_key,
           consumer_secret: credentials.twitter.consumer_secret,
@@ -126,11 +126,9 @@ exports.plugin = {
         //  search twitter for all tweets containing the word 'banana' since July 11, 2011
         //
         twitter.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, (err, data) => {
-          console.log(data);
+          resolve(data);
         });
-
-        return { in_progress: true };
-      },
+      }),
     });
 
     server.route({
