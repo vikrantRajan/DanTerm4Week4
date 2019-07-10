@@ -3,7 +3,7 @@
 ## Goal
 As an **Overlook** student user, I want to upload an image (i.e. a portfolio screenshot) and I want to see tags based on the image content. (@sanket064, @vikrantRajan, @AhmedM0)
 
-As a **Shoebox** user, I want to upload a memorable image (i.e. my favourite pet) and I want to see tags based on the image content. (@emlutz, @siimplypeachy, Kri)
+As a **Shoebox** user, I want to upload a memorable image (i.e. my favourite pet) and I want to see tags based on the image content. (@emlutz, @siimplypeachy, @KritarthS)
 
 ## Related project
 This JavaScript API project has been customized to join your group project with Nathan, but they are independent. Adding this assignment to your group project is beyond the scope of the API final project. The look and feel should be related for future inclusion (also similar file structure).
