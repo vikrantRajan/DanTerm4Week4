@@ -125,9 +125,9 @@ exports.plugin = {
         //
         //  search twitter for all tweets containing the word 'banana' since July 11, 2011
         //
-        twitter.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, (err, data) => {
-          resolve(data);
-        });
+        twitter.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 })
+          .catch(err => console.log('caught error', err.stack))
+          .then(result => resolve(result.data));
       }),
     });
 
