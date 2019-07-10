@@ -1,14 +1,16 @@
 # API final project
 
 ## Goal
-As a user, I want to search for nearby images based on coordinates, and see thumbnails with tags based on content.
+As an **Overlook** student user, I want to upload an image (i.e. a portfolio screenshot) and I want to see tags based on the image content. (@sanket064, @vikrantRajan, Ahmed)
+
+As a **Shoebox** user, I want to upload a memorable image (i.e. my favourite pet) and I want to see tags based on the image content. (@emlutz, @siimplypeachy, Kri)
+
+## Related project
+This JavaScript API project has been customized to join your group project with Nathan, but they are independent. Adding this assignment to your group project is beyond the scope of the API final project. The look and feel should be related for futre inclusion (also similar file structure).
 
 ### Requirements
 - [ ] JavaScript in browser or backend
 - [ ]  [Microsoft Azure's Computer Vision API v2.0](https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/)
-- [ ] [Flickr API](https://www.flickr.com/services/developer/)
-- [ ] Input field to request coordinates (latitude and longitude))
-- [ ] Display thumbnails of photos within 2 km of coordinates
 - [ ] Display three tags beside each thumbnail sorted by highest confidence
 - [ ] No AirBnb lint errors
 - [ ] Pass unit tests
@@ -16,19 +18,17 @@ As a user, I want to search for nearby images based on coordinates, and see thum
 - [ ] Optional - Hosted on [GitHub Pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/) with public content in `docs` folder on `master` branch
 
 ## Assessment
-* Flickr service API is suggested, but not manditory so you may use other services such as Dropbox, Instagram, 500px...
-* 10 points to query photo hosting service API with correct data in response
-* 6 points to display (in the browser) tags based on highest confidence for all thumbnail
-* 3 points to update search results when coordinates are updated
-* 4 points to display (in the browser) all thumbnail based on distance criteria
-* 4 points for using existing `course-files` folder structure (new folders within course-files are allowed). When submitting with the `course-files` structure, please include all files (excluding `node_modules`)
+* 8 points to display (in the browser) tags based on highest confidence
+* 3 points to handle error based on exessive service calls
+* 5 points to display a nice user experience when service calls return slow results
+* 2 points to display a nice warning message when the service does not return results (e.g. upload an abstract image that confuses the Computer Vision service)
 * *2 points penalty* for including `node_modules` in either GitHub or zip
-* *3 points penalty* for every 4 hours late delivered after deadline
+* *3 points penalty* for every 3 hours late delivered after deadline
 * This is a closed source assignment, meaning do not copy or view other solutions of your classmates
 	* *3 points penalty* for making this assignment or solution open source
 
 ## Deadline
-* Wednesday Aug 21st, 2019 at end of day 23:59 hosted via
+* Thursday Aug 22st, 2019 at end of day 23:59 hosted via
 	* GitHub using VanArts organization with private repository
 	* Commit final to your [private GitHub.com repository](https://help.github.com/articles/create-a-repo/)
 * Send me the details of your assignment to me via [Slack](https://domaindesign.slack.com/):
