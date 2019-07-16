@@ -122,12 +122,9 @@ exports.plugin = {
           strictSSL: true,
         });
 
-        //
-        //  search twitter for all tweets containing the word 'banana' since July 11, 2011
-        //
-        twitter.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 })
-          .catch(err => console.log('caught error', err.stack))
-          .then(result => resolve(result.data));
+        twitter.get('statuses/user_timeline', { screen_name: 'vanarts', count: 5 })
+          .catch(err => print('caught error', err.stack))
+          .then(result => resolve(result.data)); // todo reduce output, only display date and text
       }),
     });
 
