@@ -28,7 +28,8 @@ const getTwitterTweets = () => {
     method: 'GET',
     url: '/api/twitter',
     success: (response) => {
-      const html = response.map(result => `${formatTwitterDate(result.created_at)} <br> ${result.text} <br> <br>`);
+            const html = response.map(result => `<strong>${formatTwitterDate(result.created_at)}</strong> <br> ${result.text} <br> <br>`);
+
       // console.log(html);
       $('body').append(html);
     },
