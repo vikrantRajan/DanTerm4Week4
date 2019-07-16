@@ -111,7 +111,7 @@ exports.plugin = {
   register: (server) => {
     server.route({
       method: 'GET',
-      path: '/api/twitter',
+      path: '/api/twitter2',
       handler: () => new Promise((resolve) => {
         const twitter = new Twit({
           consumer_key: credentials.twitter.consumer_key,
