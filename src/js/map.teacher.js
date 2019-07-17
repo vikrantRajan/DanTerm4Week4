@@ -18,8 +18,12 @@ const createMap = () => new mapboxgl.Map({
 const loadHelloMap = () => {
   const map = createMap();
 
+  const bubble = new mapboxgl.Popup()
+    .setHTML('<img src="https://pbs.twimg.com/profile_images/987068971168837632/r1a2mDq0_400x400.jpg" alt="VanArts">');
+
   new mapboxgl.Marker()
     .setLngLat([vanarts.longitude, vanarts.latitude])
+    .setPopup(bubble)
     .addTo(map);
 };
 
