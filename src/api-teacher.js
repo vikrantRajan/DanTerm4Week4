@@ -13,7 +13,9 @@ const { print } = require('./js/utils.teacher');
 const { formatTwitterDate } = require('./js/twitter/date.teacher');
 
 const flickrJpgPaths = response => response.photos.photo
-  .map(photo => `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`);
+  .map(photo => ({
+    path: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
+  }));
 exports.flickrJpgPaths = flickrJpgPaths;
 
 // keyword is a new variable, when undefined set to blank.
