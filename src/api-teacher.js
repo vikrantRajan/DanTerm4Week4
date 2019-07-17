@@ -143,26 +143,15 @@ exports.plugin = {
 
     server.route({
       method: 'GET',
-      path: '/api/flickr/map',
-      handler: () => new Promise((resolve) => {
-        const flickrServiceUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${credentials.flickr.api_key}&format=json&nojsoncallback=1&tags=vancouver%2Cbeach&has_geo=true&extras=geo`;
+      path: '/api/flickr/{isMap?}',
+      handler: request => new Promise((resolve) => {
+        let flickrServiceUrl = '';
 
-        fetch(flickrServiceUrl)
-          // convert from stringified JSON to parsed object for fetch
-          .then(response => response.json())
-          .then((json) => {
-            const photos = flickrJpgPaths(json);
-
-            resolve(photos); // output to user agent (browser)
-          });
-      }),
-    });
-
-    server.route({
-      method: 'GET',
-      path: '/api/flickr',
-      handler: () => new Promise((resolve) => {
-        const flickrServiceUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${credentials.flickr.api_key}&format=json&nojsoncallback=1&lat=49.282763&lon=-123.115529&radius=1`;
+        if (request.params.isMap === 'map') {
+          flickrServiceUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${credentials.flickr.api_key}&format=json&nojsoncallback=1&tags=vancouver%2Cbeach&has_geo=true&extras=geo`;
+        } else {
+          flickrServiceUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${credentials.flickr.api_key}&format=json&nojsoncallback=1&lat=49.282763&lon=-123.115529&radius=1`;
+        }
 
         fetch(flickrServiceUrl)
           // convert from stringified JSON to parsed object for fetch
