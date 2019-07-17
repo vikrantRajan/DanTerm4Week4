@@ -21,7 +21,9 @@ function formatTwitterDate(stamp, compareDate = new Date()) {
     || (dayDiff === 1 && 'Yesterday')
     || (dayDiff < 7 && `${dayDiff.toString()} days ago`)
     || (dayDiff === 7 && '1 week ago')
-    || (dayDiff < 30 && `${Math.ceil(dayDiff / 7).toString()} weeks ago`);
+    || (dayDiff < 30 && `${Math.ceil(dayDiff / 7).toString()} weeks ago`)
+    || ((dayDiff === 30 || dayDiff === 31) && '1 month ago')
+    || (dayDiff >= 30 && `${Math.ceil(dayDiff / 30).toString()} months ago`);
 }
 
 // If Node.js then export as public

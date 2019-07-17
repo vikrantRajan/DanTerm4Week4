@@ -10,6 +10,7 @@ const { calculatePercent } = require('./js/assessment');
 const course = require('../course.json');
 const credentials = require('../credentials.json');
 const { print } = require('./js/utils.teacher');
+const { formatTwitterDate } = require('./js/twitter/date.teacher');
 
 const flickrJpgPaths = response => response.photos.photo
   .map(photo => `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`);
@@ -122,9 +123,21 @@ exports.plugin = {
           strictSSL: true,
         });
 
-        twitter.get('statuses/user_timeline', { screen_name: 'vanarts', count: 5 })
-          .catch(err => print('caught error', err.stack))
-          .then(result => resolve(result.data)); // todo reduce output, only display date and text
+        twitter.get('statuses/user_timeline', { screen_name: 'danactive', count: 5 })
+          .catch((err) => {
+            print('caught error', err.stack); // full in terminal
+            resolve({ error: true }); // browser
+          })
+          .then((json) => {
+            resolve(
+              json.data.map(tweet => (
+                {
+                  date: formatTwitterDate(tweet.created_at),
+                  text: tweet.text,
+                }
+              )),
+            );
+          });
       }),
     });
 
@@ -135,6 +148,7 @@ exports.plugin = {
         const flickrServiceUrl = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${credentials.flickr.api_key}&format=json&nojsoncallback=1&lat=49.282763&lon=-123.115529&radius=1`;
 
         fetch(flickrServiceUrl)
+          // convert from stringified JSON to parsed object for fetch
           .then(response => response.json())
           .then((json) => {
             const photos = flickrJpgPaths(json);
