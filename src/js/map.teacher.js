@@ -12,7 +12,7 @@ const createMap = () => new mapboxgl.Map({
 });
 
 const loadHelloMap = () => {
-  if (mapboxgl) {
+  if (typeof mapboxgl === 'undefined') {
     mapboxgl.accessToken = 'pk.eyJ1IjoiZGFuYWN0aXZlLXRlYWNoIiwiYSI6ImNqcmppNDlveDBjdHk0M284MnNya2Ztb2wifQ.lUbes1e5nrEYV9nwRh49sQ';
   }
 
