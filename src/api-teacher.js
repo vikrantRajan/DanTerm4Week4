@@ -15,6 +15,7 @@ const { formatTwitterDate } = require('./js/twitter/date.teacher');
 const flickrPhotoToJpgPath = photo => ({
   path: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
 });
+exports.flickrPhotoToJpgPath = flickrPhotoToJpgPath;
 
 const flickrJpgPaths = response => response.photos.photo.map(flickrPhotoToJpgPath);
 exports.flickrJpgPaths = flickrJpgPaths;
