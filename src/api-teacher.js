@@ -12,10 +12,11 @@ const credentials = require('../credentials.json');
 const { print } = require('./js/utils.teacher');
 const { formatTwitterDate } = require('./js/twitter/date.teacher');
 
-const flickrJpgPaths = response => response.photos.photo
-  .map(photo => ({
-    path: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
-  }));
+const flickrPhotoToJpgPath = photo => ({
+  path: `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`,
+});
+
+const flickrJpgPaths = response => response.photos.photo.map(flickrPhotoToJpgPath);
 exports.flickrJpgPaths = flickrJpgPaths;
 
 // keyword is a new variable, when undefined set to blank.
@@ -159,7 +160,7 @@ exports.plugin = {
           // convert from stringified JSON to parsed object for fetch
           .then(response => response.json())
           .then((json) => {
-            const photos = flickrJpgPaths(json);
+            const photos = json.photos.photo.map(flickrPhotoToJpgPath);
 
             resolve(photos); // output to user agent (browser)
           });
