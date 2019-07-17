@@ -16,7 +16,11 @@ const createMap = () => new mapboxgl.Map({
 });
 
 const loadHelloMap = () => {
-  createMap();
+  const map = createMap();
+
+  new mapboxgl.Marker()
+    .setLngLat([vanarts.longitude, vanarts.latitude])
+    .addTo(map);
 };
 
 // If Node.js then export as public
