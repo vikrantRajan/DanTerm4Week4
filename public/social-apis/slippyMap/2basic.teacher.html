@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
 	<title>Basic API map</title>
+	<!-- SOLUTION-->
+	<link href='https://api.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body>
@@ -14,7 +16,7 @@
     <li>
       <ul>
         <li>As a user, I want to see my business on the map.</li>
-        <li>As a dev, using a map API add a marker or pin on the slippy map.</li>
+        <li>As a dev, using a map social plugin add a marker or pin on the slippy map.</li>
       </ul>
     </li>
     <li>
@@ -39,10 +41,10 @@
   </ul>
 
 	<h3>Live demo</h3>
-	<div id="map"></div>
+	<div id="map" style="height: 500px"></div>
 
 	<!-- Attach Mapbox library -->
-	<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js"></script>
+	<script src='https://api.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
 	<!-- Attach all the bundles JavaScript files in /src/js -->
 	<script src="/js/critical.js"></script>
 	<script>loadHelloMap();</script>
