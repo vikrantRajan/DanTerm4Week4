@@ -161,9 +161,15 @@ exports.plugin = {
           // convert from stringified JSON to parsed object for fetch
           .then(response => response.json())
           .then((json) => {
+            if (json.message) resolve({ error: true, message: json.message });
+
             const photos = json.photos.photo.map(flickrPhotoToJpgPath);
 
             resolve(photos); // output to user agent (browser)
+          })
+          .catch((err) => {
+            print('caught error', err); // full in terminal
+            resolve({ error: true }); // browser
           });
       }),
     });
