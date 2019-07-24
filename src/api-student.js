@@ -23,7 +23,7 @@ exports.plugin = {
           strictSSL: true,
         });
 
-        twitter.get('statuses/user_timeline', { screen_name: 'vanarts', count: 5 })
+        twitter.get('statuses/user_timeline', { screen_name: 'vanarts', count: 200 })
           .catch(err => console.log('caught error', err.stack))
           .then(result => resolve(result.data));
 
