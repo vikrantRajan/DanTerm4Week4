@@ -47,7 +47,7 @@
     "htmlhint-stylish": "^1.0.3"
   },
   "dependencies": {
-    "@hapi/hapi": "^18.3.1",
+    "@hapi/hapi": "^19.1.1",
     "@slack/web-api": "^5.0.1",
     "babel-cli": "^6.26.0",
     "babel-preset-react-app": "^3.1.2",
